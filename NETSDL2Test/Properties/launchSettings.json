@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "NETSDL2Test": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
