@@ -37,6 +37,8 @@ int NETSDL2::Video::Window::WindowEventCheckNative(void* userdata, SDL_Event* ev
 	if(event->type == SDL_WINDOWEVENT)
 	{
 		SDL_WindowEvent* winEvent = &event->window;
+		if(winEvent->windowID != this->ID)
+			return 0;
 
 		switch(winEvent->event)
 		{

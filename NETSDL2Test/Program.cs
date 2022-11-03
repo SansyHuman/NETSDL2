@@ -59,7 +59,15 @@ Logging.LogInfo(LogCategory.Application, "SetAttribute: {0}", GL.SetAttribute(GL
 Logging.LogInfo(LogCategory.Application, "SetAttribute: {0}", GL.SetAttribute(GLAttr.MultisampleSamples, 4));
 Logging.LogInfo(LogCategory.Application, "SetAttribute: {0}", GL.SetAttribute(GLAttr.ContextFlags, (int)GLContextFlags.Debug));
 
-var window = new Window("Hello", Window.WINDOWPOS_UNDEFINED, Window.WINDOWPOS_UNDEFINED, 800, 600, WindowFlags.AllowHighDPI | WindowFlags.OpenGL);
+var window = new Window("Hello", Window.WINDOWPOS_UNDEFINED, Window.WINDOWPOS_UNDEFINED, 800, 600, WindowFlags.AllowHighDPI | WindowFlags.OpenGL | WindowFlags.Resizable);
+window.OnHidden += (Window window, uint timestamp) =>
+{
+    Logging.LogInfo(LogCategory.Application, "Window hidden on {0}", timestamp);
+};
+window.OnSizeChanged += (Window window, uint timestamp, int w, int h) =>
+{
+    Logging.LogInfo(LogCategory.Application, "Window size changed on {0} to {1} x {2}", timestamp, w, h);
+};
 
 window.SetWindowHitTest((Window window, Point point, IntPtr data) =>
 {
@@ -205,8 +213,34 @@ Logging.LogInfo(LogCategory.Application, "InputFocus: {0}", window.SetWindowInpu
 Logging.LogInfo(LogCategory.Application, "InputFocus: {0}", Error.GetError());
 
 Window modal = new Window("Modal", Window.WINDOWPOS_CENTERED, Window.WINDOWPOS_CENTERED, 500, 300, WindowFlags.None);
+modal.SetWindowResizable(true);
 Logging.LogInfo(LogCategory.Application, "Modal: {0}", modal.SetWindowModalFor(window));
 Logging.LogInfo(LogCategory.Application, "Modal: {0}", Error.GetError());
+
+Window.ShowMessageBox(
+    new MessageBoxData()
+    {
+        Flags = MessageBoxFlags.Information,
+        Window = null,
+        Title = "Warning",
+        Message = "This is test.",
+        Buttons = new MessageBoxButtonData[]
+        {
+            new MessageBoxButtonData()
+            {
+                Flags = MessageBoxButtonFlags.None,
+                ButtonID = 0,
+                Text = "네"
+            },
+            new MessageBoxButtonData()
+            {
+                Flags = MessageBoxButtonFlags.ReturnkeyDefault,
+                ButtonID = 1,
+                Text = "아니오"
+            }
+        },
+        ColorScheme = scheme
+    });
 
 Logging.LogInfo(LogCategory.Application, "Opacity: {0}", window.SetWindowOpacity(0.5f));
 
