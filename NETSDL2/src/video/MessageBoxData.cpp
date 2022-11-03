@@ -16,3 +16,9 @@ void MessageBoxColorScheme::default::set(MessageBoxColorType index, MessageBoxCo
 {
 	colors[(int)index] = value;
 }
+
+NETSDL2::Video::MessageBoxColor::MessageBoxColor(Uint8 r, Uint8 g, Uint8 b)
+	: R(r), G(g), B(b)
+{
+	
+}

@@ -9,6 +9,8 @@
 
 #include "../../include/internal/StringMarshal.h"
 
+#include <vector>
+
 using namespace NETSDL2::Internal;
 
 using namespace msclr::interop;
@@ -455,6 +457,116 @@ Result<None^, int> NETSDL2::Video::Window::SetWindowModalFor(Window^ parentWindo
 Result<None^, int> NETSDL2::Video::Window::SetWindowOpacity(float opacity)
 {
 	int result = SDL_SetWindowOpacity(window, opacity);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+void NETSDL2::Video::Window::SetWindowPosition(int x, int y)
+{
+	SDL_SetWindowPosition(window, x, y);
+}
+
+void NETSDL2::Video::Window::SetWindowResizable(bool resizable)
+{
+	SDL_SetWindowResizable(window, resizable ? SDL_TRUE : SDL_FALSE);
+}
+
+void NETSDL2::Video::Window::SetWindowSize(int w, int h)
+{
+	SDL_SetWindowSize(window, w, h);
+}
+
+Result<int, int> NETSDL2::Video::Window::ShowMessageBox(MessageBoxData% messageBoxData)
+{
+	StringMarshal context;
+
+	int buttonid;
+
+	SDL_MessageBoxData data = {};
+	data.flags = (Uint32)messageBoxData.Flags;
+	data.window = messageBoxData.Window == nullptr ? __nullptr : messageBoxData.Window->window;
+	data.title = context.ManagedToUTF8Native(messageBoxData.Title);
+	data.message = context.ManagedToUTF8Native(messageBoxData.Message);
+	data.numbuttons = messageBoxData.Buttons->Length;
+
+	std::vector<SDL_MessageBoxButtonData> buttons(data.numbuttons);
+	for(int i = 0; i < data.numbuttons; i++)
+	{
+		buttons[i].flags = (Uint32)messageBoxData.Buttons[i].Flags;
+		buttons[i].buttonid = messageBoxData.Buttons[i].ButtonID;
+		buttons[i].text = context.ManagedToUTF8Native(messageBoxData.Buttons[i].Text);
+	}
+	data.buttons = buttons.data();
+
+	SDL_MessageBoxColorScheme colorScheme = {};
+
+	if(messageBoxData.ColorScheme == nullptr)
+	{
+		data.colorScheme = __nullptr;
+	}
+	else
+	{
+		for(int i = 0; i < (int)SDL_MESSAGEBOX_COLOR_MAX; i++)
+		{
+			MessageBoxColor color = messageBoxData.ColorScheme[(MessageBoxColorType)i];
+			colorScheme.colors[i].r = color.R;
+			colorScheme.colors[i].g = color.G;
+			colorScheme.colors[i].b = color.B;
+		}
+		data.colorScheme = &colorScheme;
+	}
+
+	int result = SDL_ShowMessageBox(&data, &buttonid);
+	if(result < 0)
+	{
+		return Result<int, int>::MakeFailure(result);
+	}
+
+	return buttonid;
+}
+
+Result<None^, int> NETSDL2::Video::Window::ShowSimpleMessageBox(MessageBoxFlags flags, System::String^ title, System::String^ message, Window^ window)
+{
+	StringMarshal context;
+
+	int result = SDL_ShowSimpleMessageBox((Uint32)flags, context.ManagedToUTF8Native(title), context.ManagedToUTF8Native(message), window == nullptr ? __nullptr : window->window);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+void NETSDL2::Video::Window::ShowWindow()
+{
+	SDL_ShowWindow(window);
+}
+
+Result<None^, int> NETSDL2::Video::Window::UpdateWindowSurface()
+{
+	int result = SDL_UpdateWindowSurface(window);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Window::UpdateWindowSurfaceRects(...array<NETSDL2::Video::Rect>^ rects)
+{
+	if(rects->Length == 0)
+		return None::Value;
+
+	pin_ptr<NETSDL2::Video::Rect> pRects = &rects[0];
+	int result = SDL_UpdateWindowSurfaceRects(window, (const SDL_Rect*)pRects, rects->Length);
+	pRects = nullptr;
+
 	if(result < 0)
 	{
 		return Result<None^, int>::MakeFailure(result);

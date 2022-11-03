@@ -5,6 +5,7 @@
 #include "../../include/video/PixelFormat.h"
 #include "../../include/video/SysWMInfo.h"
 #include "../../include/video/Rect.h"
+#include "../../include/video/MessageBoxData.h"
 
 using namespace System::Runtime::InteropServices;
 using namespace System::Diagnostics::CodeAnalysis;
@@ -630,6 +631,75 @@ namespace NETSDL2
 			/// 1.0f - opaque).</param>
 			/// <returns>None on success or error code on failure.</returns>
 			Result<None^, int> SetWindowOpacity(float opacity);
+
+			/// <summary>
+			/// Set the position of a window.
+			/// </summary>
+			/// <param name="x">The x position of the window in screen
+			/// coordinates, or <see cref="Window::WINDOWPOS_CENTERED"/> or
+			/// <see cref="Window::WINDOWPOS_UNDEFINED"/>.</param>
+			/// <param name="y">The y position of the window in screen
+			/// coordinates, or <see cref="Window::WINDOWPOS_CENTERED"/> or
+			/// <see cref="Window::WINDOWPOS_UNDEFINED"/>.</param>
+			void SetWindowPosition(int x, int y);
+
+			/// <summary>
+			/// Set the user-resizable state of a window.
+			/// </summary>
+			/// <param name="resizable">true to allow resizing, false to
+			/// disallow.</param>
+			void SetWindowResizable(bool resizable);
+
+			/// <summary>
+			/// Set the size of a window's client area.
+			/// </summary>
+			/// <param name="w">The width of the window in pixels,
+			/// in screen coordinates.</param>
+			/// <param name="h">The height of the window in pixels,
+			/// in screen coordinates.</param>
+			void SetWindowSize(int w, int h);
+
+			/// <summary>
+			/// Create a modal message box.
+			/// </summary>
+			/// <param name="messageBoxData">The
+			/// <see cref="Window::MessageBoxData"/> structure with title,
+			/// text and other options.</param>
+			/// <returns>ID of hit button on success or error code on failure.
+			/// </returns>
+			static Result<int, int> ShowMessageBox([In][IsReadOnly]MessageBoxData% messageBoxData);
+
+			/// <summary>
+			/// Display a simple modal message box.
+			/// </summary>
+			/// <param name="flags">An <see cref="MessageBoxFlags"/> value.
+			/// </param>
+			/// <param name="title">Title text.</param>
+			/// <param name="message">Message text.</param>
+			/// <param name="window">The parent window, or null for no parent.
+			/// </param>
+			/// <returns>None on success or error code on failure.</returns>
+			static Result<None^, int> ShowSimpleMessageBox(MessageBoxFlags flags, System::String^ title, System::String^ message, Window^ window);
+
+			/// <summary>
+			/// Show a window.
+			/// </summary>
+			void ShowWindow();
+
+			/// <summary>
+			/// Copy the window surface to the screen.
+			/// </summary>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> UpdateWindowSurface();
+
+			/// <summary>
+			/// Copy areas of the window surface to the screen.
+			/// </summary>
+			/// <param name="rects">An array of
+			/// <see cref="NETSDL2::Video::Rect"/> structures representing
+			/// areas of the surface to copy.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> UpdateWindowSurfaceRects(...array<NETSDL2::Video::Rect>^ rects);
 
 		internal:
 			[MethodImpl(MethodImplOptions::AggressiveInlining)]

@@ -18,11 +18,17 @@ NETSDL2::Internal::StringMarshal::~StringMarshal()
 
 System::String^ NETSDL2::Internal::StringMarshal::UTF8NativeToManaged(const char* str)
 {
+	if(str == __nullptr)
+		return System::String::Empty;
+
 	return gcnew System::String(str, 0, lstrlenA(str), System::Text::Encoding::UTF8);
 }
 
 char* NETSDL2::Internal::StringMarshal::ManagedToUTF8Native(System::String^ str)
 {
+	if(str == nullptr)
+		return __nullptr;
+
 	auto bytes = System::Text::Encoding::UTF8->GetBytes(str);
 	GCHandle handle = GCHandle::Alloc(bytes, GCHandleType::Pinned);
 	clearList->Add(handle);

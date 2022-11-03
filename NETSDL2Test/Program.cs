@@ -10,6 +10,9 @@ if(result.ResultType == Result<None, int>.Type.Failed)
     return;
 }
 
+result = Video.Init(null);
+Console.WriteLine("Video init: {0}", result);
+
 Error.SetError("호무호무");
 string errorMessage = Error.GetError();
 Logging.LogInfo(LogCategory.Application, "Hello, {0}!", Error.GetError());
@@ -46,6 +49,43 @@ Logging.LogInfo(LogCategory.Application, "SetAttribute: {0}", GL.SetAttribute(GL
 Logging.LogInfo(LogCategory.Application, "SetAttribute: {0}", GL.SetAttribute(GLAttr.ContextFlags, (int)GLContextFlags.Debug));
 
 var window = new Window("Hello", Window.WINDOWPOS_UNDEFINED, Window.WINDOWPOS_UNDEFINED, 800, 600, WindowFlags.AllowHighDPI | WindowFlags.OpenGL);
+
+MessageBoxColorScheme scheme = new MessageBoxColorScheme();
+scheme[MessageBoxColorType.Text] = new MessageBoxColor(0, 0, 35);
+scheme[MessageBoxColorType.Background] = new MessageBoxColor(230, 230, 230);
+scheme[MessageBoxColorType.ButtonBackground] = new MessageBoxColor(255, 232, 0);
+scheme[MessageBoxColorType.ButtonBorder] = new MessageBoxColor(255, 255, 255);
+scheme[MessageBoxColorType.ButtonSelected] = new MessageBoxColor(0, 23, 255);
+
+var messageBoxResult = Window.ShowMessageBox(
+    new MessageBoxData()
+    {
+        Flags = MessageBoxFlags.Information,
+        Window = window,
+        Title = "Warning",
+        Message = "This is test.",
+        Buttons = new MessageBoxButtonData[]
+        {
+            new MessageBoxButtonData()
+            {
+                Flags = MessageBoxButtonFlags.None,
+                ButtonID = 0,
+                Text = "네"
+            },
+            new MessageBoxButtonData()
+            {
+                Flags = MessageBoxButtonFlags.ReturnkeyDefault,
+                ButtonID = 1,
+                Text = "아니오"
+            }
+        },
+        ColorScheme = scheme
+    });
+
+Logging.LogInfo(LogCategory.Application, "Pressed button: {0}", messageBoxResult);
+
+var simpleBoxResult = Window.ShowSimpleMessageBox(MessageBoxFlags.Error, "에러", "테스트용", window);
+Logging.LogInfo(LogCategory.Application, "Simple message box: {0}", simpleBoxResult);
 
 _ = window.GetWindowBordersSize(out int top, out int left, out int bottom, out int right);
 Logging.LogInfo(LogCategory.Application, "Window border: {0}, {1}, {2}, {3}", top, left, bottom, right);
@@ -159,7 +199,14 @@ Logging.LogInfo(LogCategory.Application, "Modal: {0}", Error.GetError());
 
 Logging.LogInfo(LogCategory.Application, "Opacity: {0}", window.SetWindowOpacity(0.5f));
 
+window.SetWindowPosition(100, 100);
+
+window.SetWindowResizable(true);
+window.SetWindowResizable(false);
+window.SetWindowSize(500, 500);
+
 window.HideWindow();
+window.ShowWindow();
 
 window.Dispose();
 modal.Dispose();
@@ -210,10 +257,12 @@ Logging.LogInfo(LogCategory.Application, "Number of display modes: {0}", Display
 Logging.LogInfo(LogCategory.Application, "Number of displays: {0}", Display.NumVideoDisplays);
 Logging.LogInfo(LogCategory.Application, "Number of drivers: {0}", Display.NumVideoDrivers);
 Logging.LogInfo(LogCategory.Application, "Driver: {0}", Display.GetVideoDriver(0));
+Logging.LogInfo(LogCategory.Application, "Driver: {0}", Display.GetVideoDriver(1));
 Logging.LogInfo(LogCategory.Application, "Screen saver: {0}", Display.IsScreenSaverEnabled);
 Display.EnableScreenSaver();
 Logging.LogInfo(LogCategory.Application, "Screen saver: {0}", Display.IsScreenSaverEnabled);
 Display.DisableScreenSaver();
 Logging.LogInfo(LogCategory.Application, "Screen saver: {0}", Display.IsScreenSaverEnabled);
 
+Video.Quit();
 SDL.Quit();

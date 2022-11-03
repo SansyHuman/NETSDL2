@@ -14,8 +14,10 @@ namespace NETSDL2
 		/// An enumeration of flags for <see cref="MessageBoxButtonData"/>.
 		/// </summary>
 		[System::Flags]
-		public enum class MessageBoxButtonFlags
+		public enum class MessageBoxButtonFlags : Uint32
 		{
+			None = 0U,
+
 			/// <summary>
 			/// Marks the default button when return is hit.
 			/// </summary>
@@ -68,6 +70,8 @@ namespace NETSDL2
 			/// The blue component in the range 0-255.
 			/// </summary>
 			Uint8 B;
+
+			MessageBoxColor(Uint8 r, Uint8 g, Uint8 b);
 		};
 
 		/// <summary>
@@ -107,7 +111,7 @@ namespace NETSDL2
 		/// will display warning icon).
 		/// </summary>
 		[System::Flags]
-		public enum class MessageBoxFlags
+		public enum class MessageBoxFlags : Uint32
 		{
 			/// <summary>
 			/// Error dialog.
