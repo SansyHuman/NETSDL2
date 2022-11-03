@@ -250,6 +250,142 @@ namespace NETSDL2
 		/// <returns>Hit test result.</returns>
 		public delegate HitTestResult HitTest(Window^ win, NETSDL2::Video::Point area, System::IntPtr data);
 
+		[UnmanagedFunctionPointer(CallingConvention::Cdecl)]
+		delegate int NativeWindowEventFilter(void* userdata, SDL_Event* event);
+
+		/// <summary>
+		/// Callback for window shown event.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		public delegate void WindowShownEvent(Window^ window, Uint32 timestamp);
+
+		/// <summary>
+		/// Callback for window hidden event.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		public delegate void WindowHiddenEvent(Window^ window, Uint32 timestamp);
+
+		/// <summary>
+		/// Callback for window exposed event.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		public delegate void WindowExposedEvent(Window^ window, Uint32 timestamp);
+
+		/// <summary>
+		/// Callback for window moved event.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		/// <param name="x">x position of window moved.</param>
+		/// <param name="y">y position of window moved.</param>
+		public delegate void WindowMovedEvent(Window^ window, Uint32 timestamp, Sint32 x, Sint32 y);
+
+		/// <summary>
+		/// Callback for window resized event.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		/// <param name="x">width of resized window.</param>
+		/// <param name="y">height of resized window.</param>
+		public delegate void WindowResizedEvent(Window^ window, Uint32 timestamp, Sint32 w, Sint32 h);
+
+		/// <summary>
+		/// Callback for window size change event.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		/// <param name="x">width of resized window.</param>
+		/// <param name="y">height of resized window.</param>
+		public delegate void WindowSizeChangedEvent(Window^ window, Uint32 timestamp, Sint32 w, Sint32 h);
+
+		/// <summary>
+		/// Callback for window minimize event.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		public delegate void WindowMinimizedEvent(Window^ window, Uint32 timestamp);
+
+		/// <summary>
+		/// Callback for window maximize event.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		public delegate void WindowMaximizedEvent(Window^ window, Uint32 timestamp);
+
+		/// <summary>
+		/// Callback for window restored event.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		public delegate void WindowRestoredEvent(Window^ window, Uint32 timestamp);
+
+		/// <summary>
+		/// Callback for window gain mouse focus event.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		public delegate void WindowEnterEvent(Window^ window, Uint32 timestamp);
+
+		/// <summary>
+		/// Callback for window lose mouse focus event.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		public delegate void WindowLeaveEvent(Window^ window, Uint32 timestamp);
+
+		/// <summary>
+		/// Callback for window gain keyboard focus event.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		public delegate void WindowFocusGainedEvent(Window^ window, Uint32 timestamp);
+
+		/// <summary>
+		/// Callback for window lost keyboard focus event.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		public delegate void WindowFocusLostEvent(Window^ window, Uint32 timestamp);
+
+		/// <summary>
+		/// Callback for window close event.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		public delegate void WindowCloseEvent(Window^ window, Uint32 timestamp);
+
+		/// <summary>
+		/// Callback for window being offered a focus event.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		public delegate void WindowTakeFocusEvent(Window^ window, Uint32 timestamp);
+
+		/// <summary>
+		/// Callback for window hit test event that wasn't Normal.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		public delegate void WindowHitTestEvent(Window^ window, Uint32 timestamp);
+
+		/// <summary>
+		/// Callback for window ICC profile change event.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		public delegate void WindowICCProfileChangedEvent(Window^ window, Uint32 timestamp);
+
+		/// <summary>
+		/// Callback for window moved to other display event.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		/// <param name="display">The display the window moved to.</param>
+		public delegate void WindowDisplayChangedEvent(Window^ window, Uint32 timestamp, Sint32 display);
+
 		/// <summary>
 		/// Class of SDL window.
 		/// </summary>
@@ -269,8 +405,18 @@ namespace NETSDL2
 
 			GCHandle hitTestCallbackHandle;
 
+			SDL_EventFilter nativeWindowEventCallback;
+
+			GCHandle windowEventCallbackHandle;
+
 			static SDL_HitTestResult HitTestNative(SDL_Window* win, const SDL_Point* area, void* data);
 			static HitTestResult DefaultHitTest(Window^ win, NETSDL2::Video::Point area, System::IntPtr data);
+
+			static void WindowEventNoData(Window^, Uint32) {}
+			static void WindowEventOneData(Window^, Uint32, Sint32) {}
+			static void WindowEventTwoData(Window^, Uint32, Sint32, Sint32) {}
+
+			int WindowEventCheckNative(void* userdata, SDL_Event* event);
 
 			void InitCallbacks();
 			void ClearCallbacks();
@@ -285,6 +431,97 @@ namespace NETSDL2
 			/// Do not care the window position.
 			/// </summary>
 			literal int WINDOWPOS_UNDEFINED = SDL_WINDOWPOS_UNDEFINED;
+
+			/// <summary>
+			/// Called when window has been shown.
+			/// </summary>
+			event WindowShownEvent^ OnShown;
+
+			/// <summary>
+			/// Called when window has been hidden.
+			/// </summary>
+			event WindowHiddenEvent^ OnHidden;
+
+			/// <summary>
+			/// Called when window has been exposed and should be redrawn.
+			/// </summary>
+			event WindowExposedEvent^ OnExposed;
+
+			/// <summary>
+			/// Called when window has been moved to (x, y).
+			/// </summary>
+			event WindowMovedEvent^ OnMoved;
+
+			/// <summary>
+			/// Called when window has been resized to w x h.
+			/// </summary>
+			event WindowResizedEvent^ OnResized;
+
+			/// <summary>
+			/// Called when window size has changed, either as a result of an API call or through the
+			/// system or user changing the window size.
+			/// </summary>
+			event WindowSizeChangedEvent^ OnSizeChanged;
+
+			/// <summary>
+			/// Called when window has been minimized.
+			/// </summary>
+			event WindowMinimizedEvent^ OnMinimized;
+
+			/// <summary>
+			/// Called when window has been maximized.
+			/// </summary>
+			event WindowMaximizedEvent^ OnMaximized;
+
+			/// <summary>
+			/// Called when window has been restored to normal size and position.
+			/// </summary>
+			event WindowRestoredEvent^ OnRestored;
+
+			/// <summary>
+			/// Called when window has gained mouse focus.
+			/// </summary>
+			event WindowEnterEvent^ OnEnter;
+
+			/// <summary>
+			/// Called when window has lost mouse focus.
+			/// </summary>
+			event WindowLeaveEvent^ OnLeave;
+
+			/// <summary>
+			/// Called when window has gained keyboard focus.
+			/// </summary>
+			event WindowFocusGainedEvent^ OnFocusGained;
+
+			/// <summary>
+			/// Called when window has lost keyboard focus.
+			/// </summary>
+			event WindowFocusLostEvent^ OnFocusLost;
+
+			/// <summary>
+			/// Called when the window manager requests that the window be closed.
+			/// </summary>
+			event WindowCloseEvent^ OnClose;
+
+			/// <summary>
+			/// Called when window is being offered a focus.
+			/// </summary>
+			event WindowTakeFocusEvent^ OnTakeFocus;
+
+			/// <summary>
+			/// Called when window had a hit test that wasn't HitTestResult::Normal.
+			/// </summary>
+			event WindowHitTestEvent^ OnHitTest;
+
+			/// <summary>
+			/// Called when the ICC profile of the window's display has changed.
+			/// </summary>
+			event WindowICCProfileChangedEvent^ OnICCProfileChanged;
+
+			/// <summary>
+			/// Called when window has been moved to other display.
+			/// </summary>
+			event WindowDisplayChangedEvent^ OnDisplayChanged;
 
 		public:
 			/// <summary>

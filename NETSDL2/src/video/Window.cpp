@@ -32,6 +32,78 @@ HitTestResult NETSDL2::Video::Window::DefaultHitTest(Window^ win, NETSDL2::Video
 	return HitTestResult::Normal;
 }
 
+int NETSDL2::Video::Window::WindowEventCheckNative(void* userdata, SDL_Event* event)
+{
+	if(event->type == SDL_WINDOWEVENT)
+	{
+		SDL_WindowEvent* winEvent = &event->window;
+
+		switch(winEvent->event)
+		{
+		case SDL_WINDOWEVENT_NONE:
+			break;
+		case SDL_WINDOWEVENT_SHOWN:
+			OnShown(this, winEvent->timestamp);
+			break;
+		case SDL_WINDOWEVENT_HIDDEN:
+			OnHidden(this, winEvent->timestamp);
+			break;
+		case SDL_WINDOWEVENT_EXPOSED:
+			OnExposed(this, winEvent->timestamp);
+			break;
+		case SDL_WINDOWEVENT_MOVED:
+			OnMoved(this, winEvent->timestamp, winEvent->data1, winEvent->data2);
+			break;
+		case SDL_WINDOWEVENT_RESIZED:
+			OnResized(this, winEvent->timestamp, winEvent->data1, winEvent->data2);
+			break;
+		case SDL_WINDOWEVENT_SIZE_CHANGED:
+			OnSizeChanged(this, winEvent->timestamp, winEvent->data1, winEvent->data2);
+			break;
+		case SDL_WINDOWEVENT_MINIMIZED:
+			OnMinimized(this, winEvent->timestamp);
+			break;
+		case SDL_WINDOWEVENT_MAXIMIZED:
+			OnMaximized(this, winEvent->timestamp);
+			break;
+		case SDL_WINDOWEVENT_RESTORED:
+			OnRestored(this, winEvent->timestamp);
+			break;
+		case SDL_WINDOWEVENT_ENTER:
+			OnEnter(this, winEvent->timestamp);
+			break;
+		case SDL_WINDOWEVENT_LEAVE:
+			OnLeave(this, winEvent->timestamp);
+			break;
+		case SDL_WINDOWEVENT_FOCUS_GAINED:
+			OnFocusGained(this, winEvent->timestamp);
+			break;
+		case SDL_WINDOWEVENT_FOCUS_LOST:
+			OnFocusLost(this, winEvent->timestamp);
+			break;
+		case SDL_WINDOWEVENT_CLOSE:
+			OnClose(this, winEvent->timestamp);
+			break;
+		case SDL_WINDOWEVENT_TAKE_FOCUS:
+			OnTakeFocus(this, winEvent->timestamp);
+			break;
+		case SDL_WINDOWEVENT_HIT_TEST:
+			OnHitTest(this, winEvent->timestamp);
+			break;
+		case SDL_WINDOWEVENT_ICCPROF_CHANGED:
+			OnICCProfileChanged(this, winEvent->timestamp);
+			break;
+		case SDL_WINDOWEVENT_DISPLAY_CHANGED:
+			OnDisplayChanged(this, winEvent->timestamp, winEvent->data1);
+			break;
+		default:
+			break;
+		}
+	}
+
+	return 0;
+}
+
 void NETSDL2::Video::Window::InitCallbacks()
 {
 	hitTestCallback = gcnew HitTest(&Window::DefaultHitTest);
@@ -42,12 +114,42 @@ void NETSDL2::Video::Window::InitCallbacks()
 
 	if(SDL_SetWindowHitTest(window, nativeHitTestCallback, __nullptr) < 0)
 		throw gcnew System::Exception("Failed to initialize hit test callback.");
+
+	OnShown += gcnew WindowShownEvent(Window::WindowEventNoData);
+	OnHidden += gcnew NETSDL2::Video::WindowHiddenEvent(NETSDL2::Video::Window::WindowEventNoData);
+	OnExposed += gcnew NETSDL2::Video::WindowExposedEvent(NETSDL2::Video::Window::WindowEventNoData);
+	OnMoved += gcnew NETSDL2::Video::WindowMovedEvent(NETSDL2::Video::Window::WindowEventTwoData);
+	OnResized += gcnew NETSDL2::Video::WindowResizedEvent(NETSDL2::Video::Window::WindowEventTwoData);
+	OnSizeChanged += gcnew NETSDL2::Video::WindowSizeChangedEvent(NETSDL2::Video::Window::WindowEventTwoData);
+	OnMinimized += gcnew NETSDL2::Video::WindowMinimizedEvent(Window::WindowEventNoData);
+	OnMaximized += gcnew NETSDL2::Video::WindowMaximizedEvent(Window::WindowEventNoData);
+	OnRestored += gcnew NETSDL2::Video::WindowRestoredEvent(Window::WindowEventNoData);
+	OnEnter += gcnew NETSDL2::Video::WindowEnterEvent(Window::WindowEventNoData);
+	OnLeave += gcnew NETSDL2::Video::WindowLeaveEvent(Window::WindowEventNoData);
+	OnFocusGained += gcnew NETSDL2::Video::WindowFocusGainedEvent(Window::WindowEventNoData);
+	OnFocusLost += gcnew NETSDL2::Video::WindowFocusLostEvent(Window::WindowEventNoData);
+	OnClose += gcnew NETSDL2::Video::WindowCloseEvent(Window::WindowEventNoData);
+	OnTakeFocus += gcnew NETSDL2::Video::WindowTakeFocusEvent(Window::WindowEventNoData);
+	OnHitTest += gcnew NETSDL2::Video::WindowHitTestEvent(Window::WindowEventNoData);
+	OnICCProfileChanged += gcnew NETSDL2::Video::WindowICCProfileChangedEvent(Window::WindowEventNoData);
+	OnDisplayChanged += gcnew NETSDL2::Video::WindowDisplayChangedEvent(Window::WindowEventOneData);
+
+	NativeWindowEventFilter^ nativeWindow = gcnew NativeWindowEventFilter(this, &Window::WindowEventCheckNative);
+
+	windowEventCallbackHandle = GCHandle::Alloc(nativeWindow);
+	nativeWindowEventCallback = reinterpret_cast<SDL_EventFilter>(Marshal::GetFunctionPointerForDelegate(nativeWindow).ToPointer());
+
+	SDL_AddEventWatch(nativeWindowEventCallback, window);
 }
 
 void NETSDL2::Video::Window::ClearCallbacks()
 {
 	nativeHitTestCallback = __nullptr;
 	hitTestCallbackHandle.Free();
+
+	SDL_DelEventWatch(nativeWindowEventCallback, window);
+	nativeWindowEventCallback = __nullptr;
+	windowEventCallbackHandle.Free();
 }
 
 NETSDL2::Video::Window::Window(System::String^ title, int x, int y, int w, int h, WindowFlags flags)
@@ -85,6 +187,7 @@ NETSDL2::Video::Window::~Window()
 NETSDL2::Video::Window::!Window()
 {
 	ClearCallbacks();
+
 	SDL_DestroyWindow(window);
 	window = __nullptr;
 }

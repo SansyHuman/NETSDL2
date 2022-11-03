@@ -61,6 +61,15 @@ Logging.LogInfo(LogCategory.Application, "SetAttribute: {0}", GL.SetAttribute(GL
 
 var window = new Window("Hello", Window.WINDOWPOS_UNDEFINED, Window.WINDOWPOS_UNDEFINED, 800, 600, WindowFlags.AllowHighDPI | WindowFlags.OpenGL);
 
+window.SetWindowHitTest((Window window, Point point, IntPtr data) =>
+{
+    window.GetWindowSize(out int w, out int h);
+    if (point.X > w / 2)
+        return HitTestResult.Draggable;
+
+    return HitTestResult.Normal;
+}, new IntPtr(50000));
+
 MessageBoxColorScheme scheme = new MessageBoxColorScheme();
 scheme[MessageBoxColorType.Text] = new MessageBoxColor(0, 0, 35);
 scheme[MessageBoxColorType.Background] = new MessageBoxColor(230, 230, 230);
@@ -72,7 +81,7 @@ var messageBoxResult = Window.ShowMessageBox(
     new MessageBoxData()
     {
         Flags = MessageBoxFlags.Information,
-        Window = window,
+        Window = null,
         Title = "Warning",
         Message = "This is test.",
         Buttons = new MessageBoxButtonData[]
@@ -191,15 +200,6 @@ window.SetWindowFullscreen(WindowFlags.None);
 
 window.IsGrabbed = true;
 window.IsGrabbed = false;
-
-window.SetWindowHitTest((Window window, Point point, IntPtr data) =>
-{
-    window.GetWindowSize(out int w, out int h);
-    if (point.X > w / 2)
-        return HitTestResult.Draggable;
-
-    return HitTestResult.Normal;
-}, new IntPtr(50000));
 
 Logging.LogInfo(LogCategory.Application, "InputFocus: {0}", window.SetWindowInputFocus());
 Logging.LogInfo(LogCategory.Application, "InputFocus: {0}", Error.GetError());
