@@ -2,6 +2,17 @@
 using NETSDL2.Video;
 
 using System.Diagnostics;
+using System.Runtime.InteropServices;
+
+Hint.ClearHints();
+
+Console.WriteLine("{0}", Hint.GetHint(SDLHint.H_RENDER_SCALE_QUALITY));
+Console.WriteLine("{0}", Hint.SetHint(SDLHint.H_RENDER_SCALE_QUALITY, "linear"));
+Console.WriteLine("{0}", Hint.GetHint(SDLHint.H_RENDER_SCALE_QUALITY));
+Console.WriteLine("{0}", Hint.SetHintWithPriority(SDLHint.H_RENDER_SCALE_QUALITY, "best", HintPriority.Default));
+Console.WriteLine("{0}", Hint.GetHint(SDLHint.H_RENDER_SCALE_QUALITY));
+Console.WriteLine("{0}", Hint.SetHintWithPriority(SDLHint.H_RENDER_SCALE_QUALITY, "best", HintPriority.Override));
+Console.WriteLine("{0}", Hint.GetHint(SDLHint.H_RENDER_SCALE_QUALITY));
 
 var result = SDL.Init(SubSystems.Video);
 if(result.ResultType == Result<None, int>.Type.Failed)

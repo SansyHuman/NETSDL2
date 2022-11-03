@@ -14,6 +14,9 @@ namespace NETSDL2
 	{
 		using namespace NETSDL2::Core;
 
+		/// <summary>
+		/// Video subsystem.
+		/// </summary>
 		public ref struct Video abstract sealed
 		{
 		public:

@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\core\Error.h" />
+    <ClInclude Include="include\core\Hint.h" />
     <ClInclude Include="include\core\Log.h" />
     <ClInclude Include="include\core\None.h" />
     <ClInclude Include="include\core\Result.h" />
@@ -163,6 +164,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="src\core\Error.cpp" />
+    <ClCompile Include="src\core\Hint.cpp" />
     <ClCompile Include="src\core\Log.cpp" />
     <ClCompile Include="src\core\None.cpp" />
     <ClCompile Include="src\core\Result.cpp" />
