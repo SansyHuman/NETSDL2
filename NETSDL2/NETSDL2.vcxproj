@@ -149,6 +149,7 @@
     <ClInclude Include="include\core\SDLVersion.h" />
     <ClInclude Include="include\core\Version.h" />
     <ClInclude Include="include\internal\StringMarshal.h" />
+    <ClInclude Include="include\video\Palette.h" />
     <ClInclude Include="include\video\Display.h" />
     <ClInclude Include="include\video\DisplayMode.h" />
     <ClInclude Include="include\video\GL.h" />
@@ -156,6 +157,7 @@
     <ClInclude Include="include\video\GLContext.h" />
     <ClInclude Include="include\video\MessageBoxData.h" />
     <ClInclude Include="include\video\PixelFormat.h" />
+    <ClInclude Include="include\video\Pixels.h" />
     <ClInclude Include="include\video\Rect.h" />
     <ClInclude Include="include\video\SysWMInfo.h" />
     <ClInclude Include="include\video\Video.h" />
@@ -178,7 +180,9 @@
     <ClCompile Include="src\video\GLAttr.cpp" />
     <ClCompile Include="src\video\GLContext.cpp" />
     <ClCompile Include="src\video\MessageBoxData.cpp" />
+    <ClCompile Include="src\video\Palette.cpp" />
     <ClCompile Include="src\video\PixelFormat.cpp" />
+    <ClCompile Include="src\video\Pixels.cpp" />
     <ClCompile Include="src\video\Rect.cpp" />
     <ClCompile Include="src\video\SysWMInfo.cpp" />
     <ClCompile Include="src\video\Video.cpp" />

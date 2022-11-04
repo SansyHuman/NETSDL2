@@ -64,9 +64,9 @@ window.OnHidden += (Window window, uint timestamp) =>
 {
     Logging.LogInfo(LogCategory.Application, "Window hidden on {0}", timestamp);
 };
-window.OnSizeChanged += (Window window, uint timestamp, int w, int h) =>
+window.OnMoved += (Window window, uint timestamp, int x, int y) =>
 {
-    Logging.LogInfo(LogCategory.Application, "Window size changed on {0} to {1} x {2}", timestamp, w, h);
+    Logging.LogInfo(LogCategory.Application, "Main window moved on {0} to {1}, {2}", timestamp, x, y);
 };
 
 window.SetWindowHitTest((Window window, Point point, IntPtr data) =>
@@ -214,6 +214,10 @@ Logging.LogInfo(LogCategory.Application, "InputFocus: {0}", Error.GetError());
 
 Window modal = new Window("Modal", Window.WINDOWPOS_CENTERED, Window.WINDOWPOS_CENTERED, 500, 300, WindowFlags.None);
 modal.SetWindowResizable(true);
+modal.OnMoved += (Window window, uint timestamp, int x, int y) =>
+{
+    Logging.LogInfo(LogCategory.Application, "Modal window moved on {0} to {1}, {2}", timestamp, x, y);
+};
 Logging.LogInfo(LogCategory.Application, "Modal: {0}", modal.SetWindowModalFor(window));
 Logging.LogInfo(LogCategory.Application, "Modal: {0}", Error.GetError());
 
@@ -308,6 +312,17 @@ Display.EnableScreenSaver();
 Logging.LogInfo(LogCategory.Application, "Screen saver: {0}", Display.IsScreenSaverEnabled);
 Display.DisableScreenSaver();
 Logging.LogInfo(LogCategory.Application, "Screen saver: {0}", Display.IsScreenSaverEnabled);
+unsafe
+{
+    PixelFormat* format = Pixels.AllocFormat(PixelFormatEnum.RGBA8888);
+    Palette* palette = Pixels.AllocPalette(3);
+
+    Logging.LogInfo(LogCategory.Application, "Set palete color: {0}", Pixels.SetPaletteColors(palette, 1, new Color(100, 20, 20, 50)));
+    Logging.LogInfo(LogCategory.Application, "{0}", (*palette)[1]);
+
+    Logging.LogInfo(LogCategory.Application, "Set pixel palette: {0}", Pixels.SetPixelFormatPalette(format, palette));
+    Logging.LogInfo(LogCategory.Application, "{0}", Error.GetError());
+}
 
 Video.Quit();
 SDL.Quit();

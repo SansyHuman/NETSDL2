@@ -93,6 +93,12 @@
     <ClInclude Include="include\core\Hint.h">
       <Filter>헤더 파일\core</Filter>
     </ClInclude>
+    <ClInclude Include="include\video\Palette.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Pixels.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -157,6 +163,12 @@
     </ClCompile>
     <ClCompile Include="src\core\Hint.cpp">
       <Filter>소스 파일\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\Palette.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\Pixels.cpp">
+      <Filter>소스 파일\video</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

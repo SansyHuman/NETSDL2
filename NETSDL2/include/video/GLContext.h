@@ -44,6 +44,8 @@ namespace NETSDL2
 			/// <param name="context">OpenGL context to be deleted.</param>
 			static void DeleteContext(GLContext^ context);
 
+			virtual System::String^ ToString() override;
+
 		internal:
 			[MethodImpl(MethodImplOptions::AggressiveInlining)]
 			static Result<GLContext^, None^> GetCurrentContext();

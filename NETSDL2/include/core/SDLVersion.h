@@ -31,6 +31,8 @@ namespace NETSDL2
 			/// </summary>
 			Uint8 Patch;
 
+			SDLVersion(Uint8 major, Uint8 minor, Uint8 patch);
+
 			virtual System::String^ ToString() override;
 		};
 	}

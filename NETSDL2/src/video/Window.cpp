@@ -194,6 +194,11 @@ NETSDL2::Video::Window::!Window()
 	window = __nullptr;
 }
 
+System::String^ NETSDL2::Video::Window::ToString()
+{
+	return System::String::Format("Window \"{0}\" [ID: {1}]", Title, ID);
+}
+
 Result<None^, int> NETSDL2::Video::Window::FlashWindow(FlashOperation operation)
 {
 	int result = SDL_FlashWindow(window, (SDL_FlashOperation)operation);

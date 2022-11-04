@@ -556,6 +556,8 @@ namespace NETSDL2
 			~Window();
 			!Window();
 
+			virtual System::String^ ToString() override;
+
 			/// <summary>
 			/// Request a window to demand attention from the user.
 			/// </summary>

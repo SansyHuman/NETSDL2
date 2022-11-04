@@ -25,6 +25,9 @@ namespace NETSDL2
 			SDLHint(System::String^ name);
 
 		public:
+			virtual System::String^ ToString() override;
+
+		public:
 			/// <summary>
 			/// A variable controlling whether the Android / iOS built-in
 			/// accelerometer should be listed as a joystick device.

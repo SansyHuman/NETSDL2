@@ -34,6 +34,11 @@ void NETSDL2::Video::GLContext::DeleteContext(GLContext^ context)
 	delete context;
 }
 
+System::String^ NETSDL2::Video::GLContext::ToString()
+{
+	return System::String::Format("GL context 0x{0:x}", (Uint64)context);
+}
+
 Result<GLContext^, None^> NETSDL2::Video::GLContext::GetCurrentContext()
 {
 	SDL_GLContext c = SDL_GL_GetCurrentContext();

@@ -2,6 +2,8 @@
 
 #include <SDL.h>
 
+#include "Palette.h"
+
 using namespace System::Runtime::InteropServices;
 
 namespace NETSDL2
@@ -138,6 +140,146 @@ namespace NETSDL2
             Layout8888 = SDL_PACKEDLAYOUT_8888,
             Layout2101010 = SDL_PACKEDLAYOUT_2101010,
             Layout1010102 = SDL_PACKEDLAYOUT_1010102,
+        };
+
+        /// <summary>
+        /// A structure that contains pixel format information.
+        /// </summary>
+        [StructLayout(LayoutKind::Sequential)]
+        public value struct PixelFormat
+        {
+        private:
+            PixelFormatEnum format;
+            Palette* palette;
+            Uint8 bitsPerPixel;
+            Uint8 bytesPerPixel;
+            Uint8 padding1;
+            Uint8 padding2;
+            Uint32 rmask;
+            Uint32 gmask;
+            Uint32 bmask;
+            Uint32 amask;
+            Uint8 rloss;
+            Uint8 gloss;
+            Uint8 bloss;
+            Uint8 aloss;
+            Uint8 rshift;
+            Uint8 gshift;
+            Uint8 bshift;
+            Uint8 ashift;
+            int refcount;
+            PixelFormat* next;
+
+        public:
+            /// <summary>
+            /// One of the <see cref="PixelFormatEnum"/> values.
+            /// </summary>
+            property PixelFormatEnum Format
+            {
+                PixelFormatEnum get();
+            }
+
+            /// <summary>
+            /// An <see cref="Palette"/> structure associated with this pixel
+            /// format, or null if the format doesn't have a palette
+            /// </summary>
+            property NETSDL2::Video::Palette* Palette
+            {
+                NETSDL2::Video::Palette* get();
+            }
+
+            /// <summary>
+            /// The number of significant bits in a pixel value.
+            /// </summary>
+            property Uint8 BitsPerPixel
+            {
+                Uint8 get();
+            }
+
+            /// <summary>
+            /// The number of bytes required to hold a pixel value.
+            /// </summary>
+            property Uint8 BytesPerPixel
+            {
+                Uint8 get();
+            }
+
+            /// <summary>
+            /// A mask representing the location of the red component of the
+            /// pixel.
+            /// </summary>
+            property Uint32 Rmask
+            {
+                Uint32 get();
+            }
+
+            /// <summary>
+            /// A mask representing the location of the green component of
+            /// the pixel.
+            /// </summary>
+            property Uint32 Gmask
+            {
+                Uint32 get();
+            }
+
+            /// <summary>
+            /// A mask representing the location of the blue component of
+            /// the pixel.
+            /// </summary>
+            property Uint32 Bmask
+            {
+                Uint32 get();
+            }
+
+            /// <summary>
+            /// A mask representing the location of the alpha component of the
+            /// pixel or 0 if the pixel format doesn't have any alpha
+            /// information.
+            /// </summary>
+            property Uint32 Amask
+            {
+                Uint32 get();
+            }
+
+            property Uint8 Rloss
+            {
+                Uint8 get();
+            }
+
+            property Uint8 Gloss
+            {
+                Uint8 get();
+            }
+
+            property Uint8 Bloss
+            {
+                Uint8 get();
+            }
+
+            property Uint8 Aloss
+            {
+                Uint8 get();
+            }
+
+            property Uint8 Rshift
+            {
+                Uint8 get();
+            }
+
+            property Uint8 Gshift
+            {
+                Uint8 get();
+            }
+
+            property Uint8 Bshift
+            {
+                Uint8 get();
+            }
+
+            property Uint8 Ashift
+            {
+                Uint8 get();
+            }
         };
 
         /// <summary>

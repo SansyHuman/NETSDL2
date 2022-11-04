@@ -48,6 +48,10 @@ namespace NETSDL2
 			/// The button text.
 			/// </summary>
 			System::String^ Text;
+
+			MessageBoxButtonData(MessageBoxButtonFlags flags, int id, System::String^ text);
+
+			virtual System::String^ ToString() override;
 		};
 
 		/// <summary>
@@ -72,6 +76,8 @@ namespace NETSDL2
 			Uint8 B;
 
 			MessageBoxColor(Uint8 r, Uint8 g, Uint8 b);
+
+			virtual System::String^ ToString() override;
 		};
 
 		/// <summary>
@@ -175,6 +181,11 @@ namespace NETSDL2
 			/// system settings.
 			/// </summary>
 			MessageBoxColorScheme^ ColorScheme;
+
+			MessageBoxData(
+				MessageBoxFlags flags, NETSDL2::Video::Window^ window, System::String^ title,
+				System::String^ message, MessageBoxColorScheme^ colorScheme,
+				...array<MessageBoxButtonData>^ buttons);
 		};
 	}
 }

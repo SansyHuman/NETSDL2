@@ -10,6 +10,11 @@ NETSDL2::Core::SDLHint::SDLHint(System::String^ name)
 	
 }
 
+System::String^ NETSDL2::Core::SDLHint::ToString()
+{
+	return name;
+}
+
 void NETSDL2::Core::Hint::ClearHints()
 {
 	SDL_ClearHints();
