@@ -31,6 +31,12 @@
     <Filter Include="소스 파일\internal">
       <UniqueIdentifier>{1f3b9bad-9aa2-49d1-99b9-eb2b905301b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\events">
+      <UniqueIdentifier>{6fffb236-8298-47e8-859c-fde66eaa250a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\events">
+      <UniqueIdentifier>{5a2dd3f2-6195-4904-a70d-be238876e24d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\SDL.h">
@@ -104,6 +110,12 @@
     </ClInclude>
     <ClInclude Include="include\video\Vulkan.h">
       <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Event.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Events.h">
+      <Filter>헤더 파일\events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +193,12 @@
     </ClCompile>
     <ClCompile Include="src\video\Vulkan.cpp">
       <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Event.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Events.cpp">
+      <Filter>소스 파일\events</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

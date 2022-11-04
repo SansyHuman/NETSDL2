@@ -1,5 +1,6 @@
 ﻿using NETSDL2.Core;
 using NETSDL2.Video;
+using NETSDL2.Events;
 
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -73,7 +74,7 @@ window.SetWindowHitTest((Window window, Point point, IntPtr data) =>
 {
     window.GetWindowSize(out int w, out int h);
     if (point.X > w / 2)
-        return HitTestResult.Draggable;
+        return HitTestResult.ResizeRight;
 
     return HitTestResult.Normal;
 }, new IntPtr(50000));
@@ -247,18 +248,40 @@ Window.ShowMessageBox(
     });
 
 Logging.LogInfo(LogCategory.Application, "Opacity: {0}", window.SetWindowOpacity(0.5f));
+Logging.LogInfo(LogCategory.Application, "Opacity: {0}", window.SetWindowOpacity(1.0f));
 
 window.SetWindowPosition(100, 100);
 
 window.SetWindowResizable(true);
 window.SetWindowResizable(false);
+window.SetWindowResizable(true);
 window.SetWindowSize(500, 500);
 
 window.HideWindow();
 window.ShowWindow();
 
-window.Dispose();
 modal.Dispose();
+
+bool mainLoop = true;
+Event @event = new Event();
+while (mainLoop)
+{
+    while (Events.PollEvent(out @event).IsSuccess)
+    {
+        if (@event.Type == EventType.Quit)
+        {
+            mainLoop = false;
+            break;
+        }
+
+        if (@event.Type == EventType.WindowEvent)
+        {
+            Console.WriteLine("Window event {0}", @event.Window.@event);
+        }
+    }
+}
+
+window.Dispose();
 
 DisplayMode desired = new DisplayMode()
 {
