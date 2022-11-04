@@ -955,6 +955,15 @@ namespace NETSDL2
 
 			[MethodImpl(MethodImplOptions::AggressiveInlining)]
 			void SwapWindow();
+
+			[MethodImpl(MethodImplOptions::AggressiveInlining)]
+			bool CreateVulkanSurface(void* instance, void** surface);
+
+			[MethodImpl(MethodImplOptions::AggressiveInlining)]
+			void GetVulkanDrawableSize([Out]int% w, [Out]int% h);
+
+			[MethodImpl(MethodImplOptions::AggressiveInlining)]
+			Result<array<System::String^>^, None^> GetVulkanInstanceExtensions();
 		};
 	}
 }

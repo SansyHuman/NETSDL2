@@ -312,16 +312,101 @@ Display.EnableScreenSaver();
 Logging.LogInfo(LogCategory.Application, "Screen saver: {0}", Display.IsScreenSaverEnabled);
 Display.DisableScreenSaver();
 Logging.LogInfo(LogCategory.Application, "Screen saver: {0}", Display.IsScreenSaverEnabled);
+
 unsafe
 {
-    PixelFormat* format = Pixels.AllocFormat(PixelFormatEnum.RGBA8888);
-    Palette* palette = Pixels.AllocPalette(3);
+    using (PixelFormatWrapper format = new PixelFormatWrapper(Pixels.AllocFormat(PixelFormatEnum.RGBA8888)))
+    {
+        using (PaletteWrapper palette = new PaletteWrapper(Pixels.AllocPalette(3)))
+        {
+            Logging.LogInfo(LogCategory.Application, "Calc gamma: {0}", Pixels.CalculateGammaRamp(0.3f, redGamma));
 
-    Logging.LogInfo(LogCategory.Application, "Set palete color: {0}", Pixels.SetPaletteColors(palette, 1, new Color(100, 20, 20, 50)));
-    Logging.LogInfo(LogCategory.Application, "{0}", (*palette)[1]);
+            uint rgb = Pixels.MapRGB(format, 250, 120, 128);
+            uint rgba = Pixels.MapRGBA(format, 102, 25, 59, 128);
+            Pixels.GetRGB(rgb, format, out byte r, out byte g, out byte b);
+            Pixels.GetRGBA(rgba, format, out r, out g, out b, out byte a);
 
-    Logging.LogInfo(LogCategory.Application, "Set pixel palette: {0}", Pixels.SetPixelFormatPalette(format, palette));
-    Logging.LogInfo(LogCategory.Application, "{0}", Error.GetError());
+            bool converted = Pixels.PixelFormatEnumToMasks(PixelFormatEnum.BGRA5551, out int bpp, out uint rmask, out uint gmask, out uint bmask, out uint amask);
+            PixelFormatEnum formatEnum = Pixels.MasksToPixelFormatEnum(bpp, rmask, gmask, bmask, amask);
+
+            Logging.LogInfo(LogCategory.Application, "Set palete color: {0}", Pixels.SetPaletteColors(palette, 1, new Color(100, 20, 20, 50)));
+            Logging.LogInfo(LogCategory.Application, "{0}", (*palette.Palette)[1]);
+
+            Logging.LogInfo(LogCategory.Application, "Set pixel palette: {0}", Pixels.SetPixelFormatPalette(format, palette));
+            Logging.LogInfo(LogCategory.Application, "{0}", Error.GetError());
+        }
+    }
+}
+
+FPoint[] fpoints = new FPoint[]
+{
+    new FPoint(1.0f, 2.0f),
+    new FPoint(5.0f, -4.0f),
+    new FPoint(2.0f, 3.0f),
+    new FPoint(-3.0f, -2.0f)
+};
+
+bool enclose = RectOps.EncloseFPoints(fpoints, null, out FRect encloseRectF);
+enclose = RectOps.EncloseFPoints(fpoints, new FRect(0.0f, 0.0f, 7.0f, 6.0f), out encloseRectF);
+
+bool hasIntersection = RectOps.HasIntersectionF(new FRect(0.0f, 0.0f, 7.0f, 6.0f), new FRect(-5.0f, -4.0f, 2.0f, 3.0f));
+hasIntersection = RectOps.HasIntersectionF(new FRect(0.0f, 0.0f, 7.0f, 6.0f), new FRect(-5.0f, -4.0f, 9.0f, 8.0f));
+hasIntersection = RectOps.IntersectFRect(new FRect(0.0f, 0.0f, 7.0f, 6.0f), new FRect(-5.0f, -4.0f, 9.0f, 8.0f), out FRect intersectF);
+hasIntersection = RectOps.IntersectFRect(new FRect(0.0f, 0.0f, 7.0f, 6.0f), new FRect(-5.0f, -4.0f, 2.0f, 3.0f), out intersectF);
+hasIntersection = RectOps.IntersectFRectAndLine(new FRect(0.0f, 0.0f, 5.0f, 5.0f), -1.0f, -1.0f, 0.0f, 6.0f);
+hasIntersection = RectOps.IntersectFRectAndLine(new FRect(0.0f, 0.0f, 5.0f, 5.0f), -1.0f, -1.0f, 3.0f, 6.0f);
+
+bool pointIn = RectOps.PointInFRect(new FPoint(0.0f, 2.0f), new FRect(2.0f, 3.0f, 5.0f, 6.0f));
+pointIn = RectOps.PointInFRect(new FPoint(3.0f, 5.0f), new FRect(2.0f, 3.0f, 5.0f, 6.0f));
+
+RectOps.UnionFRect(new FRect(0.0f, 0.0f, 7.0f, 6.0f), new FRect(-5.0f, -4.0f, 9.0f, 8.0f), out FRect unionF);
+
+Point[] points = new Point[]
+{
+    new Point(1, 2),
+    new Point(5, -4),
+    new Point(2, 3),
+    new Point(-3, -2)
+};
+
+enclose = RectOps.EnclosePoints(points, null, out Rect encloseRect);
+enclose = RectOps.EnclosePoints(points, new Rect(0, 0, 7, 6), out encloseRect);
+
+hasIntersection = RectOps.HasIntersection(new Rect(0, 0, 7, 6), new Rect(-5, -4, 2, 3));
+hasIntersection = RectOps.HasIntersection(new Rect(0, 0, 7, 6), new Rect(-5, -4, 9, 8));
+hasIntersection = RectOps.IntersectRect(new Rect(0, 0, 7, 6), new Rect(-5, -4, 9, 8), out Rect intersect);
+hasIntersection = RectOps.IntersectRect(new Rect(0, 0, 7, 6), new Rect(-5, -4, 2, 3), out intersect);
+hasIntersection = RectOps.IntersectRectAndLine(new Rect(0, 0, 5, 5), -1, -1, 0, 6);
+hasIntersection = RectOps.IntersectRectAndLine(new Rect(0, 0, 5, 5), -1, -1, 3, 6);
+
+pointIn = RectOps.PointInRect(new Point(0, 2), new Rect(2, 3, 5, 6));
+pointIn = RectOps.PointInRect(new Point(3, 5), new Rect(2, 3, 5, 6));
+
+RectOps.UnionRect(new Rect(0, 0, 7, 6), new Rect(-5, -4, 9, 8), out Rect union);
+
+Logging.LogInfo(LogCategory.Application, "Has clipboard: {0}", Clipboard.HasClipboardText);
+Logging.LogInfo(LogCategory.Application, "Get clipboard: {0}", Clipboard.GetClipboardText());
+Logging.LogInfo(LogCategory.Application, "Set clipboard: {0}", Clipboard.SetClipboardText("치노쨩"));
+Logging.LogInfo(LogCategory.Application, "Has clipboard: {0}", Clipboard.HasClipboardText);
+Logging.LogInfo(LogCategory.Application, "Get clipboard: {0}", Clipboard.GetClipboardText());
+
+unsafe
+{
+    Logging.LogInfo(LogCategory.Application, "Vulkan load: {0}", Vulkan.LoadLibrary(null));
+    Window vulkanWindow = new Window("Vulkan", 100, 100, 800, 600, WindowFlags.Vulkan | WindowFlags.AllowHighDPI);
+    Vulkan.GetDrawableSize(vulkanWindow, out int width, out int height);
+    Logging.LogInfo(LogCategory.Application, "Size: {0}, {1}", width, height);
+    string[] extensions = Vulkan.GetInstanceExtensions(vulkanWindow).ResultValue;
+    foreach(string extension in extensions)
+    {
+        Logging.LogInfo(LogCategory.Application, "Extension: {0}", extension);
+    }
+    void* vkGetInstanceProcAddr = Vulkan.GetVkGetInstanceProcAddr();
+    Logging.LogInfo(LogCategory.Application, "vkGetInstanceProcAddr: 0x{0:x}", (ulong)vkGetInstanceProcAddr);
+
+    vulkanWindow.Dispose();
+
+    Vulkan.UnloadLibrary();
 }
 
 Video.Quit();

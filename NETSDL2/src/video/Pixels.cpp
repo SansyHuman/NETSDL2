@@ -121,3 +121,55 @@ Result<None^, int> NETSDL2::Video::Pixels::SetPixelFormatPalette(PixelFormat* fo
 
 	return None::Value;
 }
+
+NETSDL2::Video::PixelFormatWrapper::PixelFormatWrapper(PixelFormat* format)
+	: format(format)
+{
+	
+}
+
+NETSDL2::Video::PixelFormatWrapper::~PixelFormatWrapper()
+{
+	this->!PixelFormatWrapper();
+}
+
+NETSDL2::Video::PixelFormatWrapper::!PixelFormatWrapper()
+{
+	Pixels::FreeFormat(format);
+}
+
+NETSDL2::Video::PixelFormatWrapper::operator PixelFormat* (PixelFormatWrapper^ wrapper)
+{
+	return wrapper->format;
+}
+
+PixelFormat* PixelFormatWrapper::Format::get()
+{
+	return format;
+}
+
+NETSDL2::Video::PaletteWrapper::PaletteWrapper(NETSDL2::Video::Palette* palette)
+	: palette(palette)
+{
+	
+}
+
+NETSDL2::Video::PaletteWrapper::~PaletteWrapper()
+{
+	this->!PaletteWrapper();
+}
+
+NETSDL2::Video::PaletteWrapper::!PaletteWrapper()
+{
+	Pixels::FreePalette(palette);
+}
+
+NETSDL2::Video::PaletteWrapper::operator NETSDL2::Video::Palette* (PaletteWrapper^ wrapper)
+{
+	return wrapper->palette;
+}
+
+NETSDL2::Video::Palette* PaletteWrapper::Palette::get()
+{
+	return palette;
+}

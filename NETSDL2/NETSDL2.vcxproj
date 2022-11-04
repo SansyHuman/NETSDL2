@@ -149,6 +149,7 @@
     <ClInclude Include="include\core\SDLVersion.h" />
     <ClInclude Include="include\core\Version.h" />
     <ClInclude Include="include\internal\StringMarshal.h" />
+    <ClInclude Include="include\video\Clipboard.h" />
     <ClInclude Include="include\video\Palette.h" />
     <ClInclude Include="include\video\Display.h" />
     <ClInclude Include="include\video\DisplayMode.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="include\video\Rect.h" />
     <ClInclude Include="include\video\SysWMInfo.h" />
     <ClInclude Include="include\video\Video.h" />
+    <ClInclude Include="include\video\Vulkan.h" />
     <ClInclude Include="include\video\Window.h" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +176,7 @@
     <ClCompile Include="src\core\SDLVersion.cpp" />
     <ClCompile Include="src\core\Version.cpp" />
     <ClCompile Include="src\internal\StringMarshal.cpp" />
+    <ClCompile Include="src\video\Clipboard.cpp" />
     <ClCompile Include="src\video\Display.cpp" />
     <ClCompile Include="src\video\DisplayMode.cpp" />
     <ClCompile Include="src\video\GL.cpp" />
@@ -186,6 +189,7 @@
     <ClCompile Include="src\video\Rect.cpp" />
     <ClCompile Include="src\video\SysWMInfo.cpp" />
     <ClCompile Include="src\video\Video.cpp" />
+    <ClCompile Include="src\video\Vulkan.cpp" />
     <ClCompile Include="src\video\Window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

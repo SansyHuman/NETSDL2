@@ -9,6 +9,7 @@
 
 #include "../../include/internal/StringMarshal.h"
 
+#include <SDL_vulkan.h>
 #include <vector>
 
 using namespace NETSDL2::Internal;
@@ -737,4 +738,42 @@ Result<None^, int> NETSDL2::Video::Window::MakeCurrent(GLContext^ context)
 void NETSDL2::Video::Window::SwapWindow()
 {
 	SDL_GL_SwapWindow(window);
+}
+
+bool NETSDL2::Video::Window::CreateVulkanSurface(void* instance, void** surface)
+{
+	return SDL_Vulkan_CreateSurface(window, (VkInstance)instance, (VkSurfaceKHR*)surface) == SDL_TRUE;
+}
+
+void NETSDL2::Video::Window::GetVulkanDrawableSize(int% w, int% h)
+{
+	int width, height;
+	SDL_Vulkan_GetDrawableSize(window, &width, &height);
+	w = width;
+	h = height;
+}
+
+Result<array<System::String^>^, None^> NETSDL2::Video::Window::GetVulkanInstanceExtensions()
+{
+	unsigned int count = 0;
+	SDL_bool result = SDL_Vulkan_GetInstanceExtensions(window, &count, __nullptr);
+	if(result == SDL_FALSE)
+	{
+		return Result<array<System::String^>^, None^>::MakeFailure(None::Value);
+	}
+
+	std::vector<const char*> extensions(count);
+	result = SDL_Vulkan_GetInstanceExtensions(window, &count, extensions.data());
+	if(result == SDL_FALSE)
+	{
+		return Result<array<System::String^>^, None^>::MakeFailure(None::Value);
+	}
+
+	array<System::String^>^ ret = gcnew array<System::String^>(count);
+	for(unsigned int i = 0; i < count; i++)
+	{
+		ret[i] = StringMarshal::UTF8NativeToManaged(extensions[i]);
+	}
+
+	return ret;
 }

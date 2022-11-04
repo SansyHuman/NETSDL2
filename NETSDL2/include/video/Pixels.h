@@ -172,5 +172,53 @@ namespace NETSDL2
 			/// colors could be set.</returns>
 			static Result<None^, int> SetPixelFormatPalette(PixelFormat* format, Palette* palette);
 		};
+
+		/// <summary>
+		/// Safe wrapper of <see cref="PixelFormat"/> pointer.
+		/// </summary>
+		public ref class PixelFormatWrapper
+		{
+		private:
+			PixelFormat* format;
+
+		public:
+			PixelFormatWrapper(PixelFormat* format);
+			~PixelFormatWrapper();
+			!PixelFormatWrapper();
+
+			/// <summary>
+			/// Native pointer of pixel format.
+			/// </summary>
+			property PixelFormat* Format
+			{
+				PixelFormat* get();
+			}
+
+			static operator PixelFormat* (PixelFormatWrapper^ wrapper);
+		};
+
+		/// <summary>
+		/// Safe wrapper of <see cref="Palette"/> pointer.
+		/// </summary>
+		public ref class PaletteWrapper
+		{
+		private:
+			NETSDL2::Video::Palette* palette;
+
+		public:
+			PaletteWrapper(Palette* palette);
+			~PaletteWrapper();
+			!PaletteWrapper();
+
+			/// <summary>
+			/// Native pointer of palette.
+			/// </summary>
+			property NETSDL2::Video::Palette* Palette
+			{
+				NETSDL2::Video::Palette* get();
+			}
+
+			static operator NETSDL2::Video::Palette* (PaletteWrapper^ wrapper);
+		};
 	}
 }

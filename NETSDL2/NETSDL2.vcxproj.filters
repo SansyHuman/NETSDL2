@@ -99,6 +99,12 @@
     <ClInclude Include="include\video\Pixels.h">
       <Filter>헤더 파일\video</Filter>
     </ClInclude>
+    <ClInclude Include="include\video\Clipboard.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Vulkan.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -168,6 +174,12 @@
       <Filter>소스 파일\video</Filter>
     </ClCompile>
     <ClCompile Include="src\video\Pixels.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\Clipboard.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\Vulkan.cpp">
       <Filter>소스 파일\video</Filter>
     </ClCompile>
   </ItemGroup>
