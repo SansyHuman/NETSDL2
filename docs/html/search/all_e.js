@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['core_371',['Core',['../namespace_n_e_t_s_d_l2_1_1_core.html',1,'NETSDL2']]],
+  ['events_372',['Events',['../namespace_n_e_t_s_d_l2_1_1_events.html',1,'NETSDL2']]],
+  ['internal_373',['Internal',['../namespace_n_e_t_s_d_l2_1_1_internal.html',1,'NETSDL2']]],
+  ['nativehittest_374',['NativeHitTest',['../namespace_n_e_t_s_d_l2_1_1_video.html#a42197dea34154f51c55a77d941813381',1,'NETSDL2::Video']]],
+  ['nativelogoutputfunction_375',['NativeLogOutputFunction',['../namespace_n_e_t_s_d_l2_1_1_core.html#a27c2f5494b224f696837f618fb0536cf',1,'NETSDL2::Core']]],
+  ['nativewindoweventfilter_376',['NativeWindowEventFilter',['../namespace_n_e_t_s_d_l2_1_1_video.html#aebeb23acede6b43f9e6113a4bf4bc6e3',1,'NETSDL2::Video']]],
+  ['netsdl2_377',['NETSDL2',['../namespace_n_e_t_s_d_l2.html',1,'']]],
+  ['none_378',['None',['../class_n_e_t_s_d_l2_1_1_core_1_1_none.html',1,'NETSDL2::Core::None'],['../namespace_n_e_t_s_d_l2_1_1_core.html#a3531e400abf53f56668217de14206ee6a6adf97f83acf6453d4a6a4b1070f3754',1,'NETSDL2::Core::None()'],['../namespace_n_e_t_s_d_l2_1_1_events.html#ae207f079ea188035f7c5ccd105f72e97a6adf97f83acf6453d4a6a4b1070f3754',1,'NETSDL2::Events::None()'],['../namespace_n_e_t_s_d_l2_1_1_events.html#aac57ed2edb6195824a9891a6237bb1eba6adf97f83acf6453d4a6a4b1070f3754',1,'NETSDL2::Events::None()'],['../namespace_n_e_t_s_d_l2_1_1_video.html#a712449d0b1a1667fad0404e325eb5d37a6adf97f83acf6453d4a6a4b1070f3754',1,'NETSDL2::Video::None()'],['../namespace_n_e_t_s_d_l2_1_1_video.html#ae08e768c20f3ea08d681f0c73680ccfca6adf97f83acf6453d4a6a4b1070f3754',1,'NETSDL2::Video::None()'],['../namespace_n_e_t_s_d_l2_1_1_video.html#acf462486a3874143221e47f94b4a2857a6adf97f83acf6453d4a6a4b1070f3754',1,'NETSDL2::Video::None()'],['../namespace_n_e_t_s_d_l2_1_1_video.html#a7270eb39639b630a9adf449c511047bda6adf97f83acf6453d4a6a4b1070f3754',1,'NETSDL2::Video::None()'],['../namespace_n_e_t_s_d_l2_1_1_video.html#a0e76d411b204427f31d79dda99bd83e7a6adf97f83acf6453d4a6a4b1070f3754',1,'NETSDL2::Video::None()'],['../namespace_n_e_t_s_d_l2_1_1_video.html#a4a8a2c6f593e1b30d4c573a86dd906a8a6adf97f83acf6453d4a6a4b1070f3754',1,'NETSDL2::Video::None()'],['../namespace_n_e_t_s_d_l2_1_1_video.html#a590a5c727b3f2744f95b46eb8e0d9f06a6adf97f83acf6453d4a6a4b1070f3754',1,'NETSDL2::Video::None()'],['../namespace_n_e_t_s_d_l2_1_1_video.html#ac3956522ce5834d814450d183ec4792ba6adf97f83acf6453d4a6a4b1070f3754',1,'NETSDL2::Video::None()']]],
+  ['none_2eh_379',['None.h',['../_none_8h.html',1,'']]],
+  ['normal_380',['Normal',['../namespace_n_e_t_s_d_l2_1_1_core.html#a4589bdf6d1d4d72dba6f75fb7cd87e74a960b44c579bc2f6818d2daaf9e4c16f0',1,'NETSDL2::Core::Normal()'],['../namespace_n_e_t_s_d_l2_1_1_video.html#aa6900d6d54a5116a6f2af9f0715c1728a960b44c579bc2f6818d2daaf9e4c16f0',1,'NETSDL2::Video::Normal()']]],
+  ['numcolors_381',['NumColors',['../struct_n_e_t_s_d_l2_1_1_video_1_1_palette.html#ab9ced62c146da19075b00642d753c07c',1,'NETSDL2::Video::Palette']]],
+  ['numvideodisplays_382',['NumVideoDisplays',['../struct_n_e_t_s_d_l2_1_1_video_1_1_display.html#a2725422f6025f584aff37e565af44bf7',1,'NETSDL2::Video::Display']]],
+  ['numvideodrivers_383',['NumVideoDrivers',['../struct_n_e_t_s_d_l2_1_1_video_1_1_display.html#ac6908d041c38d644bf91d03240d8589b',1,'NETSDL2::Video::Display']]],
+  ['nv12_384',['NV12',['../namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64a202f5d8c2c70d31048154d8b8b28e755',1,'NETSDL2::Video']]],
+  ['nv21_385',['NV21',['../namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64a8e9f6aa1af7e0abbc7e64521e6ffe1b4',1,'NETSDL2::Video']]],
+  ['video_386',['Video',['../namespace_n_e_t_s_d_l2_1_1_video.html',1,'NETSDL2']]]
+];

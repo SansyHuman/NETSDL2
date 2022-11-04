@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['background_1038',['Background',['../namespace_n_e_t_s_d_l2_1_1_video.html#a0460f22b4fac83a5d58f1ab02ff89eb8aa9ded1e5ce5d75814730bb4caaf49419',1,'NETSDL2::Video']]],
+  ['bgr_1039',['BGR',['../namespace_n_e_t_s_d_l2_1_1_video.html#a4a8a2c6f593e1b30d4c573a86dd906a8a2ad5640ebdec72fc79531d1778c6c2dc',1,'NETSDL2::Video']]],
+  ['bgr24_1040',['BGR24',['../namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64af88319329ed07cc7b5b1e4926f375849',1,'NETSDL2::Video']]],
+  ['bgr444_1041',['BGR444',['../namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64adc132a683332747e761ecf9d7dd606c4',1,'NETSDL2::Video']]],
+  ['bgr555_1042',['BGR555',['../namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64a496707ae7bc992cb55f9ce3f2d95b759',1,'NETSDL2::Video']]],
+  ['bgr565_1043',['BGR565',['../namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64a7c93b8aa81bd858a70f2e6a55f59b68d',1,'NETSDL2::Video']]],
+  ['bgr888_1044',['BGR888',['../namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64a7cec9e9c2dffb6982c75cdbf5f2af9ef',1,'NETSDL2::Video']]],
+  ['bgra_1045',['BGRA',['../namespace_n_e_t_s_d_l2_1_1_video.html#a0e76d411b204427f31d79dda99bd83e7a5a1fe3c61c9e2fd6dbbc823589f6e697',1,'NETSDL2::Video::BGRA()'],['../namespace_n_e_t_s_d_l2_1_1_video.html#a4a8a2c6f593e1b30d4c573a86dd906a8a5a1fe3c61c9e2fd6dbbc823589f6e697',1,'NETSDL2::Video::BGRA()']]],
+  ['bgra32_1046',['BGRA32',['../namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64a25cd9b2521a8d381572267ebd5c37163',1,'NETSDL2::Video']]],
+  ['bgra4444_1047',['BGRA4444',['../namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64a947c44b1aedaed558e03b2885a550bf7',1,'NETSDL2::Video']]],
+  ['bgra5551_1048',['BGRA5551',['../namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64a827fa748e9b9fd829c528ce04069f0af',1,'NETSDL2::Video']]],
+  ['bgra8888_1049',['BGRA8888',['../namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64a0ec600bfbcf9efd33a5d337700f19896',1,'NETSDL2::Video']]],
+  ['bgrx_1050',['BGRX',['../namespace_n_e_t_s_d_l2_1_1_video.html#a0e76d411b204427f31d79dda99bd83e7aebe38a01ae4fb28439bcfc44ca9accda',1,'NETSDL2::Video']]],
+  ['bgrx8888_1051',['BGRX8888',['../namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64ab5dbc9955a7992b2f2b4986c8f09afe9',1,'NETSDL2::Video']]],
+  ['bluesize_1052',['BlueSize',['../namespace_n_e_t_s_d_l2_1_1_video.html#af5f55450e9f598638493c537165b7383a80df36fabd72f35009551d622687556c',1,'NETSDL2::Video']]],
+  ['borderless_1053',['Borderless',['../namespace_n_e_t_s_d_l2_1_1_video.html#ac3956522ce5834d814450d183ec4792ba78f0192ac55eba33ee88d026452952e5',1,'NETSDL2::Video']]],
+  ['briefly_1054',['Briefly',['../namespace_n_e_t_s_d_l2_1_1_video.html#a28fbaa1ddc0ee1628bfbbd4c77cb443fad02da30962225c5405eb5f358936abec',1,'NETSDL2::Video']]],
+  ['buffersize_1055',['BufferSize',['../namespace_n_e_t_s_d_l2_1_1_video.html#af5f55450e9f598638493c537165b7383a499060b0500a6a61e175b98476424e94',1,'NETSDL2::Video']]],
+  ['buttonbackground_1056',['ButtonBackground',['../namespace_n_e_t_s_d_l2_1_1_video.html#a0460f22b4fac83a5d58f1ab02ff89eb8ac7b37c56eb31545ecf6ff2d5ee191174',1,'NETSDL2::Video']]],
+  ['buttonborder_1057',['ButtonBorder',['../namespace_n_e_t_s_d_l2_1_1_video.html#a0460f22b4fac83a5d58f1ab02ff89eb8a1d4e1dd7f1905fd69b090030381c8d33',1,'NETSDL2::Video']]],
+  ['buttonselected_1058',['ButtonSelected',['../namespace_n_e_t_s_d_l2_1_1_video.html#a0460f22b4fac83a5d58f1ab02ff89eb8a4176bf7e0eddb3d154aaf2fdf1dfbd66',1,'NETSDL2::Video']]],
+  ['buttonslefttoright_1059',['ButtonsLeftToRight',['../namespace_n_e_t_s_d_l2_1_1_video.html#a91383220aba354ab4ba7545e01745cc6a05709f3922919f934a6f276a600684c2',1,'NETSDL2::Video']]],
+  ['buttonsrighttoleft_1060',['ButtonsRightToLeft',['../namespace_n_e_t_s_d_l2_1_1_video.html#a91383220aba354ab4ba7545e01745cc6ab544c0fd240a0960a6169747d793c4eb',1,'NETSDL2::Video']]]
+];

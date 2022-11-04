@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['debug_1088',['Debug',['../namespace_n_e_t_s_d_l2_1_1_core.html#a64c13325596fda55cad253240556e744aa603905470e2a5b8c13e96b579ef0dba',1,'NETSDL2::Core::Debug()'],['../namespace_n_e_t_s_d_l2_1_1_video.html#a712449d0b1a1667fad0404e325eb5d37aa603905470e2a5b8c13e96b579ef0dba',1,'NETSDL2::Video::Debug()']]],
+  ['default_1089',['Default',['../namespace_n_e_t_s_d_l2_1_1_core.html#a4589bdf6d1d4d72dba6f75fb7cd87e74a7a1920d61156abc05a60135aefe8bc67',1,'NETSDL2::Core']]],
+  ['depthsize_1090',['DepthSize',['../namespace_n_e_t_s_d_l2_1_1_video.html#af5f55450e9f598638493c537165b7383a8c0a7a224dc5320247b194701dc503d2',1,'NETSDL2::Video']]],
+  ['didenterbackground_1091',['DidEnterBackground',['../namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244aa91b1785c4cea3333004be8d85e5e1351',1,'NETSDL2::Events']]],
+  ['didenterforeground_1092',['DidEnterForeground',['../namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244aae6ff7699d1235e61c081282eb3840797',1,'NETSDL2::Events']]],
+  ['directfb_1093',['DirectFB',['../namespace_n_e_t_s_d_l2_1_1_video.html#a5ebb31f92ab0d19d675ba54dc098f735a9a407927ee631818c1da52b847faeec7',1,'NETSDL2::Video']]],
+  ['disconnected_1094',['Disconnected',['../namespace_n_e_t_s_d_l2_1_1_events.html#ae207f079ea188035f7c5ccd105f72e97aef70e46fd3bbc21e3e1f0b6815e750c0',1,'NETSDL2::Events']]],
+  ['displaychanged_1095',['DisplayChanged',['../namespace_n_e_t_s_d_l2_1_1_events.html#aac57ed2edb6195824a9891a6237bb1ebab09f9f2040ee3a13d39d650907bfb96f',1,'NETSDL2::Events']]],
+  ['displayevent_1096',['DisplayEvent',['../namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244aa59bd536c6054337a510a5bfe73555cfb',1,'NETSDL2::Events']]],
+  ['dollargesture_1097',['DollarGesture',['../namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244aab6be330dbd1ac521803429831d591132',1,'NETSDL2::Events']]],
+  ['dollarrecord_1098',['DollarRecord',['../namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244aa2be77844c677ed0e6c4ea62b077f814a',1,'NETSDL2::Events']]],
+  ['doublebuffer_1099',['DoubleBuffer',['../namespace_n_e_t_s_d_l2_1_1_video.html#af5f55450e9f598638493c537165b7383a6283478f5b60807028cd4a5bd5b86f8c',1,'NETSDL2::Video']]],
+  ['draggable_1100',['Draggable',['../namespace_n_e_t_s_d_l2_1_1_video.html#aa6900d6d54a5116a6f2af9f0715c1728a235a2f24c89c28b3e94afab97d5d1d1d',1,'NETSDL2::Video']]],
+  ['dropbegin_1101',['DropBegin',['../namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244aa89cf71a975e70477e383ec558b0fb3d1',1,'NETSDL2::Events']]],
+  ['dropcomplete_1102',['DropComplete',['../namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244aa508b5257cd172e2c0cdce2085ace6f30',1,'NETSDL2::Events']]],
+  ['dropfile_1103',['DropFile',['../namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244aa57a500087d6b53fda01d19ffd640835d',1,'NETSDL2::Events']]],
+  ['droptext_1104',['DropText',['../namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244aa084b59a567ad3b3cde10aa2f25deff5b',1,'NETSDL2::Events']]]
+];
