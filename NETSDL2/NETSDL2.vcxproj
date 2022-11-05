@@ -100,6 +100,9 @@
     <ClInclude Include="include\core\Version.h" />
     <ClInclude Include="include\events\Event.h" />
     <ClInclude Include="include\events\Events.h" />
+    <ClInclude Include="include\events\Keycode.h" />
+    <ClInclude Include="include\events\Keysym.h" />
+    <ClInclude Include="include\events\Scancode.h" />
     <ClInclude Include="include\internal\StringMarshal.h" />
     <ClInclude Include="include\video\Clipboard.h" />
     <ClInclude Include="include\video\Palette.h" />
@@ -129,6 +132,9 @@
     <ClCompile Include="src\core\Version.cpp" />
     <ClCompile Include="src\events\Event.cpp" />
     <ClCompile Include="src\events\Events.cpp" />
+    <ClCompile Include="src\events\Keycode.cpp" />
+    <ClCompile Include="src\events\Keysym.cpp" />
+    <ClCompile Include="src\events\Scancode.cpp" />
     <ClCompile Include="src\internal\StringMarshal.cpp" />
     <ClCompile Include="src\video\Clipboard.cpp" />
     <ClCompile Include="src\video\Display.cpp" />

@@ -69,6 +69,18 @@ window.OnMoved += (Window window, uint timestamp, int x, int y) =>
 {
     Logging.LogInfo(LogCategory.Application, "Main window moved on {0} to {1}, {2}", timestamp, x, y);
 };
+window.OnKeyPressed += (Window window, uint timestamp, Scancode physicalKey, Keycode virtualKey, Keymode modifiers) =>
+{
+    Logging.LogInfo(LogCategory.Application, "Main window key pressed on {0} {1} ({2}) with {3}", timestamp, physicalKey, virtualKey, modifiers & (~Keymode.Num));
+};
+window.OnKeyPressing += (Window window, uint timestamp, Scancode physicalKey, Keycode virtualKey, Keymode modifiers) =>
+{
+    Logging.LogInfo(LogCategory.Application, "Main window key pressing on {0} {1} ({2}) with {3}", timestamp, physicalKey, virtualKey, modifiers & (~Keymode.Num));
+};
+window.OnKeyReleased += (Window window, uint timestamp, Scancode physicalKey, Keycode virtualKey, Keymode modifiers) =>
+{
+    Logging.LogInfo(LogCategory.Application, "Main window key released on {0} {1} ({2}) with {3}", timestamp, physicalKey, virtualKey, modifiers & (~Keymode.Num));
+};
 
 window.SetWindowHitTest((Window window, Point point, IntPtr data) =>
 {
@@ -272,11 +284,6 @@ while (mainLoop)
         {
             mainLoop = false;
             break;
-        }
-
-        if (@event.Type == EventType.WindowEvent)
-        {
-            Console.WriteLine("Window event {0}", @event.Window.@event);
         }
     }
 }

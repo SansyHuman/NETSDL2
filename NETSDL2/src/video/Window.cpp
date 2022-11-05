@@ -104,6 +104,31 @@ int NETSDL2::Video::Window::WindowEventCheckNative(void* userdata, SDL_Event* ev
 		}
 	}
 
+	if(event->type == SDL_KEYDOWN)
+	{
+		SDL_KeyboardEvent* keyEvent = &event->key;
+		if(keyEvent->windowID != this->ID)
+			return 0;
+
+		if(keyEvent->repeat == 0)
+		{
+			OnKeyPressed(this, keyEvent->timestamp, (Scancode)keyEvent->keysym.scancode, (Keycode)keyEvent->keysym.sym, (Keymode)keyEvent->keysym.mod);
+		}
+		else
+		{
+			OnKeyPressing(this, keyEvent->timestamp, (Scancode)keyEvent->keysym.scancode, (Keycode)keyEvent->keysym.sym, (Keymode)keyEvent->keysym.mod);
+		}
+	}
+
+	if(event->type == SDL_KEYUP)
+	{
+		SDL_KeyboardEvent* keyEvent = &event->key;
+		if(keyEvent->windowID != this->ID)
+			return 0;
+
+		OnKeyReleased(this, keyEvent->timestamp, (Scancode)keyEvent->keysym.scancode, (Keycode)keyEvent->keysym.sym, (Keymode)keyEvent->keysym.mod);
+	}
+
 	return 0;
 }
 
@@ -136,6 +161,9 @@ void NETSDL2::Video::Window::InitCallbacks()
 	OnHitTest += gcnew NETSDL2::Video::WindowHitTestEvent(Window::WindowEventNoData);
 	OnICCProfileChanged += gcnew NETSDL2::Video::WindowICCProfileChangedEvent(Window::WindowEventNoData);
 	OnDisplayChanged += gcnew NETSDL2::Video::WindowDisplayChangedEvent(Window::WindowEventOneData);
+	OnKeyPressed += gcnew NETSDL2::Video::WindowKeyboardInputEvent(Window::WindowEventKeyboardInput);
+	OnKeyPressing += gcnew NETSDL2::Video::WindowKeyboardInputEvent(Window::WindowEventKeyboardInput);
+	OnKeyReleased += gcnew NETSDL2::Video::WindowKeyboardInputEvent(Window::WindowEventKeyboardInput);
 
 	NativeWindowEventFilter^ nativeWindow = gcnew NativeWindowEventFilter(this, &Window::WindowEventCheckNative);
 

@@ -6,6 +6,7 @@
 #include "../../include/video/SysWMInfo.h"
 #include "../../include/video/Rect.h"
 #include "../../include/video/MessageBoxData.h"
+#include "../../include/events/Keysym.h"
 
 using namespace System::Runtime::InteropServices;
 using namespace System::Diagnostics::CodeAnalysis;
@@ -22,6 +23,7 @@ namespace NETSDL2
 	namespace Video
 	{
 		using namespace NETSDL2::Core;
+		using namespace NETSDL2::Events;
 
 		ref class GLContext;
 
@@ -387,6 +389,16 @@ namespace NETSDL2
 		public delegate void WindowDisplayChangedEvent(Window^ window, Uint32 timestamp, Sint32 display);
 
 		/// <summary>
+		/// Callback for window got keyboard input.
+		/// </summary>
+		/// <param name="window">Window object where the event occured.</param>
+		/// <param name="timestamp">Timestamp of the event.</param>
+		/// <param name="physicalKey">The physical key code.</param>
+		/// <param name="virtualKey">The virtual key code.</param>
+		/// <param name="modifiers">Key modifiers.</param>
+		public delegate void WindowKeyboardInputEvent(Window^ window, Uint32 timestamp, Scancode physicalKey, Keycode virtualKey, Keymode modifiers);
+
+		/// <summary>
 		/// Class of SDL window.
 		/// </summary>
 		public ref class Window
@@ -415,6 +427,7 @@ namespace NETSDL2
 			static void WindowEventNoData(Window^, Uint32) {}
 			static void WindowEventOneData(Window^, Uint32, Sint32) {}
 			static void WindowEventTwoData(Window^, Uint32, Sint32, Sint32) {}
+			static void WindowEventKeyboardInput(Window^, Uint32, Scancode, Keycode, Keymode) {}
 
 			int WindowEventCheckNative(void* userdata, SDL_Event* event);
 
@@ -522,6 +535,21 @@ namespace NETSDL2
 			/// Called when window has been moved to other display.
 			/// </summary>
 			event WindowDisplayChangedEvent^ OnDisplayChanged;
+
+			/// <summary>
+			/// Called when the keyboard input started.
+			/// </summary>
+			event WindowKeyboardInputEvent^ OnKeyPressed;
+
+			/// <summary>
+			/// Called while the keyboard input is continuing.
+			/// </summary>
+			event WindowKeyboardInputEvent^ OnKeyPressing;
+
+			/// <summary>
+			/// Called when the keyboard input ended.
+			/// </summary>
+			event WindowKeyboardInputEvent^ OnKeyReleased;
 
 		public:
 			/// <summary>

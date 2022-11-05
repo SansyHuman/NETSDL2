@@ -2,6 +2,8 @@
 
 #include <SDL.h>
 
+#include "Keysym.h"
+
 using namespace System::Runtime::InteropServices;
 
 namespace NETSDL2
@@ -531,6 +533,54 @@ namespace NETSDL2
 		};
 
 		/// <summary>
+		/// State of the key.
+		/// </summary>
+		public enum class Keystate : Uint8
+		{
+			/// <summary>
+			/// The key is pressed.
+			/// </summary>
+			Pressed = SDL_PRESSED,
+
+			/// <summary>
+			/// The key is released.
+			/// </summary>
+			Released = SDL_RELEASED,
+		};
+
+		/// <summary>
+		/// Fields shared by every event.
+		/// </summary>
+		[StructLayout(LayoutKind::Sequential)]
+		public value struct KeyboardEvent
+		{
+			EventType Type;
+			Uint32 Timestamp;
+
+			/// <summary>
+			/// The window with keyboard focus, if any.
+			/// </summary>
+			Uint32 WindowID;
+
+			/// <summary>
+			/// The state of the key.
+			/// </summary>
+			Keystate State;
+
+			/// <summary>
+			/// Non-zero if this is a key repeat.
+			/// </summary>
+			Uint8 Repeat;
+			Uint8 Padding2;
+			Uint8 Padding3;
+
+			/// <summary>
+			/// The key that was pressed or released
+			/// </summary>
+			Keysym Keysym;
+		};
+
+		/// <summary>
 		/// A union that contains structures for the different event types.
 		/// </summary>
 		[StructLayout(LayoutKind::Explicit, Size = 56)]
@@ -555,6 +605,11 @@ namespace NETSDL2
 			/// Window event data.
 			/// </summary>
 			[FieldOffset(0)] WindowEvent Window;
+
+			/// <summary>
+			/// Keyboard event data.
+			/// </summary>
+			[FieldOffset(0)] KeyboardEvent Key;
 		};
 	}
 }

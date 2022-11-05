@@ -117,6 +117,15 @@
     <ClInclude Include="include\events\Events.h">
       <Filter>헤더 파일\events</Filter>
     </ClInclude>
+    <ClInclude Include="include\events\Scancode.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Keycode.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Keysym.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -198,6 +207,15 @@
       <Filter>소스 파일\events</Filter>
     </ClCompile>
     <ClCompile Include="src\events\Events.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Scancode.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Keycode.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Keysym.cpp">
       <Filter>소스 파일\events</Filter>
     </ClCompile>
   </ItemGroup>
