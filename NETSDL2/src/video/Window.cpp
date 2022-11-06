@@ -6,6 +6,8 @@
 #include "../../include/core/Result.h"
 #include "../../include/video/Display.h"
 #include "../../include/video/GLContext.h"
+#include "../../include/video/Renderer.h"
+#include "../../include/video/Surface.h"
 
 #include "../../include/internal/StringMarshal.h"
 
@@ -15,6 +17,7 @@
 using namespace NETSDL2::Internal;
 
 using namespace msclr::interop;
+using namespace System::Threading;
 
 using namespace NETSDL2::Video;
 using namespace NETSDL2::Core;
@@ -183,29 +186,47 @@ void NETSDL2::Video::Window::ClearCallbacks()
 	windowEventCallbackHandle.Free();
 }
 
-NETSDL2::Video::Window::Window(System::String^ title, int x, int y, int w, int h, WindowFlags flags)
+void NETSDL2::Video::Window::InitWindow(SDL_Window* window)
 {
-	StringMarshal context;
-	window = SDL_CreateWindow(context.ManagedToUTF8Native(title), x, y, w, h, (Uint32)flags);
-
-	if(window == __nullptr)
-		throw gcnew System::Exception(Error::GetError());
-
+	this->window = window;
+	windowSurface = nullptr;
 	nativeWindowConnections[System::IntPtr(window)] = this;
 
 	InitCallbacks();
 }
 
-NETSDL2::Video::Window::Window(void* data)
+NETSDL2::Video::Window::Window(System::String^ title, int x, int y, int w, int h, WindowFlags flags)
 {
-	window = SDL_CreateWindowFrom(data);
+	StringMarshal context;
+	SDL_Window* window = SDL_CreateWindow(context.ManagedToUTF8Native(title), x, y, w, h, (Uint32)flags);
 
 	if(window == __nullptr)
 		throw gcnew System::Exception(Error::GetError());
 
-	nativeWindowConnections[System::IntPtr(window)] = this;
+	InitWindow(window);
+}
 
-	InitCallbacks();
+NETSDL2::Video::Window::Window(int width, int height, WindowFlags flags, Renderer^% renderer)
+{
+	SDL_Window* win = __nullptr;
+	SDL_Renderer* ren = __nullptr;
+
+	int result = SDL_CreateWindowAndRenderer(width, height, (Uint32)flags, &win, &ren);
+	if(result < 0)
+		throw gcnew System::Exception(Error::GetError());
+
+	InitWindow(win);
+	renderer = gcnew Renderer(ren);
+}
+
+NETSDL2::Video::Window::Window(void* data)
+{
+	SDL_Window* window = SDL_CreateWindowFrom(data);
+
+	if(window == __nullptr)
+		throw gcnew System::Exception(Error::GetError());
+
+	InitWindow(window);
 }
 
 NETSDL2::Video::Window::~Window()
@@ -410,6 +431,50 @@ void NETSDL2::Video::Window::GetWindowSize(int% w, int% h)
 	h = height;
 }
 
+#ifdef MemoryBarrier
+#undef MemoryBarrier
+#endif
+
+Result<Surface^, None^> NETSDL2::Video::Window::GetWindowSurface()
+{
+	// Thread-safe non-blocking implementation.
+
+	while(true)
+	{
+		SDL_Surface* surface = SDL_GetWindowSurface(window);
+		if(surface == __nullptr)
+		{
+			return Result<Surface^, None^>::MakeFailure(None::Value);
+		}
+
+		Surface^ current = windowSurface;
+		Interlocked::MemoryBarrier();
+
+		if(current == nullptr || current->NativeSurface != surface)
+		{
+			Surface^ newCurr = gcnew Surface(surface, false);
+
+			Interlocked::MemoryBarrier();
+			if(Interlocked::CompareExchange(windowSurface, newCurr, current) != current)
+			{
+				// The windowSurface has changed. Retry.
+				delete newCurr;
+				continue;
+			}
+
+			return newCurr;
+		}
+		else
+		{
+			return current;
+		}
+	}
+}
+
+#ifndef MemoryBarrier
+#define MemoryBarrier __faststorefence
+#endif
+
 System::String^ Window::Title::get()
 {
 	const char* title = SDL_GetWindowTitle(window);
@@ -559,6 +624,11 @@ Result<None^, int> NETSDL2::Video::Window::SetWindowHitTest(HitTest^ callback, S
 	hitTestCallback = callback;
 
 	return None::Value;
+}
+
+void NETSDL2::Video::Window::SetWindowIcon(Surface^ icon)
+{
+	SDL_SetWindowIcon(window, icon->NativeSurface);
 }
 
 Result<None^, int> NETSDL2::Video::Window::SetWindowInputFocus()
@@ -804,4 +874,9 @@ Result<array<System::String^>^, None^> NETSDL2::Video::Window::GetVulkanInstance
 	}
 
 	return ret;
+}
+
+SDL_Renderer* NETSDL2::Video::Window::CreateRenderer(int index, Uint32 flags)
+{
+	return SDL_CreateRenderer(window, index, flags);
 }

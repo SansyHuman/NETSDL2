@@ -115,6 +115,9 @@
     <ClInclude Include="include\video\PixelFormat.h" />
     <ClInclude Include="include\video\Pixels.h" />
     <ClInclude Include="include\video\Rect.h" />
+    <ClInclude Include="include\video\Renderer.h" />
+    <ClInclude Include="include\video\RendererInfo.h" />
+    <ClInclude Include="include\video\Surface.h" />
     <ClInclude Include="include\video\SysWMInfo.h" />
     <ClInclude Include="include\video\Video.h" />
     <ClInclude Include="include\video\Vulkan.h" />
@@ -147,6 +150,9 @@
     <ClCompile Include="src\video\PixelFormat.cpp" />
     <ClCompile Include="src\video\Pixels.cpp" />
     <ClCompile Include="src\video\Rect.cpp" />
+    <ClCompile Include="src\video\Renderer.cpp" />
+    <ClCompile Include="src\video\RendererInfo.cpp" />
+    <ClCompile Include="src\video\Surface.cpp" />
     <ClCompile Include="src\video\SysWMInfo.cpp" />
     <ClCompile Include="src\video\Video.cpp" />
     <ClCompile Include="src\video\Vulkan.cpp" />

@@ -26,6 +26,8 @@ namespace NETSDL2
 		using namespace NETSDL2::Events;
 
 		ref class GLContext;
+		ref class Renderer;
+		ref class Surface;
 
 		[System::Flags]
 		/// <summary>
@@ -405,6 +407,7 @@ namespace NETSDL2
 		{
 		private:
 			SDL_Window* window;
+			Surface^ windowSurface;
 			static System::Collections::Concurrent::ConcurrentDictionary<System::IntPtr, Window^>^ nativeWindowConnections;
 
 			static Window()
@@ -551,6 +554,9 @@ namespace NETSDL2
 			/// </summary>
 			event WindowKeyboardInputEvent^ OnKeyReleased;
 
+		private:
+			// Window initialization.
+			void InitWindow(SDL_Window* window);
 		public:
 			/// <summary>
 			/// Create a window with the specified position, dimensions, and
@@ -572,7 +578,17 @@ namespace NETSDL2
 			/// <exception cref="System::Exception">Thrown when failed creation.
 			/// </exception>
 			Window(System::String^ title, int x, int y, int w, int h, WindowFlags flags);
-			// TODO: CreateWindowAndRenderer
+			
+			/// <summary>
+			/// Create a window and default renderer.
+			/// </summary>
+			/// <param name="width">The width of the window.</param>
+			/// <param name="height">The height of the window.</param>
+			/// <param name="flags">The flags used to create the window.</param>
+			/// <param name="renderer">The renderer.</param>
+			/// <exception cref="System::Exception">Thrown when failed creation.
+			/// </exception>
+			Window(int width, int height, WindowFlags flags, [Out]Renderer^% renderer);
 
 			/// <summary>
 			/// Create an SDL window from an existing native window.
@@ -741,7 +757,12 @@ namespace NETSDL2
 			/// coordinates.</param>
 			void GetWindowSize([Out]int% w, [Out]int% h);
 
-			// TODO: GetWindowSurface
+			/// <summary>
+			/// Get the SDL surface associated with the window.
+			/// </summary>
+			/// <returns>The surface associated with the window, or None on
+			/// failure.</returns>
+			Result<Surface^, None^> GetWindowSurface();
 
 			/// <summary>
 			/// Get or set the title of a window.
@@ -857,7 +878,12 @@ namespace NETSDL2
 			/// <returns>None on success or -1 on failure.</returns>
 			Result<None^, int> SetWindowHitTest(HitTest^ callback, System::IntPtr callbackData);
 
-			// TODO: SetWindowIcon
+			/// <summary>
+			/// Set the icon for a window.
+			/// </summary>
+			/// <param name="icon">Surface containing the icon for the window.
+			/// </param>
+			void SetWindowIcon(Surface^ icon);
 
 			/// <summary>
 			/// Explicitly set input focus to the window.
@@ -992,6 +1018,9 @@ namespace NETSDL2
 
 			[MethodImpl(MethodImplOptions::AggressiveInlining)]
 			Result<array<System::String^>^, None^> GetVulkanInstanceExtensions();
+
+			[MethodImpl(MethodImplOptions::AggressiveInlining)]
+			SDL_Renderer* CreateRenderer(int index, Uint32 flags);
 		};
 	}
 }

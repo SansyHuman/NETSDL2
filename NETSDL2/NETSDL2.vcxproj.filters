@@ -126,6 +126,15 @@
     <ClInclude Include="include\events\Keysym.h">
       <Filter>헤더 파일\events</Filter>
     </ClInclude>
+    <ClInclude Include="include\video\Renderer.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\RendererInfo.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Surface.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -217,6 +226,15 @@
     </ClCompile>
     <ClCompile Include="src\events\Keysym.cpp">
       <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\Renderer.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\RendererInfo.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\Surface.cpp">
+      <Filter>소스 파일\video</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
