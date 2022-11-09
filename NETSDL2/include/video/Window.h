@@ -407,7 +407,6 @@ namespace NETSDL2
 		{
 		private:
 			SDL_Window* window;
-			Surface^ windowSurface;
 			static System::Collections::Concurrent::ConcurrentDictionary<System::IntPtr, Window^>^ nativeWindowConnections;
 
 			static Window()
@@ -618,6 +617,12 @@ namespace NETSDL2
 			{
 				Window^ get();
 			}
+
+			/// <summary>
+			/// Get the renderer associated with a window.
+			/// </summary>
+			/// <returns>The renderer on success or None on failure.</returns>
+			Result<Renderer^, None^> GetRenderer();
 
 			/// <summary>
 			/// Get the size of a window's borders (decorations) around the

@@ -5,6 +5,7 @@
 #include "../core/None.h"
 #include "../core/Result.h"
 #include "PixelFormat.h"
+#include "Rect.h"
 
 using namespace System::Runtime::InteropServices;
 using namespace System::Diagnostics::CodeAnalysis;
@@ -23,6 +24,12 @@ namespace NETSDL2
 		private:
 			SDL_Surface* surface;
 			bool releaseOnDestroy;
+			static System::Collections::Concurrent::ConcurrentDictionary<System::IntPtr, Surface^>^ nativeSurfaceConnections;
+
+			static Surface()
+			{
+				nativeSurfaceConnections = gcnew System::Collections::Concurrent::ConcurrentDictionary<System::IntPtr, Surface^>();
+			}
 
 		internal:
 			Surface(SDL_Surface* surface, bool releaseOnDestroy);
@@ -30,6 +37,12 @@ namespace NETSDL2
 			{
 				SDL_Surface* get();
 			}
+
+			// Gets surface from native surface, or null if not exists.
+			static Surface^ GetSurfaceFromNative(SDL_Surface* surface);
+
+		private:
+			void InitSurface(SDL_Surface* surface);
 
 		public:
 			/// <summary>
@@ -148,6 +161,64 @@ namespace NETSDL2
 			Surface(array<unsigned char>^ pixels, int width, int height, int depth, int pitch, PixelFormatEnum format);
 			~Surface();
 			!Surface();
+
+			/// <summary>
+			/// The format of the pixels stored in the surface.
+			/// </summary>
+			property PixelFormat% Format
+			{
+				PixelFormat% get();
+			}
+
+			/// <summary>
+			/// The width in pixels.
+			/// </summary>
+			property int Width
+			{
+				int get();
+			}
+
+			/// <summary>
+			/// The height in pixels.
+			/// </summary>
+			property int Height
+			{
+				int get();
+			}
+
+			/// <summary>
+			/// The length of a row of pixels in bytes.
+			/// </summary>
+			property int Pitch
+			{
+				int get();
+			}
+
+			/// <summary>
+			/// The pointer to the actual pixel data.
+			/// </summary>
+			property System::IntPtr Pixels
+			{
+				System::IntPtr get();
+			}
+
+			/// <summary>
+			/// An arbitrary pointer you can set.
+			/// </summary>
+			property System::IntPtr Userdata
+			{
+				System::IntPtr get();
+				void set(System::IntPtr value);
+			}
+
+			/// <summary>
+			/// A <see cref="NETSDL2::Video::Rect"/> structure used to clip
+			/// blits to the surface.
+			/// </summary>
+			property Rect ClipRect
+			{
+				Rect get();
+			}
 		};
 	}
 }

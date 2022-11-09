@@ -189,7 +189,6 @@ void NETSDL2::Video::Window::ClearCallbacks()
 void NETSDL2::Video::Window::InitWindow(SDL_Window* window)
 {
 	this->window = window;
-	windowSurface = nullptr;
 	nativeWindowConnections[System::IntPtr(window)] = this;
 
 	InitCallbacks();
@@ -216,7 +215,8 @@ NETSDL2::Video::Window::Window(int width, int height, WindowFlags flags, Rendere
 		throw gcnew System::Exception(Error::GetError());
 
 	InitWindow(win);
-	renderer = gcnew Renderer(ren);
+
+	renderer = gcnew Renderer(ren, true);
 }
 
 NETSDL2::Video::Window::Window(void* data)
@@ -269,6 +269,23 @@ Window^ Window::GrabbedWindow::get()
 		return nullptr;
 
 	return grabbedWindow;
+}
+
+Result<Renderer^, None^> NETSDL2::Video::Window::GetRenderer()
+{
+	SDL_Renderer* renderer = SDL_GetRenderer(window);
+	if(renderer == __nullptr)
+	{
+		return Result<Renderer^, None^>::MakeFailure(None::Value);
+	}
+
+	Renderer^ managedRend = Renderer::GetRendererFromNative(renderer);
+	if(managedRend == nullptr)
+	{
+		managedRend = gcnew Renderer(renderer, true);
+	}
+
+	return managedRend;
 }
 
 Result<None^, int> NETSDL2::Video::Window::GetWindowBordersSize(int% top, int% left, int% bottom, int% right)
@@ -437,38 +454,19 @@ void NETSDL2::Video::Window::GetWindowSize(int% w, int% h)
 
 Result<Surface^, None^> NETSDL2::Video::Window::GetWindowSurface()
 {
-	// Thread-safe non-blocking implementation.
-
-	while(true)
+	SDL_Surface* surface = SDL_GetWindowSurface(window);
+	if(surface == __nullptr)
 	{
-		SDL_Surface* surface = SDL_GetWindowSurface(window);
-		if(surface == __nullptr)
-		{
-			return Result<Surface^, None^>::MakeFailure(None::Value);
-		}
-
-		Surface^ current = windowSurface;
-		Interlocked::MemoryBarrier();
-
-		if(current == nullptr || current->NativeSurface != surface)
-		{
-			Surface^ newCurr = gcnew Surface(surface, false);
-
-			Interlocked::MemoryBarrier();
-			if(Interlocked::CompareExchange(windowSurface, newCurr, current) != current)
-			{
-				// The windowSurface has changed. Retry.
-				delete newCurr;
-				continue;
-			}
-
-			return newCurr;
-		}
-		else
-		{
-			return current;
-		}
+		return Result<Surface^, None^>::MakeFailure(None::Value);
 	}
+
+	Surface^ managedSurf = Surface::GetSurfaceFromNative(surface);
+	if(managedSurf == nullptr)
+	{
+		managedSurf = gcnew Surface(surface, false);
+	}
+
+	return managedSurf;
 }
 
 #ifndef MemoryBarrier

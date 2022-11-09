@@ -104,6 +104,7 @@
     <ClInclude Include="include\events\Keysym.h" />
     <ClInclude Include="include\events\Scancode.h" />
     <ClInclude Include="include\internal\StringMarshal.h" />
+    <ClInclude Include="include\video\Blend.h" />
     <ClInclude Include="include\video\Clipboard.h" />
     <ClInclude Include="include\video\Palette.h" />
     <ClInclude Include="include\video\Display.h" />
@@ -115,10 +116,13 @@
     <ClInclude Include="include\video\PixelFormat.h" />
     <ClInclude Include="include\video\Pixels.h" />
     <ClInclude Include="include\video\Rect.h" />
+    <ClInclude Include="include\video\Render.h" />
     <ClInclude Include="include\video\Renderer.h" />
     <ClInclude Include="include\video\RendererInfo.h" />
     <ClInclude Include="include\video\Surface.h" />
     <ClInclude Include="include\video\SysWMInfo.h" />
+    <ClInclude Include="include\video\Texture.h" />
+    <ClInclude Include="include\video\TextureAccess.h" />
     <ClInclude Include="include\video\Video.h" />
     <ClInclude Include="include\video\Vulkan.h" />
     <ClInclude Include="include\video\Window.h" />
@@ -139,6 +143,7 @@
     <ClCompile Include="src\events\Keysym.cpp" />
     <ClCompile Include="src\events\Scancode.cpp" />
     <ClCompile Include="src\internal\StringMarshal.cpp" />
+    <ClCompile Include="src\video\Blend.cpp" />
     <ClCompile Include="src\video\Clipboard.cpp" />
     <ClCompile Include="src\video\Display.cpp" />
     <ClCompile Include="src\video\DisplayMode.cpp" />
@@ -150,10 +155,13 @@
     <ClCompile Include="src\video\PixelFormat.cpp" />
     <ClCompile Include="src\video\Pixels.cpp" />
     <ClCompile Include="src\video\Rect.cpp" />
+    <ClCompile Include="src\video\Render.cpp" />
     <ClCompile Include="src\video\Renderer.cpp" />
     <ClCompile Include="src\video\RendererInfo.cpp" />
     <ClCompile Include="src\video\Surface.cpp" />
     <ClCompile Include="src\video\SysWMInfo.cpp" />
+    <ClCompile Include="src\video\Texture.cpp" />
+    <ClCompile Include="src\video\TextureAccess.cpp" />
     <ClCompile Include="src\video\Video.cpp" />
     <ClCompile Include="src\video\Vulkan.cpp" />
     <ClCompile Include="src\video\Window.cpp" />

@@ -5,9 +5,12 @@
 #include "../core/None.h"
 #include "../core/Result.h"
 #include "RendererInfo.h"
+#include "PixelFormat.h"
+#include "TextureAccess.h"
+#include "Blend.h"
 
 using namespace System::Runtime::InteropServices;
-using namespace System::Diagnostics::CodeAnalysis;
+using namespace System::Runtime::CompilerServices;
 
 namespace NETSDL2
 {
@@ -25,9 +28,22 @@ namespace NETSDL2
 		{
 		private:
 			SDL_Renderer* renderer;
+			bool releaseOnDestroy;
+			static System::Collections::Concurrent::ConcurrentDictionary<System::IntPtr, Renderer^>^ nativeRendererConnections;
+
+			static Renderer()
+			{
+				nativeRendererConnections = gcnew System::Collections::Concurrent::ConcurrentDictionary<System::IntPtr, Renderer^>();
+			}
 
 		internal:
-			Renderer(SDL_Renderer* renderer);
+			Renderer(SDL_Renderer* renderer, bool releaseOnDestroy);
+
+			// Gets renderer from native surface, or null if not exists.
+			static Renderer^ GetRendererFromNative(SDL_Renderer* renderer);
+
+		private:
+			void InitRenderer(SDL_Renderer* renderer);
 
 		public:
 			/// <summary>
@@ -53,6 +69,48 @@ namespace NETSDL2
 			Renderer(Surface^ surface);
 			~Renderer();
 			!Renderer();
+
+			/// <summary>
+			/// Get the blend mode used for drawing operations.
+			/// </summary>
+			/// <returns>Blend mode on success or error code on failure.</returns>
+			Result<BlendMode, int> GetRenderDrawBlendMode();
+
+			/// <summary>
+			/// Get the color used for drawing operations (Rect, Line and Clear).
+			/// </summary>
+			/// <param name="r">The red value used to draw on the rendering
+			/// target.</param>
+			/// <param name="g">The green value used to draw on the rendering
+			/// target.</param>
+			/// <param name="b">The blue value used to draw on the rendering
+			/// target.</param>
+			/// <param name="a">The alpha value used to draw on the rendering
+			/// target.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> GetRenderDrawColor([Out]Uint8% r, [Out]Uint8% g, [Out]Uint8% b, [Out]Uint8% a);
+
+			/// <summary>
+			/// Get information about a rendering context.
+			/// </summary>
+			/// <returns>Renderer info on success or error code on failure.
+			/// </returns>
+			Result<RendererInfo, int> GetRendererInfo();
+
+			/// <summary>
+			/// Get the output size in pixels of a rendering context.
+			/// </summary>
+			/// <param name="w">The width.</param>
+			/// <param name="h">The height.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> GetRendererOutputSize([Out]int% w, [Out]int% h);
+
+		internal:
+			[MethodImpl(MethodImplOptions::AggressiveInlining)]
+			SDL_Texture* CreateTexture(PixelFormatEnum format, TextureAccess access, int w, int h);
+
+			[MethodImpl(MethodImplOptions::AggressiveInlining)]
+			SDL_Texture* CreateTextureFromSurface(Surface^ surface);
 		};
 	}
 }

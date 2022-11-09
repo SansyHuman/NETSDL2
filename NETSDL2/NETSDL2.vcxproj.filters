@@ -135,6 +135,18 @@
     <ClInclude Include="include\video\Surface.h">
       <Filter>헤더 파일\video</Filter>
     </ClInclude>
+    <ClInclude Include="include\video\Blend.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Texture.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\TextureAccess.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Render.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -234,6 +246,18 @@
       <Filter>소스 파일\video</Filter>
     </ClCompile>
     <ClCompile Include="src\video\Surface.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\Blend.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\Texture.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\TextureAccess.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\Render.cpp">
       <Filter>소스 파일\video</Filter>
     </ClCompile>
   </ItemGroup>
