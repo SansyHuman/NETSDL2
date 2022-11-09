@@ -20,6 +20,7 @@ namespace NETSDL2
 
 		ref class Window;
 		ref class Surface;
+		ref class Texture;
 
 		/// <summary>
 		/// Renderer.
@@ -104,6 +105,22 @@ namespace NETSDL2
 			/// <param name="h">The height.</param>
 			/// <returns>None on success or error code on failure.</returns>
 			Result<None^, int> GetRendererOutputSize([Out]int% w, [Out]int% h);
+
+			/// <summary>
+			/// Get the current render target.
+			/// </summary>
+			/// <returns>The current render target or null for the default render
+			/// target.</returns>
+			Texture^ GetRenderTarget();
+
+			/// <summary>
+			/// Set a texture as the current rendering target.
+			/// </summary>
+			/// <param name="texture">The targeted texture, which must be created
+			/// with the <see cref="TextureAccess::Target"/> flag, or null to
+			/// render to the window instead of a texture.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> SetRenderTarget(Texture^ texture);
 
 		internal:
 			[MethodImpl(MethodImplOptions::AggressiveInlining)]

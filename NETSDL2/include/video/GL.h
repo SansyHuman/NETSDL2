@@ -20,6 +20,7 @@ namespace NETSDL2
 
 		ref class Window;
 		ref class GLContext;
+		ref class Texture;
 
 		/// <summary>
 		/// Functions related to OpenGL.
@@ -27,6 +28,26 @@ namespace NETSDL2
 		public ref struct GL abstract sealed
 		{
 		public:
+			/// <summary>
+			/// Bind an OpenGL/ES/ES2 texture to the current context.
+			/// </summary>
+			/// <param name="texture">The texture to bind to the current
+			/// OpenGL/ES/ES2 context.</param>
+			/// <param name="texw">The texture width.</param>
+			/// <param name="texh">The texture height.</param>
+			/// <returns>None on success or -1 if the operation is not supported.
+			/// </returns>
+			static Result<None^, int> BindTexture(Texture^ texture, [Out]float% texw, [Out]float% texh);
+
+			/// <summary>
+			/// Unbind an OpenGL/ES/ES2 texture from the current context.
+			/// </summary>
+			/// <param name="texture">The texture to unbind from the current
+			/// OpenGL/ES/ES2 context.</param>
+			/// <returns>None on success or -1 if the operation is not supported.
+			/// </returns>
+			static Result<None^, int> UnbindTexture(Texture^ texture);
+
 			/// <summary>
 			/// Create an OpenGL context for an OpenGL window, and make it
 			/// current.

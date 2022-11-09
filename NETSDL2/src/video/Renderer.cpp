@@ -2,6 +2,7 @@
 
 #include "../../include/video/Window.h"
 #include "../../include/video/Surface.h"
+#include "../../include/video/Texture.h"
 
 #include "../../include/core/Error.h"
 
@@ -123,6 +124,32 @@ Result<None^, int> NETSDL2::Video::Renderer::GetRendererOutputSize(int% w, int% 
 
 	w = width;
 	h = height;
+	return None::Value;
+}
+
+Texture^ NETSDL2::Video::Renderer::GetRenderTarget()
+{
+	SDL_Texture* target = SDL_GetRenderTarget(renderer);
+	if(target == __nullptr)
+		return nullptr;
+
+	Texture^ managedTarget = Texture::GetTextureFromNative(target);
+	if(managedTarget == nullptr)
+	{
+		managedTarget = gcnew Texture(target, false);
+	}
+
+	return managedTarget;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::SetRenderTarget(Texture^ texture)
+{
+	int result = SDL_SetRenderTarget(renderer, texture->NativeTexture);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
 	return None::Value;
 }
 

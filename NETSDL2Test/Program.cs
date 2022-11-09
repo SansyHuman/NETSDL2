@@ -280,12 +280,36 @@ Surface windowSurface = winWithRenderer.GetWindowSurface().ResultValue;
 windowSurface = winWithRenderer.GetWindowSurface().ResultValue;
 PixelFormat windowSurfaceFormat = windowSurface.Format;
 
-Texture texture = new Texture(renderer, PixelFormatEnum.RGB888, TextureAccess.Static, 200, 200);
+Texture texture = new Texture(renderer, PixelFormatEnum.RGBA8888, TextureAccess.Target, 200, 200);
 Texture texture2 = new Texture(renderer, windowSurface);
+Texture texture3 = new Texture(renderer, PixelFormatEnum.RGBA8888, TextureAccess.Streaming, 200, 200);
+
+Logging.LogInfo(LogCategory.Application, "Texture alpha: {0}", texture.GetTextureAlphaMod());
+Logging.LogInfo(LogCategory.Application, "Texture blend: {0}", texture.GetTextureBlendMode());
+Logging.LogInfo(LogCategory.Application, "Texture color: {0}", texture.GetTextureColorMod(out byte r, out byte g, out byte b));
+Logging.LogInfo(LogCategory.Application, "Texture color: {0}, {1}, {2}", r, g, b);
+
+Logging.LogInfo(LogCategory.Application, "Make current: {0}", GL.MakeCurrent(window, context.ResultValue));
+Logging.LogInfo(LogCategory.Application, "Bind: {0}, {1}", GL.BindTexture(texture2, out float texw, out float texh), Error.GetError());
+Logging.LogInfo(LogCategory.Application, "Unbind: {0}, {1}", GL.UnbindTexture(texture2), Error.GetError());
+
+Logging.LogInfo(LogCategory.Application, "Lock texture: {0}", texture3.LockTexture(null, out IntPtr px, out int pt));
+Logging.LogInfo(LogCategory.Application, "Lock texture: {0}, {1}", px, pt);
+Logging.LogInfo(LogCategory.Application, "Lock texture: {0}", texture3.LockTexture(new Rect(100, 100, 50, 50), out px, out pt));
+Logging.LogInfo(LogCategory.Application, "Lock texture: {0}, {1}", px, pt);
+Logging.LogInfo(LogCategory.Application, "Query texture: {0}", texture2.QueryTexture(out PixelFormatEnum pixelFormat, out TextureAccess texAccess, out w, out h));
+Logging.LogInfo(LogCategory.Application, "Query texture: {0}, {1}, {2}, {3}", pixelFormat, texAccess, w, h);
 
 Logging.LogInfo(LogCategory.Application, "Renderer blend: {0}", renderer.GetRenderDrawBlendMode());
-Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}", renderer.GetRenderDrawColor(out byte r, out byte g, out byte b, out byte a));
+Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}", renderer.GetRenderDrawColor(out r, out g, out b, out byte a));
 Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}, {1}, {2}, {3}", r, g, b, a);
+Logging.LogInfo(LogCategory.Application, "Renderer info: {0}", renderer.GetRendererInfo());
+Logging.LogInfo(LogCategory.Application, "Renderer output size: {0}", renderer.GetRendererOutputSize(out w, out h));
+Logging.LogInfo(LogCategory.Application, "Renderer output size: {0}, {1}", w, h);
+
+Logging.LogInfo(LogCategory.Application, "Render target: {0}", renderer.GetRenderTarget());
+Logging.LogInfo(LogCategory.Application, "Set render target: {0}", renderer.SetRenderTarget(texture));
+Logging.LogInfo(LogCategory.Application, "Render target: {0}", renderer.GetRenderTarget());
 
 Logging.LogInfo(LogCategory.Application, "Render driver num: {0}", Render.GetNumRenderDrivers());
 

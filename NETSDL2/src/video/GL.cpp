@@ -6,6 +6,7 @@
 #include "../../include/core/Result.h"
 #include "../../include/video/Window.h"
 #include "../../include/video/GLContext.h"
+#include "../../include/video/Texture.h"
 
 #include "../../include/internal/StringMarshal.h"
 
@@ -15,6 +16,31 @@ using namespace msclr::interop;
 
 using namespace NETSDL2::Video;
 using namespace NETSDL2::Core;
+
+Result<None^, int> NETSDL2::Video::GL::BindTexture(Texture^ texture, float% texw, float% texh)
+{
+	float w, h;
+	int result = SDL_GL_BindTexture(texture->NativeTexture, &w, &h);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	texw = w;
+	texh = h;
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::GL::UnbindTexture(Texture^ texture)
+{
+	int result = SDL_GL_UnbindTexture(texture->NativeTexture);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
 
 Result<GLContext^, None^> NETSDL2::Video::GL::CreateContext(Window^ window)
 {
