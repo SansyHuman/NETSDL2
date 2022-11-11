@@ -300,8 +300,8 @@ Logging.LogInfo(LogCategory.Application, "Lock texture: {0}, {1}", px, pt);
 Logging.LogInfo(LogCategory.Application, "Query texture: {0}", texture2.QueryTexture(out PixelFormatEnum pixelFormat, out TextureAccess texAccess, out w, out h));
 Logging.LogInfo(LogCategory.Application, "Query texture: {0}, {1}, {2}, {3}", pixelFormat, texAccess, w, h);
 
-Logging.LogInfo(LogCategory.Application, "Renderer blend: {0}", renderer.GetRenderDrawBlendMode());
-Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}", renderer.GetRenderDrawColor(out r, out g, out b, out byte a));
+Logging.LogInfo(LogCategory.Application, "Renderer blend: {0}", renderer.GetDrawBlendMode());
+Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}", renderer.GetDrawColor(out r, out g, out b, out byte a));
 Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}, {1}, {2}, {3}", r, g, b, a);
 Logging.LogInfo(LogCategory.Application, "Renderer info: {0}", renderer.GetRendererInfo());
 Logging.LogInfo(LogCategory.Application, "Renderer output size: {0}", renderer.GetRendererOutputSize(out w, out h));

@@ -41,6 +41,28 @@ namespace NETSDL2
 		};
 
 		/// <summary>
+		/// An enumeration of flags that can be used in the flip parameter.
+		/// </summary>
+		[System::Flags]
+		public enum class RendererFlip
+		{
+			/// <summary>
+			/// Do not flip.
+			/// </summary>
+			None = SDL_FLIP_NONE,
+
+			/// <summary>
+			/// Flip horizontally.
+			/// </summary>
+			Horizontal = SDL_FLIP_HORIZONTAL,
+
+			/// <summary>
+			/// Flip vertically.
+			/// </summary>
+			Vertical = SDL_FLIP_VERTICAL,
+		};
+
+		/// <summary>
 		/// A structure that contains information on the capabilities of a
 		/// render driver or the current render context.
 		/// </summary>

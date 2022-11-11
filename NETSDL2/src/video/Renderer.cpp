@@ -69,7 +69,7 @@ NETSDL2::Video::Renderer::!Renderer()
 	renderer = __nullptr;
 }
 
-Result<BlendMode, int> NETSDL2::Video::Renderer::GetRenderDrawBlendMode()
+Result<BlendMode, int> NETSDL2::Video::Renderer::GetDrawBlendMode()
 {
 	SDL_BlendMode mode;
 	int result = SDL_GetRenderDrawBlendMode(renderer, &mode);
@@ -81,7 +81,7 @@ Result<BlendMode, int> NETSDL2::Video::Renderer::GetRenderDrawBlendMode()
 	return (BlendMode)mode;
 }
 
-Result<None^, int> NETSDL2::Video::Renderer::GetRenderDrawColor(Uint8% r, Uint8% g, Uint8% b, Uint8% a)
+Result<None^, int> NETSDL2::Video::Renderer::GetDrawColor(Uint8% r, Uint8% g, Uint8% b, Uint8% a)
 {
 	Uint8 red, green, blue, alpha;
 
@@ -142,9 +142,477 @@ Texture^ NETSDL2::Video::Renderer::GetRenderTarget()
 	return managedTarget;
 }
 
+Result<None^, int> NETSDL2::Video::Renderer::Clear()
+{
+	int result = SDL_RenderClear(renderer);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::Copy(Texture^ texture, System::Nullable<NETSDL2::Video::Rect> srcRect, System::Nullable<NETSDL2::Video::Rect> dstRect)
+{
+	int result = SDL_RenderCopy(renderer, texture->NativeTexture,
+		srcRect.HasValue ? (const SDL_Rect*)&srcRect.Value : __nullptr,
+		dstRect.HasValue ? (const SDL_Rect*)&dstRect.Value : __nullptr);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::CopyEx(Texture^ texture, System::Nullable<NETSDL2::Video::Rect> srcRect, System::Nullable<NETSDL2::Video::Rect> dstRect, double angle, System::Nullable<NETSDL2::Video::Point> center, RendererFlip flip)
+{
+	int result = SDL_RenderCopyEx(renderer, texture->NativeTexture,
+		srcRect.HasValue ? (const SDL_Rect*)&srcRect.Value : __nullptr,
+		dstRect.HasValue ? (const SDL_Rect*)&dstRect.Value : __nullptr,
+		angle,
+		center.HasValue ? (const SDL_Point*)&center.Value : __nullptr,
+		(SDL_RendererFlip)flip);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::CopyExF(Texture^ texture, System::Nullable<NETSDL2::Video::Rect> srcRect, System::Nullable<NETSDL2::Video::FRect> dstRect, double angle, System::Nullable<NETSDL2::Video::FPoint> center, RendererFlip flip)
+{
+	int result = SDL_RenderCopyExF(renderer, texture->NativeTexture,
+		srcRect.HasValue ? (const SDL_Rect*)&srcRect.Value : __nullptr,
+		dstRect.HasValue ? (const SDL_FRect*)&dstRect.Value : __nullptr,
+		angle,
+		center.HasValue ? (const SDL_FPoint*)&center.Value : __nullptr,
+		(SDL_RendererFlip)flip);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::CopyF(Texture^ texture, System::Nullable<NETSDL2::Video::Rect> srcRect, System::Nullable<NETSDL2::Video::FRect> dstRect)
+{
+	int result = SDL_RenderCopyF(renderer, texture->NativeTexture,
+		srcRect.HasValue ? (const SDL_Rect*)&srcRect.Value : __nullptr,
+		dstRect.HasValue ? (const SDL_FRect*)&dstRect.Value : __nullptr);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::DrawLine(int x1, int y1, int x2, int y2)
+{
+	int result = SDL_RenderDrawLine(renderer, x1, y1, x2, y2);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::DrawLineF(float x1, float y1, float x2, float y2)
+{
+	int result = SDL_RenderDrawLineF(renderer, x1, y1, x2, y2);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::DrawLines(...array<NETSDL2::Video::Point>^ points)
+{
+	if(points->Length == 0)
+		return None::Value;
+
+	pin_ptr<NETSDL2::Video::Point> pPoints = &points[0];
+	int result = SDL_RenderDrawLines(renderer, (const SDL_Point*)pPoints, points->Length);
+	pPoints = nullptr;
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::DrawLinesF(...array<NETSDL2::Video::FPoint>^ points)
+{
+	if(points->Length == 0)
+		return None::Value;
+
+	pin_ptr<NETSDL2::Video::FPoint> pPoints = &points[0];
+	int result = SDL_RenderDrawLinesF(renderer, (const SDL_FPoint*)pPoints, points->Length);
+	pPoints = nullptr;
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::DrawPoint(int x, int y)
+{
+	int result = SDL_RenderDrawPoint(renderer, x, y);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::DrawPointF(float x, float y)
+{
+	int result = SDL_RenderDrawPointF(renderer, x, y);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::DrawPoints(...array<NETSDL2::Video::Point>^ points)
+{
+	if(points->Length == 0)
+		return None::Value;
+
+	pin_ptr<NETSDL2::Video::Point> pPoints = &points[0];
+	int result = SDL_RenderDrawPoints(renderer, (const SDL_Point*)pPoints, points->Length);
+	pPoints = nullptr;
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::DrawPointsF(...array<NETSDL2::Video::FPoint>^ points)
+{
+	if(points->Length == 0)
+		return None::Value;
+
+	pin_ptr<NETSDL2::Video::FPoint> pPoints = &points[0];
+	int result = SDL_RenderDrawPointsF(renderer, (const SDL_FPoint*)pPoints, points->Length);
+	pPoints = nullptr;
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::DrawRect(System::Nullable<NETSDL2::Video::Rect> rect)
+{
+	int result = SDL_RenderDrawRect(renderer, rect.HasValue ? (const SDL_Rect*)&rect.Value : __nullptr);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::DrawRectF(System::Nullable<NETSDL2::Video::FRect> rect)
+{
+	int result = SDL_RenderDrawRectF(renderer, rect.HasValue ? (const SDL_FRect*)&rect.Value : __nullptr);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::DrawRects(...array<NETSDL2::Video::Rect>^ rects)
+{
+	if(rects->Length == 0)
+		return None::Value;
+
+	pin_ptr<NETSDL2::Video::Rect> pRects = &rects[0];
+	int result = SDL_RenderDrawRects(renderer, (const SDL_Rect*)pRects, rects->Length);
+	pRects = nullptr;
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::DrawRectsF(...array<NETSDL2::Video::FRect>^ rects)
+{
+	if(rects->Length == 0)
+		return None::Value;
+
+	pin_ptr<NETSDL2::Video::FRect> pRects = &rects[0];
+	int result = SDL_RenderDrawRectsF(renderer, (const SDL_FRect*)pRects, rects->Length);
+	pRects = nullptr;
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::FillRect(System::Nullable<NETSDL2::Video::Rect> rect)
+{
+	int result = SDL_RenderFillRect(renderer, rect.HasValue ? (const SDL_Rect*)&rect.Value : __nullptr);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::FillRectF(System::Nullable<NETSDL2::Video::FRect> rect)
+{
+	int result = SDL_RenderFillRectF(renderer, rect.HasValue ? (const SDL_FRect*)&rect.Value : __nullptr);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::FillRects(...array<NETSDL2::Video::Rect>^ rects)
+{
+	if(rects->Length == 0)
+		return None::Value;
+
+	pin_ptr<NETSDL2::Video::Rect> pRects = &rects[0];
+	int result = SDL_RenderFillRects(renderer, (const SDL_Rect*)pRects, rects->Length);
+	pRects = nullptr;
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::FillRectsF(...array<NETSDL2::Video::FRect>^ rects)
+{
+	if(rects->Length == 0)
+		return None::Value;
+
+	pin_ptr<NETSDL2::Video::FRect> pRects = &rects[0];
+	int result = SDL_RenderFillRectsF(renderer, (const SDL_FRect*)pRects, rects->Length);
+	pRects = nullptr;
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::RenderGeometry(Texture^ texture, array<Vertex>^ vertices, array<int>^ indices)
+{
+	if(vertices->Length == 0)
+		return None::Value;
+
+	if(indices != nullptr && indices->Length == 0)
+		return None::Value;
+
+	pin_ptr<Vertex> pVertices = &vertices[0];
+	pin_ptr<int> pIndices = indices == nullptr ? nullptr : &indices[0];
+
+	int result = SDL_RenderGeometry(renderer,
+		texture == nullptr ? __nullptr : texture->NativeTexture,
+		(const SDL_Vertex*)pVertices, vertices->Length,
+		indices == nullptr ? nullptr : (const int*)pIndices,
+		indices == nullptr ? 0 : indices->Length);
+
+	pVertices = nullptr;
+	pIndices = nullptr;
+
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::RenderGeometryRaw(Texture^ texture, float* xy, int xyStride, NETSDL2::Video::Color* color, int colorStride, float* uv, int uvStride, int numVertices, void* indices, int numIndices, int sizeIndices)
+{
+	int result = SDL_RenderGeometryRaw(renderer,
+		texture == nullptr ? __nullptr : texture->NativeTexture,
+		xy, xyStride, (const SDL_Color*)color, colorStride, uv, uvStride,
+		numVertices, indices, numIndices, sizeIndices);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+NETSDL2::Video::Rect NETSDL2::Video::Renderer::GetClipRect()
+{
+	NETSDL2::Video::Rect rect;
+	SDL_RenderGetClipRect(renderer, (SDL_Rect*)&rect);
+
+	return rect;
+}
+
+bool NETSDL2::Video::Renderer::GetIntegerScale()
+{
+	return SDL_RenderGetIntegerScale(renderer) == SDL_TRUE;
+}
+
+void NETSDL2::Video::Renderer::GetLogicalSize(int% w, int% h)
+{
+	int width, height;
+	SDL_RenderGetLogicalSize(renderer, &width, &height);
+	w = width;
+	h = height;
+}
+
+void NETSDL2::Video::Renderer::GetScale(float% scaleX, float% scaleY)
+{
+	float x, y;
+	SDL_RenderGetScale(renderer, &x, &y);
+	scaleX = x;
+	scaleY = y;
+}
+
+NETSDL2::Video::Rect NETSDL2::Video::Renderer::GetViewport()
+{
+	NETSDL2::Video::Rect rect;
+	SDL_RenderGetViewport(renderer, (SDL_Rect*)&rect);
+	return rect;
+}
+
+bool Renderer::IsClipEnabled::get()
+{
+	return SDL_RenderIsClipEnabled(renderer) == SDL_TRUE;
+}
+
+void NETSDL2::Video::Renderer::Present()
+{
+	SDL_RenderPresent(renderer);
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::ReadPixels(System::Nullable<NETSDL2::Video::Rect> rect, PixelFormatEnum format, System::IntPtr pixels, int pitch)
+{
+	int result = SDL_RenderReadPixels(renderer,
+		rect.HasValue ? (const SDL_Rect*)&rect.Value : __nullptr,
+		(Uint32)format, pixels.ToPointer(), pitch);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::SetClipRect(System::Nullable<NETSDL2::Video::Rect> rect)
+{
+	int result = SDL_RenderSetClipRect(renderer, rect.HasValue ? (const SDL_Rect*)&rect.Value : __nullptr);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::SetIntegerScale(bool enable)
+{
+	int result = SDL_RenderSetIntegerScale(renderer, enable ? SDL_TRUE : SDL_FALSE);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::SetLogicalSize(int w, int h)
+{
+	int result = SDL_RenderSetLogicalSize(renderer, w, h);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::SetScale(float scaleX, float scaleY)
+{
+	int result = SDL_RenderSetScale(renderer, scaleX, scaleY);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::SetViewport(System::Nullable<NETSDL2::Video::Rect> rect)
+{
+	int result = SDL_RenderSetViewport(renderer, rect.HasValue ? (const SDL_Rect*)&rect.Value : __nullptr);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+bool Renderer::RenderTargetSupported::get()
+{
+	return SDL_RenderTargetSupported(renderer) == SDL_TRUE;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::SetDrawBlendMode(BlendMode blendMode)
+{
+	int result = SDL_SetRenderDrawBlendMode(renderer, (SDL_BlendMode)blendMode);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::SetDrawColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+{
+	int result = SDL_SetRenderDrawColor(renderer, r, g, b, a);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
 Result<None^, int> NETSDL2::Video::Renderer::SetRenderTarget(Texture^ texture)
 {
-	int result = SDL_SetRenderTarget(renderer, texture->NativeTexture);
+	int result = SDL_SetRenderTarget(renderer, texture == nullptr ? __nullptr : texture->NativeTexture);
 	if(result < 0)
 	{
 		return Result<None^, int>::MakeFailure(result);

@@ -124,6 +124,76 @@ namespace NETSDL2
 			/// <param name="h">The height of the texture in pixels.</param>
 			/// <returns>None on success or error code on failure.</returns>
 			Result<None^, int> QueryTexture([Out]PixelFormatEnum% format, [Out]TextureAccess% access, [Out]int% w, [Out]int% h);
+
+			/// <summary>
+			/// Set an additional alpha value multiplied into render copy
+			/// operations.
+			/// </summary>
+			/// <param name="alpha">The source alpha value multiplied into copy
+			/// operations.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> SetTextureAlphaMod(Uint8 alpha);
+
+			/// <summary>
+			/// Set the blend mode used for texture copy operations.
+			/// </summary>
+			/// <param name="blendMode">The <see cref="BlendMode"/> to use for
+			/// texture blending.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> SetTextureBlendMode(BlendMode blendMode);
+
+			/// <summary>
+			/// Set an additional color value multiplied into render copy
+			/// operations.
+			/// </summary>
+			/// <param name="r">The red color value multiplied into copy
+			/// operations.</param>
+			/// <param name="g">The green color value multiplied into copy
+			/// operations.</param>
+			/// <param name="b">The blue color value multiplied into copy
+			/// operations.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> SetTextureColorMod(Uint8 r, Uint8 g, Uint8 b);
+
+			/// <summary>
+			/// Unlock a texture, uploading the changes to video memory, if needed.
+			/// </summary>
+			void UnlockTexture();
+
+			/// <summary>
+			/// Update the given texture rectangle with new pixel data.
+			/// </summary>
+			/// <param name="rect">A <see cref="NETSDL2::Video::Rect"/> structure
+			/// representing the area to update, or null to update the entire
+			/// texture.</param>
+			/// <param name="pixels">The raw pixel data in the format of the
+			/// texture.</param>
+			/// <param name="pitch">The number of bytes in a row of pixel data,
+			/// including padding between lines.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> UpdateTexture(System::Nullable<NETSDL2::Video::Rect> rect, System::IntPtr pixels, int pitch);
+
+			/// <summary>
+			/// Update a rectangle within a planar YV12 or IYUV texture with new
+			/// pixel data.
+			/// </summary>
+			/// <param name="rect">A <see cref="NETSDL2::Video::Rect"/> structure
+			/// representing the area to update, or null to update the entire
+			/// texture.</param>
+			/// <param name="yplane">The raw pixel data for the Y plane.</param>
+			/// <param name="ypitch">The number of bytes between rows of pixel
+			/// data for the Y plane.</param>
+			/// <param name="uplane">The raw pixel data for the U plane.</param>
+			/// <param name="upitch">The number of bytes between rows of pixel
+			/// data for the U plane.</param>
+			/// <param name="vplane">The raw pixel data for the V plane.</param>
+			/// <param name="vpitch">The number of bytes between rows of pixel
+			/// data for the V plane.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> UpdateYUVTexture(
+				System::Nullable<NETSDL2::Video::Rect> rect,
+				Uint8* yplane, int ypitch, Uint8* uplane, int upitch,
+				Uint8* vplane, int vpitch);
 		};
 	}
 }

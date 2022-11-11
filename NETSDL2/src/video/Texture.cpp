@@ -144,3 +144,66 @@ Result<None^, int> NETSDL2::Video::Texture::QueryTexture(PixelFormatEnum% format
 	h = height;
 	return None::Value;
 }
+
+Result<None^, int> NETSDL2::Video::Texture::SetTextureAlphaMod(Uint8 alpha)
+{
+	int result = SDL_SetTextureAlphaMod(texture, alpha);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Texture::SetTextureBlendMode(BlendMode blendMode)
+{
+	int result = SDL_SetTextureBlendMode(texture, (SDL_BlendMode)blendMode);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Texture::SetTextureColorMod(Uint8 r, Uint8 g, Uint8 b)
+{
+	int result = SDL_SetTextureColorMod(texture, r, g, b);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+void NETSDL2::Video::Texture::UnlockTexture()
+{
+	SDL_UnlockTexture(texture);
+}
+
+Result<None^, int> NETSDL2::Video::Texture::UpdateTexture(System::Nullable<NETSDL2::Video::Rect> rect, System::IntPtr pixels, int pitch)
+{
+	int result = SDL_UpdateTexture(texture,
+		rect.HasValue ? (const SDL_Rect*)&rect.Value : __nullptr, pixels.ToPointer(), pitch);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Texture::UpdateYUVTexture(System::Nullable<NETSDL2::Video::Rect> rect, Uint8* yplane, int ypitch, Uint8* uplane, int upitch, Uint8* vplane, int vpitch)
+{
+	int result = SDL_UpdateYUVTexture(texture,
+		rect.HasValue ? (const SDL_Rect*)&rect.Value : __nullptr,
+		yplane, ypitch, uplane, upitch, vplane, vpitch);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}

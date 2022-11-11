@@ -123,6 +123,7 @@
     <ClInclude Include="include\video\SysWMInfo.h" />
     <ClInclude Include="include\video\Texture.h" />
     <ClInclude Include="include\video\TextureAccess.h" />
+    <ClInclude Include="include\video\Vertex.h" />
     <ClInclude Include="include\video\Video.h" />
     <ClInclude Include="include\video\Vulkan.h" />
     <ClInclude Include="include\video\Window.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="src\video\SysWMInfo.cpp" />
     <ClCompile Include="src\video\Texture.cpp" />
     <ClCompile Include="src\video\TextureAccess.cpp" />
+    <ClCompile Include="src\video\Vertex.cpp" />
     <ClCompile Include="src\video\Video.cpp" />
     <ClCompile Include="src\video\Vulkan.cpp" />
     <ClCompile Include="src\video\Window.cpp" />
