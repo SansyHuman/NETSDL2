@@ -37,6 +37,12 @@
     <Filter Include="소스 파일\events">
       <UniqueIdentifier>{5a2dd3f2-6195-4904-a70d-be238876e24d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\systems">
+      <UniqueIdentifier>{04229675-efb4-41db-9dd5-803cec93f6a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\systems">
+      <UniqueIdentifier>{0baf8d1f-8cbe-4c27-a18f-ad9f90dec167}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\SDL.h">
@@ -149,6 +155,15 @@
     </ClInclude>
     <ClInclude Include="include\video\Vertex.h">
       <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\ICCProfile.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\ScaleMode.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\Stdinc.h">
+      <Filter>헤더 파일\systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +280,15 @@
     </ClCompile>
     <ClCompile Include="src\video\Vertex.cpp">
       <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\ICCProfile.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\ScaleMode.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\Stdinc.cpp">
+      <Filter>소스 파일\systems</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -104,8 +104,10 @@
     <ClInclude Include="include\events\Keysym.h" />
     <ClInclude Include="include\events\Scancode.h" />
     <ClInclude Include="include\internal\StringMarshal.h" />
+    <ClInclude Include="include\system\Stdinc.h" />
     <ClInclude Include="include\video\Blend.h" />
     <ClInclude Include="include\video\Clipboard.h" />
+    <ClInclude Include="include\video\ICCProfile.h" />
     <ClInclude Include="include\video\Palette.h" />
     <ClInclude Include="include\video\Display.h" />
     <ClInclude Include="include\video\DisplayMode.h" />
@@ -119,6 +121,7 @@
     <ClInclude Include="include\video\Render.h" />
     <ClInclude Include="include\video\Renderer.h" />
     <ClInclude Include="include\video\RendererInfo.h" />
+    <ClInclude Include="include\video\ScaleMode.h" />
     <ClInclude Include="include\video\Surface.h" />
     <ClInclude Include="include\video\SysWMInfo.h" />
     <ClInclude Include="include\video\Texture.h" />
@@ -144,6 +147,7 @@
     <ClCompile Include="src\events\Keysym.cpp" />
     <ClCompile Include="src\events\Scancode.cpp" />
     <ClCompile Include="src\internal\StringMarshal.cpp" />
+    <ClCompile Include="src\system\Stdinc.cpp" />
     <ClCompile Include="src\video\Blend.cpp" />
     <ClCompile Include="src\video\Clipboard.cpp" />
     <ClCompile Include="src\video\Display.cpp" />
@@ -151,6 +155,7 @@
     <ClCompile Include="src\video\GL.cpp" />
     <ClCompile Include="src\video\GLAttr.cpp" />
     <ClCompile Include="src\video\GLContext.cpp" />
+    <ClCompile Include="src\video\ICCProfile.cpp" />
     <ClCompile Include="src\video\MessageBoxData.cpp" />
     <ClCompile Include="src\video\Palette.cpp" />
     <ClCompile Include="src\video\PixelFormat.cpp" />
@@ -159,6 +164,7 @@
     <ClCompile Include="src\video\Render.cpp" />
     <ClCompile Include="src\video\Renderer.cpp" />
     <ClCompile Include="src\video\RendererInfo.cpp" />
+    <ClCompile Include="src\video\ScaleMode.cpp" />
     <ClCompile Include="src\video\Surface.cpp" />
     <ClCompile Include="src\video\SysWMInfo.cpp" />
     <ClCompile Include="src\video\Texture.cpp" />

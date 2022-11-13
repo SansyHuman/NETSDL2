@@ -2334,6 +2334,13 @@ namespace NETSDL2
 			static bool GetHintBoolean(SDLHint name, bool defaultValue);
 
 			/// <summary>
+			/// Reset a hint to the default value.
+			/// </summary>
+			/// <param name="name">The hint to set.</param>
+			/// <returns>true if the hint was set, false otherwise.</returns>
+			static bool ResetHint(SDLHint name);
+
+			/// <summary>
 			/// Set a hint with normal priority.
 			/// </summary>
 			/// <param name="name">The hint to set.</param>

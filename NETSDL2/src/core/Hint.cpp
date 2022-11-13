@@ -40,6 +40,13 @@ bool NETSDL2::Core::Hint::GetHintBoolean(SDLHint name, bool defaultValue)
 	return SDL_GetHintBoolean(context.ManagedToUTF8Native(name.name), defaultValue ? SDL_TRUE : SDL_FALSE) == SDL_TRUE;
 }
 
+bool NETSDL2::Core::Hint::ResetHint(SDLHint name)
+{
+	StringMarshal context;
+
+	return SDL_ResetHint(context.ManagedToUTF8Native(name.name)) == SDL_TRUE;
+}
+
 bool NETSDL2::Core::Hint::SetHint(SDLHint name, System::String^ value)
 {
 	StringMarshal context;

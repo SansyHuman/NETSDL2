@@ -1,4 +1,5 @@
 #include "../../include/core/Result.h"
+#include "../../include/core/SDL.h"
 
 using namespace NETSDL2::Core;
 using namespace System;
@@ -16,6 +17,9 @@ inline Result<Success, Failure> Result<Success, Failure>::MakeResult(Success res
 generic<class Success, class Failure>
 Result<Success, Failure> Result<Success, Failure>::MakeFailure(Failure error)
 {
+	if(SDL::ThrowOnFailure)
+		throw gcnew InvalidOperationException("The result is failure.");
+
 	Result<Success, Failure> res;
 	res.error = error;
 	res.resultType = Result::Type::Failed;
@@ -75,4 +79,10 @@ generic<class Success, class Failure>
 Result<Success, Failure>::operator Result<Success, Failure>(Success result)
 {
 	return Result<Success, Failure>::MakeResult(result);
+}
+
+generic<class Success, class Failure>
+NETSDL2::Core::Result<Success, Failure>::operator Success(Result<Success, Failure>% result)
+{
+	return result.ResultValue;
 }

@@ -4,6 +4,7 @@
 #include "../../include/video/PixelFormat.h"
 #include "../../include/video/Rect.h"
 #include "../../include/video/DisplayMode.h"
+#include "Rect.h"
 
 using namespace System::Runtime::InteropServices;
 using namespace System::Runtime::CompilerServices;
@@ -50,6 +51,21 @@ namespace NETSDL2
 			static Result<DisplayMode, None^> GetClosestDisplayMode(int displayIndex, [In][IsReadOnly] DisplayMode% mode);
 
 			/// <summary>
+			/// Get the index of the display containing a point.
+			/// </summary>
+			/// <param name="point">The point to query.</param>
+			/// <returns>The index of the display containing the point or error code on failure.</returns>
+			static Result<int, int> GetPointDisplayIndex(NETSDL2::Video::Point point);
+
+			/// <summary>
+			/// Get the index of the display primarily containing a point.
+			/// </summary>
+			/// <param name="rect">The rect to query.</param>
+			/// <returns>The index of the display entirely containing the rect or closest to the center
+			/// of the rect on success or error code on failure.</returns>
+			static Result<int, int> GetRectDisplayIndex(NETSDL2::Video::Rect rect);
+
+			/// <summary>
 			/// Get information about the current display mode.
 			/// </summary>
 			/// <param name="displayIndex">The index of the display to query.
@@ -93,6 +109,14 @@ namespace NETSDL2
 			/// <param name="vdpi">The vertical DPI of the display.</param>
 			/// <returns>None on success or error code on failure.</returns>
 			static Result<None^, int> GetDisplayDPI(int displayIndex, [Out]float% ddpi, [Out]float% hdpi, [Out]float% vdpi);
+
+			/// <summary>
+			/// Get the orientation of a display.
+			/// </summary>
+			/// <param name="displayIndex">The index of the display to query.</param>
+			/// <returns>The <see cref="DisplayOrientation"/> enum value of the display, or
+			/// <see cref="DisplayOrientation::Unknown"/> if it isn't available.</returns>
+			static DisplayOrientation GetDisplayOrientation(int displayIndex);
 
 			/// <summary>
 			/// Get information about a specific display mode.

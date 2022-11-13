@@ -1,5 +1,8 @@
 #pragma once
 
+using namespace System::Runtime::InteropServices;
+using namespace System::Runtime::CompilerServices;
+
 namespace NETSDL2
 {
 	namespace Core
@@ -38,6 +41,8 @@ namespace NETSDL2
 			/// </summary>
 			/// <param name="error">Error value.</param>
 			/// <returns>Result.</returns>
+			/// <exception cref="InvalidOperationException">Thrown when the result
+			/// is not success and throwOnFailure is true.</exception>
 			static Result MakeFailure(Failure error);
 
 			/// <summary>
@@ -89,6 +94,8 @@ namespace NETSDL2
 			virtual System::String^ ToString() override;
 
 			static operator Result(Success result);
+
+			static operator Success([In][IsReadOnly]Result<Success, Failure>% result);
 		};
 	}
 }

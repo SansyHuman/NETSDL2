@@ -6,6 +6,8 @@
 #include "../core/Result.h"
 #include "PixelFormat.h"
 #include "Rect.h"
+#include "Blend.h"
+#include "Palette.h"
 
 using namespace System::Runtime::InteropServices;
 using namespace System::Diagnostics::CodeAnalysis;
@@ -159,6 +161,15 @@ namespace NETSDL2
 			/// <exception cref="System::Exception">Thrown when failed creation.
 			/// </exception>
 			Surface(array<unsigned char>^ pixels, int width, int height, int depth, int pitch, PixelFormatEnum format);
+
+			/// <summary>
+			/// Load a BMP image from a file path.
+			/// </summary>
+			/// <param name="file">The file containing a BMP image.</param>
+			Surface(System::String^ file);
+
+			// TODO: LoadBMP_RW
+
 			~Surface();
 			!Surface();
 
@@ -219,6 +230,191 @@ namespace NETSDL2
 			{
 				Rect get();
 			}
+
+			/// <summary>
+			/// Use this function to perform a scaled surface copy to a destination
+			/// surface.
+			/// </summary>
+			/// <param name="src">The surface to be copied from.</param>
+			/// <param name="srcrect">The <see cref="NETSDL2::Video::Rect"/>
+			/// structure representing the rectangle to be copied, or null to copy
+			/// the entire surface.</param>
+			/// <param name="dst">The surface that is the blit target.</param>
+			/// <param name="dstrect">The <see cref="NETSDL2::Video::Rect"/>
+			/// structure representing the rectangle that is copied into, or null to
+			/// copy into the entire surface.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			static Result<None^, int> BlitScaled(Surface^ src, System::Nullable<NETSDL2::Video::Rect> srcrect,
+				Surface^ dst, System::Nullable<NETSDL2::Video::Rect> dstrect);
+
+			/// <summary>
+			/// Use this function to perform a fast surface copy to a destination
+			/// surface.
+			/// </summary>
+			/// <param name="src">The surface to be copied from.</param>
+			/// <param name="srcrect">The <see cref="NETSDL2::Video::Rect"/>
+			/// structure representing the rectangle to be copied, or null to copy
+			/// the entire surface.</param>
+			/// <param name="dst">The surface that is the blit target.</param>
+			/// <param name="dstrect">The <see cref="NETSDL2::Video::Rect"/>
+			/// structure representing the rectangle that is copied into, or null to
+			/// copy into the entire surface.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			static Result<None^, int> BlitSurface(Surface^ src, System::Nullable<NETSDL2::Video::Rect> srcrect,
+				Surface^ dst, System::Nullable<NETSDL2::Video::Rect> dstrect);
+
+			/// <summary>
+			/// Copy the surface to a new surface of the specified format.
+			/// </summary>
+			/// <param name="fmt">The <see cref="PixelFormat"/> structure that
+			/// the new surface is optimized for.</param>
+			/// <returns>New surface that is created or None on failure.</returns>
+			Result<Surface^, None^> ConvertSurface([In][IsReadOnly]PixelFormat% fmt);
+
+			/// <summary>
+			/// Copy the surface to a new surface of the specified format enum.
+			/// </summary>
+			/// <param name="fmt">The <see cref="PixelFormatEnum"/> that
+			/// the new surface is optimized for.</param>
+			/// <returns>New surface that is created or None on failure.</returns>
+			Result<Surface^, None^> ConvertSurfaceFormat(PixelFormatEnum pixelFormat);
+
+			/// <summary>
+			/// Perform a fast fill of a rectangle with a specific color.
+			/// </summary>
+			/// <param name="rect">The <see cref="NETSDL2::Video::Rect"/> structure
+			/// representing the rectangle to fill, or NULL to fill the entire
+			/// surface.</param>
+			/// <param name="color">The color to fill with.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> FillRect(System::Nullable<NETSDL2::Video::Rect> rect, Uint32 color);
+
+			/// <summary>
+			/// Perform a fast fill of a set of rectangles with a specific color.
+			/// </summary>
+			/// <param name="rects">An array of <see cref="NETSDL2::Video::Rect"/>
+			/// representing the rectangles to fill.</param>
+			/// <param name="color">The color to fill with.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> FillRects(array<NETSDL2::Video::Rect>^ rects, Uint32 color);
+
+			/// <summary>
+			/// Get the color key (transparent pixel) for a surface.
+			/// </summary>
+			/// <returns>Color key on success or error code on failure.</returns>
+			Result<Uint32, int> GetColorKey();
+
+			/// <summary>
+			/// Get the additional alpha value used in blit operations.
+			/// </summary>
+			/// <returns>Alpha mod on success or error code on failure.</returns>
+			Result<Uint8, int> GetSurfaceAlphaMod();
+
+			/// <summary>
+			/// Get the blend mode used for blit operations.
+			/// </summary>
+			/// <returns>Blend mode on success or error code on failure.</returns>
+			Result<BlendMode, int> GetSurfaceBlendMode();
+
+			/// <summary>
+			/// Get the additional color value multiplied into blit operations.
+			/// </summary>
+			/// <param name="r">The current red color value.</param>
+			/// <param name="g">The current green color value.</param>
+			/// <param name="b">The current blue color value.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> GetSurfaceColorMod([Out]Uint8% r, [Out]Uint8% g, [Out]Uint8% b);
+
+			/// <summary>
+			/// Set up a surface for directly accessing the pixels.
+			/// </summary>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> LockSurface();
+
+			/// <summary>
+			/// Whether a surface must be locked for access.
+			/// </summary>
+			property bool MustLock
+			{
+				bool get();
+			}
+
+			/// <summary>
+			/// Save a surface to a BMP file.
+			/// </summary>
+			/// <param name="file">The file to be saved to.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> SaveBMP(System::String^ file);
+
+			// TODO: SaveBMP_RW
+
+			/// <summary>
+			/// Set the clipping rectangle for a surface.
+			/// </summary>
+			/// <param name="rect">The <see cref="NETSDL2::Video::Rect"/>
+			/// structure representing the clipping rectangle, or null to disable
+			/// clipping.</param>
+			/// <returns>true if the rectangle intersects the surface, otherwise
+			/// false and blits will be completely clipped.</returns>
+			bool SetClipRect(System::Nullable<NETSDL2::Video::Rect> rect);
+
+			/// <summary>
+			/// Set the color key (transparent pixel) in a surface.
+			/// </summary>
+			/// <param name="flag">true to enable color key, false to disable
+			/// color key.</param>
+			/// <param name="key">The transparent pixel.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> SetColorKey(bool flag, Uint32 key);
+
+			/// <summary>
+			/// Set an additional alpha value used in blit operations.
+			/// </summary>
+			/// <param name="alpha">The alpha value multiplied into blit
+			/// operations.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> SetSurfaceAlphaMod(Uint8 alpha);
+
+			/// <summary>
+			/// Set the blend mode used for blit operations.
+			/// </summary>
+			/// <param name="blendMode">The <see cref="BlendMode"/> to use for
+			/// blit blending.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> SetSurfaceBlendMode(BlendMode blendMode);
+
+			/// <summary>
+			/// Set an additional color value multiplied into blit operations.
+			/// </summary>
+			/// <param name="r">The red color value multiplied into blit
+			/// operations.</param>
+			/// <param name="g">The green color value multiplied into blit
+			/// operations.</param>
+			/// <param name="b">The blue color value multiplied into blit
+			/// operations.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> SetSurfaceColorMod(Uint8 r, Uint8 g, Uint8 b);
+
+			/// <summary>
+			/// Set the palette used by a surface.
+			/// </summary>
+			/// <param name="palette">The <see cref="Palette"/> structure to use.
+			/// </param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> SetSurfacePalette(Palette* palette);
+
+			/// <summary>
+			/// Set the RLE acceleration hint for a surface.
+			/// </summary>
+			/// <param name="flag">false to disable, true to enable RLE
+			/// acceleration.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> SetSurfaceRLE(bool flag);
+
+			/// <summary>
+			/// Release a surface after directly accessing the pixels.
+			/// </summary>
+			void UnlockSurface();
 		};
 	}
 }

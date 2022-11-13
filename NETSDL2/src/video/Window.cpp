@@ -186,6 +186,16 @@ void NETSDL2::Video::Window::ClearCallbacks()
 	windowEventCallbackHandle.Free();
 }
 
+Window^ NETSDL2::Video::Window::GetWindowFromNative(SDL_Window* window)
+{
+	Window^ win = nullptr;
+	bool found = nativeWindowConnections->TryGetValue(System::IntPtr(window), win);
+	if(!found)
+		return nullptr;
+
+	return win;
+}
+
 void NETSDL2::Video::Window::InitWindow(SDL_Window* window)
 {
 	this->window = window;
@@ -271,6 +281,28 @@ Window^ Window::GrabbedWindow::get()
 	return grabbedWindow;
 }
 
+Result<None^, int> NETSDL2::Video::Window::SetWindowMouseRect(System::Nullable<NETSDL2::Video::Rect> rect)
+{
+	int result = SDL_SetWindowMouseRect(window, rect.HasValue ? (const SDL_Rect*)&rect.Value : __nullptr);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<NETSDL2::Video::Rect, None^> NETSDL2::Video::Window::GetWindowMouseRect()
+{
+	const SDL_Rect* result = SDL_GetWindowMouseRect(window);
+	if(result == __nullptr)
+	{
+		return Result<NETSDL2::Video::Rect, None^>::MakeFailure(None::Value);
+	}
+
+	return *((const NETSDL2::Video::Rect*)result);
+}
+
 Result<Renderer^, None^> NETSDL2::Video::Window::GetRenderer()
 {
 	SDL_Renderer* renderer = SDL_GetRenderer(window);
@@ -327,6 +359,18 @@ Result<DisplayMode, int> NETSDL2::Video::Window::GetWindowDisplayMode()
 		return Result<DisplayMode, int>::MakeFailure(result);
 
 	return mode;
+}
+
+Result<ICCProfile^, None^> NETSDL2::Video::Window::GetWindowICCProfile()
+{
+	size_t size;
+	void* result = SDL_GetWindowICCProfile(window, &size);
+	if(result == __nullptr)
+	{
+		return Result<ICCProfile^, None^>::MakeFailure(None::Value);
+	}
+
+	return gcnew ICCProfile(result, size);
 }
 
 WindowFlags Window::Flags::get()
@@ -392,6 +436,26 @@ bool Window::IsGrabbed::get()
 void Window::IsGrabbed::set(bool value)
 {
 	SDL_SetWindowGrab(window, value ? SDL_TRUE : SDL_FALSE);
+}
+
+bool Window::IsKeyboardGrabbed::get()
+{
+	return SDL_GetWindowKeyboardGrab(window) == SDL_TRUE;
+}
+
+void Window::IsKeyboardGrabbed::set(bool value)
+{
+	SDL_SetWindowKeyboardGrab(window, value ? SDL_TRUE : SDL_FALSE);
+}
+
+bool Window::IsMouseGrabbed::get()
+{
+	return SDL_GetWindowMouseGrab(window) == SDL_TRUE;
+}
+
+void Window::IsMouseGrabbed::set(bool value)
+{
+	SDL_SetWindowMouseGrab(window, value ? SDL_TRUE : SDL_FALSE);
 }
 
 Uint32 Window::ID::get()
@@ -680,6 +744,11 @@ void NETSDL2::Video::Window::SetWindowPosition(int x, int y)
 void NETSDL2::Video::Window::SetWindowResizable(bool resizable)
 {
 	SDL_SetWindowResizable(window, resizable ? SDL_TRUE : SDL_FALSE);
+}
+
+void NETSDL2::Video::Window::SetWindowAlwaysOnTop(bool onTop)
+{
+	SDL_SetWindowAlwaysOnTop(window, onTop ? SDL_TRUE : SDL_FALSE);
 }
 
 void NETSDL2::Video::Window::SetWindowSize(int w, int h)

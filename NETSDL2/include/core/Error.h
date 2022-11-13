@@ -27,6 +27,15 @@ namespace NETSDL2
 			static System::String^ GetError();
 
 			/// <summary>
+			/// Get the last error message that was set for the current thread.
+			/// </summary>
+			/// <param name="errstr">A buffer to fill with the last error message that was set for the
+			/// current thread.</param>
+			/// <param name="maxlen">The size of the buffer pointed to by the errstr parameter.</param>
+			/// <returns>The pointer passed in as the errstr parameter.</returns>
+			static char* GetErrorMsg(char* errstr, int maxlen);
+
+			/// <summary>
 			/// Set the SDL error message for the current thread.
 			/// </summary>
 			/// <param name="format">Message format string.</param>

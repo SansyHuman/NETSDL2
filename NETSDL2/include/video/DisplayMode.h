@@ -10,6 +10,37 @@ namespace NETSDL2
 {
 	namespace Video
 	{
+		/// <summary>
+		/// Display orientation
+		/// </summary>
+		public enum class DisplayOrientation
+		{
+			/// <summary>
+			/// The display orientation can't be determined.
+			/// </summary>
+			Unknown = SDL_ORIENTATION_UNKNOWN,
+
+			/// <summary>
+			/// The display is in landscape mode, with the right side up, relative to portrait mode.
+			/// </summary>
+			Landscape = SDL_ORIENTATION_LANDSCAPE,
+
+			/// <summary>
+			/// The display is in landscape mode, with the left side up, relative to portrait mode.
+			/// </summary>
+			LandscapeFlipped = SDL_ORIENTATION_LANDSCAPE_FLIPPED,
+
+			/// <summary>
+			/// The display is in portrait mode.
+			/// </summary>
+			Portrait = SDL_ORIENTATION_PORTRAIT,
+
+			/// <summary>
+			/// The display is in portrait mode, upside down.
+			/// </summary>
+			PortraitFlipped = SDL_ORIENTATION_PORTRAIT_FLIPPED,
+		};
+
 		[StructLayout(LayoutKind::Sequential)]
 		/// <summary>
 		/// A structure that contains the description of a display mode.

@@ -122,6 +122,17 @@ Result<None^, int> NETSDL2::Video::Pixels::SetPixelFormatPalette(PixelFormat* fo
 	return None::Value;
 }
 
+Result<None^, int> NETSDL2::Video::Pixels::ConvertPixels(int width, int height, PixelFormatEnum srcFormat, System::IntPtr src, int srcPitch, PixelFormatEnum dstFormat, System::IntPtr dst, int dstPitch)
+{
+	int result = SDL_ConvertPixels(width, height, (Uint32)srcFormat, src.ToPointer(), srcPitch, (Uint32)dstFormat, dst.ToPointer(), dstPitch);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
 NETSDL2::Video::PixelFormatWrapper::PixelFormatWrapper(PixelFormat* format)
 	: format(format)
 {

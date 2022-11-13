@@ -12,6 +12,8 @@ Result<None^, int> SDL::Init(SubSystems flags)
 
 Result<None^, int> NETSDL2::Core::SDL::InitSubsystem(SubSystems flags)
 {
+	ThrowOnFailure = false;
+
 	int result = SDL_InitSubSystem(static_cast<Uint32>(flags));
 
 	if(result < 0)

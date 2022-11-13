@@ -111,6 +111,29 @@ Result<None^, int> NETSDL2::Video::Texture::GetTextureColorMod(Uint8% r, Uint8% 
 	return None::Value;
 }
 
+Result<ScaleMode, int> NETSDL2::Video::Texture::GetTextureScaleMode()
+{
+	SDL_ScaleMode mode;
+	int result = SDL_GetTextureScaleMode(texture, &mode);
+	if(result < 0)
+	{
+		return Result<ScaleMode, int>::MakeFailure(result);
+	}
+
+	return (ScaleMode)mode;
+}
+
+Result<System::IntPtr, None^> NETSDL2::Video::Texture::GetTextureUserData()
+{
+	void* result = SDL_GetTextureUserData(texture);
+	if(result == __nullptr)
+	{
+		return Result<System::IntPtr, None^>::MakeFailure(None::Value);
+	}
+
+	return System::IntPtr(result);
+}
+
 Result<None^, int> NETSDL2::Video::Texture::LockTexture(System::Nullable<Rect> rect, System::IntPtr% pixels, int% pitch)
 {
 	void* px;
@@ -124,6 +147,19 @@ Result<None^, int> NETSDL2::Video::Texture::LockTexture(System::Nullable<Rect> r
 
 	pixels = System::IntPtr(px);
 	pitch = pt;
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Texture::LockTextureToSurface(System::Nullable<Rect> rect, Surface^% surface)
+{
+	SDL_Surface* surf;
+	int result = SDL_LockTextureToSurface(texture, rect.HasValue ? (const SDL_Rect*)&rect.Value : __nullptr, &surf);
+	if(result < 0)
+	{
+		Result<None^, int>::MakeFailure(result);
+	}
+
+	surface = gcnew Surface(surf, false);
 	return None::Value;
 }
 
@@ -178,6 +214,28 @@ Result<None^, int> NETSDL2::Video::Texture::SetTextureColorMod(Uint8 r, Uint8 g,
 	return None::Value;
 }
 
+Result<None^, int> NETSDL2::Video::Texture::SetTextureScaleMode(ScaleMode scaleMode)
+{
+	int result = SDL_SetTextureScaleMode(texture, (SDL_ScaleMode)scaleMode);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Texture::SetTextureUserData(System::IntPtr userdata)
+{
+	int result = SDL_SetTextureUserData(texture, userdata.ToPointer());
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
 void NETSDL2::Video::Texture::UnlockTexture()
 {
 	SDL_UnlockTexture(texture);
@@ -200,6 +258,19 @@ Result<None^, int> NETSDL2::Video::Texture::UpdateYUVTexture(System::Nullable<NE
 	int result = SDL_UpdateYUVTexture(texture,
 		rect.HasValue ? (const SDL_Rect*)&rect.Value : __nullptr,
 		yplane, ypitch, uplane, upitch, vplane, vpitch);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Texture::UpdateNVTexture(System::Nullable<NETSDL2::Video::Rect> rect, Uint8* yplane, int ypitch, Uint8* uvplane, int uvpitch)
+{
+	int result = SDL_UpdateNVTexture(texture,
+		rect.HasValue ? (const SDL_Rect*)&rect.Value : __nullptr,
+		yplane, ypitch, uvplane, uvpitch);
 	if(result < 0)
 	{
 		return Result<None^, int>::MakeFailure(result);

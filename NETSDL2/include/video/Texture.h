@@ -8,6 +8,7 @@
 #include "TextureAccess.h"
 #include "Blend.h"
 #include "Rect.h"
+#include "ScaleMode.h"
 
 using namespace System::Runtime::InteropServices;
 
@@ -101,6 +102,19 @@ namespace NETSDL2
 			Result<None^, int> GetTextureColorMod([Out]Uint8% r, [Out]Uint8% g, [Out]Uint8% b);
 
 			/// <summary>
+			/// Get the scale mode used for texture scale operations.
+			/// </summary>
+			/// <returns>Scale mode on success or error code on failure.</returns>
+			Result<ScaleMode, int> GetTextureScaleMode();
+
+			/// <summary>
+			/// Get the user-specified pointer associated with a texture
+			/// </summary>
+			/// <returns>The pointer associated with the texture or None if the texture is not valid.
+			/// </returns>
+			Result<System::IntPtr, None^> GetTextureUserData();
+
+			/// <summary>
 			/// Lock a portion of the texture for write-only pixel access.
 			/// </summary>
 			/// <param name="rect">A <see cref="NETSDL2::Video::Rect"/> structure
@@ -114,6 +128,19 @@ namespace NETSDL2
 			/// valid or was not created with
 			/// <see cref="TextureAccess::Streaming"/>.</returns>
 			Result<None^, int> LockTexture(System::Nullable<Rect> rect, [Out]System::IntPtr% pixels, [Out]int% pitch);
+
+			/// <summary>
+			/// Lock a portion of the texture for write-only pixel access, and expose it as a SDL
+			/// surface.
+			/// </summary>
+			/// <param name="rect">A <see cref="NETSDL2::Video::Rect"/> structure
+			/// representing the area to lock for access; null to lock the entire
+			/// texture.</param>
+			/// <param name="surface">SDL surface representing the locked area.</param>
+			/// <returns>None on success or error code if the texture is not
+			/// valid or was not created with
+			/// <see cref="TextureAccess::Streaming"/></returns>
+			Result<None^, int> LockTextureToSurface(System::Nullable<Rect> rect, [Out]Surface^% surface);
 
 			/// <summary>
 			/// Query the attributes of a texture.
@@ -156,6 +183,20 @@ namespace NETSDL2
 			Result<None^, int> SetTextureColorMod(Uint8 r, Uint8 g, Uint8 b);
 
 			/// <summary>
+			/// Set the scale mode used for texture scale operations.
+			/// </summary>
+			/// <param name="scaleMode">the <see cref="ScaleMode"/> to use for texture scaling.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> SetTextureScaleMode(ScaleMode scaleMode);
+
+			/// <summary>
+			/// Associate a user-specified pointer with a texture.
+			/// </summary>
+			/// <param name="userdata">The pointer to associate with the texture.</param>
+			/// <returns>None on success, or -1 if the texture is not valid.</returns>
+			Result<None^, int> SetTextureUserData(System::IntPtr userdata);
+
+			/// <summary>
 			/// Unlock a texture, uploading the changes to video memory, if needed.
 			/// </summary>
 			void UnlockTexture();
@@ -194,6 +235,23 @@ namespace NETSDL2
 				System::Nullable<NETSDL2::Video::Rect> rect,
 				Uint8* yplane, int ypitch, Uint8* uplane, int upitch,
 				Uint8* vplane, int vpitch);
+
+			/// <summary>
+			/// Update a rectangle within a planar NV12 or NV21 texture with new pixels.
+			/// </summary>
+			/// <param name="rect">A <see cref="NETSDL2::Video::Rect"/> structure
+			/// representing the area to update, or null to update the entire
+			/// texture.</param>
+			/// <param name="yplane">The raw pixel data for the Y plane.</param>
+			/// <param name="ypitch">The number of bytes between rows of pixel
+			/// data for the Y plane.</param>
+			/// <param name="uvplane">The raw pixel data for the UV plane.</param>
+			/// <param name="uvpitch">The number of bytes between rows of pixel
+			/// data for the UV plane.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> UpdateNVTexture(
+				System::Nullable<NETSDL2::Video::Rect> rect,
+				Uint8* yplane, int ypitch, Uint8* uvplane, int uvpitch);
 		};
 	}
 }

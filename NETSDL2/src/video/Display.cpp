@@ -36,6 +36,28 @@ Result<DisplayMode, None^> NETSDL2::Video::Display::GetClosestDisplayMode(int di
 	return closest;
 }
 
+Result<int, int> NETSDL2::Video::Display::GetPointDisplayIndex(NETSDL2::Video::Point point)
+{
+	int result = SDL_GetPointDisplayIndex((const SDL_Point*)&point);
+	if(result < 0)
+	{
+		return Result<int, int>::MakeFailure(result);
+	}
+
+	return result;
+}
+
+Result<int, int> NETSDL2::Video::Display::GetRectDisplayIndex(NETSDL2::Video::Rect rect)
+{
+	int result = SDL_GetRectDisplayIndex((const SDL_Rect*)&rect);
+	if(result < 0)
+	{
+		return Result<int, int>::MakeFailure(result);
+	}
+
+	return result;
+}
+
 Result<DisplayMode, int> NETSDL2::Video::Display::GetCurrentDisplayMode(int displayIndex)
 {
 	DisplayMode current;
@@ -98,6 +120,11 @@ Result<None^, int> NETSDL2::Video::Display::GetDisplayDPI(int displayIndex, floa
 	vdpi = v;
 
 	return None::Value;
+}
+
+DisplayOrientation NETSDL2::Video::Display::GetDisplayOrientation(int displayIndex)
+{
+	return (DisplayOrientation)SDL_GetDisplayOrientation(displayIndex);
 }
 
 Result<DisplayMode, int> NETSDL2::Video::Display::GetDisplayMode(int displayIndex, int modeIndex)

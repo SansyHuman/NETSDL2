@@ -108,6 +108,12 @@ namespace NETSDL2
 			/// otherwise it returns the initialization status of the specified
 			/// subsystems.</returns>
 			static SubSystems WasInit(SubSystems flags);
+
+			/// <summary>
+			/// Gets and sets whether to throw exception on failure results if
+			/// the function returns <see cref="NETSDL2::Core::Result"/> value.
+			/// </summary>
+			static property bool ThrowOnFailure;
 		};
 	}
 }

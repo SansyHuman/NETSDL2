@@ -69,6 +69,24 @@ NETSDL2::Video::Renderer::!Renderer()
 	renderer = __nullptr;
 }
 
+Result<Window^, None^> NETSDL2::Video::Renderer::GetWindow()
+{
+	SDL_Window* window = SDL_RenderGetWindow(renderer);
+	if(window == __nullptr)
+	{
+		return Result<Window^, None^>::MakeFailure(None::Value);
+	}
+
+	Window^ result = Window::GetWindowFromNative(window);
+	if(result == nullptr)
+	{
+		Error::SetError("The window associated with the renderer is not made from managed code.");
+		return Result<Window^, None^>::MakeFailure(None::Value);
+	}
+
+	return result;
+}
+
 Result<BlendMode, int> NETSDL2::Video::Renderer::GetDrawBlendMode()
 {
 	SDL_BlendMode mode;
@@ -510,9 +528,58 @@ bool Renderer::IsClipEnabled::get()
 	return SDL_RenderIsClipEnabled(renderer) == SDL_TRUE;
 }
 
+void NETSDL2::Video::Renderer::WindowToLogical(int windowX, int windowY, float% logicalX, float% logicalY)
+{
+	float lx, ly;
+	SDL_RenderWindowToLogical(renderer, windowX, windowY, &lx, &ly);
+	logicalX = lx;
+	logicalY = ly;
+}
+
+void NETSDL2::Video::Renderer::LogicalToWindow(float logicalX, float logicalY, int% windowX, int% windowY)
+{
+	int wx, wy;
+	SDL_RenderLogicalToWindow(renderer, logicalX, logicalY, &wx, &wy);
+	windowX = wx;
+	windowY = wy;
+}
+
 void NETSDL2::Video::Renderer::Present()
 {
 	SDL_RenderPresent(renderer);
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::Flush()
+{
+	int result = SDL_RenderFlush(renderer);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<System::IntPtr, None^> NETSDL2::Video::Renderer::GetMetalLayer()
+{
+	void* result = SDL_RenderGetMetalLayer(renderer);
+	if(result == __nullptr)
+	{
+		return Result<System::IntPtr, None^>::MakeFailure(None::Value);
+	}
+
+	return System::IntPtr(result);
+}
+
+Result<System::IntPtr, None^> NETSDL2::Video::Renderer::GetMetalCommandEncoder()
+{
+	void* result = SDL_RenderGetMetalCommandEncoder(renderer);
+	if(result == __nullptr)
+	{
+		return Result<System::IntPtr, None^>::MakeFailure(None::Value);
+	}
+
+	return System::IntPtr(result);
 }
 
 Result<None^, int> NETSDL2::Video::Renderer::ReadPixels(System::Nullable<NETSDL2::Video::Rect> rect, PixelFormatEnum format, System::IntPtr pixels, int pitch)
@@ -613,6 +680,17 @@ Result<None^, int> NETSDL2::Video::Renderer::SetDrawColor(Uint8 r, Uint8 g, Uint
 Result<None^, int> NETSDL2::Video::Renderer::SetRenderTarget(Texture^ texture)
 {
 	int result = SDL_SetRenderTarget(renderer, texture == nullptr ? __nullptr : texture->NativeTexture);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Renderer::SetVSync(int vsync)
+{
+	int result = SDL_RenderSetVSync(renderer, vsync);
 	if(result < 0)
 	{
 		return Result<None^, int>::MakeFailure(result);

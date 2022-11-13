@@ -7,6 +7,7 @@
 #include "../../include/video/Rect.h"
 #include "../../include/video/MessageBoxData.h"
 #include "../../include/events/Keysym.h"
+#include "ICCProfile.h"
 
 using namespace System::Runtime::InteropServices;
 using namespace System::Diagnostics::CodeAnalysis;
@@ -436,6 +437,9 @@ namespace NETSDL2
 			void InitCallbacks();
 			void ClearCallbacks();
 
+		internal:
+			static Window^ GetWindowFromNative(SDL_Window* window);
+
 		public:
 			/// <summary>
 			/// Position of the window should be centered.
@@ -619,6 +623,21 @@ namespace NETSDL2
 			}
 
 			/// <summary>
+			/// Confines the cursor to the specified area of a window.
+			/// </summary>
+			/// <param name="rect">A rectangle area in window-relative coordinates. If null the
+			/// barrier for the specified window will be destroyed.
+			/// </param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> SetWindowMouseRect(System::Nullable<NETSDL2::Video::Rect> rect);
+
+			/// <summary>
+			/// Get the mouse confinement rectangle of a window.
+			/// </summary>
+			/// <returns>The mouse confinement rectangle of a window, or None if there isn't one.</returns>
+			Result<NETSDL2::Video::Rect, None^> GetWindowMouseRect();
+
+			/// <summary>
 			/// Get the renderer associated with a window.
 			/// </summary>
 			/// <returns>The renderer on success or None on failure.</returns>
@@ -669,6 +688,12 @@ namespace NETSDL2
 			Result<DisplayMode, int> GetWindowDisplayMode();
 
 			/// <summary>
+			/// Get the raw ICC profile data for the screen the window is currently on.
+			/// </summary>
+			/// <returns>The raw ICC profile data on success or None on failure.</returns>
+			Result<ICCProfile^, None^> GetWindowICCProfile();
+
+			/// <summary>
 			/// Get the window flags.
 			/// </summary>
 			property WindowFlags Flags
@@ -702,6 +727,24 @@ namespace NETSDL2
 			/// Get and set true if input is grabbed, false otherwise.
 			/// </summary>
 			property bool IsGrabbed
+			{
+				bool get();
+				void set(bool value);
+			}
+
+			/// <summary>
+			/// Get and set a window's keyboard grab mode.
+			/// </summary>
+			property bool IsKeyboardGrabbed
+			{
+				bool get();
+				void set(bool value);
+			}
+
+			/// <summary>
+			/// Get and set a window's mouse grab mode.
+			/// </summary>
+			property bool IsMouseGrabbed
 			{
 				bool get();
 				void set(bool value);
@@ -947,6 +990,12 @@ namespace NETSDL2
 			/// <param name="resizable">true to allow resizing, false to
 			/// disallow.</param>
 			void SetWindowResizable(bool resizable);
+
+			/// <summary>
+			/// Set the window to always be above the others.
+			/// </summary>
+			/// <param name="onTop">true to set the window always on top, false to disable.</param>
+			void SetWindowAlwaysOnTop(bool onTop);
 
 			/// <summary>
 			/// Set the size of a window's client area.

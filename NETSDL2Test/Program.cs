@@ -22,6 +22,8 @@ if(result.ResultType == Result<None, int>.Type.Failed)
     return;
 }
 
+None resultVarer = result;
+
 result = Video.Init(null);
 Console.WriteLine("Video init: {0}", result);
 
@@ -90,6 +92,8 @@ window.SetWindowHitTest((Window window, Point point, IntPtr data) =>
 
     return HitTestResult.Normal;
 }, new IntPtr(50000));
+
+ICCProfile profile = window.GetWindowICCProfile().ResultValue;
 
 MessageBoxColorScheme scheme = new MessageBoxColorScheme();
 scheme[MessageBoxColorType.Text] = new MessageBoxColor(0, 0, 35);
@@ -274,57 +278,6 @@ window.ShowWindow();
 
 modal.Dispose();
 
-Renderer renderer;
-Window winWithRenderer = new Window(1920, 1080, WindowFlags.AllowHighDPI, out renderer);
-Surface windowSurface = winWithRenderer.GetWindowSurface().ResultValue;
-windowSurface = winWithRenderer.GetWindowSurface().ResultValue;
-PixelFormat windowSurfaceFormat = windowSurface.Format;
-
-Texture texture = new Texture(renderer, PixelFormatEnum.RGBA8888, TextureAccess.Target, 200, 200);
-Texture texture2 = new Texture(renderer, windowSurface);
-Texture texture3 = new Texture(renderer, PixelFormatEnum.RGBA8888, TextureAccess.Streaming, 200, 200);
-
-Logging.LogInfo(LogCategory.Application, "Texture alpha: {0}", texture.GetTextureAlphaMod());
-Logging.LogInfo(LogCategory.Application, "Texture blend: {0}", texture.GetTextureBlendMode());
-Logging.LogInfo(LogCategory.Application, "Texture color: {0}", texture.GetTextureColorMod(out byte r, out byte g, out byte b));
-Logging.LogInfo(LogCategory.Application, "Texture color: {0}, {1}, {2}", r, g, b);
-
-Logging.LogInfo(LogCategory.Application, "Make current: {0}", GL.MakeCurrent(window, context.ResultValue));
-Logging.LogInfo(LogCategory.Application, "Bind: {0}, {1}", GL.BindTexture(texture2, out float texw, out float texh), Error.GetError());
-Logging.LogInfo(LogCategory.Application, "Unbind: {0}, {1}", GL.UnbindTexture(texture2), Error.GetError());
-
-Logging.LogInfo(LogCategory.Application, "Lock texture: {0}", texture3.LockTexture(null, out IntPtr px, out int pt));
-Logging.LogInfo(LogCategory.Application, "Lock texture: {0}, {1}", px, pt);
-Logging.LogInfo(LogCategory.Application, "Lock texture: {0}", texture3.LockTexture(new Rect(100, 100, 50, 50), out px, out pt));
-Logging.LogInfo(LogCategory.Application, "Lock texture: {0}, {1}", px, pt);
-Logging.LogInfo(LogCategory.Application, "Query texture: {0}", texture2.QueryTexture(out PixelFormatEnum pixelFormat, out TextureAccess texAccess, out w, out h));
-Logging.LogInfo(LogCategory.Application, "Query texture: {0}, {1}, {2}, {3}", pixelFormat, texAccess, w, h);
-
-Logging.LogInfo(LogCategory.Application, "Renderer blend: {0}", renderer.GetDrawBlendMode());
-Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}", renderer.GetDrawColor(out r, out g, out b, out byte a));
-Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}, {1}, {2}, {3}", r, g, b, a);
-Logging.LogInfo(LogCategory.Application, "Renderer info: {0}", renderer.GetRendererInfo());
-Logging.LogInfo(LogCategory.Application, "Renderer output size: {0}", renderer.GetRendererOutputSize(out w, out h));
-Logging.LogInfo(LogCategory.Application, "Renderer output size: {0}, {1}", w, h);
-
-Logging.LogInfo(LogCategory.Application, "Render target: {0}", renderer.GetRenderTarget());
-Logging.LogInfo(LogCategory.Application, "Set render target: {0}", renderer.SetRenderTarget(texture));
-Logging.LogInfo(LogCategory.Application, "Render target: {0}", renderer.GetRenderTarget());
-
-Logging.LogInfo(LogCategory.Application, "Render driver num: {0}", Render.GetNumRenderDrivers());
-
-RendererInfo[] renderers = Render.GetRenderDriverInfos();
-foreach (RendererInfo re in renderers)
-{
-    Logging.LogInfo(LogCategory.Application, "Render driver: {0}", re);
-}
-
-renderer.Dispose();
-winWithRenderer.Dispose();
-windowSurface.Dispose();
-texture.Dispose();
-texture2.Dispose();
-
 ushort[] pixels = new ushort[16 * 16] {
     0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff,
     0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff, 0x0fff,
@@ -365,11 +318,158 @@ unsafe
     {
         using (Surface surface = new Surface((void*)pPixels, 16, 16, 16, 16 * 2, 0x0f00, 0x00f0, 0x000f, 0xf000))
         {
-            window.SetWindowIcon(surface);
+            SDL.ThrowOnFailure = true;
+            surface.FillRects(new Rect[]
+            {
+                new Rect(0, 0, 4, 4),
+                new Rect(4, 4, 4, 4)
+            }, 0x7fff);
+            Surface surfaceConv = surface.ConvertSurfaceFormat(PixelFormatEnum.BGRA4444);
+            surfaceConv.SetSurfaceRLE(true);
+            surfaceConv.SetSurfaceRLE(false);
+            surfaceConv.GetSurfaceColorMod(out byte red, out byte green, out byte blue);
+            surfaceConv.SetSurfaceColorMod(128, 120, 60);
+            surfaceConv.GetSurfaceColorMod(out red, out green, out blue);
+            Surface blitSurf = new Surface(16, 16, 32, PixelFormatEnum.BGRA8888);
+            Surface.BlitSurface(surfaceConv, new Rect(0, 0, 16, 8), blitSurf, new Rect(0, 8, 16, 8));
+            window.SetWindowIcon(blitSurf);
+            SDL.ThrowOnFailure = false;
         }
     }
 }
 
+Surface bmpImage = new Surface("D:\\VS Project\\NETSDL2\\NETSDL2Test\\테스트.bmp");
+None areiahre = bmpImage.SaveBMP("D:\\VS Project\\NETSDL2\\NETSDL2Test\\테스트저장.bmp");
+
+Renderer renderer;
+Window winWithRenderer = new Window(1920, 1080, WindowFlags.AllowHighDPI, out renderer);
+winWithRenderer.SetWindowAlwaysOnTop(true);
+Surface windowSurface = winWithRenderer.GetWindowSurface().ResultValue;
+windowSurface = winWithRenderer.GetWindowSurface().ResultValue;
+PixelFormat windowSurfaceFormat = windowSurface.Format;
+
+Texture texture = new Texture(renderer, PixelFormatEnum.RGBA8888, TextureAccess.Target, 200, 200);
+Texture texture2 = new Texture(renderer, windowSurface);
+Texture texture3 = new Texture(renderer, Pixels.MasksToPixelFormatEnum(16, 0x0f00, 0x00f0, 0x000f, 0xf000), TextureAccess.Streaming, 200, 200);
+
+Logging.LogInfo(LogCategory.Application, "Texture alpha: {0}", texture.GetTextureAlphaMod());
+Logging.LogInfo(LogCategory.Application, "Texture blend: {0}", texture.GetTextureBlendMode());
+Logging.LogInfo(LogCategory.Application, "Texture color: {0}", texture.GetTextureColorMod(out byte r, out byte g, out byte b));
+Logging.LogInfo(LogCategory.Application, "Texture color: {0}, {1}, {2}", r, g, b);
+
+Logging.LogInfo(LogCategory.Application, "Make current: {0}", GL.MakeCurrent(window, context.ResultValue));
+Logging.LogInfo(LogCategory.Application, "Bind: {0}, {1}", GL.BindTexture(texture2, out float texw, out float texh), Error.GetError());
+Logging.LogInfo(LogCategory.Application, "Unbind: {0}, {1}", GL.UnbindTexture(texture2), Error.GetError());
+
+Logging.LogInfo(LogCategory.Application, "Lock texture: {0}", texture3.LockTexture(null, out IntPtr px, out int pt));
+Logging.LogInfo(LogCategory.Application, "Lock texture: {0}, {1}", px, pt);
+Logging.LogInfo(LogCategory.Application, "Lock texture: {0}", texture3.LockTexture(new Rect(100, 100, 50, 50), out px, out pt));
+Logging.LogInfo(LogCategory.Application, "Lock texture: {0}, {1}", px, pt);
+texture3.UnlockTexture();
+Logging.LogInfo(LogCategory.Application, "Query texture: {0}", texture2.QueryTexture(out PixelFormatEnum pixelFormat, out TextureAccess texAccess, out w, out h));
+Logging.LogInfo(LogCategory.Application, "Query texture: {0}, {1}, {2}, {3}", pixelFormat, texAccess, w, h);
+
+Logging.LogInfo(LogCategory.Application, "Renderer blend: {0}", renderer.GetDrawBlendMode());
+Logging.LogInfo(LogCategory.Application, "Set renderer blend: {0}", renderer.SetDrawBlendMode(BlendMode.Blend));
+Logging.LogInfo(LogCategory.Application, "Renderer blend: {0}", renderer.GetDrawBlendMode());
+
+Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}", renderer.GetDrawColor(out r, out g, out b, out byte a));
+Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}, {1}, {2}, {3}", r, g, b, a);
+Logging.LogInfo(LogCategory.Application, "Set renderer draw color: {0}", renderer.SetDrawColor(255, 0, 0, 128));
+Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}", renderer.GetDrawColor(out r, out g, out b, out a));
+Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}, {1}, {2}, {3}", r, g, b, a);
+
+Logging.LogInfo(LogCategory.Application, "Renderer info: {0}", renderer.GetRendererInfo());
+
+Logging.LogInfo(LogCategory.Application, "Renderer output size: {0}", renderer.GetRendererOutputSize(out w, out h));
+Logging.LogInfo(LogCategory.Application, "Renderer output size: {0}, {1}", w, h);
+
+Logging.LogInfo(LogCategory.Application, "Render target: {0}", renderer.GetRenderTarget());
+Logging.LogInfo(LogCategory.Application, "Set render target: {0}", renderer.SetRenderTarget(texture));
+Logging.LogInfo(LogCategory.Application, "Render target: {0}", renderer.GetRenderTarget());
+
+renderer.SetVSync(1);
+
+renderer.SetRenderTarget(null);
+renderer.SetDrawColor(255, 255, 255, 255);
+Logging.LogInfo(LogCategory.Application, "Clear: {0}", renderer.Clear());
+renderer.Present();
+
+unsafe
+{
+    fixed (ushort* pPixels = &pixels[0])
+    {
+        texture3.UpdateTexture(new Rect(0, 0, 16, 16), new IntPtr(pPixels), 16 * 2);
+    }
+}
+
+texture3.SetTextureScaleMode(ScaleMode.Nearest);
+
+renderer.SetRenderTarget(texture);
+renderer.SetDrawColor(255, 0, 0, 128);
+renderer.DrawLine(0, 0, 200, 100);
+renderer.Present();
+
+renderer.SetRenderTarget(null);
+renderer.Copy(texture3, new Rect(0, 0, 16, 16), new Rect(250, 150, 200, 200));
+renderer.Present();
+
+renderer.CopyEx(texture, new Rect(50, 50, 100, 100), new Rect(250, 150, 200, 200), 40, new Point(0, 0), RendererFlip.None);
+renderer.Present();
+
+renderer.CopyEx(texture, null, new Rect(250, 150, 200, 200), 40, new Point(0, 0), RendererFlip.Horizontal);
+renderer.Present();
+
+renderer.CopyEx(texture, new Rect(50, 50, 100, 100), null, 40, new Point(0, 0), RendererFlip.Vertical);
+renderer.Present();
+
+renderer.CopyExF(texture, new Rect(50, 50, 100, 100), new FRect(250, 150, 200, 200), 40, new FPoint(0, 0), RendererFlip.None);
+renderer.Present();
+
+renderer.CopyExF(texture, null, new FRect(250, 150, 200, 200), 40, new FPoint(0, 0), RendererFlip.Horizontal);
+renderer.Present();
+
+renderer.CopyExF(texture, new Rect(50, 50, 100, 100), null, 40, new FPoint(0, 0), RendererFlip.Vertical);
+renderer.Present();
+
+renderer.DrawLines(new Point(0, 0), new Point(200, 300), new Point(600, 500), new Point(700, 100));
+renderer.Present();
+
+renderer.DrawLinesF(new FPoint(0, 0), new FPoint(100.5f, 200.2f), new FPoint(800, 400), new FPoint(200, 300));
+renderer.Present();
+
+renderer.RenderGeometry(null, new Vertex[]
+{
+    new Vertex(new FPoint(500, 100), new Color(255, 0, 0, 127), new FPoint()),
+    new Vertex(new FPoint(300, 300), new Color(0, 255, 0, 127), new FPoint()),
+    new Vertex(new FPoint(700, 300), new Color(0, 0, 255, 127), new FPoint())
+}, null);
+renderer.Present();
+
+renderer.RenderGeometry(null, new Vertex[]
+{
+    new Vertex(new FPoint(100, 100), new Color(255, 0, 0, 127), new FPoint(0, 0)),
+    new Vertex(new FPoint(100, 500), new Color(0, 255, 0, 127), new FPoint(0, 1)),
+    new Vertex(new FPoint(500, 500), new Color(0, 0, 255, 127), new FPoint(1, 1)),
+    new Vertex(new FPoint(500, 100), new Color(255, 255, 255, 255), new FPoint(1, 0))
+}, new int[] { 0, 1, 2, 0, 2, 3 });
+renderer.Present();
+
+Logging.LogInfo(LogCategory.Application, "Render driver num: {0}", Render.GetNumRenderDrivers());
+
+RendererInfo[] renderers = Render.GetRenderDriverInfos();
+foreach (RendererInfo re in renderers)
+{
+    Logging.LogInfo(LogCategory.Application, "Render driver: {0}", re);
+}
+
+renderer.Dispose();
+winWithRenderer.Dispose();
+windowSurface.Dispose();
+texture.Dispose();
+texture2.Dispose();
+
+window.IsMouseGrabbed = true;
 bool mainLoop = true;
 Event @event = new Event();
 while (mainLoop)
@@ -460,6 +560,9 @@ unsafe
 
             Logging.LogInfo(LogCategory.Application, "Set pixel palette: {0}", Pixels.SetPixelFormatPalette(format, palette));
             Logging.LogInfo(LogCategory.Application, "{0}", Error.GetError());
+
+            Surface blitSurf = new Surface(16, 16, 32, PixelFormatEnum.BGRA8888);
+            blitSurf.SetSurfacePalette(palette);
         }
     }
 }

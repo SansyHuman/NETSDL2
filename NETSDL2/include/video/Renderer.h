@@ -4,6 +4,7 @@
 
 #include "../core/None.h"
 #include "../core/Result.h"
+#include "../core/Error.h"
 #include "RendererInfo.h"
 #include "PixelFormat.h"
 #include "TextureAccess.h"
@@ -73,6 +74,12 @@ namespace NETSDL2
 			Renderer(Surface^ surface);
 			~Renderer();
 			!Renderer();
+
+			/// <summary>
+			/// Get the window associated with a renderer.
+			/// </summary>
+			/// <returns>The window on success or None on failure</returns>
+			Result<Window^, None^> GetWindow();
 
 			/// <summary>
 			/// Get the blend mode used for drawing operations.
@@ -425,10 +432,50 @@ namespace NETSDL2
 			}
 
 			/// <summary>
+			/// Get logical coordinates of point in renderer when given real coordinates of point in
+			/// window.
+			/// </summary>
+			/// <param name="windowX">The real X coordinate in the window.</param>
+			/// <param name="windowY">The real Y coordinate in the window.</param>
+			/// <param name="logicalX">The logical x coordinate.</param>
+			/// <param name="logicalY">The logical y coordinate.</param>
+			void WindowToLogical(int windowX, int windowY, [Out]float% logicalX, [Out]float% logicalY);
+
+			/// <summary>
+			/// Get real coordinates of point in window when given logical coordinates of point in
+			/// wirendererndow.
+			/// </summary>
+			/// <param name="logicalX">The logical x coordinate.</param>
+			/// <param name="logicalY">The logical y coordinate.</param>
+			/// <param name="windowX">The real X coordinate in the window.</param>
+			/// <param name="windowY">The real Y coordinate in the window.</param>
+			void LogicalToWindow(float logicalX, float logicalY, [Out]int% windowX, [Out]int% windowY);
+
+			/// <summary>
 			/// Update the screen with any rendering performed since the previous
 			/// call.
 			/// </summary>
 			void Present();
+
+			/// <summary>
+			/// Force the rendering context to flush any pending commands to the underlying rendering API.
+			/// </summary>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> Flush();
+
+			/// <summary>
+			/// Get the CAMetalLayer associated with the given Metal renderer.
+			/// </summary>
+			/// <returns>A CAMetalLayer * on success, or None if the renderer isn't a Metal renderer.
+			/// </returns>
+			Result<System::IntPtr, None^> GetMetalLayer();
+
+			/// <summary>
+			/// Get the Metal command encoder for the current frame.
+			/// </summary>
+			/// <returns>An MTLRenderCommandEncoder on success, or None if the renderer isn't a Metal
+			/// renderer or there was an error.</returns>
+			Result<System::IntPtr, None^> GetMetalCommandEncoder();
 
 			/// <summary>
 			/// Read pixels from the current rendering target to an array of
@@ -528,6 +575,13 @@ namespace NETSDL2
 			/// render to the window instead of a texture.</param>
 			/// <returns>None on success or error code on failure.</returns>
 			Result<None^, int> SetRenderTarget(Texture^ texture);
+
+			/// <summary>
+			/// Toggle VSync of the given renderer.
+			/// </summary>
+			/// <param name="vsync">1 for on, 0 for off. All other values are reserved.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> SetVSync(int vsync);
 
 		internal:
 			[MethodImpl(MethodImplOptions::AggressiveInlining)]

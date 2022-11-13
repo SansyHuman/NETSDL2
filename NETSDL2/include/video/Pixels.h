@@ -171,6 +171,31 @@ namespace NETSDL2
 			/// <returns>None on success or error code if not all of the
 			/// colors could be set.</returns>
 			static Result<None^, int> SetPixelFormatPalette(PixelFormat* format, Palette* palette);
+
+			/// <summary>
+			/// Copy a block of pixels of one format to another format.
+			/// </summary>
+			/// <param name="width">The width of the block to copy, in pixels.
+			/// </param>
+			/// <param name="height">The height of the block to copy, in pixels.
+			/// </param>
+			/// <param name="srcFormat">A <see cref="PixelFormatEnum"/> value of
+			/// the src pixels format.</param>
+			/// <param name="src">A pointer to the source pixels.</param>
+			/// <param name="srcPitch">The pitch of the source pixels, in bytes.
+			/// </param>
+			/// <param name="dstFormat">A <see cref="PixelFormatEnum"/> value of
+			/// the dst pixels format.</param>
+			/// <param name="dst">A pointer to be filled in with new pixel data.
+			/// </param>
+			/// <param name="dstPitch">The pitch of the destination pixels, in
+			/// bytes.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			static Result<None^, int> ConvertPixels(
+				int width, int height, PixelFormatEnum srcFormat,
+				System::IntPtr src, int srcPitch,
+				PixelFormatEnum dstFormat, System::IntPtr dst, int dstPitch
+			);
 		};
 
 		/// <summary>
