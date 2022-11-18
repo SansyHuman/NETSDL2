@@ -62,13 +62,13 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalUsingDirectories>E:\VulkanSDK\Include\SDL2;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>F:\VS Project\SDL2-2.24.2\include;E:\VulkanSDK\Include\SDL2;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalOptions>/Zc:twoPhase- %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>E:\VulkanSDK\Include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\VS Project\SDL2-2.24.2\include;E:\VulkanSDK\Include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:\VulkanSDK\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>F:\VS Project\SDL2-2.24.2\lib\x64;E:\VulkanSDK\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -80,13 +80,13 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalUsingDirectories>E:\VulkanSDK\Include\SDL2;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>F:\VS Project\SDL2-2.24.2\include;E:\VulkanSDK\Include\SDL2;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalOptions>/Zc:twoPhase- %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>E:\VulkanSDK\Include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>F:\VS Project\SDL2-2.24.2\include;E:\VulkanSDK\Include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:\VulkanSDK\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>F:\VS Project\SDL2-2.24.2\lib\x64;E:\VulkanSDK\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -98,11 +98,16 @@
     <ClInclude Include="include\core\SDL.h" />
     <ClInclude Include="include\core\SDLVersion.h" />
     <ClInclude Include="include\core\Version.h" />
+    <ClInclude Include="include\events\Button.h" />
+    <ClInclude Include="include\events\Controllers.h" />
     <ClInclude Include="include\events\Event.h" />
     <ClInclude Include="include\events\Events.h" />
+    <ClInclude Include="include\events\Joysticks.h" />
     <ClInclude Include="include\events\Keycode.h" />
     <ClInclude Include="include\events\Keysym.h" />
     <ClInclude Include="include\events\Scancode.h" />
+    <ClInclude Include="include\events\Sensors.h" />
+    <ClInclude Include="include\events\Touch.h" />
     <ClInclude Include="include\internal\StringMarshal.h" />
     <ClInclude Include="include\system\Stdinc.h" />
     <ClInclude Include="include\video\Blend.h" />
@@ -141,11 +146,16 @@
     <ClCompile Include="src\core\SDL.cpp" />
     <ClCompile Include="src\core\SDLVersion.cpp" />
     <ClCompile Include="src\core\Version.cpp" />
+    <ClCompile Include="src\events\Button.cpp" />
+    <ClCompile Include="src\events\Controllers.cpp" />
     <ClCompile Include="src\events\Event.cpp" />
     <ClCompile Include="src\events\Events.cpp" />
+    <ClCompile Include="src\events\Joysticks.cpp" />
     <ClCompile Include="src\events\Keycode.cpp" />
     <ClCompile Include="src\events\Keysym.cpp" />
     <ClCompile Include="src\events\Scancode.cpp" />
+    <ClCompile Include="src\events\Sensors.cpp" />
+    <ClCompile Include="src\events\Touch.cpp" />
     <ClCompile Include="src\internal\StringMarshal.cpp" />
     <ClCompile Include="src\system\Stdinc.cpp" />
     <ClCompile Include="src\video\Blend.cpp" />

@@ -165,6 +165,21 @@
     <ClInclude Include="include\system\Stdinc.h">
       <Filter>헤더 파일\systems</Filter>
     </ClInclude>
+    <ClInclude Include="include\events\Button.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Touch.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Joysticks.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Controllers.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Sensors.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
@@ -289,6 +304,21 @@
     </ClCompile>
     <ClCompile Include="src\system\Stdinc.cpp">
       <Filter>소스 파일\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Button.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Touch.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Joysticks.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Controllers.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Sensors.cpp">
+      <Filter>소스 파일\events</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

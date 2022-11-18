@@ -13,4 +13,13 @@
     <ProjectReference Include="..\NETSDL2\NETSDL2.vcxproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="테스트.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="테스트저장.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

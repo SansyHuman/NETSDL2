@@ -338,8 +338,8 @@ unsafe
     }
 }
 
-Surface bmpImage = new Surface("D:\\VS Project\\NETSDL2\\NETSDL2Test\\테스트.bmp");
-None areiahre = bmpImage.SaveBMP("D:\\VS Project\\NETSDL2\\NETSDL2Test\\테스트저장.bmp");
+Surface bmpImage = new Surface("테스트.bmp");
+None areiahre = bmpImage.SaveBMP("테스트저장.bmp");
 
 Renderer renderer;
 Window winWithRenderer = new Window(1920, 1080, WindowFlags.AllowHighDPI, out renderer);
