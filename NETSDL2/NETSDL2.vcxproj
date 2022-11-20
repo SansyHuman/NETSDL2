@@ -91,6 +91,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\core\Error.h" />
+    <ClInclude Include="include\core\FunctionPointer.h" />
     <ClInclude Include="include\core\Hint.h" />
     <ClInclude Include="include\core\Log.h" />
     <ClInclude Include="include\core\None.h" />
@@ -102,6 +103,7 @@
     <ClInclude Include="include\events\Controllers.h" />
     <ClInclude Include="include\events\Event.h" />
     <ClInclude Include="include\events\Events.h" />
+    <ClInclude Include="include\events\Finger.h" />
     <ClInclude Include="include\events\Joysticks.h" />
     <ClInclude Include="include\events\Keycode.h" />
     <ClInclude Include="include\events\Keysym.h" />
@@ -139,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="src\core\Error.cpp" />
+    <ClCompile Include="src\core\FunctionPointer.cpp" />
     <ClCompile Include="src\core\Hint.cpp" />
     <ClCompile Include="src\core\Log.cpp" />
     <ClCompile Include="src\core\None.cpp" />
@@ -150,6 +153,7 @@
     <ClCompile Include="src\events\Controllers.cpp" />
     <ClCompile Include="src\events\Event.cpp" />
     <ClCompile Include="src\events\Events.cpp" />
+    <ClCompile Include="src\events\Finger.cpp" />
     <ClCompile Include="src\events\Joysticks.cpp" />
     <ClCompile Include="src\events\Keycode.cpp" />
     <ClCompile Include="src\events\Keysym.cpp" />

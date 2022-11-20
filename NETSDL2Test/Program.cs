@@ -469,8 +469,21 @@ windowSurface.Dispose();
 texture.Dispose();
 texture2.Dispose();
 
-window.IsMouseGrabbed = true;
+window.IsMouseGrabbed = false;
 bool mainLoop = true;
+
+FunctionPointer<EventFilter> watch = new FunctionPointer<EventFilter>(
+    (IntPtr data, ref Event e) =>
+    {
+        if (e.Type == EventType.MouseButtonDown)
+        {
+            Logging.LogInfo(LogCategory.Application, "Mouse pos: {0}, {1}", e.Button.X, e.Button.Y);
+        }
+        return 1;
+    }
+    );
+Events.AddEventWatch(watch, IntPtr.Zero);
+
 Event @event = new Event();
 while (mainLoop)
 {

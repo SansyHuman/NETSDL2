@@ -5,6 +5,7 @@
 #include "Event.h"
 #include "../core/Result.h"
 #include "../core/None.h"
+#include "../core/FunctionPointer.h"
 
 using namespace System::Runtime::InteropServices;
 
@@ -15,11 +16,135 @@ namespace NETSDL2
 		using namespace NETSDL2::Core;
 
 		/// <summary>
+		/// A function pointer used for callbacks that
+		/// watch the event queue.
+		/// </summary>
+		/// <param name="userdata">What was passed as
+		/// `userdata`.</param>
+		/// <param name="event">The event that triggered
+		/// the callback.</param>
+		/// <returns>1 to permit event to be added to the
+		/// queue, and 0 to disallow.</returns>
+		public delegate int EventFilter(System::IntPtr userdata, Event% event);
+
+		/// <summary>
 		/// Functions for event handling.
 		/// </summary>
 		public ref struct Events abstract sealed
 		{
 		public:
+			/// <summary>
+			/// Add a callback to be triggered when an event
+			/// is added to the event queue.
+			/// </summary>
+			/// <param name="filter">Function to call when
+			/// an event happens.</param>
+			/// <param name="userdata">A pointer that is
+			/// passed to filter.</param>
+			static void AddEventWatch(FunctionPointer<EventFilter^>^ filter,
+				System::IntPtr userdata);
+
+			/// <summary>
+			/// Remove an event watch callback.
+			/// </summary>
+			/// <param name="filter">The function
+			/// originally passed.</param>
+			/// <param name="userdata">The pointer
+			/// originally passed.</param>
+			static void DelEventWatch(FunctionPointer<EventFilter^>^ filter,
+				System::IntPtr userdata);
+
+			/// <summary>
+			/// Set the state of processing events by
+			/// type.
+			/// </summary>
+			/// <param name="type">The type of event.
+			/// </param>
+			/// <param name="state">How to process the
+			/// event.</param>
+			/// <returns>The processing state of the
+			/// event before this function makes any
+			/// changes to it.</returns>
+			static EventState SetEventState(EventType type, EventState state);
+
+			/// <summary>
+			/// Run a specific filter function on the
+			/// current event queue, removing any events
+			/// for which the filter returns 0.
+			/// </summary>
+			/// <param name="filter">The EventFilter
+			/// function to call when an event happens.
+			/// </param>
+			/// <param name="userdata">A pointer that is
+			/// passed to filter.</param>
+			static void FilterEvents(EventFilter^ filter, System::IntPtr userdata);
+
+			/// <summary>
+			/// Clear events of a specific type from the
+			/// event queue.
+			/// </summary>
+			/// <param name="type">The type of event to be
+			/// cleared.</param>
+			static void FlushEvent(EventType type);
+
+			/// <summary>
+			/// Clear events of a range of types from the
+			/// event queue.
+			/// </summary>
+			/// <param name="minType">The low end of event
+			/// type to be cleared, inclusive.</param>
+			/// <param name="maxType">The high end of event
+			/// type to be cleared, inclusive.</param>
+			static void FlushEvents(EventType minType, EventType maxType);
+
+			/// <summary>
+			/// Query the current event filter.
+			/// </summary>
+			/// <param name="filter">The current callback
+			/// function will be stored here. This is a
+			/// native function pointer, so transform it
+			/// to delegate or assign to C# function
+			/// pointer.</param>
+			/// <param name="userdata">The pointer that is
+			/// passed to the current event filter will be
+			/// stored here.</param>
+			/// <returns></returns>
+			static bool GetEventFilter([Out] System::IntPtr% filter, [Out]System::IntPtr% userdata);
+
+			/// <summary>
+			/// Query the current processing state of a
+			/// specified EventType.
+			/// </summary>
+			/// <param name="type">EventType to query.
+			/// </param>
+			/// <returns>Disable or Enable.</returns>
+			static EventState GetEventState(EventType type);
+
+			/// <summary>
+			/// Check for the existence of a certain event
+			/// type in the event queue.
+			/// </summary>
+			/// <param name="type">The type of event to be
+			/// queried.</param>
+			/// <returns>true if events matching type are
+			/// present, or false if events matching type
+			/// are not present.</returns>
+			static bool HasEvent(EventType type);
+
+			/// <summary>
+			/// Check for the existence of certain event
+			/// types in the event queue.
+			/// </summary>
+			/// <param name="minType">The low end of event
+			/// type to be queried, inclusive.</param>
+			/// <param name="maxType">The high end of event
+			/// type to be queried, inclusive.</param>
+			/// <returns>true if events with type larger
+			/// than or equal to minType and less than or
+			/// equal to maxType are present, or false if
+			/// not.</returns>
+			static bool HasEvents(EventType minType, EventType maxType);
+
 			/// <summary>
 			/// Poll for currently pending events.
 			/// </summary>
@@ -36,6 +161,7 @@ namespace NETSDL2
 			{
 				bool get();
 			}
+
 		};
 	}
 }

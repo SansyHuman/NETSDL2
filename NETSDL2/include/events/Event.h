@@ -346,6 +346,37 @@ namespace NETSDL2
 		};
 
 		/// <summary>
+		/// Define how to process the event.
+		/// </summary>
+		public enum class EventState : int
+		{
+			/// <summary>
+			/// Returns the current processing state of
+			/// the specified event.
+			/// </summary>
+			Query = SDL_QUERY,
+
+			/// <summary>
+			/// The event will automatically be dropped
+			/// from the event queue and will not be
+			/// filtered.
+			/// </summary>
+			Ignore = SDL_IGNORE,
+
+			/// <summary>
+			/// The event will automatically be dropped
+			/// from the event queue and will not be
+			/// filtered.
+			/// </summary>
+			Disable = SDL_DISABLE,
+
+			/// <summary>
+			/// The event will be processed normally.
+			/// </summary>
+			Enable = SDL_ENABLE,
+		};
+
+		/// <summary>
 		/// Fields shared by every event.
 		/// </summary>
 		[StructLayout(LayoutKind::Sequential)]
