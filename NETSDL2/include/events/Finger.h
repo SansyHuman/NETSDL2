@@ -9,6 +9,31 @@ namespace NETSDL2
 	namespace Events
 	{
 		/// <summary>
+		/// Types of touch device.
+		/// </summary>
+		public enum class TouchDeviceType
+		{
+			Invalid = SDL_TOUCH_DEVICE_INVALID,
+
+			/// <summary>
+			/// Touch screen with window-relative
+			/// coordinates.
+			/// </summary>
+			Direct = SDL_TOUCH_DEVICE_DIRECT,
+
+			/// <summary>
+			/// Trackpad with absolute device coordinates.
+			/// </summary>
+			IndirectAbsolute = SDL_TOUCH_DEVICE_INDIRECT_ABSOLUTE,
+
+			/// <summary>
+			/// Trackpad with screen cursor-relative
+			/// coordinates.
+			/// </summary>
+			IndirectRelative = SDL_TOUCH_DEVICE_INDIRECT_RELATIVE,
+		};
+
+		/// <summary>
 		/// A structure that contains touch information.
 		/// </summary>
 		[StructLayout(LayoutKind::Sequential)]

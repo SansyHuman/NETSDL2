@@ -1,6 +1,9 @@
 #include "../../include/events/Touch.h"
 
+#include "../../include/internal/StringMarshal.h"
+
 using namespace NETSDL2::Events;
+using namespace NETSDL2::Internal;
 
 int Touch::NumTouchDevices::get()
 {
@@ -27,6 +30,22 @@ Result<SDL_TouchID, None^> NETSDL2::Events::Touch::GetTouchDevice(int index)
 	}
 
 	return result;
+}
+
+Result<System::String^, None^> NETSDL2::Events::Touch::GetTouchName(int index)
+{
+	const char* name = SDL_GetTouchName(index);
+	if(name == __nullptr)
+	{
+		return Result<System::String^, None^>::MakeFailure(None::Value);
+	}
+
+	return StringMarshal::UTF8NativeToManaged(name);
+}
+
+TouchDeviceType NETSDL2::Events::Touch::GetTouchDeviceType(SDL_TouchID touchID)
+{
+	return (TouchDeviceType)SDL_GetTouchDeviceType(touchID);
 }
 
 Result<Finger, None^> NETSDL2::Events::Touch::GetTouchFinger(SDL_TouchID touchID, int index)

@@ -146,6 +146,22 @@ namespace NETSDL2
 			static bool HasEvents(EventType minType, EventType maxType);
 
 			/// <summary>
+			/// Check the event queue for messages and
+			/// optionally return them.
+			/// </summary>
+			/// <param name="events">Destination buffer for
+			/// the retrieved events.</param>
+			/// <param name="action">Action to take.</param>
+			/// <param name="minType">Minimum value of the
+			/// event type to be considered.</param>
+			/// <param name="maxType">Maximum value of the
+			/// event type to be considered.</param>
+			/// <returns>The number of events actually
+			/// stored or a negative error code on
+			/// failure.</returns>
+			static Result<int, int> PeepEvents(array<Event>^ events, EventAction action, EventType minType, EventType maxType);
+
+			/// <summary>
 			/// Poll for currently pending events.
 			/// </summary>
 			/// <param name="event">The <see cref="Event"/> structure to be
@@ -155,6 +171,30 @@ namespace NETSDL2
 			static Result<None^, None^> PollEvent([Out]Event% event);
 
 			/// <summary>
+			/// Pump the event loop, gathering events from
+			/// the input devices.
+			/// </summary>
+			static void PumpEvents();
+
+			/// <summary>
+			/// Add an event to the event queue.
+			/// </summary>
+			/// <param name="event">The Event to be added
+			/// to the queue.</param>
+			/// <returns>1 on success, 0 if the event was
+			/// filtered, or a negative error code on
+			/// failure.</returns>
+			static Result<int, int> PushEvent([In][IsReadOnly]Event% event);
+
+			/// <summary>
+			/// Whether an SDL_QUIT event is queued.
+			/// </summary>
+			static property bool QuitRequested
+			{
+				bool get();
+			}
+
+			/// <summary>
 			/// Check whether there is an event in the queue.
 			/// </summary>
 			static property bool EventExist
@@ -162,6 +202,74 @@ namespace NETSDL2
 				bool get();
 			}
 
+			/// <summary>
+			/// Allocate a set of user-defined events, and
+			/// return the beginning event number for that
+			/// set of events.
+			/// </summary>
+			/// <param name="numevents">The number of
+			/// events to be allocated.</param>
+			/// <returns>The beginning event number, or
+			/// None if there are not enough user-defined
+			/// events left.</returns>
+			static Result<EventType, None^> RegisterEvents(int numevents);
+
+
+			/// <summary>
+			/// Set up a filter to process all events
+			/// before they change internal state and are
+			/// posted to the internal event queue.
+			/// </summary>
+			/// <param name="filter">Function to call when
+			/// an event happens.</param>
+			/// <param name="userdata">A pointer that is
+			/// passed to filter.</param>
+			static void SetEventFilter(FunctionPointer<EventFilter^>^ filter,
+				System::IntPtr userdata);
+
+			/// <summary>
+			/// Wait indefinitely for the next available
+			/// event.
+			/// </summary>
+			/// <param name="event">The Event structure to
+			/// be filled in with the next event from the
+			/// queue.</param>
+			/// <returns>Success or Failure if there was an
+			/// error while waiting for events.</returns>
+			static Result<None^, None^> WaitEvent([Out]Event% event);
+
+			/// <summary>
+			/// Wait indefinitely for the next available
+			/// event.
+			/// </summary>
+			/// <returns>Success or Failure if there was an
+			/// error while waiting for events.</returns>
+			static Result<None^, None^> WaitEvent();
+
+			/// <summary>
+			/// Wait until the specified timeout (in
+			/// milliseconds) for the next available event.
+			/// </summary>
+			/// <param name="event">The Event structure to
+			/// be filled in with the next event from the
+			/// queue.</param>
+			/// <param name="timeout">The maximum number of
+			/// milliseconds to wait for the next available
+			/// event.</param>
+			/// <returns>Success or Failure if there was an
+			/// error while waiting for events.</returns>
+			static Result<None^, None^> WaitEventTimeout([Out]Event% event, int timeout);
+
+			/// <summary>
+			/// Wait until the specified timeout (in
+			/// milliseconds) for the next available event.
+			/// </summary>
+			/// <param name="timeout">The maximum number of
+			/// milliseconds to wait for the next available
+			/// event.</param>
+			/// <returns>Success or Failure if there was an
+			/// error while waiting for events.</returns>
+			static Result<None^, None^> WaitEventTimeout(int timeout);
 		};
 	}
 }

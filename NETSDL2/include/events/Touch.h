@@ -63,6 +63,25 @@ namespace NETSDL2
 			static Result<SDL_TouchID, None^> GetTouchDevice(int index);
 
 			/// <summary>
+			/// Get the touch device name as reported from
+			/// the driver.
+			/// </summary>
+			/// <param name="index">The touch device
+			/// index.</param>
+			/// <returns>The name on success or None if
+			/// the index is invalid.</returns>
+			static Result<System::String^, None^> GetTouchName(int index);
+
+			/// <summary>
+			/// Get the type of the given touch device.
+			/// </summary>
+			/// <param name="touchID">The ID of the
+			/// requested touch device.</param>
+			/// <returns>The type of the touch device.
+			/// </returns>
+			static TouchDeviceType GetTouchDeviceType(SDL_TouchID touchID);
+
+			/// <summary>
 			/// Get the finger object for specified touch
 			/// device ID and finger index.
 			/// </summary>

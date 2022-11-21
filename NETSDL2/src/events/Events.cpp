@@ -71,6 +71,31 @@ bool NETSDL2::Events::Events::HasEvents(EventType minType, EventType maxType)
 	return SDL_HasEvents((Uint32)minType, (Uint32)maxType) == SDL_TRUE;
 }
 
+Result<int, int> NETSDL2::Events::Events::PeepEvents(array<Event>^ events, EventAction action, EventType minType, EventType maxType)
+{
+	if(events->Length == 0)
+	{
+		int result = SDL_PeepEvents(__nullptr, 0, (SDL_eventaction)action, (Uint32)minType, (Uint32)maxType);
+		if(result < 0)
+		{
+			return Result<int, int>::MakeFailure(result);
+		}
+
+		return result;
+	}
+
+	pin_ptr<Event> pEvents = &events[0];
+	int result = SDL_PeepEvents((SDL_Event*)pEvents, events->Length, (SDL_eventaction)action, (Uint32)minType, (Uint32)maxType);
+	pEvents = nullptr;
+
+	if(result < 0)
+	{
+		return Result<int, int>::MakeFailure(result);
+	}
+
+	return result;
+}
+
 Result<None^, None^> NETSDL2::Events::Events::PollEvent(Event% event)
 {
 	pin_ptr<Event> pEvent = &event;
@@ -84,7 +109,93 @@ Result<None^, None^> NETSDL2::Events::Events::PollEvent(Event% event)
 	return None::Value;
 }
 
+void NETSDL2::Events::Events::PumpEvents()
+{
+	SDL_PumpEvents();
+}
+
+Result<int, int> NETSDL2::Events::Events::PushEvent(Event% event)
+{
+	pin_ptr<Event> pEvent = &event;
+	int result = SDL_PushEvent((SDL_Event*)pEvent);
+	if(result < 0)
+	{
+		return Result<int, int>::MakeFailure(result);
+	}
+
+	return result;
+}
+
+bool Events::QuitRequested::get()
+{
+	return SDL_QuitRequested() == SDL_TRUE;
+}
+
 bool Events::EventExist::get()
 {
 	return SDL_PollEvent(__nullptr) == 1;
+}
+
+Result<EventType, None^> NETSDL2::Events::Events::RegisterEvents(int numevents)
+{
+	Uint32 result = SDL_RegisterEvents(numevents);
+	if(result == ((Uint32)-1))
+	{
+		return Result<EventType, None^>::MakeFailure(None::Value);
+	}
+
+	return (EventType)result;
+}
+
+void NETSDL2::Events::Events::SetEventFilter(FunctionPointer<EventFilter^>^ filter, System::IntPtr userdata)
+{
+	SDL_SetEventFilter((SDL_EventFilter)filter->Pointer.ToPointer(), userdata.ToPointer());
+}
+
+Result<None^, None^> NETSDL2::Events::Events::WaitEvent(Event% event)
+{
+	pin_ptr<Event> pEvent = &event;
+	int result = SDL_WaitEvent((SDL_Event*)pEvent);
+	pEvent = nullptr;
+	if(result == 0)
+	{
+		return Result<None^, None^>::MakeFailure(None::Value);
+	}
+
+	return None::Value;
+}
+
+Result<None^, None^> NETSDL2::Events::Events::WaitEvent()
+{
+	int result = SDL_WaitEvent(__nullptr);
+	if(result == 0)
+	{
+		return Result<None^, None^>::MakeFailure(None::Value);
+	}
+
+	return None::Value;
+}
+
+Result<None^, None^> NETSDL2::Events::Events::WaitEventTimeout(Event% event, int timeout)
+{
+	pin_ptr<Event> pEvent = &event;
+	int result = SDL_WaitEventTimeout((SDL_Event*)pEvent, timeout);
+	pEvent = nullptr;
+	if(result == 0)
+	{
+		return Result<None^, None^>::MakeFailure(None::Value);
+	}
+
+	return None::Value;
+}
+
+Result<None^, None^> NETSDL2::Events::Events::WaitEventTimeout(int timeout)
+{
+	int result = SDL_WaitEventTimeout(__nullptr, timeout);
+	if(result == 0)
+	{
+		return Result<None^, None^>::MakeFailure(None::Value);
+	}
+
+	return None::Value;
 }

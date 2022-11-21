@@ -377,6 +377,34 @@ namespace NETSDL2
 		};
 
 		/// <summary>
+		/// Action of PeepEvents function.
+		/// </summary>
+		public enum class EventAction
+		{
+			/// <summary>
+			/// Up to numevents events will be added to
+			/// the back of the event queue.
+			/// </summary>
+			Add = SDL_ADDEVENT,
+
+			/// <summary>
+			/// numevents events at the front of the event
+			/// queue, within the specified minimum and
+			/// maximum type, will be returned to the caller
+			/// and will _not_ be removed from the queue.
+			/// </summary>
+			Peek = SDL_PEEKEVENT,
+
+			/// <summary>
+			/// Up to numevents events at the front of the
+			/// event queue, within the specified minimum
+			/// and maximum type, will be returned to the
+			/// caller and will be removed from the queue.
+			/// </summary>
+			Get = SDL_GETEVENT,
+		};
+
+		/// <summary>
 		/// Fields shared by every event.
 		/// </summary>
 		[StructLayout(LayoutKind::Sequential)]
