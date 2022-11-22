@@ -210,6 +210,12 @@ namespace NETSDL2
 
 			void InitOps(SDL_RWops* ops);
 
+		internal:
+			property SDL_RWops* NativeOps
+			{
+				SDL_RWops* get();
+			}
+
 		public:
 			/// <summary>
 			/// Allocate an empty, unpopulated RWops object.

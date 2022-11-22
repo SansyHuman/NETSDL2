@@ -96,6 +96,11 @@ void NETSDL2::IO::RWops::InitOps(SDL_RWops* ops)
 	nativeRWopsConnections[System::IntPtr(ops)] = this;
 }
 
+SDL_RWops* RWops::NativeOps::get()
+{
+	return ops;
+}
+
 RWops::RWops()
 	: userDefined(true)
 {

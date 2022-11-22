@@ -10,9 +10,15 @@ using namespace System::Runtime::CompilerServices;
 
 namespace NETSDL2
 {
+	namespace IO
+	{
+		ref class RWops;
+	}
+
 	namespace Events
 	{
 		using namespace NETSDL2::Core;
+		using namespace NETSDL2::IO;
 
 		/// <summary>
 		/// Functions related to gesture.
@@ -20,7 +26,14 @@ namespace NETSDL2
 		public ref struct Gesture abstract sealed
 		{
 		public:
-			// TODO: LoadDollarTemplates
+			/// <summary>
+			/// Load Dollar Gesture templates from a file.
+			/// </summary>
+			/// <param name="touchId">A touch id.</param>
+			/// <param name="src">A RWops to load from.</param>
+			/// <returns>The number of loaded templates on success or error code
+			/// (or 0) on failure.</returns>
+			static Result<int, int> LoadDollarTemplates(SDL_TouchID touchId, RWops^ src);
 
 			/// <summary>
 			/// Begin recording a gesture on a specified
@@ -33,8 +46,21 @@ namespace NETSDL2
 			/// </returns>
 			static Result<None^, None^> RecordGesture(SDL_TouchID touchId);
 
-			// TODO: SaveAllDollarTemplates
-			// TODO: SaveDollarTemplate
+			/// <summary>
+			/// Save all currently loaded Dollar Gesture templates.
+			/// </summary>
+			/// <param name="dst">A RWops to save to.</param>
+			/// <returns>The number of saved templates on success or None on failure.
+			/// </returns>
+			static Result<int, None^> SaveAllDollarTemplates(RWops^ dst);
+
+			/// <summary>
+			/// Save a currently loaded Dollar Gesture template.
+			/// </summary>
+			/// <param name="gestureId">A gesture id.</param>
+			/// <param name="dst">A RWops to save to.</param>
+			/// <returns>Success or Failure.</returns>
+			static Result<None^, None^> SaveDollarTemplate(SDL_GestureID gestureId, RWops^ dst);
 		};
 	}
 }

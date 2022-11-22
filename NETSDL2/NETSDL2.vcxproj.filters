@@ -1,281 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="헤더 파일\core">
-      <UniqueIdentifier>{c89aaf93-3d48-4d17-9111-4e1795ce6f53}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\core">
-      <UniqueIdentifier>{67feda47-8e03-4d59-8ef7-be1baaeac755}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\video">
-      <UniqueIdentifier>{9fb98e0e-9aa7-4da8-bef2-a93417fe3b4d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\video">
-      <UniqueIdentifier>{df8309ea-1fbe-4821-9331-23395908d1a9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\internal">
-      <UniqueIdentifier>{c2be5107-9c06-4fca-8426-bf8a03644e78}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\internal">
-      <UniqueIdentifier>{1f3b9bad-9aa2-49d1-99b9-eb2b905301b2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\events">
-      <UniqueIdentifier>{6fffb236-8298-47e8-859c-fde66eaa250a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\events">
-      <UniqueIdentifier>{5a2dd3f2-6195-4904-a70d-be238876e24d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\systems">
-      <UniqueIdentifier>{04229675-efb4-41db-9dd5-803cec93f6a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\systems">
-      <UniqueIdentifier>{0baf8d1f-8cbe-4c27-a18f-ad9f90dec167}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\io">
-      <UniqueIdentifier>{cc5bba19-46f3-4205-8d57-216fa09226ca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\io">
-      <UniqueIdentifier>{44b6c444-fcda-4de0-9e78-f05b3cc3c47e}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="include\core\SDL.h">
-      <Filter>헤더 파일\core</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\Result.h">
-      <Filter>헤더 파일\core</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\None.h">
-      <Filter>헤더 파일\core</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\Error.h">
-      <Filter>헤더 파일\core</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\Log.h">
-      <Filter>헤더 파일\core</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\Version.h">
-      <Filter>헤더 파일\core</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\Window.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\Display.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\PixelFormat.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\Rect.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\DisplayMode.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\SysWMInfo.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\SDLVersion.h">
-      <Filter>헤더 파일\core</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\GLContext.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\GLAttr.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\GL.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\MessageBoxData.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\internal\StringMarshal.h">
-      <Filter>헤더 파일\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\Video.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\Hint.h">
-      <Filter>헤더 파일\core</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\Palette.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\Pixels.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\Clipboard.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\Vulkan.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\events\Event.h">
-      <Filter>헤더 파일\events</Filter>
-    </ClInclude>
-    <ClInclude Include="include\events\Events.h">
-      <Filter>헤더 파일\events</Filter>
-    </ClInclude>
-    <ClInclude Include="include\events\Scancode.h">
-      <Filter>헤더 파일\events</Filter>
-    </ClInclude>
-    <ClInclude Include="include\events\Keycode.h">
-      <Filter>헤더 파일\events</Filter>
-    </ClInclude>
-    <ClInclude Include="include\events\Keysym.h">
-      <Filter>헤더 파일\events</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\Renderer.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\RendererInfo.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\Surface.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\Blend.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\Texture.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\TextureAccess.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\Render.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\Vertex.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\ICCProfile.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\video\ScaleMode.h">
-      <Filter>헤더 파일\video</Filter>
-    </ClInclude>
-    <ClInclude Include="include\system\Stdinc.h">
-      <Filter>헤더 파일\systems</Filter>
-    </ClInclude>
-    <ClInclude Include="include\events\Button.h">
-      <Filter>헤더 파일\events</Filter>
-    </ClInclude>
-    <ClInclude Include="include\events\Touch.h">
-      <Filter>헤더 파일\events</Filter>
-    </ClInclude>
-    <ClInclude Include="include\events\Joysticks.h">
-      <Filter>헤더 파일\events</Filter>
-    </ClInclude>
-    <ClInclude Include="include\events\Controllers.h">
-      <Filter>헤더 파일\events</Filter>
-    </ClInclude>
-    <ClInclude Include="include\events\Sensors.h">
-      <Filter>헤더 파일\events</Filter>
-    </ClInclude>
-    <ClInclude Include="include\core\FunctionPointer.h">
-      <Filter>헤더 파일\core</Filter>
-    </ClInclude>
-    <ClInclude Include="include\events\Finger.h">
-      <Filter>헤더 파일\events</Filter>
-    </ClInclude>
-    <ClInclude Include="include\events\Gesture.h">
-      <Filter>헤더 파일\events</Filter>
-    <ClInclude Include="include\io\Filesystem.h">
-      <Filter>헤더 파일\io</Filter>
-    </ClInclude>
-    <ClInclude Include="include\io\RWops.h">
-      <Filter>헤더 파일\io</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\SDL.cpp">
-      <Filter>소스 파일\core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\Result.cpp">
-      <Filter>소스 파일\core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\None.cpp">
-      <Filter>소스 파일\core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\Error.cpp">
-      <Filter>소스 파일\core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\Log.cpp">
-      <Filter>소스 파일\core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\Version.cpp">
-      <Filter>소스 파일\core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\video\Window.cpp">
+    <ClCompile Include="src\video\Blend.cpp">
       <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Button.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\Clipboard.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Controllers.cpp">
+      <Filter>소스 파일\events</Filter>
     </ClCompile>
     <ClCompile Include="src\video\Display.cpp">
-      <Filter>소스 파일\video</Filter>
-    </ClCompile>
-    <ClCompile Include="src\video\PixelFormat.cpp">
-      <Filter>소스 파일\video</Filter>
-    </ClCompile>
-    <ClCompile Include="src\video\Rect.cpp">
       <Filter>소스 파일\video</Filter>
     </ClCompile>
     <ClCompile Include="src\video\DisplayMode.cpp">
       <Filter>소스 파일\video</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\SDLVersion.cpp">
+    <ClCompile Include="src\core\Error.cpp">
       <Filter>소스 파일\core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\video\SysWMInfo.cpp">
-      <Filter>소스 파일\video</Filter>
-    </ClCompile>
-    <ClCompile Include="src\video\GLContext.cpp">
-      <Filter>소스 파일\video</Filter>
-    </ClCompile>
-    <ClCompile Include="src\video\GLAttr.cpp">
-      <Filter>소스 파일\video</Filter>
-    </ClCompile>
-    <ClCompile Include="src\video\GL.cpp">
-      <Filter>소스 파일\video</Filter>
-    </ClCompile>
-    <ClCompile Include="src\video\MessageBoxData.cpp">
-      <Filter>소스 파일\video</Filter>
-    </ClCompile>
-    <ClCompile Include="src\internal\StringMarshal.cpp">
-      <Filter>소스 파일\internal</Filter>
-    </ClCompile>
-    <ClCompile Include="src\video\Video.cpp">
-      <Filter>소스 파일\video</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\Hint.cpp">
-      <Filter>소스 파일\core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\video\Palette.cpp">
-      <Filter>소스 파일\video</Filter>
-    </ClCompile>
-    <ClCompile Include="src\video\Pixels.cpp">
-      <Filter>소스 파일\video</Filter>
-    </ClCompile>
-    <ClCompile Include="src\video\Clipboard.cpp">
-      <Filter>소스 파일\video</Filter>
-    </ClCompile>
-    <ClCompile Include="src\video\Vulkan.cpp">
-      <Filter>소스 파일\video</Filter>
     </ClCompile>
     <ClCompile Include="src\events\Event.cpp">
       <Filter>소스 파일\events</Filter>
@@ -283,7 +31,34 @@
     <ClCompile Include="src\events\Events.cpp">
       <Filter>소스 파일\events</Filter>
     </ClCompile>
-    <ClCompile Include="src\events\Scancode.cpp">
+    <ClCompile Include="src\io\Filesystem.cpp">
+      <Filter>소스 파일\io</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Finger.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\FunctionPointer.cpp">
+      <Filter>소스 파일\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Gesture.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\GL.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\GLAttr.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\GLContext.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Hint.cpp">
+      <Filter>소스 파일\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\ICCProfile.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Joysticks.cpp">
       <Filter>소스 파일\events</Filter>
     </ClCompile>
     <ClCompile Include="src\events\Keycode.cpp">
@@ -292,16 +67,67 @@
     <ClCompile Include="src\events\Keysym.cpp">
       <Filter>소스 파일\events</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\Log.cpp">
+      <Filter>소스 파일\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\MessageBoxData.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\None.cpp">
+      <Filter>소스 파일\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\Palette.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\PixelFormat.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\Pixels.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\Rect.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\Render.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
     <ClCompile Include="src\video\Renderer.cpp">
       <Filter>소스 파일\video</Filter>
     </ClCompile>
     <ClCompile Include="src\video\RendererInfo.cpp">
       <Filter>소스 파일\video</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\Result.cpp">
+      <Filter>소스 파일\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\io\RWops.cpp">
+      <Filter>소스 파일\io</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\ScaleMode.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Scancode.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\SDL.cpp">
+      <Filter>소스 파일\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\SDLVersion.cpp">
+      <Filter>소스 파일\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Sensors.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\Stdinc.cpp">
+      <Filter>소스 파일\system</Filter>
+    </ClCompile>
+    <ClCompile Include="src\internal\StringMarshal.cpp">
+      <Filter>소스 파일\internal</Filter>
+    </ClCompile>
     <ClCompile Include="src\video\Surface.cpp">
       <Filter>소스 파일\video</Filter>
     </ClCompile>
-    <ClCompile Include="src\video\Blend.cpp">
+    <ClCompile Include="src\video\SysWMInfo.cpp">
       <Filter>소스 파일\video</Filter>
     </ClCompile>
     <ClCompile Include="src\video\Texture.cpp">
@@ -310,49 +136,219 @@
     <ClCompile Include="src\video\TextureAccess.cpp">
       <Filter>소스 파일\video</Filter>
     </ClCompile>
-    <ClCompile Include="src\video\Render.cpp">
-      <Filter>소스 파일\video</Filter>
+    <ClCompile Include="src\events\Touch.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Version.cpp">
+      <Filter>소스 파일\core</Filter>
     </ClCompile>
     <ClCompile Include="src\video\Vertex.cpp">
       <Filter>소스 파일\video</Filter>
     </ClCompile>
-    <ClCompile Include="src\video\ICCProfile.cpp">
+    <ClCompile Include="src\video\Video.cpp">
       <Filter>소스 파일\video</Filter>
     </ClCompile>
-    <ClCompile Include="src\video\ScaleMode.cpp">
+    <ClCompile Include="src\video\Vulkan.cpp">
       <Filter>소스 파일\video</Filter>
     </ClCompile>
-    <ClCompile Include="src\system\Stdinc.cpp">
-      <Filter>소스 파일\systems</Filter>
+    <ClCompile Include="src\video\Window.cpp">
+      <Filter>소스 파일\video</Filter>
     </ClCompile>
-    <ClCompile Include="src\events\Button.cpp">
-      <Filter>소스 파일\events</Filter>
-    </ClCompile>
-    <ClCompile Include="src\events\Touch.cpp">
-      <Filter>소스 파일\events</Filter>
-    </ClCompile>
-    <ClCompile Include="src\events\Joysticks.cpp">
-      <Filter>소스 파일\events</Filter>
-    </ClCompile>
-    <ClCompile Include="src\events\Controllers.cpp">
-      <Filter>소스 파일\events</Filter>
-    </ClCompile>
-    <ClCompile Include="src\events\Sensors.cpp">
-      <Filter>소스 파일\events</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\FunctionPointer.cpp">
-      <Filter>소스 파일\core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\events\Finger.cpp">
-      <Filter>소스 파일\events</Filter>
-    </ClCompile>
-    <ClCompile Include="src\events\Gesture.cpp">
-      <Filter>소스 파일\events</Filter>
-    <ClCompile Include="src\io\Filesystem.cpp">
-      <Filter>소스 파일\io</Filter>
-    </ClCompile>
-    <ClCompile Include="src\io\RWops.cpp">
-      <Filter>소스 파일\io</Filter>
-    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\video\Blend.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Button.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Clipboard.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Controllers.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Display.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\DisplayMode.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Error.h">
+      <Filter>헤더 파일\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Event.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Events.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\io\Filesystem.h">
+      <Filter>헤더 파일\io</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Finger.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\FunctionPointer.h">
+      <Filter>헤더 파일\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Gesture.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\GL.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\GLAttr.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\GLContext.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Hint.h">
+      <Filter>헤더 파일\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\ICCProfile.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Joysticks.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Keycode.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Keysym.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Log.h">
+      <Filter>헤더 파일\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\MessageBoxData.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\None.h">
+      <Filter>헤더 파일\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Palette.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\PixelFormat.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Pixels.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Rect.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Render.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Renderer.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\RendererInfo.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Result.h">
+      <Filter>헤더 파일\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\io\RWops.h">
+      <Filter>헤더 파일\io</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\ScaleMode.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Scancode.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\SDL.h">
+      <Filter>헤더 파일\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\SDLVersion.h">
+      <Filter>헤더 파일\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Sensors.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\Stdinc.h">
+      <Filter>헤더 파일\system</Filter>
+    </ClInclude>
+    <ClInclude Include="include\internal\StringMarshal.h">
+      <Filter>헤더 파일\internal</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Surface.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\SysWMInfo.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Texture.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\TextureAccess.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Touch.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\Version.h">
+      <Filter>헤더 파일\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Vertex.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Video.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Vulkan.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\Window.h">
+      <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{59b8181e-4560-49bf-927a-9d13ee3309a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{edded8c0-e00c-433c-a9f5-12704e0f530d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\video">
+      <UniqueIdentifier>{497f9d69-dae7-4965-831f-64d97c9a9e6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\video">
+      <UniqueIdentifier>{6dc13295-78c3-4aa8-b673-f85adcef1747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\events">
+      <UniqueIdentifier>{e2180d64-9492-4304-80fc-9c68b5d07c70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\events">
+      <UniqueIdentifier>{6f7600f3-b93f-4e82-b0c7-a8182544a596}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\core">
+      <UniqueIdentifier>{d5117647-d205-47bf-a516-8b53efda747e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\core">
+      <UniqueIdentifier>{9b4c9239-90df-455c-8cef-9fb06e832ad0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\io">
+      <UniqueIdentifier>{8028ff69-d323-4344-b4a5-b579667016cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\io">
+      <UniqueIdentifier>{43c5a069-0f53-49a6-bc79-37c6595a10a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\system">
+      <UniqueIdentifier>{47c77847-c403-445e-ae43-c946168144aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\system">
+      <UniqueIdentifier>{24a281ff-ffea-40aa-a23f-d9c34f6460cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\internal">
+      <UniqueIdentifier>{bd83dc52-aae4-42f4-9454-5417e19e8253}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\internal">
+      <UniqueIdentifier>{b289108d-b1f8-4082-b5b2-d61a2533b317}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
