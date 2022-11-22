@@ -171,6 +171,29 @@
     <ClInclude Include="include\system\Stdinc.h">
       <Filter>헤더 파일\systems</Filter>
     </ClInclude>
+    <ClInclude Include="include\events\Button.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Touch.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Joysticks.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Controllers.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Sensors.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\FunctionPointer.h">
+      <Filter>헤더 파일\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Finger.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Gesture.h">
+      <Filter>헤더 파일\events</Filter>
     <ClInclude Include="include\io\Filesystem.h">
       <Filter>헤더 파일\io</Filter>
     </ClInclude>
@@ -302,6 +325,29 @@
     <ClCompile Include="src\system\Stdinc.cpp">
       <Filter>소스 파일\systems</Filter>
     </ClCompile>
+    <ClCompile Include="src\events\Button.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Touch.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Joysticks.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Controllers.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Sensors.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\FunctionPointer.cpp">
+      <Filter>소스 파일\core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Finger.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Gesture.cpp">
+      <Filter>소스 파일\events</Filter>
     <ClCompile Include="src\io\Filesystem.cpp">
       <Filter>소스 파일\io</Filter>
     </ClCompile>

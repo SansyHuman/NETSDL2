@@ -448,8 +448,8 @@ unsafe
     }
 }
 
-Surface bmpImage = new Surface("D:\\VS Project\\NETSDL2\\NETSDL2Test\\테스트.bmp");
-None areiahre = bmpImage.SaveBMP("D:\\VS Project\\NETSDL2\\NETSDL2Test\\테스트저장.bmp");
+Surface bmpImage = new Surface("테스트.bmp");
+None areiahre = bmpImage.SaveBMP("테스트저장.bmp");
 
 Renderer renderer;
 Window winWithRenderer = new Window(1920, 1080, WindowFlags.AllowHighDPI, out renderer);
@@ -579,8 +579,21 @@ windowSurface.Dispose();
 texture.Dispose();
 texture2.Dispose();
 
-window.IsMouseGrabbed = true;
+window.IsMouseGrabbed = false;
 bool mainLoop = true;
+
+FunctionPointer<EventFilter> watch = new FunctionPointer<EventFilter>(
+    (IntPtr data, ref Event e) =>
+    {
+        if (e.Type == EventType.MouseButtonDown)
+        {
+            Logging.LogInfo(LogCategory.Application, "Mouse pos: {0}, {1}", e.Button.X, e.Button.Y);
+        }
+        return 1;
+    }
+    );
+Events.AddEventWatch(watch, IntPtr.Zero);
+
 Event @event = new Event();
 while (mainLoop)
 {

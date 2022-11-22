@@ -84,10 +84,10 @@ namespace NETSDL2
             RiscOS = SDL_SYSWM_RISCOS
 		};
 
-        [StructLayout(LayoutKind::Explicit, Size = 72)]
 		/// <summary>
 		/// A structure that contains system-dependent information about a window.
 		/// </summary>
+        [StructLayout(LayoutKind::Explicit, Size = sizeof(SDL_SysWMmsg))]
 		public value struct SysWMInfo
 		{
             [FieldOffset(0)]
@@ -358,5 +358,87 @@ namespace NETSDL2
             /// </summary>
             KMSDRM_ KMSDRM;
 		};
+
+        /// <summary>
+        /// A structure that contains system-dependent
+        /// window manager messages.
+        /// </summary>
+        [StructLayout(LayoutKind::Explicit, Size = sizeof(SDL_SysWMmsg))]
+        public value struct SysWMMsg
+        {
+            [FieldOffset(0)]
+            /// <summary>
+            /// The current SDL version.
+            /// </summary>
+            SDLVersion Version;
+
+            [FieldOffset(4)]
+            /// <summary>
+            /// The windowing system type
+            /// </summary>
+            SysWMType Subsystem;
+
+            [StructLayout(LayoutKind::Sequential)]
+            value struct Windows
+            {
+                /// <summary>
+                /// The window handle.
+                /// </summary>
+                System::IntPtr Window;
+
+                /// <summary>
+                /// The type of message.
+                /// </summary>
+                UINT Msg;
+
+                /// <summary>
+                /// WORD message parameter.
+                /// </summary>
+                WPARAM WParam;
+
+                /// <summary>
+                /// LONG message parameter.
+                /// </summary>
+                LPARAM LParam;
+            };
+            [FieldOffset(8)]
+            /// <summary>
+            /// Message of Microsoft Windows system.
+            /// </summary>
+            Windows Win;
+
+            [StructLayout(LayoutKind::Sequential)]
+            value struct Cocoa_
+            {
+                int dummy;
+            };
+            [FieldOffset(8)]
+            /// <summary>
+            /// Message of Cocoa.
+            /// </summary>
+            Cocoa_ Cocoa;
+
+            [StructLayout(LayoutKind::Sequential)]
+            value struct UIKit_
+            {
+                int dummy;
+            };
+            [FieldOffset(8)]
+            /// <summary>
+            /// Message of UIKit.
+            /// </summary>
+            UIKit_ UIKit;
+
+            [StructLayout(LayoutKind::Sequential)]
+            value struct Vivante_
+            {
+                int dummy;
+            };
+            [FieldOffset(8)]
+            /// <summary>
+            /// Informations of OS2.
+            /// </summary>
+            Vivante_ Vivante;
+        };
 	}
 }
