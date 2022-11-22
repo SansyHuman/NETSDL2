@@ -104,6 +104,8 @@
     <ClInclude Include="include\events\Keysym.h" />
     <ClInclude Include="include\events\Scancode.h" />
     <ClInclude Include="include\internal\StringMarshal.h" />
+    <ClInclude Include="include\io\Filesystem.h" />
+    <ClInclude Include="include\io\RWops.h" />
     <ClInclude Include="include\system\Stdinc.h" />
     <ClInclude Include="include\video\Blend.h" />
     <ClInclude Include="include\video\Clipboard.h" />
@@ -147,6 +149,8 @@
     <ClCompile Include="src\events\Keysym.cpp" />
     <ClCompile Include="src\events\Scancode.cpp" />
     <ClCompile Include="src\internal\StringMarshal.cpp" />
+    <ClCompile Include="src\io\Filesystem.cpp" />
+    <ClCompile Include="src\io\RWops.cpp" />
     <ClCompile Include="src\system\Stdinc.cpp" />
     <ClCompile Include="src\video\Blend.cpp" />
     <ClCompile Include="src\video\Clipboard.cpp" />

@@ -43,6 +43,12 @@
     <Filter Include="소스 파일\systems">
       <UniqueIdentifier>{0baf8d1f-8cbe-4c27-a18f-ad9f90dec167}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\io">
+      <UniqueIdentifier>{cc5bba19-46f3-4205-8d57-216fa09226ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\io">
+      <UniqueIdentifier>{44b6c444-fcda-4de0-9e78-f05b3cc3c47e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\core\SDL.h">
@@ -164,6 +170,12 @@
     </ClInclude>
     <ClInclude Include="include\system\Stdinc.h">
       <Filter>헤더 파일\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="include\io\Filesystem.h">
+      <Filter>헤더 파일\io</Filter>
+    </ClInclude>
+    <ClInclude Include="include\io\RWops.h">
+      <Filter>헤더 파일\io</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -289,6 +301,12 @@
     </ClCompile>
     <ClCompile Include="src\system\Stdinc.cpp">
       <Filter>소스 파일\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\io\Filesystem.cpp">
+      <Filter>소스 파일\io</Filter>
+    </ClCompile>
+    <ClCompile Include="src\io\RWops.cpp">
+      <Filter>소스 파일\io</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
