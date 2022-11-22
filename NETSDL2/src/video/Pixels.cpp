@@ -133,6 +133,32 @@ Result<None^, int> NETSDL2::Video::Pixels::ConvertPixels(int width, int height, 
 	return None::Value;
 }
 
+Result<None^, int> NETSDL2::Video::Pixels::PremultiplyAlpha(int width, int height, PixelFormatEnum srcFormat, System::IntPtr src, int srcPitch, PixelFormatEnum dstFormat, System::IntPtr dst, int dstPitch)
+{
+	int result = SDL_PremultiplyAlpha(width, height, (Uint32)srcFormat, src.ToPointer(), srcPitch, (Uint32)dstFormat, dst.ToPointer(), dstPitch);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+NETSDL2::Video::YUVConversionMode Pixels::YUVConversionMode::get()
+{
+	return (NETSDL2::Video::YUVConversionMode)SDL_GetYUVConversionMode();
+}
+
+void Pixels::YUVConversionMode::set(NETSDL2::Video::YUVConversionMode value)
+{
+	SDL_SetYUVConversionMode((SDL_YUV_CONVERSION_MODE)value);
+}
+
+NETSDL2::Video::YUVConversionMode NETSDL2::Video::Pixels::GetYUVConversionModeForResolution(int width, int height)
+{
+	return (NETSDL2::Video::YUVConversionMode)SDL_GetYUVConversionModeForResolution(width, height);
+}
+
 NETSDL2::Video::PixelFormatWrapper::PixelFormatWrapper(PixelFormat* format)
 	: format(format)
 {

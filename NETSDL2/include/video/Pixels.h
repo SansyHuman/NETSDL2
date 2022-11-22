@@ -15,6 +15,32 @@ namespace NETSDL2
 		using namespace NETSDL2::Core;
 
 		/// <summary>
+		/// The formula used for converting between YUV and RGB.
+		/// </summary>
+		public enum class YUVConversionMode
+		{
+			/// <summary>
+			/// Full range JPEG.
+			/// </summary>
+			JPEG = SDL_YUV_CONVERSION_JPEG,
+
+			/// <summary>
+			/// BT.601 (the default).
+			/// </summary>
+			BT601 = SDL_YUV_CONVERSION_BT601,
+
+			/// <summary>
+			/// BT.709.
+			/// </summary>
+			BT709 = SDL_YUV_CONVERSION_BT709,
+
+			/// <summary>
+			/// BT.601 for SD content, BT.709 for HD content.
+			/// </summary>
+			Automatic = SDL_YUV_CONVERSION_AUTOMATIC,
+		};
+
+		/// <summary>
 		/// Functions for handling pixel formats and palettes.
 		/// </summary>
 		public ref struct Pixels abstract sealed
@@ -196,6 +222,49 @@ namespace NETSDL2
 				System::IntPtr src, int srcPitch,
 				PixelFormatEnum dstFormat, System::IntPtr dst, int dstPitch
 			);
+
+			/// <summary>
+			/// Premultiply the alpha on a block of pixels.
+			/// </summary>
+			/// <param name="width">The width of the block to copy, in pixels.
+			/// </param>
+			/// <param name="height">The height of the block to copy, in pixels.
+			/// </param>
+			/// <param name="srcFormat">A <see cref="PixelFormatEnum"/> value of
+			/// the src pixels format.</param>
+			/// <param name="src">A pointer to the source pixels.</param>
+			/// <param name="srcPitch">The pitch of the source pixels, in bytes.
+			/// </param>
+			/// <param name="dstFormat">A <see cref="PixelFormatEnum"/> value of
+			/// the dst pixels format.</param>
+			/// <param name="dst">A pointer to be filled in with new pixel data.
+			/// </param>
+			/// <param name="dstPitch">The pitch of the destination pixels, in
+			/// bytes.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			static Result<None^, int> PremultiplyAlpha(
+				int width, int height, PixelFormatEnum srcFormat,
+				System::IntPtr src, int srcPitch,
+				PixelFormatEnum dstFormat, System::IntPtr dst, int dstPitch
+			);
+
+			/// <summary>
+			/// Get and set the YUV conversion mode
+			/// </summary>
+			static property NETSDL2::Video::YUVConversionMode YUVConversionMode
+			{
+				NETSDL2::Video::YUVConversionMode get();
+				void set(NETSDL2::Video::YUVConversionMode value);
+			}
+
+			/// <summary>
+			/// Get the YUV conversion mode, returning the correct mode for the resolution when the
+			/// current conversion mode is Automatic.
+			/// </summary>
+			/// <param name="width"></param>
+			/// <param name="height"></param>
+			/// <returns></returns>
+			static NETSDL2::Video::YUVConversionMode GetYUVConversionModeForResolution(int width, int height);
 		};
 
 		/// <summary>

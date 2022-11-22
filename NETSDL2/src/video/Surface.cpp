@@ -132,6 +132,18 @@ NETSDL2::Video::Surface::Surface(array<unsigned char>^ pixels, int width, int he
 	InitSurface(surface);
 }
 
+NETSDL2::Video::Surface::Surface(Surface^ surface)
+	: releaseOnDestroy(true)
+{
+	SDL_Surface* surf = SDL_DuplicateSurface(surface->surface);
+	if(surf == __nullptr)
+	{
+		throw gcnew System::Exception(Error::GetError());
+	}
+
+	InitSurface(surf);
+}
+
 NETSDL2::Video::Surface::Surface(System::String^ file)
 	: releaseOnDestroy(true)
 {
@@ -214,6 +226,17 @@ Result<None^, int> NETSDL2::Video::Surface::BlitScaled(Surface^ src, System::Nul
 Result<None^, int> NETSDL2::Video::Surface::BlitSurface(Surface^ src, System::Nullable<NETSDL2::Video::Rect> srcrect, Surface^ dst, System::Nullable<NETSDL2::Video::Rect> dstrect)
 {
 	int result = SDL_BlitSurface(src->surface, srcrect.HasValue ? (const SDL_Rect*)&srcrect.Value : __nullptr, dst->surface, dstrect.HasValue ? (SDL_Rect*)&dstrect.Value : __nullptr);
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Surface::SoftStretchLinear(Surface^ src, System::Nullable<NETSDL2::Video::Rect> srcrect, Surface^ dst, System::Nullable<NETSDL2::Video::Rect> dstrect)
+{
+	int result = SDL_SoftStretchLinear(src->surface, srcrect.HasValue ? (const SDL_Rect*)&srcrect.Value : __nullptr, dst->surface, dstrect.HasValue ? (SDL_Rect*)&dstrect.Value : __nullptr);
 	if(result < 0)
 	{
 		return Result<None^, int>::MakeFailure(result);
@@ -371,6 +394,11 @@ Result<None^, int> NETSDL2::Video::Surface::SetColorKey(bool flag, Uint32 key)
 	return None::Value;
 }
 
+bool Surface::HasColorKey::get()
+{
+	return SDL_HasColorKey(surface) == SDL_TRUE;
+}
+
 Result<None^, int> NETSDL2::Video::Surface::SetSurfaceAlphaMod(Uint8 alpha)
 {
 	int result = SDL_SetSurfaceAlphaMod(surface, alpha);
@@ -424,6 +452,11 @@ Result<None^, int> NETSDL2::Video::Surface::SetSurfaceRLE(bool flag)
 	}
 
 	return None::Value;
+}
+
+bool Surface::HasSurfaceRLE::get()
+{
+	return SDL_HasSurfaceRLE(surface) == SDL_TRUE;
 }
 
 void NETSDL2::Video::Surface::UnlockSurface()

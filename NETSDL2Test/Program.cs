@@ -1,9 +1,12 @@
 ﻿using NETSDL2.Core;
 using NETSDL2.Video;
 using NETSDL2.Events;
+using NETSDL2.IO;
 
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using NETSDL2.Systems;
+using System.Runtime.CompilerServices;
 
 Hint.ClearHints();
 
@@ -22,10 +25,114 @@ if(result.ResultType == Result<None, int>.Type.Failed)
     return;
 }
 
+IntPtr allocMem = Stdinc.Calloc(128 + 2, 4);
+unsafe
+{
+    int* m = (int*)allocMem.ToPointer();
+    m[0] = 128 * 4; // memory byte size
+    m[1] = 0; // current pos;
+}
+RWops memRW = new RWops();
+memRW.Type = RWopsType.Memory;
+memRW.Data1 = allocMem;
+
+memRW.SizeFn = (RWops op) =>
+{
+    return 128 * 4;
+};
+memRW.SeekFn = (RWops context, long offset, SeekFrom whence) =>
+{
+    unsafe
+    {
+        int* memory = (int*)context.Data1.ToPointer();
+        int byteSize = memory[0];
+        int currentPos = memory[1];
+
+        switch (whence)
+        {
+            case SeekFrom.Set:
+                if (offset < 0 || offset >= byteSize)
+                    return -1;
+                memory[1] = (int)offset;
+                return memory[1];
+            case SeekFrom.Cur:
+                {
+                    int newPos = currentPos + (int)offset;
+                    if (newPos < 0 || newPos >= byteSize)
+                        return -1;
+                    memory[1] = newPos;
+                    return memory[1];
+                }
+            case SeekFrom.End:
+                {
+                    int newPos = byteSize - 1 + (int)offset;
+                    if (newPos < 0 || newPos >= byteSize)
+                        return -1;
+                    memory[1] = newPos;
+                    return memory[1];
+                }
+        }
+
+        return -1;
+    }
+};
+memRW.ReadFn = (RWops context, IntPtr ptr, ulong size, ulong maxnum) =>
+{
+    unsafe
+    {
+        int* memory = (int*)context.Data1.ToPointer();
+        int byteSize = memory[0];
+        int currentPos = memory[1];
+
+        int readByte = (int)(size * maxnum);
+        if (readByte + currentPos > byteSize)
+            readByte = byteSize - currentPos;
+        readByte = (readByte / (int)size) * (int)size;
+
+        byte* memByte = (byte*)memory;
+        Stdinc.Memcpy(ptr, new IntPtr(&memByte[currentPos + 8]), (ulong)readByte);
+
+        memory[1] = currentPos + readByte;
+
+        return (ulong)(readByte / (int)size);
+    }
+};
+memRW.WriteFn = (RWops context, IntPtr ptr, ulong size, ulong num) =>
+{
+    unsafe
+    {
+        int* memory = (int*)context.Data1.ToPointer();
+        int byteSize = memory[0];
+        int currentPos = memory[1];
+
+        int writeByte = (int)(size * num);
+        if (writeByte + currentPos > byteSize)
+            writeByte = byteSize - currentPos;
+        writeByte = (writeByte / (int)size) * (int)size;
+
+        byte* memByte = (byte*)memory;
+        Stdinc.Memcpy(new IntPtr(&memByte[currentPos + 8]), ptr, (ulong)writeByte);
+
+        memory[1] = currentPos + writeByte;
+
+        return (ulong)(writeByte / (int)size);
+    }
+};
+memRW.CloseFn = (RWops op) =>
+{
+    Stdinc.Free(op.Data1);
+    return 0;
+};
+
+memRW.Close();
+
 None resultVarer = result;
 
 result = Video.Init(null);
 Console.WriteLine("Video init: {0}", result);
+
+Console.WriteLine("Base path: {0}", Filesystem.GetBasePath());
+Console.WriteLine("Pref path: {0}", Filesystem.GetPrefPath("Haje", "Test"));
 
 Error.SetError("호무호무");
 string errorMessage = Error.GetError();
@@ -326,12 +433,15 @@ unsafe
             }, 0x7fff);
             Surface surfaceConv = surface.ConvertSurfaceFormat(PixelFormatEnum.BGRA4444);
             surfaceConv.SetSurfaceRLE(true);
-            surfaceConv.SetSurfaceRLE(false);
+            surfaceConv.SetColorKey(true, 0x0fff);
+            uint colorKey = surfaceConv.GetColorKey();
+            surfaceConv.SetColorKey(false, 0);
             surfaceConv.GetSurfaceColorMod(out byte red, out byte green, out byte blue);
             surfaceConv.SetSurfaceColorMod(128, 120, 60);
             surfaceConv.GetSurfaceColorMod(out red, out green, out blue);
+            Surface surfaceConvCopy = new Surface(surfaceConv);
             Surface blitSurf = new Surface(16, 16, 32, PixelFormatEnum.BGRA8888);
-            Surface.BlitSurface(surfaceConv, new Rect(0, 0, 16, 8), blitSurf, new Rect(0, 8, 16, 8));
+            Surface.BlitSurface(surfaceConvCopy, new Rect(0, 0, 16, 8), blitSurf, new Rect(0, 8, 16, 8));
             window.SetWindowIcon(blitSurf);
             SDL.ThrowOnFailure = false;
         }

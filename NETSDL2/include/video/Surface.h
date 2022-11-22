@@ -163,6 +163,14 @@ namespace NETSDL2
 			Surface(array<unsigned char>^ pixels, int width, int height, int depth, int pitch, PixelFormatEnum format);
 
 			/// <summary>
+			/// Creates a new surface identical to the existing surface.
+			/// </summary>
+			/// <param name="surface">The surface to duplicate.</param>
+			/// <exception cref="System::Exception">Thrown when failed creation.
+			/// </exception>
+			Surface(Surface^ surface);
+
+			/// <summary>
 			/// Load a BMP image from a file path.
 			/// </summary>
 			/// <param name="file">The file containing a BMP image.</param>
@@ -260,7 +268,24 @@ namespace NETSDL2
 			/// structure representing the rectangle that is copied into, or null to
 			/// copy into the entire surface.</param>
 			/// <returns>None on success or error code on failure.</returns>
-			static Result<None^, int> BlitSurface(Surface^ src, System::Nullable<NETSDL2::Video::Rect> srcrect,
+			static Result<None^, int> BlitSurface(
+				Surface^ src, System::Nullable<NETSDL2::Video::Rect> srcrect,
+				Surface^ dst, System::Nullable<NETSDL2::Video::Rect> dstrect);
+
+			/// <summary>
+			/// Perform bilinear scaling between two surfaces of the same format, 32BPP.
+			/// </summary>
+			/// <param name="src">The surface to be copied from.</param>
+			/// <param name="srcrect">The <see cref="NETSDL2::Video::Rect"/>
+			/// structure representing the rectangle to be copied, or null to copy
+			/// the entire surface.</param>
+			/// <param name="dst">The surface that is the blit target.</param>
+			/// <param name="dstrect">The <see cref="NETSDL2::Video::Rect"/>
+			/// structure representing the rectangle that is copied into, or null to
+			/// copy into the entire surface.</param>
+			/// <returns>None on success or error code on failure.</returns>
+			static Result<None^, int> SoftStretchLinear(
+				Surface^ src, System::Nullable<NETSDL2::Video::Rect> srcrect,
 				Surface^ dst, System::Nullable<NETSDL2::Video::Rect> dstrect);
 
 			/// <summary>
@@ -368,6 +393,14 @@ namespace NETSDL2
 			Result<None^, int> SetColorKey(bool flag, Uint32 key);
 
 			/// <summary>
+			/// Returns whether the surface has a color key
+			/// </summary>
+			property bool HasColorKey
+			{
+				bool get();
+			}
+
+			/// <summary>
 			/// Set an additional alpha value used in blit operations.
 			/// </summary>
 			/// <param name="alpha">The alpha value multiplied into blit
@@ -410,6 +443,14 @@ namespace NETSDL2
 			/// acceleration.</param>
 			/// <returns>None on success or error code on failure.</returns>
 			Result<None^, int> SetSurfaceRLE(bool flag);
+
+			/// <summary>
+			/// Returns whether the surface is RLE enabled.
+			/// </summary>
+			property bool HasSurfaceRLE
+			{
+				bool get();
+			}
 
 			/// <summary>
 			/// Release a surface after directly accessing the pixels.
