@@ -318,3 +318,159 @@ Sint64 RWops::Tell::get()
 {
 	return SDL_RWtell(ops);
 }
+
+size_t NETSDL2::IO::RWops::Write(System::IntPtr* ptr, size_t size, size_t num)
+{
+	return SDL_RWwrite(ops, ptr->ToPointer(), size, num);
+}
+
+generic<class T> where T : value class
+size_t NETSDL2::IO::RWops::Write(array<T>^ arr, size_t offset, size_t num)
+{
+	size_t size = sizeof(T);
+	if(arr->Length == 0)
+	{
+		SDL_InvalidParamError(arr);
+		return 0;
+	}
+
+	if(offset >= arr->Length)
+	{
+		SDL_InvalidParamError(offset);
+		return 0;
+	}
+
+	bool writeless = false;
+
+	if(offset + num > arr->Length)
+	{
+		num = arr->Length - offset;
+		writeless = true;
+	}
+
+	pin_ptr<T> ptr = &arr[offset];
+	size_t write = SDL_RWwrite(ops, (void*)ptr, size, num);
+	if(write == num && writeless)
+	{
+		SDL_InvalidParamError(num);
+	}
+
+	return write;
+}
+
+Result<System::IntPtr, None^> NETSDL2::IO::RWops::LoadFile(RWops^ src, size_t% datasize, bool freesrc)
+{
+	size_t size = 0;
+	void* result = SDL_LoadFile_RW(src->ops, &size, freesrc ? 1 : 0);
+	if(freesrc)
+		delete src;
+
+	datasize = size;
+	if(result == __nullptr)
+	{
+		return Result<System::IntPtr, None^>::MakeFailure(None::Value);
+	}
+
+	return System::IntPtr(result);
+}
+
+Result<array<Uint8>^, None^> NETSDL2::IO::RWops::LoadFile(RWops^ src, bool freesrc)
+{
+	size_t size = 0;
+	void* result = SDL_LoadFile_RW(src->ops, &size, freesrc ? 1 : 0);
+	if(freesrc)
+		delete src;
+
+	if(result == __nullptr)
+	{
+		return Result<array<Uint8>^, None^>::MakeFailure(None::Value);
+	}
+
+	array<Uint8>^ data = gcnew array<Uint8>(size);
+	if(size == 0)
+		return data;
+
+	pin_ptr<Uint8> pData = &data[0];
+	System::Buffer::MemoryCopy(result, (void*)pData, size, size);
+	pData = nullptr;
+
+	SDL_free(result);
+
+	return data;
+}
+
+Result<System::IntPtr, None^> NETSDL2::IO::RWops::LoadFile(System::String^ file, size_t% datasize)
+{
+	StringMarshal context;
+
+	size_t size = 0;
+	void* result = SDL_LoadFile(context.ManagedToUTF8Native(file), &size);
+
+	datasize = size;
+	if(result == __nullptr)
+	{
+		return Result<System::IntPtr, None^>::MakeFailure(None::Value);
+	}
+
+	return System::IntPtr(result);
+}
+
+Result<array<Uint8>^, None^> NETSDL2::IO::RWops::LoadFile(System::String^ file)
+{
+	StringMarshal context;
+
+	size_t size = 0;
+	void* result = SDL_LoadFile(context.ManagedToUTF8Native(file), &size);
+
+	if(result == __nullptr)
+	{
+		return Result<array<Uint8>^, None^>::MakeFailure(None::Value);
+	}
+
+	array<Uint8>^ data = gcnew array<Uint8>(size);
+	if(size == 0)
+		return data;
+
+	pin_ptr<Uint8> pData = &data[0];
+	System::Buffer::MemoryCopy(result, (void*)pData, size, size);
+	pData = nullptr;
+
+	SDL_free(result);
+
+	return data;
+}
+
+size_t NETSDL2::IO::RWops::WriteU8(Uint8 value)
+{
+	return SDL_WriteU8(ops, value);
+}
+
+size_t NETSDL2::IO::RWops::WriteLE16(Uint16 value)
+{
+	return SDL_WriteLE16(ops, value);
+}
+
+size_t NETSDL2::IO::RWops::WriteBE16(Uint16 value)
+{
+	return SDL_WriteBE16(ops, value);
+}
+
+size_t NETSDL2::IO::RWops::WriteLE32(Uint32 value)
+{
+	return SDL_WriteLE32(ops, value);
+}
+
+size_t NETSDL2::IO::RWops::WriteBE32(Uint32 value)
+{
+	return SDL_WriteBE32(ops, value);
+}
+
+size_t NETSDL2::IO::RWops::WriteLE64(Uint64 value)
+{
+	return SDL_WriteLE64(ops, value);
+}
+
+size_t NETSDL2::IO::RWops::WriteBE64(Uint64 value)
+{
+	return SDL_WriteBE64(ops, value);
+}

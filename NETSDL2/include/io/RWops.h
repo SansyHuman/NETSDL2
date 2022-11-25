@@ -423,6 +423,113 @@ namespace NETSDL2
 			{
 				Sint64 get();
 			}
+
+			/// <summary>
+			/// Write to an RWops data stream.
+			/// </summary>
+			/// <param name="ptr">A pointer to a buffer containing data to write.</param>
+			/// <param name="size">The size of an object to write, in bytes.</param>
+			/// <param name="num">The number of objects to write.</param>
+			/// <returns>The number of objects written, which will be less than num
+			/// on error.</returns>
+			size_t Write(System::IntPtr* ptr, size_t size, size_t num);
+
+			/// <summary>
+			/// Write to an RWops data stream.
+			/// </summary>
+			/// <typeparam name="T">Type of object to write.</typeparam>
+			/// <param name="arr">The buffer that contains data to write.</param>
+			/// <param name="offset">The array index offset to start write.</param>
+			/// <param name="num">The number of objects to write.</param>
+			/// <returns>The number of objects written, which will be less than num
+			/// on error.</returns>
+			generic<class T> where T : value class
+			size_t Write(array<T>^ arr, size_t offset, size_t num);
+
+			/// <summary>
+			/// Load all the data from an SDL data stream.
+			/// </summary>
+			/// <param name="src">The RWops to read all available data from.</param>
+			/// <param name="datasize">Store the number of bytes read.</param>
+			/// <param name="freesrc">If true close the source stream before returning.</param>
+			/// <returns>The data, or None if there was an error.
+			/// The returned data should be freed with 
+			/// <see cref="NETSDL2::Systems::Stdinc::Free"/>.</returns>
+			static Result<System::IntPtr, None^> LoadFile(RWops^ src, [Out]size_t% datasize, bool freesrc);
+
+			/// <summary>
+			/// Load all the data from an SDL data stream.
+			/// </summary>
+			/// <param name="src">The RWops to read all available data from.</param>
+			/// <param name="freesrc">If true close the source stream before returning.</param>
+			/// <returns>The data array, or None if there was an error.</returns>
+			static Result<array<Uint8>^, None^> LoadFile(RWops^ src, bool freesrc);
+
+			/// <summary>
+			/// Load all the data from a file path.
+			/// </summary>
+			/// <param name="file">The path to read all available data from.</param>
+			/// <param name="datasize">Store the number of bytes read.</param>
+			/// <returns>The data, or None if there was an error.
+			/// The returned data should be freed with 
+			/// <see cref="NETSDL2::Systems::Stdinc::Free"/>.</returns>
+			static Result<System::IntPtr, None^> LoadFile(System::String^ file, [Out]size_t% datasize);
+
+			/// <summary>
+			/// Load all the data from a file path.
+			/// </summary>
+			/// <param name="file">The path to read all available data from.</param>
+			/// <returns>The data array, or None if there was an error.</returns>
+			static Result<array<Uint8>^, None^> LoadFile(System::String^ file);
+
+			/// <summary>
+			/// Use this function to write a byte to an RWops.
+			/// </summary>
+			/// <param name="value">The byte value to write.</param>
+			/// <returns>1 on success or 0 on failure.</returns>
+			size_t WriteU8(Uint8 value);
+
+			/// <summary>
+			/// Use this function to write 16 bits in native format to a RWops as little-endian data.
+			/// </summary>
+			/// <param name="value">Value the data to be written, in native format.</param>
+			/// <returns>1 on success or 0 on failure.</returns>
+			size_t WriteLE16(Uint16 value);
+
+			/// <summary>
+			/// Use this function to write 16 bits in native format to a RWops as big-endian data.
+			/// </summary>
+			/// <param name="value">Value the data to be written, in native format.</param>
+			/// <returns>1 on success or 0 on failure.</returns>
+			size_t WriteBE16(Uint16 value);
+
+			/// <summary>
+			/// Use this function to write 32 bits in native format to a RWops as little-endian data.
+			/// </summary>
+			/// <param name="value">Value the data to be written, in native format.</param>
+			/// <returns>1 on success or 0 on failure.</returns>
+			size_t WriteLE32(Uint32 value);
+
+			/// <summary>
+			/// Use this function to write 32 bits in native format to a RWops as big-endian data.
+			/// </summary>
+			/// <param name="value">Value the data to be written, in native format.</param>
+			/// <returns>1 on success or 0 on failure.</returns>
+			size_t WriteBE32(Uint32 value);
+
+			/// <summary>
+			/// Use this function to write 64 bits in native format to a RWops as little-endian data.
+			/// </summary>
+			/// <param name="value">Value the data to be written, in native format.</param>
+			/// <returns>1 on success or 0 on failure.</returns>
+			size_t WriteLE64(Uint64 value);
+
+			/// <summary>
+			/// Use this function to write 64 bits in native format to a RWops as big-endian data.
+			/// </summary>
+			/// <param name="value">Value the data to be written, in native format.</param>
+			/// <returns>1 on success or 0 on failure.</returns>
+			size_t WriteBE64(Uint64 value);
 		};
 	}
 }

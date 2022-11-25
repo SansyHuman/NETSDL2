@@ -56,6 +56,8 @@ namespace NETSDL2
 			/// </summary>
 			Events = SDL_INIT_EVENTS,
 
+			Sensor = SDL_INIT_SENSOR,
+
 			/// <summary>
 			/// All subsystems.
 			/// </summary>

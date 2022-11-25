@@ -124,6 +124,14 @@ memRW.CloseFn = (RWops op) =>
     return 0;
 };
 
+memRW.WriteLE64(254362);
+memRW.Seek(0, SeekFrom.Set);
+ulong ulongn = memRW.ReadLE64();
+memRW.Write(new int[] { 1, 3, 5, 4, 6, 8 }, 0, 6);
+memRW.Seek(-4 * 6, SeekFrom.Cur);
+int[] intns = new int[8];
+memRW.Read(intns, 1, 6);
+
 memRW.Close();
 
 None resultVarer = result;
