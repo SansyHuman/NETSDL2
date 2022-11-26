@@ -154,6 +154,9 @@
     <ClCompile Include="src\video\Window.cpp">
       <Filter>소스 파일\video</Filter>
     </ClCompile>
+    <ClCompile Include="src\events\Keyboard.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\video\Blend.h">
@@ -305,6 +308,9 @@
     </ClInclude>
     <ClInclude Include="include\video\Window.h">
       <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Keyboard.h">
+      <Filter>헤더 파일\events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

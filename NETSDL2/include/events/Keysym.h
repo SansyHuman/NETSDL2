@@ -30,7 +30,7 @@ namespace NETSDL2
 			/// <summary>
 			/// Current key modifiers.
 			/// </summary>
-			Keymode Mod;
+			Keymod Mod;
 			Uint32 Unused;
 
 			virtual System::String^ ToString() override;

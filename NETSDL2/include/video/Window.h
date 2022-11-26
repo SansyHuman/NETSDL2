@@ -399,7 +399,7 @@ namespace NETSDL2
 		/// <param name="physicalKey">The physical key code.</param>
 		/// <param name="virtualKey">The virtual key code.</param>
 		/// <param name="modifiers">Key modifiers.</param>
-		public delegate void WindowKeyboardInputEvent(Window^ window, Uint32 timestamp, Scancode physicalKey, Keycode virtualKey, Keymode modifiers);
+		public delegate void WindowKeyboardInputEvent(Window^ window, Uint32 timestamp, Scancode physicalKey, Keycode virtualKey, Keymod modifiers);
 
 		/// <summary>
 		/// Class of SDL window.
@@ -430,7 +430,7 @@ namespace NETSDL2
 			static void WindowEventNoData(Window^, Uint32) {}
 			static void WindowEventOneData(Window^, Uint32, Sint32) {}
 			static void WindowEventTwoData(Window^, Uint32, Sint32, Sint32) {}
-			static void WindowEventKeyboardInput(Window^, Uint32, Scancode, Keycode, Keymode) {}
+			static void WindowEventKeyboardInput(Window^, Uint32, Scancode, Keycode, Keymod) {}
 
 			int WindowEventCheckNative(void* userdata, SDL_Event* event);
 
@@ -1075,6 +1075,12 @@ namespace NETSDL2
 
 			[MethodImpl(MethodImplOptions::AggressiveInlining)]
 			SDL_Renderer* CreateRenderer(int index, Uint32 flags);
+
+			[MethodImpl(MethodImplOptions::AggressiveInlining)]
+			static Window^ GetKeyboardFocus();
+
+			[MethodImpl(MethodImplOptions::AggressiveInlining)]
+			bool IsScreenKeyboardShown();
 		};
 	}
 }

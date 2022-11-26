@@ -106,6 +106,7 @@
     <ClInclude Include="include\events\Finger.h" />
     <ClInclude Include="include\events\Gesture.h" />
     <ClInclude Include="include\events\Joysticks.h" />
+    <ClInclude Include="include\events\Keyboard.h" />
     <ClInclude Include="include\events\Keycode.h" />
     <ClInclude Include="include\events\Keysym.h" />
     <ClInclude Include="include\events\Scancode.h" />
@@ -159,6 +160,7 @@
     <ClCompile Include="src\events\Finger.cpp" />
     <ClCompile Include="src\events\Gesture.cpp" />
     <ClCompile Include="src\events\Joysticks.cpp" />
+    <ClCompile Include="src\events\Keyboard.cpp" />
     <ClCompile Include="src\events\Keycode.cpp" />
     <ClCompile Include="src\events\Keysym.cpp" />
     <ClCompile Include="src\events\Scancode.cpp" />

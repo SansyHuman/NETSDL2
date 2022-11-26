@@ -278,7 +278,7 @@ namespace NETSDL2
         /// Enumeration of valid key mods (possibly OR'd together).
         /// </summary>
         [System::Flags]
-        public enum class Keymode : Uint16
+        public enum class Keymod : Uint16
         {
             None = KMOD_NONE,
 

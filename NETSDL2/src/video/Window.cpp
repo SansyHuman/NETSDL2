@@ -115,11 +115,11 @@ int NETSDL2::Video::Window::WindowEventCheckNative(void* userdata, SDL_Event* ev
 
 		if(keyEvent->repeat == 0)
 		{
-			OnKeyPressed(this, keyEvent->timestamp, (Scancode)keyEvent->keysym.scancode, (Keycode)keyEvent->keysym.sym, (Keymode)keyEvent->keysym.mod);
+			OnKeyPressed(this, keyEvent->timestamp, (Scancode)keyEvent->keysym.scancode, (Keycode)keyEvent->keysym.sym, (Keymod)keyEvent->keysym.mod);
 		}
 		else
 		{
-			OnKeyPressing(this, keyEvent->timestamp, (Scancode)keyEvent->keysym.scancode, (Keycode)keyEvent->keysym.sym, (Keymode)keyEvent->keysym.mod);
+			OnKeyPressing(this, keyEvent->timestamp, (Scancode)keyEvent->keysym.scancode, (Keycode)keyEvent->keysym.sym, (Keymod)keyEvent->keysym.mod);
 		}
 	}
 
@@ -129,7 +129,7 @@ int NETSDL2::Video::Window::WindowEventCheckNative(void* userdata, SDL_Event* ev
 		if(keyEvent->windowID != this->ID)
 			return 0;
 
-		OnKeyReleased(this, keyEvent->timestamp, (Scancode)keyEvent->keysym.scancode, (Keycode)keyEvent->keysym.sym, (Keymode)keyEvent->keysym.mod);
+		OnKeyReleased(this, keyEvent->timestamp, (Scancode)keyEvent->keysym.scancode, (Keycode)keyEvent->keysym.sym, (Keymod)keyEvent->keysym.mod);
 	}
 
 	return 0;
@@ -946,4 +946,23 @@ Result<array<System::String^>^, None^> NETSDL2::Video::Window::GetVulkanInstance
 SDL_Renderer* NETSDL2::Video::Window::CreateRenderer(int index, Uint32 flags)
 {
 	return SDL_CreateRenderer(window, index, flags);
+}
+
+Window^ NETSDL2::Video::Window::GetKeyboardFocus()
+{
+	SDL_Window* win = SDL_GetKeyboardFocus();
+	if(win == __nullptr)
+		return nullptr;
+
+	Window^ window = nullptr;
+	bool exists = nativeWindowConnections->TryGetValue(System::IntPtr(win), window);
+	if(!exists)
+		return nullptr;
+
+	return window;
+}
+
+bool NETSDL2::Video::Window::IsScreenKeyboardShown()
+{
+	return SDL_IsScreenKeyboardShown(window) == SDL_TRUE;
 }

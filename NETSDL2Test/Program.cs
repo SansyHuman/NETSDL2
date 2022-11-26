@@ -186,17 +186,17 @@ window.OnMoved += (Window window, uint timestamp, int x, int y) =>
 {
     Logging.LogInfo(LogCategory.Application, "Main window moved on {0} to {1}, {2}", timestamp, x, y);
 };
-window.OnKeyPressed += (Window window, uint timestamp, Scancode physicalKey, Keycode virtualKey, Keymode modifiers) =>
+window.OnKeyPressed += (Window window, uint timestamp, Scancode physicalKey, Keycode virtualKey, Keymod modifiers) =>
 {
-    Logging.LogInfo(LogCategory.Application, "Main window key pressed on {0} {1} ({2}) with {3}", timestamp, physicalKey, virtualKey, modifiers & (~Keymode.Num));
+    Logging.LogInfo(LogCategory.Application, "Main window key pressed on {0} {1} ({2}) with {3}", timestamp, physicalKey, virtualKey, modifiers & (~Keymod.Num));
 };
-window.OnKeyPressing += (Window window, uint timestamp, Scancode physicalKey, Keycode virtualKey, Keymode modifiers) =>
+window.OnKeyPressing += (Window window, uint timestamp, Scancode physicalKey, Keycode virtualKey, Keymod modifiers) =>
 {
-    Logging.LogInfo(LogCategory.Application, "Main window key pressing on {0} {1} ({2}) with {3}", timestamp, physicalKey, virtualKey, modifiers & (~Keymode.Num));
+    Logging.LogInfo(LogCategory.Application, "Main window key pressing on {0} {1} ({2}) with {3}", timestamp, physicalKey, virtualKey, modifiers & (~Keymod.Num));
 };
-window.OnKeyReleased += (Window window, uint timestamp, Scancode physicalKey, Keycode virtualKey, Keymode modifiers) =>
+window.OnKeyReleased += (Window window, uint timestamp, Scancode physicalKey, Keycode virtualKey, Keymod modifiers) =>
 {
-    Logging.LogInfo(LogCategory.Application, "Main window key released on {0} {1} ({2}) with {3}", timestamp, physicalKey, virtualKey, modifiers & (~Keymode.Num));
+    Logging.LogInfo(LogCategory.Application, "Main window key released on {0} {1} ({2}) with {3}", timestamp, physicalKey, virtualKey, modifiers & (~Keymod.Num));
 };
 
 window.SetWindowHitTest((Window window, Point point, IntPtr data) =>
