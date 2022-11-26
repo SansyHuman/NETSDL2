@@ -101,6 +101,7 @@
     <ClInclude Include="include\core\Version.h" />
     <ClInclude Include="include\events\Button.h" />
     <ClInclude Include="include\events\Controllers.h" />
+    <ClInclude Include="include\events\Cursor.h" />
     <ClInclude Include="include\events\Event.h" />
     <ClInclude Include="include\events\Events.h" />
     <ClInclude Include="include\events\Finger.h" />
@@ -109,6 +110,7 @@
     <ClInclude Include="include\events\Keyboard.h" />
     <ClInclude Include="include\events\Keycode.h" />
     <ClInclude Include="include\events\Keysym.h" />
+    <ClInclude Include="include\events\Mouse.h" />
     <ClInclude Include="include\events\Scancode.h" />
     <ClInclude Include="include\events\Sensors.h" />
     <ClInclude Include="include\events\Touch.h" />
@@ -155,6 +157,7 @@
     <ClCompile Include="src\core\Version.cpp" />
     <ClCompile Include="src\events\Button.cpp" />
     <ClCompile Include="src\events\Controllers.cpp" />
+    <ClCompile Include="src\events\Cursor.cpp" />
     <ClCompile Include="src\events\Event.cpp" />
     <ClCompile Include="src\events\Events.cpp" />
     <ClCompile Include="src\events\Finger.cpp" />
@@ -163,6 +166,7 @@
     <ClCompile Include="src\events\Keyboard.cpp" />
     <ClCompile Include="src\events\Keycode.cpp" />
     <ClCompile Include="src\events\Keysym.cpp" />
+    <ClCompile Include="src\events\Mouse.cpp" />
     <ClCompile Include="src\events\Scancode.cpp" />
     <ClCompile Include="src\events\Sensors.cpp" />
     <ClCompile Include="src\events\Touch.cpp" />

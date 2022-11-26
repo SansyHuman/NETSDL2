@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['_7eglcontext_645',['~GLContext',['../class_n_e_t_s_d_l2_1_1_video_1_1_g_l_context.html#a2017cab156363b0a45c84b207fc2580a',1,'NETSDL2::Video::GLContext']]],
-  ['_7epalettewrapper_646',['~PaletteWrapper',['../class_n_e_t_s_d_l2_1_1_video_1_1_palette_wrapper.html#a1aaaa8357a0c6c13136d2d9e1734d3a2',1,'NETSDL2::Video::PaletteWrapper']]],
-  ['_7epixelformatwrapper_647',['~PixelFormatWrapper',['../class_n_e_t_s_d_l2_1_1_video_1_1_pixel_format_wrapper.html#aef795feff953de0f4d19779cd7393092',1,'NETSDL2::Video::PixelFormatWrapper']]],
-  ['_7ewindow_648',['~Window',['../class_n_e_t_s_d_l2_1_1_video_1_1_window.html#ae48c7a9dc0bf16c8b14a02209770145f',1,'NETSDL2::Video::Window']]]
+  ['z_1472',['z',['../namespace_n_e_t_s_d_l2_1_1_events.html#a82963915e8c674ab0bb76bb291729d75afbade9e36a3f36d3d676c1b808451dd7',1,'NETSDL2::Events::z()'],['../namespace_n_e_t_s_d_l2_1_1_events.html#a8c7ca140f20da60b05e09951885b9a92a21c2e59531c8710156d34a3c30ac81d5',1,'NETSDL2::Events::Z()']]],
+  ['zero_1473',['Zero',['../namespace_n_e_t_s_d_l2_1_1_video.html#afd6e8b12bd121f9b131c7cd048bc9fadad7ed4ee1df437474d005188535f74875',1,'NETSDL2::Video']]]
 ];

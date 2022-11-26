@@ -1,8 +1,28 @@
 var searchData=
 [
-  ['packed16_1195',['Packed16',['../namespace_n_e_t_s_d_l2_1_1_video.html#a536a93a7495f9b58ad3e56b4293c6106a544044ed6409990d52c3903e9cb4b9c6',1,'NETSDL2::Video']]],
-  ['packed32_1196',['Packed32',['../namespace_n_e_t_s_d_l2_1_1_video.html#a536a93a7495f9b58ad3e56b4293c6106a46f0a4abeb2e4df83617c12ed452ca63',1,'NETSDL2::Video']]],
-  ['packed8_1197',['Packed8',['../namespace_n_e_t_s_d_l2_1_1_video.html#a536a93a7495f9b58ad3e56b4293c6106a0ba8517254e6c3155fe24903263dd02c',1,'NETSDL2::Video']]],
-  ['pollsentinel_1198',['PollSentinel',['../namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244aa054108415bad5aaa63e97ad83a423734',1,'NETSDL2::Events']]],
-  ['popupmenu_1199',['PopupMenu',['../namespace_n_e_t_s_d_l2_1_1_video.html#ac3956522ce5834d814450d183ec4792baf1138320e0090b5080bfca3579b1c5c9',1,'NETSDL2::Video']]]
+  ['p_2768',['P',['../namespace_n_e_t_s_d_l2_1_1_events.html#a8c7ca140f20da60b05e09951885b9a92a44c29edb103a2872f519ad0c9a0fdaaa',1,'NETSDL2::Events::P()'],['../namespace_n_e_t_s_d_l2_1_1_events.html#a82963915e8c674ab0bb76bb291729d75a83878c91171338902e0fe0fb97a8c47a',1,'NETSDL2::Events::p()']]],
+  ['packed16_2769',['Packed16',['../namespace_n_e_t_s_d_l2_1_1_video.html#a536a93a7495f9b58ad3e56b4293c6106a544044ed6409990d52c3903e9cb4b9c6',1,'NETSDL2::Video']]],
+  ['packed32_2770',['Packed32',['../namespace_n_e_t_s_d_l2_1_1_video.html#a536a93a7495f9b58ad3e56b4293c6106a46f0a4abeb2e4df83617c12ed452ca63',1,'NETSDL2::Video']]],
+  ['packed8_2771',['Packed8',['../namespace_n_e_t_s_d_l2_1_1_video.html#a536a93a7495f9b58ad3e56b4293c6106a0ba8517254e6c3155fe24903263dd02c',1,'NETSDL2::Video']]],
+  ['paddle1_2772',['Paddle1',['../namespace_n_e_t_s_d_l2_1_1_events.html#a408c71c7a5593b91aeb617fde6458db7ae3538b79b33ae3ddfcbf8ad7c7461734',1,'NETSDL2::Events']]],
+  ['paddle2_2773',['Paddle2',['../namespace_n_e_t_s_d_l2_1_1_events.html#a408c71c7a5593b91aeb617fde6458db7a7ae8f8abc849e17fdf01daf5e9000e82',1,'NETSDL2::Events']]],
+  ['paddle3_2774',['Paddle3',['../namespace_n_e_t_s_d_l2_1_1_events.html#a408c71c7a5593b91aeb617fde6458db7a31f33a7de301e242922e01423e7c25ba',1,'NETSDL2::Events']]],
+  ['paddle4_2775',['Paddle4',['../namespace_n_e_t_s_d_l2_1_1_events.html#a408c71c7a5593b91aeb617fde6458db7a628a6b4ee042a3286e278852764f04c3',1,'NETSDL2::Events']]],
+  ['pagedown_2776',['PageDown',['../namespace_n_e_t_s_d_l2_1_1_events.html#a82963915e8c674ab0bb76bb291729d75aee3677bcca83ece9384b01e43952bf33',1,'NETSDL2::Events::PageDown()'],['../namespace_n_e_t_s_d_l2_1_1_events.html#a8c7ca140f20da60b05e09951885b9a92aee3677bcca83ece9384b01e43952bf33',1,'NETSDL2::Events::PageDown()']]],
+  ['pageup_2777',['PageUp',['../namespace_n_e_t_s_d_l2_1_1_events.html#a82963915e8c674ab0bb76bb291729d75a9b869c510c75c5827ac82e49d4340927',1,'NETSDL2::Events::PageUp()'],['../namespace_n_e_t_s_d_l2_1_1_events.html#a8c7ca140f20da60b05e09951885b9a92a9b869c510c75c5827ac82e49d4340927',1,'NETSDL2::Events::PageUp()']]],
+  ['paste_2778',['Paste',['../namespace_n_e_t_s_d_l2_1_1_events.html#a82963915e8c674ab0bb76bb291729d75a36bb6559696dc9124986ae120515984f',1,'NETSDL2::Events::Paste()'],['../namespace_n_e_t_s_d_l2_1_1_events.html#a8c7ca140f20da60b05e09951885b9a92a36bb6559696dc9124986ae120515984f',1,'NETSDL2::Events::Paste()']]],
+  ['pause_2779',['Pause',['../namespace_n_e_t_s_d_l2_1_1_events.html#a82963915e8c674ab0bb76bb291729d75a105b296a83f9c105355403f3332af50f',1,'NETSDL2::Events::Pause()'],['../namespace_n_e_t_s_d_l2_1_1_events.html#a8c7ca140f20da60b05e09951885b9a92a105b296a83f9c105355403f3332af50f',1,'NETSDL2::Events::Pause()']]],
+  ['peek_2780',['Peek',['../namespace_n_e_t_s_d_l2_1_1_events.html#a02fe063b2703a30bfcc093ce9887fbd1a90cfb243e2b6cd3d2b73c6369f22634d',1,'NETSDL2::Events']]],
+  ['percent_2781',['Percent',['../namespace_n_e_t_s_d_l2_1_1_events.html#a82963915e8c674ab0bb76bb291729d75aadaaee4b22041c27198d410c68d952c9',1,'NETSDL2::Events']]],
+  ['period_2782',['Period',['../namespace_n_e_t_s_d_l2_1_1_events.html#a82963915e8c674ab0bb76bb291729d75a1901606ea069a83dc7beea17881ef95a',1,'NETSDL2::Events::Period()'],['../namespace_n_e_t_s_d_l2_1_1_events.html#a8c7ca140f20da60b05e09951885b9a92a1901606ea069a83dc7beea17881ef95a',1,'NETSDL2::Events::Period()']]],
+  ['plus_2783',['Plus',['../namespace_n_e_t_s_d_l2_1_1_events.html#a82963915e8c674ab0bb76bb291729d75a32ba78fe43257d3e7f88e3935a8ea0d4',1,'NETSDL2::Events']]],
+  ['pollsentinel_2784',['PollSentinel',['../namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244aa054108415bad5aaa63e97ad83a423734',1,'NETSDL2::Events']]],
+  ['popupmenu_2785',['PopupMenu',['../namespace_n_e_t_s_d_l2_1_1_video.html#ac3956522ce5834d814450d183ec4792baf1138320e0090b5080bfca3579b1c5c9',1,'NETSDL2::Video']]],
+  ['portrait_2786',['Portrait',['../namespace_n_e_t_s_d_l2_1_1_video.html#aa638981f4746684470f7633cf65e7f42a1c7444be9626d149ab598fb79b639f96',1,'NETSDL2::Video']]],
+  ['portraitflipped_2787',['PortraitFlipped',['../namespace_n_e_t_s_d_l2_1_1_video.html#aa638981f4746684470f7633cf65e7f42a13be439a13712e02008085c7861871f3',1,'NETSDL2::Video']]],
+  ['power_2788',['Power',['../namespace_n_e_t_s_d_l2_1_1_events.html#a82963915e8c674ab0bb76bb291729d75add4fe0cc913f704600b97d1f5dd285de',1,'NETSDL2::Events::Power()'],['../namespace_n_e_t_s_d_l2_1_1_events.html#a8c7ca140f20da60b05e09951885b9a92add4fe0cc913f704600b97d1f5dd285de',1,'NETSDL2::Events::Power()']]],
+  ['presentvsync_2789',['PresentVsync',['../namespace_n_e_t_s_d_l2_1_1_video.html#af51c64aea255dae2fcc7b3aef26c8de7ae9d3478536d1b169232032801c249eb4',1,'NETSDL2::Video']]],
+  ['pressed_2790',['Pressed',['../namespace_n_e_t_s_d_l2_1_1_events.html#a5478ee292691becf870aa9df1ee88f33ad78a68f6a85421ae121c2cb5b73a1040',1,'NETSDL2::Events::Pressed()'],['../namespace_n_e_t_s_d_l2_1_1_events.html#ac92256f407b57a769f77b57b36ea60e8ad78a68f6a85421ae121c2cb5b73a1040',1,'NETSDL2::Events::Pressed()']]],
+  ['printscreen_2791',['PrintScreen',['../namespace_n_e_t_s_d_l2_1_1_events.html#a82963915e8c674ab0bb76bb291729d75abf54024481cd2ad6bbb9ae44b7312472',1,'NETSDL2::Events::PrintScreen()'],['../namespace_n_e_t_s_d_l2_1_1_events.html#a8c7ca140f20da60b05e09951885b9a92abf54024481cd2ad6bbb9ae44b7312472',1,'NETSDL2::Events::PrintScreen()']]],
+  ['prior_2792',['Prior',['../namespace_n_e_t_s_d_l2_1_1_events.html#a82963915e8c674ab0bb76bb291729d75ae3d5e88745fd884d551c7f25237a5b5e',1,'NETSDL2::Events::Prior()'],['../namespace_n_e_t_s_d_l2_1_1_events.html#a8c7ca140f20da60b05e09951885b9a92ae3d5e88745fd884d551c7f25237a5b5e',1,'NETSDL2::Events::Prior()']]]
 ];

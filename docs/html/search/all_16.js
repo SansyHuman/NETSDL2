@@ -1,13 +1,19 @@
 var searchData=
 [
-  ['value_575',['Value',['../class_n_e_t_s_d_l2_1_1_core_1_1_none.html#accff60384db06d4ad3bd8ad8e1e10b17',1,'NETSDL2::Core::None']]],
-  ['verbose_576',['Verbose',['../namespace_n_e_t_s_d_l2_1_1_core.html#a64c13325596fda55cad253240556e744ad4a9fa383ab700c5bdd6f31cf7df0faf',1,'NETSDL2::Core']]],
-  ['version_577',['Version',['../struct_n_e_t_s_d_l2_1_1_core_1_1_version.html',1,'NETSDL2::Core::Version'],['../struct_n_e_t_s_d_l2_1_1_video_1_1_sys_w_m_info.html#ae1aaba0d38ae438ae98eb913f4d7b3fe',1,'NETSDL2::Video::SysWMInfo::Version()']]],
-  ['version_2eh_578',['Version.h',['../_version_8h.html',1,'']]],
-  ['video_579',['Video',['../struct_n_e_t_s_d_l2_1_1_video_1_1_video.html',1,'NETSDL2::Video::Video'],['../namespace_n_e_t_s_d_l2_1_1_core.html#aa2b649effa82139aba0cb6820e1b736da34e2d1989a1dbf75cd631596133ee5ee',1,'NETSDL2::Core::Video()'],['../namespace_n_e_t_s_d_l2_1_1_core.html#a3531e400abf53f56668217de14206ee6a34e2d1989a1dbf75cd631596133ee5ee',1,'NETSDL2::Core::Video()']]],
-  ['video_2eh_580',['Video.h',['../_video_8h.html',1,'']]],
-  ['vivante_581',['Vivante',['../struct_n_e_t_s_d_l2_1_1_video_1_1_sys_w_m_info.html#a7114590ba9debe431c26c895f94250df',1,'NETSDL2::Video::SysWMInfo::Vivante()'],['../namespace_n_e_t_s_d_l2_1_1_video.html#a5ebb31f92ab0d19d675ba54dc098f735a758541adeb0d17c3fbc10a89fa2763a2',1,'NETSDL2::Video::Vivante()']]],
-  ['vivante_5f_582',['Vivante_',['../struct_n_e_t_s_d_l2_1_1_video_1_1_sys_w_m_info_1_1_vivante__.html',1,'NETSDL2::Video::SysWMInfo']]],
-  ['vulkan_583',['Vulkan',['../struct_n_e_t_s_d_l2_1_1_video_1_1_vulkan.html',1,'NETSDL2::Video::Vulkan'],['../namespace_n_e_t_s_d_l2_1_1_video.html#ac3956522ce5834d814450d183ec4792ba38625270231b647116c80bcbc4f9d1d8',1,'NETSDL2::Video::Vulkan()']]],
-  ['vulkan_2eh_584',['Vulkan.h',['../_vulkan_8h.html',1,'']]]
+  ['v_1364',['v',['../namespace_n_e_t_s_d_l2_1_1_events.html#a82963915e8c674ab0bb76bb291729d75a9e3669d19b675bd57058fd4664205d2a',1,'NETSDL2::Events::v()'],['../namespace_n_e_t_s_d_l2_1_1_events.html#a8c7ca140f20da60b05e09951885b9a92a5206560a306a2e085a437fd258eb57ce',1,'NETSDL2::Events::V()']]],
+  ['value_1365',['Value',['../class_n_e_t_s_d_l2_1_1_core_1_1_none.html#accff60384db06d4ad3bd8ad8e1e10b17',1,'NETSDL2::Core::None::Value()'],['../struct_n_e_t_s_d_l2_1_1_events_1_1_joy_axis_event.html#aa18465447bf996e5427d5e208fa52ca1',1,'NETSDL2::Events::JoyAxisEvent::Value()'],['../struct_n_e_t_s_d_l2_1_1_events_1_1_joy_hat_event.html#afaf17b3b12597cf9d7c93b81c9ccdb3c',1,'NETSDL2::Events::JoyHatEvent::Value()'],['../struct_n_e_t_s_d_l2_1_1_events_1_1_controller_axis_event.html#a358a068badd2a4c711f1da7907eebc88',1,'NETSDL2::Events::ControllerAxisEvent::Value()']]],
+  ['verbose_1366',['Verbose',['../namespace_n_e_t_s_d_l2_1_1_core.html#a64c13325596fda55cad253240556e744ad4a9fa383ab700c5bdd6f31cf7df0faf',1,'NETSDL2::Core']]],
+  ['version_1367',['Version',['../struct_n_e_t_s_d_l2_1_1_core_1_1_version.html',1,'NETSDL2::Core::Version'],['../struct_n_e_t_s_d_l2_1_1_video_1_1_sys_w_m_info.html#ae1aaba0d38ae438ae98eb913f4d7b3fe',1,'NETSDL2::Video::SysWMInfo::Version()'],['../struct_n_e_t_s_d_l2_1_1_video_1_1_sys_w_m_msg.html#a5d712a7ccda031b85bfd893bd317901b',1,'NETSDL2::Video::SysWMMsg::Version()']]],
+  ['version_2eh_1368',['Version.h',['../_version_8h.html',1,'']]],
+  ['vertex_1369',['Vertex',['../struct_n_e_t_s_d_l2_1_1_video_1_1_vertex.html',1,'NETSDL2::Video::Vertex'],['../struct_n_e_t_s_d_l2_1_1_video_1_1_vertex.html#a8c5f38b07cf874eb70b288568c60572a',1,'NETSDL2::Video::Vertex::Vertex()']]],
+  ['vertex_2eh_1370',['Vertex.h',['../_vertex_8h.html',1,'']]],
+  ['vertical_1371',['Vertical',['../namespace_n_e_t_s_d_l2_1_1_video.html#abe9a5728889429582950d1f89f70171aa06ce2a25e5d12c166a36f654dbea6012',1,'NETSDL2::Video']]],
+  ['video_1372',['Video',['../struct_n_e_t_s_d_l2_1_1_video_1_1_video.html',1,'NETSDL2::Video::Video'],['../namespace_n_e_t_s_d_l2_1_1_core.html#aa2b649effa82139aba0cb6820e1b736da34e2d1989a1dbf75cd631596133ee5ee',1,'NETSDL2::Core::Video()'],['../namespace_n_e_t_s_d_l2_1_1_core.html#a3531e400abf53f56668217de14206ee6a34e2d1989a1dbf75cd631596133ee5ee',1,'NETSDL2::Core::Video()']]],
+  ['video_2eh_1373',['Video.h',['../_video_8h.html',1,'']]],
+  ['vivante_1374',['Vivante',['../struct_n_e_t_s_d_l2_1_1_video_1_1_sys_w_m_info.html#a7114590ba9debe431c26c895f94250df',1,'NETSDL2::Video::SysWMInfo::Vivante()'],['../struct_n_e_t_s_d_l2_1_1_video_1_1_sys_w_m_msg.html#a70533c466e402804e0dc4a462a88f967',1,'NETSDL2::Video::SysWMMsg::Vivante()'],['../namespace_n_e_t_s_d_l2_1_1_video.html#a5ebb31f92ab0d19d675ba54dc098f735a758541adeb0d17c3fbc10a89fa2763a2',1,'NETSDL2::Video::Vivante()']]],
+  ['vivante_5f_1375',['Vivante_',['../struct_n_e_t_s_d_l2_1_1_video_1_1_sys_w_m_msg_1_1_vivante__.html',1,'NETSDL2::Video::SysWMMsg::Vivante_'],['../struct_n_e_t_s_d_l2_1_1_video_1_1_sys_w_m_info_1_1_vivante__.html',1,'NETSDL2::Video::SysWMInfo::Vivante_']]],
+  ['volumedown_1376',['VolumeDown',['../namespace_n_e_t_s_d_l2_1_1_events.html#a82963915e8c674ab0bb76bb291729d75a91f1f883ea91306f79dbf0ca1b108bad',1,'NETSDL2::Events::VolumeDown()'],['../namespace_n_e_t_s_d_l2_1_1_events.html#a8c7ca140f20da60b05e09951885b9a92a91f1f883ea91306f79dbf0ca1b108bad',1,'NETSDL2::Events::VolumeDown()']]],
+  ['volumeup_1377',['VolumeUp',['../namespace_n_e_t_s_d_l2_1_1_events.html#a82963915e8c674ab0bb76bb291729d75af5311ec6ce071e43882685428cc9d56a',1,'NETSDL2::Events::VolumeUp()'],['../namespace_n_e_t_s_d_l2_1_1_events.html#a8c7ca140f20da60b05e09951885b9a92af5311ec6ce071e43882685428cc9d56a',1,'NETSDL2::Events::VolumeUp()']]],
+  ['vulkan_1378',['Vulkan',['../struct_n_e_t_s_d_l2_1_1_video_1_1_vulkan.html',1,'NETSDL2::Video::Vulkan'],['../namespace_n_e_t_s_d_l2_1_1_video.html#ac3956522ce5834d814450d183ec4792ba38625270231b647116c80bcbc4f9d1d8',1,'NETSDL2::Video::Vulkan()']]],
+  ['vulkan_2eh_1379',['Vulkan.h',['../_vulkan_8h.html',1,'']]]
 ];

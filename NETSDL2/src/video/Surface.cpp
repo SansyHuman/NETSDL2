@@ -1,5 +1,6 @@
 #include "../../include/video/Surface.h"
 
+#include "../../include/io/RWops.h"
 #include "../../include/core/Error.h"
 #include "../../include/internal/StringMarshal.h"
 
@@ -149,6 +150,21 @@ NETSDL2::Video::Surface::Surface(System::String^ file)
 {
 	StringMarshal context;
 	SDL_Surface* surface = SDL_LoadBMP(context.ManagedToUTF8Native(file));
+	if(surface == __nullptr)
+	{
+		throw gcnew System::Exception(Error::GetError());
+	}
+
+	InitSurface(surface);
+}
+
+NETSDL2::Video::Surface::Surface(RWops^ src, bool freesrc)
+	: releaseOnDestroy(true)
+{
+	SDL_Surface* surface = SDL_LoadBMP_RW(src->NativeOps, freesrc ? 1 : 0);
+	if(freesrc)
+		delete src;
+
 	if(surface == __nullptr)
 	{
 		throw gcnew System::Exception(Error::GetError());
@@ -370,6 +386,20 @@ Result<None^, int> NETSDL2::Video::Surface::SaveBMP(System::String^ file)
 {
 	StringMarshal context;
 	int result = SDL_SaveBMP(surface, context.ManagedToUTF8Native(file));
+	if(result < 0)
+	{
+		return Result<None^, int>::MakeFailure(result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, int> NETSDL2::Video::Surface::SaveBMP(RWops^ dst, bool freedst)
+{
+	int result = SDL_SaveBMP_RW(surface, dst->NativeOps, freedst ? 1 : 0);
+	if(freedst)
+		delete dst;
+
 	if(result < 0)
 	{
 		return Result<None^, int>::MakeFailure(result);

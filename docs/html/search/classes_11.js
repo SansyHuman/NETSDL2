@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['wayland_694',['Wayland',['../struct_n_e_t_s_d_l2_1_1_video_1_1_sys_w_m_info_1_1_wayland.html',1,'NETSDL2::Video::SysWMInfo']]],
-  ['window_695',['Window',['../class_n_e_t_s_d_l2_1_1_video_1_1_window.html',1,'NETSDL2::Video']]],
-  ['windowevent_696',['WindowEvent',['../struct_n_e_t_s_d_l2_1_1_events_1_1_window_event.html',1,'NETSDL2::Events']]],
-  ['windows_697',['Windows',['../struct_n_e_t_s_d_l2_1_1_video_1_1_sys_w_m_info_1_1_windows.html',1,'NETSDL2::Video::SysWMInfo']]],
-  ['windowsrt_698',['WindowsRT',['../struct_n_e_t_s_d_l2_1_1_video_1_1_sys_w_m_info_1_1_windows_r_t.html',1,'NETSDL2::Video::SysWMInfo']]]
+  ['rect_1548',['Rect',['../struct_n_e_t_s_d_l2_1_1_video_1_1_rect.html',1,'NETSDL2::Video']]],
+  ['rectops_1549',['RectOps',['../struct_n_e_t_s_d_l2_1_1_video_1_1_rect_ops.html',1,'NETSDL2::Video']]],
+  ['render_1550',['Render',['../struct_n_e_t_s_d_l2_1_1_video_1_1_render.html',1,'NETSDL2::Video']]],
+  ['renderer_1551',['Renderer',['../class_n_e_t_s_d_l2_1_1_video_1_1_renderer.html',1,'NETSDL2::Video']]],
+  ['rendererinfo_1552',['RendererInfo',['../struct_n_e_t_s_d_l2_1_1_video_1_1_renderer_info.html',1,'NETSDL2::Video']]],
+  ['result_1553',['Result',['../class_n_e_t_s_d_l2_1_1_core_1_1_result.html',1,'NETSDL2::Core']]],
+  ['rwops_1554',['RWops',['../class_n_e_t_s_d_l2_1_1_i_o_1_1_r_wops.html',1,'NETSDL2::IO']]]
 ];

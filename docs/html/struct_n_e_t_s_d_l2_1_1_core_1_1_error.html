@@ -86,6 +86,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:ac8061d408b147a0ea602f3bddac0b40e"><td class="memItemLeft" align="right" valign="top">static System::String ^&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_core_1_1_error.html#ac8061d408b147a0ea602f3bddac0b40e">GetError</a> ()</td></tr>
 <tr class="memdesc:ac8061d408b147a0ea602f3bddac0b40e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a message about the last error that occurred on the current thread.  <a href="struct_n_e_t_s_d_l2_1_1_core_1_1_error.html#ac8061d408b147a0ea602f3bddac0b40e">More...</a><br /></td></tr>
 <tr class="separator:ac8061d408b147a0ea602f3bddac0b40e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d4d4d5939ffc8bf25d9a335e1a463ab"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_core_1_1_error.html#a2d4d4d5939ffc8bf25d9a335e1a463ab">GetErrorMsg</a> (char *errstr, int maxlen)</td></tr>
+<tr class="memdesc:a2d4d4d5939ffc8bf25d9a335e1a463ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the last error message that was set for the current thread.  <a href="struct_n_e_t_s_d_l2_1_1_core_1_1_error.html#a2d4d4d5939ffc8bf25d9a335e1a463ab">More...</a><br /></td></tr>
+<tr class="separator:a2d4d4d5939ffc8bf25d9a335e1a463ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a122f491aed13bdc801c5f9dff9e4b655"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_core_1_1_error.html#a122f491aed13bdc801c5f9dff9e4b655">SetError</a> (System::String^ format,...array&lt; Object^&gt;^ args)</td></tr>
 <tr class="memdesc:a122f491aed13bdc801c5f9dff9e4b655"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the <a class="el" href="struct_n_e_t_s_d_l2_1_1_core_1_1_s_d_l.html" title="Core SDL functions.">SDL</a> error message for the current thread.  <a href="struct_n_e_t_s_d_l2_1_1_core_1_1_error.html#a122f491aed13bdc801c5f9dff9e4b655">More...</a><br /></td></tr>
 <tr class="separator:a122f491aed13bdc801c5f9dff9e4b655"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -148,6 +151,52 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a2d4d4d5939ffc8bf25d9a335e1a463ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d4d4d5939ffc8bf25d9a335e1a463ab">&#9670;&nbsp;</a></span>GetErrorMsg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char* NETSDL2::Core::Error::GetErrorMsg </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>errstr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>maxlen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the last error message that was set for the current thread. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">errstr</td><td>A buffer to fill with the last error message that was set for the current thread.</td></tr>
+    <tr><td class="paramname">maxlen</td><td>The size of the buffer pointed to by the errstr parameter.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The pointer passed in as the errstr parameter.</dd></dl>
+
+</div>
+</div>
 <a id="a122f491aed13bdc801c5f9dff9e4b655"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a122f491aed13bdc801c5f9dff9e4b655">&#9670;&nbsp;</a></span>SetError()</h2>
 
@@ -194,7 +243,7 @@ Static Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>core/<a class="el" href="_error_8h_source.html">Error.h</a></li>
+<li>NETSDL2/include/core/<a class="el" href="_error_8h_source.html">Error.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

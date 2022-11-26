@@ -68,7 +68,8 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">NETSDL2::Core Namespace Reference</div>  </div>
 </div><!--header-->
@@ -152,7 +153,8 @@ Enumerations</h2></td></tr>
 <a class="el" href="namespace_n_e_t_s_d_l2_1_1_core.html#a3531e400abf53f56668217de14206ee6a9853dd4522ade044f1205cd772d7508e">SubSystems::GameController</a> = SDL_INIT_GAMECONTROLLER, 
 <a class="el" href="namespace_n_e_t_s_d_l2_1_1_core.html#a3531e400abf53f56668217de14206ee6a87f9f735a1d36793ceaecd4e47124b63">SubSystems::Events</a> = SDL_INIT_EVENTS, 
 <br />
-&#160;&#160;<a class="el" href="namespace_n_e_t_s_d_l2_1_1_core.html#a3531e400abf53f56668217de14206ee6a709468af25e91284821d1bdbfdded24c">SubSystems::Everything</a> = SDL_INIT_EVERYTHING
+&#160;&#160;<a class="el" href="namespace_n_e_t_s_d_l2_1_1_core.html#a3531e400abf53f56668217de14206ee6a06b185256c71c1aec263c6e22bf8ef6b">SubSystems::Sensor</a> = SDL_INIT_SENSOR, 
+<a class="el" href="namespace_n_e_t_s_d_l2_1_1_core.html#a3531e400abf53f56668217de14206ee6a709468af25e91284821d1bdbfdded24c">SubSystems::Everything</a> = SDL_INIT_EVERYTHING
 <br />
  }</td></tr>
 <tr class="memdesc:a3531e400abf53f56668217de14206ee6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subsystems of SDL2.  <a href="namespace_n_e_t_s_d_l2_1_1_core.html#a3531e400abf53f56668217de14206ee6">More...</a><br /></td></tr>
@@ -160,11 +162,29 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a04daa15701f4d1fd5e90f2a78cf08cbc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_core.html#a04daa15701f4d1fd5e90f2a78cf08cbc">FunctionPointer</a> (<a class="el" href="namespace_n_e_t_s_d_l2_1_1_core.html#a60affb5503b71421d71618ed3a8b5317">F</a> delegate)</td></tr>
+<tr class="memdesc:a04daa15701f4d1fd5e90f2a78cf08cbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a function pointer of the delegate.  <a href="namespace_n_e_t_s_d_l2_1_1_core.html#a04daa15701f4d1fd5e90f2a78cf08cbc">More...</a><br /></td></tr>
+<tr class="separator:a04daa15701f4d1fd5e90f2a78cf08cbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a883f6050b0fb89a0d3df92c620d16bc0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_core.html#a883f6050b0fb89a0d3df92c620d16bc0">~FunctionPointer</a> ()</td></tr>
+<tr class="separator:a883f6050b0fb89a0d3df92c620d16bc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04b236eeaba2a1dece9431f74c749267"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_core.html#a04b236eeaba2a1dece9431f74c749267">!FunctionPointer</a> ()</td></tr>
+<tr class="separator:a04b236eeaba2a1dece9431f74c749267"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0697e2225d3a4c46175ff8cb5ecc40e2"><td class="memItemLeft" align="right" valign="top">public delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_core.html#a0697e2225d3a4c46175ff8cb5ecc40e2">LogOutputFunction</a> (System::IntPtr userData, <a class="el" href="namespace_n_e_t_s_d_l2_1_1_core.html#aa2b649effa82139aba0cb6820e1b736d">LogCategory</a> category, <a class="el" href="namespace_n_e_t_s_d_l2_1_1_core.html#a64c13325596fda55cad253240556e744">LogPriority</a> priority, System::String^ message)</td></tr>
 <tr class="memdesc:a0697e2225d3a4c46175ff8cb5ecc40e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate for output function of logging.  <a href="namespace_n_e_t_s_d_l2_1_1_core.html#a0697e2225d3a4c46175ff8cb5ecc40e2">More...</a><br /></td></tr>
 <tr class="separator:a0697e2225d3a4c46175ff8cb5ecc40e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27c2f5494b224f696837f618fb0536cf"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_core.html#a27c2f5494b224f696837f618fb0536cf">NativeLogOutputFunction</a> (void *userdata, int category, SDL_LogPriority priority, const char *message)</td></tr>
 <tr class="separator:a27c2f5494b224f696837f618fb0536cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a60affb5503b71421d71618ed3a8b5317"><td class="memTemplParams" colspan="2">template&lt;class F &gt; </td></tr>
+<tr class="memitem:a60affb5503b71421d71618ed3a8b5317"><td class="memTemplItemLeft" align="right" valign="top">where&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_core.html#a60affb5503b71421d71618ed3a8b5317">F</a></td></tr>
+<tr class="memdesc:a60affb5503b71421d71618ed3a8b5317"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper of native function pointer of delegate.  <a href="namespace_n_e_t_s_d_l2_1_1_core.html#a60affb5503b71421d71618ed3a8b5317">More...</a><br /></td></tr>
+<tr class="separator:a60affb5503b71421d71618ed3a8b5317"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf1c4baa7be7bccc609ecce61d78a0e3"><td class="memItemLeft" align="right" valign="top">GCHandle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_core.html#adf1c4baa7be7bccc609ecce61d78a0e3">handle</a></td></tr>
+<tr class="separator:adf1c4baa7be7bccc609ecce61d78a0e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecad053c273c400cd6ae47db4f82bbb9"><td class="memItemLeft" align="right" valign="top">System::IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_core.html#aecad053c273c400cd6ae47db4f82bbb9">pointer</a></td></tr>
+<tr class="separator:aecad053c273c400cd6ae47db4f82bbb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a4589bdf6d1d4d72dba6f75fb7cd87e74"></a>
@@ -306,6 +326,7 @@ Functions</h2></td></tr>
 </td></tr>
 <tr><td class="fieldname"><a id="a3531e400abf53f56668217de14206ee6a87f9f735a1d36793ceaecd4e47124b63"></a>Events&#160;</td><td class="fielddoc"><p><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html">Events</a> subsystem. </p>
 </td></tr>
+<tr><td class="fieldname"><a id="a3531e400abf53f56668217de14206ee6a06b185256c71c1aec263c6e22bf8ef6b"></a>Sensor&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a3531e400abf53f56668217de14206ee6a709468af25e91284821d1bdbfdded24c"></a>Everything&#160;</td><td class="fielddoc"><p>All subsystems. </p>
 </td></tr>
 </table>
@@ -313,6 +334,49 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a04b236eeaba2a1dece9431f74c749267"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04b236eeaba2a1dece9431f74c749267">&#9670;&nbsp;</a></span>!FunctionPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">NETSDL2::Core::!FunctionPointer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a04daa15701f4d1fd5e90f2a78cf08cbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04daa15701f4d1fd5e90f2a78cf08cbc">&#9670;&nbsp;</a></span>FunctionPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">NETSDL2::Core::FunctionPointer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_core.html#a60affb5503b71421d71618ed3a8b5317">F</a>&#160;</td>
+          <td class="paramname"><em>delegate</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a function pointer of the delegate. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">delegate</td><td>Delegate to gain function pointer.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a0697e2225d3a4c46175ff8cb5ecc40e2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0697e2225d3a4c46175ff8cb5ecc40e2">&#9670;&nbsp;</a></span>LogOutputFunction()</h2>
 
@@ -398,6 +462,76 @@ Functions</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a883f6050b0fb89a0d3df92c620d16bc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a883f6050b0fb89a0d3df92c620d16bc0">&#9670;&nbsp;</a></span>~FunctionPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">NETSDL2::Core::~FunctionPointer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a60affb5503b71421d71618ed3a8b5317"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60affb5503b71421d71618ed3a8b5317">&#9670;&nbsp;</a></span>F</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class F &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">where NETSDL2::Core::F</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Wrapper of native function pointer of delegate. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">F</td><td>Delegate to get function pointer.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adf1c4baa7be7bccc609ecce61d78a0e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf1c4baa7be7bccc609ecce61d78a0e3">&#9670;&nbsp;</a></span>handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GCHandle NETSDL2::Core::handle</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aecad053c273c400cd6ae47db4f82bbb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecad053c273c400cd6ae47db4f82bbb9">&#9670;&nbsp;</a></span>pointer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">System::IntPtr NETSDL2::Core::pointer</td>
         </tr>
       </table>
 </div><div class="memdoc">

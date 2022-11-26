@@ -81,12 +81,72 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a451620c6131ae65e8e27837566b24c69"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a451620c6131ae65e8e27837566b24c69">AddEventWatch</a> (FunctionPointer&lt; <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a11f24723bd92bb4a62cc2fdcbd25c8cb">EventFilter</a>^&gt;^ filter, System::IntPtr userdata)</td></tr>
+<tr class="memdesc:a451620c6131ae65e8e27837566b24c69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a callback to be triggered when an event is added to the event queue.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a451620c6131ae65e8e27837566b24c69">More...</a><br /></td></tr>
+<tr class="separator:a451620c6131ae65e8e27837566b24c69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b3d0c9e80ce92df5d887d9906c254f1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a3b3d0c9e80ce92df5d887d9906c254f1">DelEventWatch</a> (FunctionPointer&lt; <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a11f24723bd92bb4a62cc2fdcbd25c8cb">EventFilter</a>^&gt;^ filter, System::IntPtr userdata)</td></tr>
+<tr class="memdesc:a3b3d0c9e80ce92df5d887d9906c254f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an event watch callback.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a3b3d0c9e80ce92df5d887d9906c254f1">More...</a><br /></td></tr>
+<tr class="separator:a3b3d0c9e80ce92df5d887d9906c254f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae605696fbf86cdffe19d1c35b8dcb13c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a5a4e7a075170f358ee84cb262638fb85">EventState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#ae605696fbf86cdffe19d1c35b8dcb13c">SetEventState</a> (<a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a> type, <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a5a4e7a075170f358ee84cb262638fb85">EventState</a> state)</td></tr>
+<tr class="memdesc:ae605696fbf86cdffe19d1c35b8dcb13c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the state of processing events by type.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#ae605696fbf86cdffe19d1c35b8dcb13c">More...</a><br /></td></tr>
+<tr class="separator:ae605696fbf86cdffe19d1c35b8dcb13c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a014a11023bcd1588039f2e44dd60b7a7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a014a11023bcd1588039f2e44dd60b7a7">FilterEvents</a> (<a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a11f24723bd92bb4a62cc2fdcbd25c8cb">EventFilter</a>^ filter, System::IntPtr userdata)</td></tr>
+<tr class="memdesc:a014a11023bcd1588039f2e44dd60b7a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run a specific filter function on the current event queue, removing any events for which the filter returns 0.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a014a11023bcd1588039f2e44dd60b7a7">More...</a><br /></td></tr>
+<tr class="separator:a014a11023bcd1588039f2e44dd60b7a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a08cf801bb576075e8ca3e5685410f2"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a2a08cf801bb576075e8ca3e5685410f2">FlushEvent</a> (<a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a> type)</td></tr>
+<tr class="memdesc:a2a08cf801bb576075e8ca3e5685410f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear events of a specific type from the event queue.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a2a08cf801bb576075e8ca3e5685410f2">More...</a><br /></td></tr>
+<tr class="separator:a2a08cf801bb576075e8ca3e5685410f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e65097c039b8889f589585cbcc54344"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a8e65097c039b8889f589585cbcc54344">FlushEvents</a> (<a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a> minType, <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a> maxType)</td></tr>
+<tr class="memdesc:a8e65097c039b8889f589585cbcc54344"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear events of a range of types from the event queue.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a8e65097c039b8889f589585cbcc54344">More...</a><br /></td></tr>
+<tr class="separator:a8e65097c039b8889f589585cbcc54344"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e84ffd0c401cfc28e0351bc29f17073"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a7e84ffd0c401cfc28e0351bc29f17073">GetEventFilter</a> ([Out] System::IntPtr% filter, [Out]System::IntPtr% userdata)</td></tr>
+<tr class="memdesc:a7e84ffd0c401cfc28e0351bc29f17073"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query the current event filter.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a7e84ffd0c401cfc28e0351bc29f17073">More...</a><br /></td></tr>
+<tr class="separator:a7e84ffd0c401cfc28e0351bc29f17073"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18f4e33168ee6042811a9a6a4845b995"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a5a4e7a075170f358ee84cb262638fb85">EventState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a18f4e33168ee6042811a9a6a4845b995">GetEventState</a> (<a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a> type)</td></tr>
+<tr class="memdesc:a18f4e33168ee6042811a9a6a4845b995"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query the current processing state of a specified EventType.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a18f4e33168ee6042811a9a6a4845b995">More...</a><br /></td></tr>
+<tr class="separator:a18f4e33168ee6042811a9a6a4845b995"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1693b55ba18540f338255fd1ce82b07"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#ac1693b55ba18540f338255fd1ce82b07">HasEvent</a> (<a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a> type)</td></tr>
+<tr class="memdesc:ac1693b55ba18540f338255fd1ce82b07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for the existence of a certain event type in the event queue.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#ac1693b55ba18540f338255fd1ce82b07">More...</a><br /></td></tr>
+<tr class="separator:ac1693b55ba18540f338255fd1ce82b07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0055420f2cbec53d40293106e3d4aae9"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a0055420f2cbec53d40293106e3d4aae9">HasEvents</a> (<a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a> minType, <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a> maxType)</td></tr>
+<tr class="memdesc:a0055420f2cbec53d40293106e3d4aae9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check for the existence of certain event types in the event queue.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a0055420f2cbec53d40293106e3d4aae9">More...</a><br /></td></tr>
+<tr class="separator:a0055420f2cbec53d40293106e3d4aae9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae606022b9339c6769ebf0a55a366ec6d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#ae606022b9339c6769ebf0a55a366ec6d">PeepEvents</a> (array&lt; <a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_event.html">Event</a> &gt;^ events, <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a02fe063b2703a30bfcc093ce9887fbd1">EventAction</a> action, <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a> minType, <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a> maxType)</td></tr>
+<tr class="memdesc:ae606022b9339c6769ebf0a55a366ec6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check the event queue for messages and optionally return them.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#ae606022b9339c6769ebf0a55a366ec6d">More...</a><br /></td></tr>
+<tr class="separator:ae606022b9339c6769ebf0a55a366ec6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaaee39177b11108e36c26f1556b70898"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt; <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^, <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#aaaee39177b11108e36c26f1556b70898">PollEvent</a> ([Out]<a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_event.html">Event</a>% event)</td></tr>
 <tr class="memdesc:aaaee39177b11108e36c26f1556b70898"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poll for currently pending events.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#aaaee39177b11108e36c26f1556b70898">More...</a><br /></td></tr>
 <tr class="separator:aaaee39177b11108e36c26f1556b70898"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a2600099e2fb50a0b76fd9f3001e4ec"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a3a2600099e2fb50a0b76fd9f3001e4ec">PumpEvents</a> ()</td></tr>
+<tr class="memdesc:a3a2600099e2fb50a0b76fd9f3001e4ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pump the event loop, gathering events from the input devices.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a3a2600099e2fb50a0b76fd9f3001e4ec">More...</a><br /></td></tr>
+<tr class="separator:a3a2600099e2fb50a0b76fd9f3001e4ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58f289975f50d6e9f105cf7393b13d86"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a58f289975f50d6e9f105cf7393b13d86">PushEvent</a> ([In][IsReadOnly]<a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_event.html">Event</a>% event)</td></tr>
+<tr class="memdesc:a58f289975f50d6e9f105cf7393b13d86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an event to the event queue.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a58f289975f50d6e9f105cf7393b13d86">More...</a><br /></td></tr>
+<tr class="separator:a58f289975f50d6e9f105cf7393b13d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af81fd97f9b382968caa15c0a2b844f1c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt; <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a>, <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#af81fd97f9b382968caa15c0a2b844f1c">RegisterEvents</a> (int numevents)</td></tr>
+<tr class="memdesc:af81fd97f9b382968caa15c0a2b844f1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate a set of user-defined events, and return the beginning event number for that set of events.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#af81fd97f9b382968caa15c0a2b844f1c">More...</a><br /></td></tr>
+<tr class="separator:af81fd97f9b382968caa15c0a2b844f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ebc6580ad5a61126b6543f1b0f927d4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a0ebc6580ad5a61126b6543f1b0f927d4">SetEventFilter</a> (FunctionPointer&lt; <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a11f24723bd92bb4a62cc2fdcbd25c8cb">EventFilter</a>^&gt;^ filter, System::IntPtr userdata)</td></tr>
+<tr class="memdesc:a0ebc6580ad5a61126b6543f1b0f927d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set up a filter to process all events before they change internal state and are posted to the internal event queue.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a0ebc6580ad5a61126b6543f1b0f927d4">More...</a><br /></td></tr>
+<tr class="separator:a0ebc6580ad5a61126b6543f1b0f927d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5fce7f86de3e7f72c7f90b021641fdc"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt; <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^, <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#ac5fce7f86de3e7f72c7f90b021641fdc">WaitEvent</a> ([Out]<a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_event.html">Event</a>% event)</td></tr>
+<tr class="memdesc:ac5fce7f86de3e7f72c7f90b021641fdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait indefinitely for the next available event.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#ac5fce7f86de3e7f72c7f90b021641fdc">More...</a><br /></td></tr>
+<tr class="separator:ac5fce7f86de3e7f72c7f90b021641fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5961423895423731062a38e68c0ba3dd"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt; <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^, <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a5961423895423731062a38e68c0ba3dd">WaitEvent</a> ()</td></tr>
+<tr class="memdesc:a5961423895423731062a38e68c0ba3dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait indefinitely for the next available event.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a5961423895423731062a38e68c0ba3dd">More...</a><br /></td></tr>
+<tr class="separator:a5961423895423731062a38e68c0ba3dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60e88e241780be4977dfd5fe17e16842"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt; <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^, <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a60e88e241780be4977dfd5fe17e16842">WaitEventTimeout</a> ([Out]<a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_event.html">Event</a>% event, int timeout)</td></tr>
+<tr class="memdesc:a60e88e241780be4977dfd5fe17e16842"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait until the specified timeout (in milliseconds) for the next available event.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a60e88e241780be4977dfd5fe17e16842">More...</a><br /></td></tr>
+<tr class="separator:a60e88e241780be4977dfd5fe17e16842"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad89e68e5e10eace7fc4d2a3a22869048"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt; <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^, <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#ad89e68e5e10eace7fc4d2a3a22869048">WaitEventTimeout</a> (int timeout)</td></tr>
+<tr class="memdesc:ad89e68e5e10eace7fc4d2a3a22869048"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait until the specified timeout (in milliseconds) for the next available event.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#ad89e68e5e10eace7fc4d2a3a22869048">More...</a><br /></td></tr>
+<tr class="separator:ad89e68e5e10eace7fc4d2a3a22869048"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
+<tr class="memitem:a6a4c6d7ce9a24e115359f2d2edd0e6c5"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a6a4c6d7ce9a24e115359f2d2edd0e6c5">QuitRequested</a><code> [get]</code></td></tr>
+<tr class="memdesc:a6a4c6d7ce9a24e115359f2d2edd0e6c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether an SDL_QUIT event is queued.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#a6a4c6d7ce9a24e115359f2d2edd0e6c5">More...</a><br /></td></tr>
+<tr class="separator:a6a4c6d7ce9a24e115359f2d2edd0e6c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae327a67edd6610de4dd064755867821"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#aae327a67edd6610de4dd064755867821">EventExist</a><code> [get]</code></td></tr>
 <tr class="memdesc:aae327a67edd6610de4dd064755867821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether there is an event in the queue.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_events.html#aae327a67edd6610de4dd064755867821">More...</a><br /></td></tr>
 <tr class="separator:aae327a67edd6610de4dd064755867821"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -94,6 +154,442 @@ Properties</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Functions for event handling. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a451620c6131ae65e8e27837566b24c69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a451620c6131ae65e8e27837566b24c69">&#9670;&nbsp;</a></span>AddEventWatch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void NETSDL2::Events::Events::AddEventWatch </td>
+          <td>(</td>
+          <td class="paramtype">FunctionPointer&lt; <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a11f24723bd92bb4a62cc2fdcbd25c8cb">EventFilter</a>^&gt;^&#160;</td>
+          <td class="paramname"><em>filter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">System::IntPtr&#160;</td>
+          <td class="paramname"><em>userdata</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add a callback to be triggered when an event is added to the event queue. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filter</td><td>Function to call when an event happens.</td></tr>
+    <tr><td class="paramname">userdata</td><td>A pointer that is passed to filter.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3b3d0c9e80ce92df5d887d9906c254f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b3d0c9e80ce92df5d887d9906c254f1">&#9670;&nbsp;</a></span>DelEventWatch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void NETSDL2::Events::Events::DelEventWatch </td>
+          <td>(</td>
+          <td class="paramtype">FunctionPointer&lt; <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a11f24723bd92bb4a62cc2fdcbd25c8cb">EventFilter</a>^&gt;^&#160;</td>
+          <td class="paramname"><em>filter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">System::IntPtr&#160;</td>
+          <td class="paramname"><em>userdata</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Remove an event watch callback. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filter</td><td>The function originally passed.</td></tr>
+    <tr><td class="paramname">userdata</td><td>The pointer originally passed.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a014a11023bcd1588039f2e44dd60b7a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a014a11023bcd1588039f2e44dd60b7a7">&#9670;&nbsp;</a></span>FilterEvents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void NETSDL2::Events::Events::FilterEvents </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a11f24723bd92bb4a62cc2fdcbd25c8cb">EventFilter</a>^&#160;</td>
+          <td class="paramname"><em>filter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">System::IntPtr&#160;</td>
+          <td class="paramname"><em>userdata</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Run a specific filter function on the current event queue, removing any events for which the filter returns 0. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filter</td><td>The EventFilter function to call when an event happens. </td></tr>
+    <tr><td class="paramname">userdata</td><td>A pointer that is passed to filter.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2a08cf801bb576075e8ca3e5685410f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a08cf801bb576075e8ca3e5685410f2">&#9670;&nbsp;</a></span>FlushEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void NETSDL2::Events::Events::FlushEvent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Clear events of a specific type from the event queue. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>The type of event to be cleared.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8e65097c039b8889f589585cbcc54344"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e65097c039b8889f589585cbcc54344">&#9670;&nbsp;</a></span>FlushEvents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void NETSDL2::Events::Events::FlushEvents </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a>&#160;</td>
+          <td class="paramname"><em>minType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a>&#160;</td>
+          <td class="paramname"><em>maxType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Clear events of a range of types from the event queue. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">minType</td><td>The low end of event type to be cleared, inclusive.</td></tr>
+    <tr><td class="paramname">maxType</td><td>The high end of event type to be cleared, inclusive.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7e84ffd0c401cfc28e0351bc29f17073"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e84ffd0c401cfc28e0351bc29f17073">&#9670;&nbsp;</a></span>GetEventFilter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool NETSDL2::Events::Events::GetEventFilter </td>
+          <td>(</td>
+          <td class="paramtype">[Out] System::IntPtr%&#160;</td>
+          <td class="paramname"><em>filter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">[Out] System::IntPtr%&#160;</td>
+          <td class="paramname"><em>userdata</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Query the current event filter. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filter</td><td>The current callback function will be stored here. This is a native function pointer, so transform it to delegate or assign to C# function pointer.</td></tr>
+    <tr><td class="paramname">userdata</td><td>The pointer that is passed to the current event filter will be stored here.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a18f4e33168ee6042811a9a6a4845b995"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18f4e33168ee6042811a9a6a4845b995">&#9670;&nbsp;</a></span>GetEventState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a5a4e7a075170f358ee84cb262638fb85">EventState</a> NETSDL2::Events::Events::GetEventState </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Query the current processing state of a specified EventType. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>EventType to query. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Disable or Enable.</dd></dl>
+
+</div>
+</div>
+<a id="ac1693b55ba18540f338255fd1ce82b07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1693b55ba18540f338255fd1ce82b07">&#9670;&nbsp;</a></span>HasEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool NETSDL2::Events::Events::HasEvent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check for the existence of a certain event type in the event queue. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>The type of event to be queried.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if events matching type are present, or false if events matching type are not present.</dd></dl>
+
+</div>
+</div>
+<a id="a0055420f2cbec53d40293106e3d4aae9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0055420f2cbec53d40293106e3d4aae9">&#9670;&nbsp;</a></span>HasEvents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool NETSDL2::Events::Events::HasEvents </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a>&#160;</td>
+          <td class="paramname"><em>minType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a>&#160;</td>
+          <td class="paramname"><em>maxType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check for the existence of certain event types in the event queue. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">minType</td><td>The low end of event type to be queried, inclusive.</td></tr>
+    <tr><td class="paramname">maxType</td><td>The high end of event type to be queried, inclusive.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if events with type larger than or equal to minType and less than or equal to maxType are present, or false if not.</dd></dl>
+
+</div>
+</div>
+<a id="ae606022b9339c6769ebf0a55a366ec6d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae606022b9339c6769ebf0a55a366ec6d">&#9670;&nbsp;</a></span>PeepEvents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt;int, int&gt; NETSDL2::Events::Events::PeepEvents </td>
+          <td>(</td>
+          <td class="paramtype">array&lt; <a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_event.html">Event</a> &gt;^&#160;</td>
+          <td class="paramname"><em>events</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a02fe063b2703a30bfcc093ce9887fbd1">EventAction</a>&#160;</td>
+          <td class="paramname"><em>action</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a>&#160;</td>
+          <td class="paramname"><em>minType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a>&#160;</td>
+          <td class="paramname"><em>maxType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check the event queue for messages and optionally return them. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">events</td><td>Destination buffer for the retrieved events.</td></tr>
+    <tr><td class="paramname">action</td><td>Action to take.</td></tr>
+    <tr><td class="paramname">minType</td><td>Minimum value of the event type to be considered.</td></tr>
+    <tr><td class="paramname">maxType</td><td>Maximum value of the event type to be considered.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of events actually stored or a negative error code on failure.</dd></dl>
+
+</div>
+</div>
 <a id="aaaee39177b11108e36c26f1556b70898"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaaee39177b11108e36c26f1556b70898">&#9670;&nbsp;</a></span>PollEvent()</h2>
 
@@ -129,6 +625,338 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="a3a2600099e2fb50a0b76fd9f3001e4ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a2600099e2fb50a0b76fd9f3001e4ec">&#9670;&nbsp;</a></span>PumpEvents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void NETSDL2::Events::Events::PumpEvents </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pump the event loop, gathering events from the input devices. </p>
+
+</div>
+</div>
+<a id="a58f289975f50d6e9f105cf7393b13d86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58f289975f50d6e9f105cf7393b13d86">&#9670;&nbsp;</a></span>PushEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt;int, int&gt; NETSDL2::Events::Events::PushEvent </td>
+          <td>(</td>
+          <td class="paramtype">[IsReadOnly] <a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_event.html">Event</a>%&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add an event to the event queue. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>The <a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_event.html" title="A union that contains structures for the different event types.">Event</a> to be added to the queue.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 on success, 0 if the event was filtered, or a negative error code on failure.</dd></dl>
+
+</div>
+</div>
+<a id="af81fd97f9b382968caa15c0a2b844f1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af81fd97f9b382968caa15c0a2b844f1c">&#9670;&nbsp;</a></span>RegisterEvents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt;<a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a>, <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^&gt; NETSDL2::Events::Events::RegisterEvents </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numevents</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Allocate a set of user-defined events, and return the beginning event number for that set of events. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">numevents</td><td>The number of events to be allocated.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The beginning event number, or None if there are not enough user-defined events left.</dd></dl>
+
+</div>
+</div>
+<a id="a0ebc6580ad5a61126b6543f1b0f927d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ebc6580ad5a61126b6543f1b0f927d4">&#9670;&nbsp;</a></span>SetEventFilter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void NETSDL2::Events::Events::SetEventFilter </td>
+          <td>(</td>
+          <td class="paramtype">FunctionPointer&lt; <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a11f24723bd92bb4a62cc2fdcbd25c8cb">EventFilter</a>^&gt;^&#160;</td>
+          <td class="paramname"><em>filter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">System::IntPtr&#160;</td>
+          <td class="paramname"><em>userdata</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set up a filter to process all events before they change internal state and are posted to the internal event queue. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filter</td><td>Function to call when an event happens.</td></tr>
+    <tr><td class="paramname">userdata</td><td>A pointer that is passed to filter.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae605696fbf86cdffe19d1c35b8dcb13c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae605696fbf86cdffe19d1c35b8dcb13c">&#9670;&nbsp;</a></span>SetEventState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a5a4e7a075170f358ee84cb262638fb85">EventState</a> NETSDL2::Events::Events::SetEventState </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">EventType</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a5a4e7a075170f358ee84cb262638fb85">EventState</a>&#160;</td>
+          <td class="paramname"><em>state</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the state of processing events by type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>The type of event. </td></tr>
+    <tr><td class="paramname">state</td><td>How to process the event.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The processing state of the event before this function makes any changes to it.</dd></dl>
+
+</div>
+</div>
+<a id="a5961423895423731062a38e68c0ba3dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5961423895423731062a38e68c0ba3dd">&#9670;&nbsp;</a></span>WaitEvent() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt;<a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^, <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^&gt; NETSDL2::Events::Events::WaitEvent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wait indefinitely for the next available event. </p>
+<dl class="section return"><dt>Returns</dt><dd>Success or Failure if there was an error while waiting for events.</dd></dl>
+
+</div>
+</div>
+<a id="ac5fce7f86de3e7f72c7f90b021641fdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5fce7f86de3e7f72c7f90b021641fdc">&#9670;&nbsp;</a></span>WaitEvent() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt;<a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^, <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^&gt; NETSDL2::Events::Events::WaitEvent </td>
+          <td>(</td>
+          <td class="paramtype">[Out] <a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_event.html">Event</a>%&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wait indefinitely for the next available event. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>The <a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_event.html" title="A union that contains structures for the different event types.">Event</a> structure to be filled in with the next event from the queue.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Success or Failure if there was an error while waiting for events.</dd></dl>
+
+</div>
+</div>
+<a id="a60e88e241780be4977dfd5fe17e16842"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60e88e241780be4977dfd5fe17e16842">&#9670;&nbsp;</a></span>WaitEventTimeout() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt;<a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^, <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^&gt; NETSDL2::Events::Events::WaitEventTimeout </td>
+          <td>(</td>
+          <td class="paramtype">[Out] <a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_event.html">Event</a>%&#160;</td>
+          <td class="paramname"><em>event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wait until the specified timeout (in milliseconds) for the next available event. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>The <a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_event.html" title="A union that contains structures for the different event types.">Event</a> structure to be filled in with the next event from the queue.</td></tr>
+    <tr><td class="paramname">timeout</td><td>The maximum number of milliseconds to wait for the next available event.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Success or Failure if there was an error while waiting for events.</dd></dl>
+
+</div>
+</div>
+<a id="ad89e68e5e10eace7fc4d2a3a22869048"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad89e68e5e10eace7fc4d2a3a22869048">&#9670;&nbsp;</a></span>WaitEventTimeout() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt;<a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^, <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^&gt; NETSDL2::Events::Events::WaitEventTimeout </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wait until the specified timeout (in milliseconds) for the next available event. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeout</td><td>The maximum number of milliseconds to wait for the next available event.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Success or Failure if there was an error while waiting for events.</dd></dl>
+
+</div>
+</div>
 <h2 class="groupheader">Property Documentation</h2>
 <a id="aae327a67edd6610de4dd064755867821"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aae327a67edd6610de4dd064755867821">&#9670;&nbsp;</a></span>EventExist</h2>
@@ -154,8 +982,32 @@ Properties</h2></td></tr>
 
 </div>
 </div>
+<a id="a6a4c6d7ce9a24e115359f2d2edd0e6c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a4c6d7ce9a24e115359f2d2edd0e6c5">&#9670;&nbsp;</a></span>QuitRequested</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool NETSDL2::Events::Events::QuitRequested</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Whether an SDL_QUIT event is queued. </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>events/<a class="el" href="_events_8h_source.html">Events.h</a></li>
+<li>NETSDL2/include/events/<a class="el" href="_events_8h_source.html">Events.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

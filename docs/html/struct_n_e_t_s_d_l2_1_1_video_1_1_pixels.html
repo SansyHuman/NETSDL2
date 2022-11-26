@@ -67,6 +67,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#properties">Properties</a> &#124;
 <a href="struct_n_e_t_s_d_l2_1_1_video_1_1_pixels-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">NETSDL2::Video::Pixels Struct Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -119,6 +120,21 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aa83f35382adabb352b00e9ae28e2c33a"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt; <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_video_1_1_pixels.html#aa83f35382adabb352b00e9ae28e2c33a">SetPixelFormatPalette</a> (<a class="el" href="struct_n_e_t_s_d_l2_1_1_video_1_1_pixel_format.html">PixelFormat</a> *format, <a class="el" href="struct_n_e_t_s_d_l2_1_1_video_1_1_palette.html">Palette</a> *palette)</td></tr>
 <tr class="memdesc:aa83f35382adabb352b00e9ae28e2c33a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the palette for a pixel format structure.  <a href="struct_n_e_t_s_d_l2_1_1_video_1_1_pixels.html#aa83f35382adabb352b00e9ae28e2c33a">More...</a><br /></td></tr>
 <tr class="separator:aa83f35382adabb352b00e9ae28e2c33a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7c5e35f883212f593ead0a8ca4ad780"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt; <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_video_1_1_pixels.html#ae7c5e35f883212f593ead0a8ca4ad780">ConvertPixels</a> (int width, int height, <a class="el" href="namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64">PixelFormatEnum</a> srcFormat, System::IntPtr src, int srcPitch, <a class="el" href="namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64">PixelFormatEnum</a> dstFormat, System::IntPtr dst, int dstPitch)</td></tr>
+<tr class="memdesc:ae7c5e35f883212f593ead0a8ca4ad780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy a block of pixels of one format to another format.  <a href="struct_n_e_t_s_d_l2_1_1_video_1_1_pixels.html#ae7c5e35f883212f593ead0a8ca4ad780">More...</a><br /></td></tr>
+<tr class="separator:ae7c5e35f883212f593ead0a8ca4ad780"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3cf77f5db36484996abcdc9ea756271"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt; <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_video_1_1_pixels.html#ad3cf77f5db36484996abcdc9ea756271">PremultiplyAlpha</a> (int width, int height, <a class="el" href="namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64">PixelFormatEnum</a> srcFormat, System::IntPtr src, int srcPitch, <a class="el" href="namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64">PixelFormatEnum</a> dstFormat, System::IntPtr dst, int dstPitch)</td></tr>
+<tr class="memdesc:ad3cf77f5db36484996abcdc9ea756271"><td class="mdescLeft">&#160;</td><td class="mdescRight">Premultiply the alpha on a block of pixels.  <a href="struct_n_e_t_s_d_l2_1_1_video_1_1_pixels.html#ad3cf77f5db36484996abcdc9ea756271">More...</a><br /></td></tr>
+<tr class="separator:ad3cf77f5db36484996abcdc9ea756271"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e5a515ec9c6898946104f158c4a075e"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespace_n_e_t_s_d_l2_1_1_video.html#a8c1bfbe5ea824b57f9cc8ab8eb194ef6">NETSDL2::Video::YUVConversionMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_video_1_1_pixels.html#a6e5a515ec9c6898946104f158c4a075e">GetYUVConversionModeForResolution</a> (int width, int height)</td></tr>
+<tr class="memdesc:a6e5a515ec9c6898946104f158c4a075e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the YUV conversion mode, returning the correct mode for the resolution when the current conversion mode is Automatic.  <a href="struct_n_e_t_s_d_l2_1_1_video_1_1_pixels.html#a6e5a515ec9c6898946104f158c4a075e">More...</a><br /></td></tr>
+<tr class="separator:a6e5a515ec9c6898946104f158c4a075e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:a7e147324a7251f9d8ac26c5a16ea5d68"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespace_n_e_t_s_d_l2_1_1_video.html#a8c1bfbe5ea824b57f9cc8ab8eb194ef6">NETSDL2::Video::YUVConversionMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_video_1_1_pixels.html#a7e147324a7251f9d8ac26c5a16ea5d68">YUVConversionMode</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a7e147324a7251f9d8ac26c5a16ea5d68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get and set the YUV conversion mode  <a href="struct_n_e_t_s_d_l2_1_1_video_1_1_pixels.html#a7e147324a7251f9d8ac26c5a16ea5d68">More...</a><br /></td></tr>
+<tr class="separator:a7e147324a7251f9d8ac26c5a16ea5d68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Functions for handling pixel formats and palettes. </p>
@@ -236,6 +252,94 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Failure if length of ramp is less than 256, else success.</dd></dl>
+
+</div>
+</div>
+<a id="ae7c5e35f883212f593ead0a8ca4ad780"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7c5e35f883212f593ead0a8ca4ad780">&#9670;&nbsp;</a></span>ConvertPixels()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt;<a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^, int&gt; NETSDL2::Video::Pixels::ConvertPixels </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64">PixelFormatEnum</a>&#160;</td>
+          <td class="paramname"><em>srcFormat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">System::IntPtr&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>srcPitch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64">PixelFormatEnum</a>&#160;</td>
+          <td class="paramname"><em>dstFormat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">System::IntPtr&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dstPitch</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Copy a block of pixels of one format to another format. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>The width of the block to copy, in pixels. </td></tr>
+    <tr><td class="paramname">height</td><td>The height of the block to copy, in pixels. </td></tr>
+    <tr><td class="paramname">srcFormat</td><td>A <a class="el" href="namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64" title="An enumeration of pixel formats.">PixelFormatEnum</a> value of the src pixels format.</td></tr>
+    <tr><td class="paramname">src</td><td>A pointer to the source pixels.</td></tr>
+    <tr><td class="paramname">srcPitch</td><td>The pitch of the source pixels, in bytes. </td></tr>
+    <tr><td class="paramname">dstFormat</td><td>A <a class="el" href="namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64" title="An enumeration of pixel formats.">PixelFormatEnum</a> value of the dst pixels format.</td></tr>
+    <tr><td class="paramname">dst</td><td>A pointer to be filled in with new pixel data. </td></tr>
+    <tr><td class="paramname">dstPitch</td><td>The pitch of the destination pixels, in bytes.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None on success or error code on failure.</dd></dl>
 
 </div>
 </div>
@@ -443,6 +547,52 @@ Static Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a6e5a515ec9c6898946104f158c4a075e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e5a515ec9c6898946104f158c4a075e">&#9670;&nbsp;</a></span>GetYUVConversionModeForResolution()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="namespace_n_e_t_s_d_l2_1_1_video.html#a8c1bfbe5ea824b57f9cc8ab8eb194ef6">NETSDL2::Video::YUVConversionMode</a> NETSDL2::Video::Pixels::GetYUVConversionModeForResolution </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the YUV conversion mode, returning the correct mode for the resolution when the current conversion mode is Automatic. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td></td></tr>
+    <tr><td class="paramname">height</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -714,6 +864,94 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ad3cf77f5db36484996abcdc9ea756271"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3cf77f5db36484996abcdc9ea756271">&#9670;&nbsp;</a></span>PremultiplyAlpha()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt;<a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_none.html">None</a>^, int&gt; NETSDL2::Video::Pixels::PremultiplyAlpha </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64">PixelFormatEnum</a>&#160;</td>
+          <td class="paramname"><em>srcFormat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">System::IntPtr&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>srcPitch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64">PixelFormatEnum</a>&#160;</td>
+          <td class="paramname"><em>dstFormat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">System::IntPtr&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dstPitch</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Premultiply the alpha on a block of pixels. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>The width of the block to copy, in pixels. </td></tr>
+    <tr><td class="paramname">height</td><td>The height of the block to copy, in pixels. </td></tr>
+    <tr><td class="paramname">srcFormat</td><td>A <a class="el" href="namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64" title="An enumeration of pixel formats.">PixelFormatEnum</a> value of the src pixels format.</td></tr>
+    <tr><td class="paramname">src</td><td>A pointer to the source pixels.</td></tr>
+    <tr><td class="paramname">srcPitch</td><td>The pitch of the source pixels, in bytes. </td></tr>
+    <tr><td class="paramname">dstFormat</td><td>A <a class="el" href="namespace_n_e_t_s_d_l2_1_1_video.html#aa09e9898064ccd8a69b0527d98ffcb64" title="An enumeration of pixel formats.">PixelFormatEnum</a> value of the dst pixels format.</td></tr>
+    <tr><td class="paramname">dst</td><td>A pointer to be filled in with new pixel data. </td></tr>
+    <tr><td class="paramname">dstPitch</td><td>The pitch of the destination pixels, in bytes.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>None on success or error code on failure.</dd></dl>
+
+</div>
+</div>
 <a id="a109109b87e23eec6a26e7f42fb5f56a7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a109109b87e23eec6a26e7f42fb5f56a7">&#9670;&nbsp;</a></span>SetPaletteColors()</h2>
 
@@ -813,8 +1051,33 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="a7e147324a7251f9d8ac26c5a16ea5d68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e147324a7251f9d8ac26c5a16ea5d68">&#9670;&nbsp;</a></span>YUVConversionMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">NETSDL2:: Video:: <a class="el" href="namespace_n_e_t_s_d_l2_1_1_video.html#a8c1bfbe5ea824b57f9cc8ab8eb194ef6">YUVConversionMode</a> NETSDL2::Video::Pixels::YUVConversionMode</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get and set the YUV conversion mode </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>video/<a class="el" href="_pixels_8h_source.html">Pixels.h</a></li>
+<li>NETSDL2/include/video/<a class="el" href="_pixels_8h_source.html">Pixels.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

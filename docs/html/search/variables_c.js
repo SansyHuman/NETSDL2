@@ -1,6 +1,30 @@
 var searchData=
 [
-  ['r_956',['R',['../struct_n_e_t_s_d_l2_1_1_video_1_1_message_box_color.html#ac70954c612bcacb0e8824980d0a8a448',1,'NETSDL2::Video::MessageBoxColor::R()'],['../struct_n_e_t_s_d_l2_1_1_video_1_1_color.html#aff1bce944b84e63e44ceb01f1dda1b70',1,'NETSDL2::Video::Color::R()']]],
-  ['refreshrate_957',['RefreshRate',['../struct_n_e_t_s_d_l2_1_1_video_1_1_display_mode.html#a96af3b94e27dda191357fae456ff9d60',1,'NETSDL2::Video::DisplayMode']]],
-  ['resolveframebuffer_958',['ResolveFramebuffer',['../struct_n_e_t_s_d_l2_1_1_video_1_1_sys_w_m_info_1_1_u_i_kit__.html#a6a30f8765f6085f910ca04927f9e202a',1,'NETSDL2::Video::SysWMInfo::UIKit_']]]
+  ['major_2140',['Major',['../struct_n_e_t_s_d_l2_1_1_core_1_1_s_d_l_version.html#a572af51b1fa3c85d6b8a1ccd6c3d1d70',1,'NETSDL2::Core::SDLVersion']]],
+  ['max_5fsint16_2141',['MAX_SINT16',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#a6f93cd9a6f02b67f3a5135af803c7ce4',1,'NETSDL2::Systems::Stdinc']]],
+  ['max_5fsint32_2142',['MAX_SINT32',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#a3bae4f19ba7d3e59ac7d21b3c7d6d742',1,'NETSDL2::Systems::Stdinc']]],
+  ['max_5fsint64_2143',['MAX_SINT64',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#a7c515ff11ad3ee81be34377648f46971',1,'NETSDL2::Systems::Stdinc']]],
+  ['max_5fsint8_2144',['MAX_SINT8',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#acccd56194b18bf9a59c39e64ef2cb168',1,'NETSDL2::Systems::Stdinc']]],
+  ['max_5fuint16_2145',['MAX_UINT16',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#a8f8e80c3684e926892054bb5a27431c7',1,'NETSDL2::Systems::Stdinc']]],
+  ['max_5fuint32_2146',['MAX_UINT32',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#adc5018ace27dd41850cb375bb7533b44',1,'NETSDL2::Systems::Stdinc']]],
+  ['max_5fuint64_2147',['MAX_UINT64',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#a79d6a095d36c0865da06a381d0ac5b98',1,'NETSDL2::Systems::Stdinc']]],
+  ['max_5fuint8_2148',['MAX_UINT8',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#a0c86e60c6be5419c869480765a6dde14',1,'NETSDL2::Systems::Stdinc']]],
+  ['maxnum_2149',['maxnum',['../class_n_e_t_s_d_l2_1_1_i_o_1_1_r_wops.html#aee0b72d386156a42a0fb91754aaddb52',1,'NETSDL2::IO::RWops']]],
+  ['maxtextureheight_2150',['MaxTextureHeight',['../struct_n_e_t_s_d_l2_1_1_video_1_1_renderer_info.html#aab13a3c0e17e52b67a7019a2f92d00da',1,'NETSDL2::Video::RendererInfo']]],
+  ['maxtexturewidth_2151',['MaxTextureWidth',['../struct_n_e_t_s_d_l2_1_1_video_1_1_renderer_info.html#a2187fd8744152c421fffadcabda586b7',1,'NETSDL2::Video::RendererInfo']]],
+  ['message_2152',['Message',['../struct_n_e_t_s_d_l2_1_1_video_1_1_message_box_data.html#a3e837a0cf16a045f99cde96a064408d4',1,'NETSDL2::Video::MessageBoxData']]],
+  ['mgesture_2153',['MGesture',['../struct_n_e_t_s_d_l2_1_1_events_1_1_event.html#a08d5983753088bbe7798df5f03009b49',1,'NETSDL2::Events::Event']]],
+  ['min_5fsint16_2154',['MIN_SINT16',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#a2d630941bd09f3bcd0bc471dfe9c44b1',1,'NETSDL2::Systems::Stdinc']]],
+  ['min_5fsint32_2155',['MIN_SINT32',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#a16077158eeecfa63dade395fc9a1010c',1,'NETSDL2::Systems::Stdinc']]],
+  ['min_5fsint64_2156',['MIN_SINT64',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#ac172e856190d5e6df3966fcfe402b899',1,'NETSDL2::Systems::Stdinc']]],
+  ['min_5fsint8_2157',['MIN_SINT8',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#a3d5e18e9f3b72cdb598fd7b5aefe19fc',1,'NETSDL2::Systems::Stdinc']]],
+  ['min_5fuint16_2158',['MIN_UINT16',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#a403fc2679fc72fb74e72c742d55f5837',1,'NETSDL2::Systems::Stdinc']]],
+  ['min_5fuint32_2159',['MIN_UINT32',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#a81514ea1f06e311428dd4b81a8b4a9d5',1,'NETSDL2::Systems::Stdinc']]],
+  ['min_5fuint64_2160',['MIN_UINT64',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#af1d29552282f0d5e0c94c5106e29bf7a',1,'NETSDL2::Systems::Stdinc']]],
+  ['min_5fuint8_2161',['MIN_UINT8',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#a6004d4d4af8a0d0257ecd0f4850a6878',1,'NETSDL2::Systems::Stdinc']]],
+  ['minor_2162',['Minor',['../struct_n_e_t_s_d_l2_1_1_core_1_1_s_d_l_version.html#aea74b761c053189b176d88fe05f43d90',1,'NETSDL2::Core::SDLVersion']]],
+  ['mod_2163',['Mod',['../struct_n_e_t_s_d_l2_1_1_events_1_1_keysym.html#a4ab5d22cd5a9ab6e258a2e895e8d53a3',1,'NETSDL2::Events::Keysym']]],
+  ['motion_2164',['Motion',['../struct_n_e_t_s_d_l2_1_1_events_1_1_event.html#a167e4dbfff6d8f7478a3491bdec6bd5e',1,'NETSDL2::Events::Event']]],
+  ['mouse_5ftouchid_2165',['MOUSE_TOUCHID',['../struct_n_e_t_s_d_l2_1_1_events_1_1_touch.html#af200f6cf464cff2c11661b53e6806ff4',1,'NETSDL2::Events::Touch']]],
+  ['msg_2166',['Msg',['../struct_n_e_t_s_d_l2_1_1_events_1_1_sys_w_m_event.html#a90e705e2e73168fcb4d509a5fbc70fe5',1,'NETSDL2::Events::SysWMEvent::Msg()'],['../struct_n_e_t_s_d_l2_1_1_video_1_1_sys_w_m_msg_1_1_windows.html#ae22dafa86368fe80c3491dedc995920c',1,'NETSDL2::Video::SysWMMsg::Windows::Msg()']]]
 ];

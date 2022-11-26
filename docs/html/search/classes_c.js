@@ -1,10 +1,12 @@
 var searchData=
 [
-  ['palette_674',['Palette',['../struct_n_e_t_s_d_l2_1_1_video_1_1_palette.html',1,'NETSDL2::Video']]],
-  ['palettewrapper_675',['PaletteWrapper',['../class_n_e_t_s_d_l2_1_1_video_1_1_palette_wrapper.html',1,'NETSDL2::Video']]],
-  ['pixelformat_676',['PixelFormat',['../struct_n_e_t_s_d_l2_1_1_video_1_1_pixel_format.html',1,'NETSDL2::Video']]],
-  ['pixelformatinfo_677',['PixelFormatInfo',['../struct_n_e_t_s_d_l2_1_1_video_1_1_pixel_format_info.html',1,'NETSDL2::Video']]],
-  ['pixelformatwrapper_678',['PixelFormatWrapper',['../class_n_e_t_s_d_l2_1_1_video_1_1_pixel_format_wrapper.html',1,'NETSDL2::Video']]],
-  ['pixels_679',['Pixels',['../struct_n_e_t_s_d_l2_1_1_video_1_1_pixels.html',1,'NETSDL2::Video']]],
-  ['point_680',['Point',['../struct_n_e_t_s_d_l2_1_1_video_1_1_point.html',1,'NETSDL2::Video']]]
+  ['messageboxbuttondata_1529',['MessageBoxButtonData',['../struct_n_e_t_s_d_l2_1_1_video_1_1_message_box_button_data.html',1,'NETSDL2::Video']]],
+  ['messageboxcolor_1530',['MessageBoxColor',['../struct_n_e_t_s_d_l2_1_1_video_1_1_message_box_color.html',1,'NETSDL2::Video']]],
+  ['messageboxcolorscheme_1531',['MessageBoxColorScheme',['../class_n_e_t_s_d_l2_1_1_video_1_1_message_box_color_scheme.html',1,'NETSDL2::Video']]],
+  ['messageboxdata_1532',['MessageBoxData',['../struct_n_e_t_s_d_l2_1_1_video_1_1_message_box_data.html',1,'NETSDL2::Video']]],
+  ['mouse_1533',['Mouse',['../struct_n_e_t_s_d_l2_1_1_events_1_1_mouse.html',1,'NETSDL2::Events']]],
+  ['mousebuttonevent_1534',['MouseButtonEvent',['../struct_n_e_t_s_d_l2_1_1_events_1_1_mouse_button_event.html',1,'NETSDL2::Events']]],
+  ['mousemotionevent_1535',['MouseMotionEvent',['../struct_n_e_t_s_d_l2_1_1_events_1_1_mouse_motion_event.html',1,'NETSDL2::Events']]],
+  ['mousewheelevent_1536',['MouseWheelEvent',['../struct_n_e_t_s_d_l2_1_1_events_1_1_mouse_wheel_event.html',1,'NETSDL2::Events']]],
+  ['multigestureevent_1537',['MultiGestureEvent',['../struct_n_e_t_s_d_l2_1_1_events_1_1_multi_gesture_event.html',1,'NETSDL2::Events']]]
 ];

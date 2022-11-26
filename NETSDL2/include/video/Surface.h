@@ -14,9 +14,15 @@ using namespace System::Diagnostics::CodeAnalysis;
 
 namespace NETSDL2
 {
+	namespace IO
+	{
+		ref class RWops;
+	}
+
 	namespace Video
 	{
 		using namespace NETSDL2::Core;
+		using namespace NETSDL2::IO;
 
 		/// <summary>
 		/// Surface.
@@ -176,7 +182,12 @@ namespace NETSDL2
 			/// <param name="file">The file containing a BMP image.</param>
 			Surface(System::String^ file);
 
-			// TODO: LoadBMP_RW
+			/// <summary>
+			/// Load a BMP image from a seekable SDL data stream.
+			/// </summary>
+			/// <param name="src">The data stream for the surface.</param>
+			/// <param name="freesrc">true to close the stream after being read.</param>
+			Surface(RWops^ src, bool freesrc);
 
 			~Surface();
 			!Surface();
@@ -371,7 +382,14 @@ namespace NETSDL2
 			/// <returns>None on success or error code on failure.</returns>
 			Result<None^, int> SaveBMP(System::String^ file);
 
-			// TODO: SaveBMP_RW
+			/// <summary>
+			/// Save a surface to a seekable SDL data stream in BMP format.
+			/// </summary>
+			/// <param name="dst">A data stream to save to.</param>
+			/// <param name="freedst">true to close the stream after being written.
+			/// </param>
+			/// <returns>None on success or error code on failure.</returns>
+			Result<None^, int> SaveBMP(RWops^ dst, bool freedst);
 
 			/// <summary>
 			/// Set the clipping rectangle for a surface.

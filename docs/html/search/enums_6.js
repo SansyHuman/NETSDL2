@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['hintpriority_992',['HintPriority',['../namespace_n_e_t_s_d_l2_1_1_core.html#a4589bdf6d1d4d72dba6f75fb7cd87e74',1,'NETSDL2::Core']]],
-  ['hittestresult_993',['HitTestResult',['../namespace_n_e_t_s_d_l2_1_1_video.html#aa6900d6d54a5116a6f2af9f0715c1728',1,'NETSDL2::Video']]]
+  ['gamecontrolleraxis_2252',['GameControllerAxis',['../namespace_n_e_t_s_d_l2_1_1_events.html#a2ec72955fcf7f2995af5cbb0680b2ec0',1,'NETSDL2::Events']]],
+  ['gamecontrollerbutton_2253',['GameControllerButton',['../namespace_n_e_t_s_d_l2_1_1_events.html#a408c71c7a5593b91aeb617fde6458db7',1,'NETSDL2::Events']]],
+  ['glattr_2254',['GLAttr',['../namespace_n_e_t_s_d_l2_1_1_video.html#af5f55450e9f598638493c537165b7383',1,'NETSDL2::Video']]],
+  ['glcontextflags_2255',['GLContextFlags',['../namespace_n_e_t_s_d_l2_1_1_video.html#a712449d0b1a1667fad0404e325eb5d37',1,'NETSDL2::Video']]],
+  ['glprofile_2256',['GLProfile',['../namespace_n_e_t_s_d_l2_1_1_video.html#ae08e768c20f3ea08d681f0c73680ccfc',1,'NETSDL2::Video']]]
 ];

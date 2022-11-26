@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['numcolors_1309',['NumColors',['../struct_n_e_t_s_d_l2_1_1_video_1_1_palette.html#ab9ced62c146da19075b00642d753c07c',1,'NETSDL2::Video::Palette']]],
-  ['numvideodisplays_1310',['NumVideoDisplays',['../struct_n_e_t_s_d_l2_1_1_video_1_1_display.html#a2725422f6025f584aff37e565af44bf7',1,'NETSDL2::Video::Display']]],
-  ['numvideodrivers_1311',['NumVideoDrivers',['../struct_n_e_t_s_d_l2_1_1_video_1_1_display.html#ac6908d041c38d644bf91d03240d8589b',1,'NETSDL2::Video::Display']]]
+  ['managedfile_3003',['ManagedFile',['../struct_n_e_t_s_d_l2_1_1_events_1_1_drop_event.html#a164d06d7cf0ffef1d16d7cb856bbdb8e',1,'NETSDL2::Events::DropEvent']]],
+  ['managedtext_3004',['ManagedText',['../struct_n_e_t_s_d_l2_1_1_events_1_1_text_editing_event.html#a1d20e15d8035e377d157a884faa70965',1,'NETSDL2::Events::TextEditingEvent::ManagedText()'],['../struct_n_e_t_s_d_l2_1_1_events_1_1_text_editing_ext_event.html#a897def9eed883cd96f19255d180b5dcb',1,'NETSDL2::Events::TextEditingExtEvent::ManagedText()'],['../struct_n_e_t_s_d_l2_1_1_events_1_1_text_input_event.html#ae12251ffa7264fce061a646adfc07618',1,'NETSDL2::Events::TextInputEvent::ManagedText()']]],
+  ['mustlock_3005',['MustLock',['../class_n_e_t_s_d_l2_1_1_video_1_1_surface.html#a8474c24d60ff28a0ffa56c5e2b9d263d',1,'NETSDL2::Video::Surface']]]
 ];

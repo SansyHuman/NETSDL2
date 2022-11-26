@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>NETSDL2: events/Event.h File Reference</title>
+<title>NETSDL2: NETSDL2/include/events/Event.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_7d604191edc08013a26f918aa8ef79ad.html">events</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_388e48a9324bd55a2529ad281871f500.html">NETSDL2</a></li><li class="navelem"><a class="el" href="dir_319aaf4edf1d9deffadbc8c65659d44b.html">include</a></li><li class="navelem"><a class="el" href="dir_e4d8d47ed0e1b3ce9e0049cec74402b2.html">events</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -74,6 +74,13 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="_s_d_l_8h_source.html">SDL.h</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="_keysym_8h_source.html">Keysym.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_button_8h_source.html">Button.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_touch_8h_source.html">Touch.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_joysticks_8h_source.html">Joysticks.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_controllers_8h_source.html">Controllers.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_sensors_8h_source.html">Sensors.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_sys_w_m_info_8h_source.html">../video/SysWMInfo.h</a>&quot;</code><br />
 </div>
 <p><a href="_event_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -87,6 +94,91 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_window_event.html">NETSDL2::Events::WindowEvent</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Window state change event data.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_window_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_keyboard_event.html">NETSDL2::Events::KeyboardEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_keyboard.html" title="Functions for handling keyboard inputs.">Keyboard</a> button event structure.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_keyboard_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_text_editing_event.html">NETSDL2::Events::TextEditingEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains keyboard text editing event information.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_text_editing_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_text_editing_event_1_1e_____fixed_buffer.html">NETSDL2::Events::TextEditingEvent::e__FixedBuffer</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_text_editing_ext_event.html">NETSDL2::Events::TextEditingExtEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extended keyboard text editing event structure when text would be truncated if stored in the text buffer <a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_text_editing_event.html" title="A structure that contains keyboard text editing event information.">TextEditingEvent</a>.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_text_editing_ext_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_text_input_event.html">NETSDL2::Events::TextInputEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains keyboard text input event information.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_text_input_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_text_input_event_1_1e_____fixed_buffer.html">NETSDL2::Events::TextInputEvent::e__FixedBuffer</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_mouse_motion_event.html">NETSDL2::Events::MouseMotionEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains mouse motion event information.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_mouse_motion_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_mouse_button_event.html">NETSDL2::Events::MouseButtonEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains mouse button event information.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_mouse_button_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_mouse_wheel_event.html">NETSDL2::Events::MouseWheelEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains mouse wheel event information.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_mouse_wheel_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_joy_axis_event.html">NETSDL2::Events::JoyAxisEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains joystick axis motion event information.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_joy_axis_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_joy_ball_event.html">NETSDL2::Events::JoyBallEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains joystick trackball motion event information.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_joy_ball_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_joy_hat_event.html">NETSDL2::Events::JoyHatEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains joystick hat position change event information.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_joy_hat_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_joy_button_event.html">NETSDL2::Events::JoyButtonEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains joystick button event information.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_joy_button_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_joy_device_event.html">NETSDL2::Events::JoyDeviceEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains joystick device event information.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_joy_device_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_joy_battery_event.html">NETSDL2::Events::JoyBatteryEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joysick battery level change event structure.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_joy_battery_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_controller_axis_event.html">NETSDL2::Events::ControllerAxisEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains game controller axis motion event information.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_controller_axis_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_controller_button_event.html">NETSDL2::Events::ControllerButtonEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains game controller button event information.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_controller_button_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_controller_device_event.html">NETSDL2::Events::ControllerDeviceEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains controller device event information.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_controller_device_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_controller_touchpad_event.html">NETSDL2::Events::ControllerTouchpadEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Game controller touchpad event structure.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_controller_touchpad_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_controller_sensor_event.html">NETSDL2::Events::ControllerSensorEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Game controller sensor event structure.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_controller_sensor_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_audio_device_event.html">NETSDL2::Events::AudioDeviceEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains Audio device event information.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_audio_device_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_sensor_event.html">NETSDL2::Events::SensorEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains sensor updates.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_sensor_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_quit_event.html">NETSDL2::Events::QuitEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains the "quit requested" event.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_quit_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_user_event.html">NETSDL2::Events::UserEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains an application-defined event type.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_user_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_sys_w_m_event.html">NETSDL2::Events::SysWMEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains a video driver dependent system event.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_sys_w_m_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_touch_finger_event.html">NETSDL2::Events::TouchFingerEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains a video driver dependent system event.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_touch_finger_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_multi_gesture_event.html">NETSDL2::Events::MultiGestureEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains multiple finger gesture event information.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_multi_gesture_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_dollar_gesture_event.html">NETSDL2::Events::DollarGestureEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains complex gesture event information.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_dollar_gesture_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_drop_event.html">NETSDL2::Events::DropEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A structure that contains an event used to request a file open by the system.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_drop_event.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_n_e_t_s_d_l2_1_1_events_1_1_event.html">NETSDL2::Events::Event</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A union that contains structures for the different event types.  <a href="struct_n_e_t_s_d_l2_1_1_events_1_1_event.html#details">More...</a><br /></td></tr>
@@ -179,6 +271,19 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a830275ba81fd0a18033d807d32a2244a"><td class="mdescLeft">&#160;</td><td class="mdescRight">An enumeration of the types of events that can be delivered.  <a href="namespace_n_e_t_s_d_l2_1_1_events.html#a830275ba81fd0a18033d807d32a2244a">More...</a><br /></td></tr>
 <tr class="separator:a830275ba81fd0a18033d807d32a2244a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a4e7a075170f358ee84cb262638fb85"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a5a4e7a075170f358ee84cb262638fb85">NETSDL2::Events::EventState</a> : int { <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a5a4e7a075170f358ee84cb262638fb85a66c1b4c7f3dc385b68a9fa903ccd016d">NETSDL2::Events::EventState::Query</a> = SDL_QUERY, 
+<a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a5a4e7a075170f358ee84cb262638fb85afd038fc7f319e48f3115d92bf5bdbef9">NETSDL2::Events::EventState::Ignore</a> = SDL_IGNORE, 
+<a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a5a4e7a075170f358ee84cb262638fb85abcfaccebf745acfd5e75351095a5394a">NETSDL2::Events::EventState::Disable</a> = SDL_DISABLE, 
+<a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a5a4e7a075170f358ee84cb262638fb85a2faec1f9f8cc7f8f40d521c4dd574f49">NETSDL2::Events::EventState::Enable</a> = SDL_ENABLE
+ }</td></tr>
+<tr class="memdesc:a5a4e7a075170f358ee84cb262638fb85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define how to process the event.  <a href="namespace_n_e_t_s_d_l2_1_1_events.html#a5a4e7a075170f358ee84cb262638fb85">More...</a><br /></td></tr>
+<tr class="separator:a5a4e7a075170f358ee84cb262638fb85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02fe063b2703a30bfcc093ce9887fbd1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a02fe063b2703a30bfcc093ce9887fbd1">NETSDL2::Events::EventAction</a> { <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a02fe063b2703a30bfcc093ce9887fbd1aec211f7c20af43e742bf2570c3cb84f9">NETSDL2::Events::EventAction::Add</a> = SDL_ADDEVENT, 
+<a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a02fe063b2703a30bfcc093ce9887fbd1a90cfb243e2b6cd3d2b73c6369f22634d">NETSDL2::Events::EventAction::Peek</a> = SDL_PEEKEVENT, 
+<a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#a02fe063b2703a30bfcc093ce9887fbd1ac55582518cba2c464f29f5bae1c68def">NETSDL2::Events::EventAction::Get</a> = SDL_GETEVENT
+ }</td></tr>
+<tr class="memdesc:a02fe063b2703a30bfcc093ce9887fbd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Action of PeepEvents function.  <a href="namespace_n_e_t_s_d_l2_1_1_events.html#a02fe063b2703a30bfcc093ce9887fbd1">More...</a><br /></td></tr>
+<tr class="separator:a02fe063b2703a30bfcc093ce9887fbd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae207f079ea188035f7c5ccd105f72e97"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#ae207f079ea188035f7c5ccd105f72e97">NETSDL2::Events::DisplayEventID</a> : Uint8 { <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#ae207f079ea188035f7c5ccd105f72e97a6adf97f83acf6453d4a6a4b1070f3754">NETSDL2::Events::DisplayEventID::None</a> = SDL_DISPLAYEVENT_NONE, 
 <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#ae207f079ea188035f7c5ccd105f72e97aabbd64f40c34c537d3a571af068fce29">NETSDL2::Events::DisplayEventID::Orientation</a> = SDL_DISPLAYEVENT_ORIENTATION, 
 <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#ae207f079ea188035f7c5ccd105f72e97a2ec0d16e4ca169baedb9b2d50ec5c6d7">NETSDL2::Events::DisplayEventID::Connected</a> = SDL_DISPLAYEVENT_CONNECTED, 
@@ -214,6 +319,11 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:aac57ed2edb6195824a9891a6237bb1eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event subtype for window events.  <a href="namespace_n_e_t_s_d_l2_1_1_events.html#aac57ed2edb6195824a9891a6237bb1eb">More...</a><br /></td></tr>
 <tr class="separator:aac57ed2edb6195824a9891a6237bb1eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac92256f407b57a769f77b57b36ea60e8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#ac92256f407b57a769f77b57b36ea60e8">NETSDL2::Events::Keystate</a> : Uint8 { <a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#ac92256f407b57a769f77b57b36ea60e8ad78a68f6a85421ae121c2cb5b73a1040">NETSDL2::Events::Keystate::Pressed</a> = SDL_PRESSED, 
+<a class="el" href="namespace_n_e_t_s_d_l2_1_1_events.html#ac92256f407b57a769f77b57b36ea60e8aea1e34304a5d8ffa7c9b0ed8ede4ef1a">NETSDL2::Events::Keystate::Released</a> = SDL_RELEASED
+ }</td></tr>
+<tr class="memdesc:ac92256f407b57a769f77b57b36ea60e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">State of the key.  <a href="namespace_n_e_t_s_d_l2_1_1_events.html#ac92256f407b57a769f77b57b36ea60e8">More...</a><br /></td></tr>
+<tr class="separator:ac92256f407b57a769f77b57b36ea60e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

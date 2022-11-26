@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>NETSDL2: core/Error.h Source File</title>
+<title>NETSDL2: NETSDL2/include/core/Error.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_4270bfced15e0e73154b13468c7c9ad9.html">core</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_388e48a9324bd55a2529ad281871f500.html">NETSDL2</a></li><li class="navelem"><a class="el" href="dir_319aaf4edf1d9deffadbc8c65659d44b.html">include</a></li><li class="navelem"><a class="el" href="dir_bad7bfe630921db9011a6665048e44f0.html">core</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -84,12 +84,15 @@ $(function() {
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
 <div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="struct_n_e_t_s_d_l2_1_1_core_1_1_error.html#ac8061d408b147a0ea602f3bddac0b40e">   27</a></span>&#160;            <span class="keyword">static</span> System::String^ <a class="code" href="struct_n_e_t_s_d_l2_1_1_core_1_1_error.html#ac8061d408b147a0ea602f3bddac0b40e">GetError</a>();</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="struct_n_e_t_s_d_l2_1_1_core_1_1_error.html#a122f491aed13bdc801c5f9dff9e4b655">   34</a></span>&#160;            <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="struct_n_e_t_s_d_l2_1_1_core_1_1_error.html#a122f491aed13bdc801c5f9dff9e4b655">SetError</a>(System::String^ format, ...array&lt;Object^&gt;^ args);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        };</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="struct_n_e_t_s_d_l2_1_1_core_1_1_error.html#a2d4d4d5939ffc8bf25d9a335e1a463ab">   36</a></span>&#160;            <span class="keyword">static</span> <span class="keywordtype">char</span>* <a class="code" href="struct_n_e_t_s_d_l2_1_1_core_1_1_error.html#a2d4d4d5939ffc8bf25d9a335e1a463ab">GetErrorMsg</a>(<span class="keywordtype">char</span>* errstr, <span class="keywordtype">int</span> maxlen);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="struct_n_e_t_s_d_l2_1_1_core_1_1_error.html#a122f491aed13bdc801c5f9dff9e4b655">   43</a></span>&#160;            <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="struct_n_e_t_s_d_l2_1_1_core_1_1_error.html#a122f491aed13bdc801c5f9dff9e4b655">SetError</a>(System::String^ format, ...array&lt;Object^&gt;^ args);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        };</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="a_s_d_l_8h_html"><div class="ttname"><a href="_s_d_l_8h.html">SDL.h</a></div></div>
+<div class="ttc" id="astruct_n_e_t_s_d_l2_1_1_core_1_1_error_html_a2d4d4d5939ffc8bf25d9a335e1a463ab"><div class="ttname"><a href="struct_n_e_t_s_d_l2_1_1_core_1_1_error.html#a2d4d4d5939ffc8bf25d9a335e1a463ab">NETSDL2::Core::Error::GetErrorMsg</a></div><div class="ttdeci">static char * GetErrorMsg(char *errstr, int maxlen)</div><div class="ttdoc">Get the last error message that was set for the current thread.</div></div>
 <div class="ttc" id="anamespace_n_e_t_s_d_l2_html"><div class="ttname"><a href="namespace_n_e_t_s_d_l2.html">NETSDL2</a></div><div class="ttdef"><b>Definition:</b> Error.h:6</div></div>
 <div class="ttc" id="astruct_n_e_t_s_d_l2_1_1_core_1_1_error_html_a122f491aed13bdc801c5f9dff9e4b655"><div class="ttname"><a href="struct_n_e_t_s_d_l2_1_1_core_1_1_error.html#a122f491aed13bdc801c5f9dff9e4b655">NETSDL2::Core::Error::SetError</a></div><div class="ttdeci">static void SetError(System::String^ format,...array&lt; Object^&gt;^ args)</div><div class="ttdoc">Set the SDL error message for the current thread.</div></div>
 <div class="ttc" id="astruct_n_e_t_s_d_l2_1_1_core_1_1_error_html"><div class="ttname"><a href="struct_n_e_t_s_d_l2_1_1_core_1_1_error.html">NETSDL2::Core::Error</a></div><div class="ttdoc">Error handling functions.</div><div class="ttdef"><b>Definition:</b> Error.h:13</div></div>

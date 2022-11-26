@@ -1,5 +1,26 @@
 var searchData=
 [
-  ['deletecontext_743',['DeleteContext',['../class_n_e_t_s_d_l2_1_1_video_1_1_g_l_context.html#ae8dfe544dfcea38cbb9e8b83a97af477',1,'NETSDL2::Video::GLContext']]],
-  ['disablescreensaver_744',['DisableScreenSaver',['../struct_n_e_t_s_d_l2_1_1_video_1_1_display.html#a8e661c5e3a67c038f247dadf6b19aab1',1,'NETSDL2::Video::Display']]]
+  ['calculategammaramp_1661',['CalculateGammaRamp',['../struct_n_e_t_s_d_l2_1_1_video_1_1_pixels.html#ac274092a79177b35aab0177492ca4d16',1,'NETSDL2::Video::Pixels']]],
+  ['calloc_1662',['Calloc',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#a7cb510e12e5eb3ac444d591f1f5da85b',1,'NETSDL2::Systems::Stdinc']]],
+  ['capturemouse_1663',['CaptureMouse',['../struct_n_e_t_s_d_l2_1_1_events_1_1_mouse.html#a119481c3c7f066d279e9804adc63a169',1,'NETSDL2::Events::Mouse']]],
+  ['clear_1664',['Clear',['../class_n_e_t_s_d_l2_1_1_video_1_1_renderer.html#a843a17646aa5fc70b209751e94777c48',1,'NETSDL2::Video::Renderer']]],
+  ['clearcomposition_1665',['ClearComposition',['../struct_n_e_t_s_d_l2_1_1_events_1_1_keyboard.html#a79ad9f0dcdf7b8f2169c1835d28338d3',1,'NETSDL2::Events::Keyboard']]],
+  ['clearerror_1666',['ClearError',['../struct_n_e_t_s_d_l2_1_1_core_1_1_error.html#a8af8eff6302ae72adf4a0e9c8690d3ea',1,'NETSDL2::Core::Error']]],
+  ['clearhints_1667',['ClearHints',['../struct_n_e_t_s_d_l2_1_1_core_1_1_hint.html#a89f55a9376d98a10d9952723a619eea7',1,'NETSDL2::Core::Hint']]],
+  ['close_1668',['Close',['../class_n_e_t_s_d_l2_1_1_i_o_1_1_r_wops.html#aa53b9b6eb81ac3e5c4a6b0edaa129697',1,'NETSDL2::IO::RWops']]],
+  ['closefunc_1669',['CloseFunc',['../namespace_n_e_t_s_d_l2_1_1_i_o.html#a5a21281555084ea32bbb58b62972ac2b',1,'NETSDL2::IO']]],
+  ['color_1670',['Color',['../struct_n_e_t_s_d_l2_1_1_video_1_1_color.html#ae615ffaaa6500e8ed3b48efc821631b3',1,'NETSDL2::Video::Color']]],
+  ['composecustomblendmode_1671',['ComposeCustomBlendMode',['../struct_n_e_t_s_d_l2_1_1_video_1_1_blend.html#af322cace9413fe819e1623e23e21fbbd',1,'NETSDL2::Video::Blend']]],
+  ['convertpixels_1672',['ConvertPixels',['../struct_n_e_t_s_d_l2_1_1_video_1_1_pixels.html#ae7c5e35f883212f593ead0a8ca4ad780',1,'NETSDL2::Video::Pixels']]],
+  ['convertsurface_1673',['ConvertSurface',['../class_n_e_t_s_d_l2_1_1_video_1_1_surface.html#a24bcc02485a25081f25d10f2682dd330',1,'NETSDL2::Video::Surface']]],
+  ['convertsurfaceformat_1674',['ConvertSurfaceFormat',['../class_n_e_t_s_d_l2_1_1_video_1_1_surface.html#a59a90f71055aaff4b07ca219e981d34d',1,'NETSDL2::Video::Surface']]],
+  ['copy_1675',['Copy',['../class_n_e_t_s_d_l2_1_1_video_1_1_renderer.html#a5110c211af35a5f4291bf176c032f5de',1,'NETSDL2::Video::Renderer']]],
+  ['copyex_1676',['CopyEx',['../class_n_e_t_s_d_l2_1_1_video_1_1_renderer.html#a1a86dbe1fb9b7504a9ac947d1f2d9388',1,'NETSDL2::Video::Renderer']]],
+  ['copyexf_1677',['CopyExF',['../class_n_e_t_s_d_l2_1_1_video_1_1_renderer.html#afced23d218cc7332ecbe68e8c649c638',1,'NETSDL2::Video::Renderer']]],
+  ['copyf_1678',['CopyF',['../class_n_e_t_s_d_l2_1_1_video_1_1_renderer.html#a17262ebde448e1583ae1cbb47f5d4cd8',1,'NETSDL2::Video::Renderer']]],
+  ['crc16_1679',['CRC16',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#a4a2b43d12ea8019ed302a7222eb44115',1,'NETSDL2::Systems::Stdinc']]],
+  ['crc32_1680',['CRC32',['../struct_n_e_t_s_d_l2_1_1_systems_1_1_stdinc.html#a9adf6eb727ccd9c44cea57a57bacd262',1,'NETSDL2::Systems::Stdinc']]],
+  ['createcontext_1681',['CreateContext',['../struct_n_e_t_s_d_l2_1_1_video_1_1_g_l.html#a438f0f9d32559535e607cd0d16f7d6e3',1,'NETSDL2::Video::GL']]],
+  ['createsurface_1682',['CreateSurface',['../struct_n_e_t_s_d_l2_1_1_video_1_1_vulkan.html#a6bc2694d032118c2f7f45554fedf0d10',1,'NETSDL2::Video::Vulkan']]],
+  ['cursor_1683',['Cursor',['../class_n_e_t_s_d_l2_1_1_events_1_1_cursor.html#a27ad374c2ae1152d7787e618d45291a1',1,'NETSDL2::Events::Cursor::Cursor(Surface^ surface, int hotX, int hotY)'],['../class_n_e_t_s_d_l2_1_1_events_1_1_cursor.html#a596071199463fb9220323a7f3604677b',1,'NETSDL2::Events::Cursor::Cursor(Uint8 *data, Uint8 *mask, int w, int h, int hotX, int hotY)'],['../class_n_e_t_s_d_l2_1_1_events_1_1_cursor.html#ae666e9d1c5f605d0f17eaf40a9a3b8f2',1,'NETSDL2::Events::Cursor::Cursor(SystemCursor id)']]]
 ];

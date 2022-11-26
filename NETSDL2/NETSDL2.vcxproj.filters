@@ -157,6 +157,12 @@
     <ClCompile Include="src\events\Keyboard.cpp">
       <Filter>소스 파일\events</Filter>
     </ClCompile>
+    <ClCompile Include="src\events\Mouse.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events\Cursor.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\video\Blend.h">
@@ -310,6 +316,12 @@
       <Filter>헤더 파일\video</Filter>
     </ClInclude>
     <ClInclude Include="include\events\Keyboard.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Mouse.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Cursor.h">
       <Filter>헤더 파일\events</Filter>
     </ClInclude>
   </ItemGroup>

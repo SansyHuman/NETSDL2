@@ -966,3 +966,22 @@ bool NETSDL2::Video::Window::IsScreenKeyboardShown()
 {
 	return SDL_IsScreenKeyboardShown(window) == SDL_TRUE;
 }
+
+Window^ NETSDL2::Video::Window::GetMouseFocus()
+{
+	SDL_Window* win = SDL_GetMouseFocus();
+	if(win == __nullptr)
+		return nullptr;
+
+	Window^ window = nullptr;
+	bool exists = nativeWindowConnections->TryGetValue(System::IntPtr(win), window);
+	if(!exists)
+		return nullptr;
+
+	return window;
+}
+
+void NETSDL2::Video::Window::WarpMouseInWindow(int x, int y)
+{
+	SDL_WarpMouseInWindow(window, x, y);
+}

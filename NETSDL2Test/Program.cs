@@ -134,6 +134,11 @@ memRW.Read(intns, 1, 6);
 
 memRW.Close();
 
+unsafe
+{
+    var keystates = Keyboard.GetKeyboardState(out int numkeys);
+}
+
 None resultVarer = result;
 
 result = Video.Init(null);

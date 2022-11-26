@@ -104,6 +104,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a9e934b651b6b818253bb15a1a4c2dcb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cc418079be459fe7f12cbb8db078b5f"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a9cc418079be459fe7f12cbb8db078b5f">operator Result</a> (Success result)</td></tr>
 <tr class="separator:a9cc418079be459fe7f12cbb8db078b5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f088cbf4cfab016f8c71167897958ac"><td class="memItemLeft" align="right" valign="top">static&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a0f088cbf4cfab016f8c71167897958ac">operator Success</a> ([In][IsReadOnly]<a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt; Success, Failure &gt;% result)</td></tr>
+<tr class="separator:a0f088cbf4cfab016f8c71167897958ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -201,6 +203,12 @@ template&lt;class Success , class Failure &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html" title="Object that represents succeeded result or error.">Result</a>.</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">InvalidOperationException</td><td>Thrown when the result is not success and throwOnFailure is true.</td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -256,6 +264,34 @@ template&lt;class Success , class Failure &gt; </div>
           <td class="memname">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">NETSDL2::Core::Result</a>&lt; Success, Failure &gt;::operator <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a> </td>
           <td>(</td>
           <td class="paramtype">Success&#160;</td>
+          <td class="paramname"><em>result</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0f088cbf4cfab016f8c71167897958ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f088cbf4cfab016f8c71167897958ac">&#9670;&nbsp;</a></span>operator Success()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Success , class Failure &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">NETSDL2::Core::Result</a>&lt; Success, Failure &gt;::operator Success </td>
+          <td>(</td>
+          <td class="paramtype">[IsReadOnly] <a class="el" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>&lt; Success, Failure &gt;%&#160;</td>
           <td class="paramname"><em>result</em></td><td>)</td>
           <td></td>
         </tr>
@@ -440,7 +476,7 @@ template&lt;class Success , class Failure &gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>core/<a class="el" href="_result_8h_source.html">Result.h</a></li>
+<li>NETSDL2/include/core/<a class="el" href="_result_8h_source.html">Result.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

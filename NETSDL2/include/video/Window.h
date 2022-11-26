@@ -1081,6 +1081,12 @@ namespace NETSDL2
 
 			[MethodImpl(MethodImplOptions::AggressiveInlining)]
 			bool IsScreenKeyboardShown();
+
+			[MethodImpl(MethodImplOptions::AggressiveInlining)]
+			static Window^ GetMouseFocus();
+
+			[MethodImpl(MethodImplOptions::AggressiveInlining)]
+			void WarpMouseInWindow(int x, int y);
 		};
 	}
 }

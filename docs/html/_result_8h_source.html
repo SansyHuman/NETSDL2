@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>NETSDL2: core/Result.h Source File</title>
+<title>NETSDL2: NETSDL2/include/core/Result.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,7 +61,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_4270bfced15e0e73154b13468c7c9ad9.html">core</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_388e48a9324bd55a2529ad281871f500.html">NETSDL2</a></li><li class="navelem"><a class="el" href="dir_319aaf4edf1d9deffadbc8c65659d44b.html">include</a></li><li class="navelem"><a class="el" href="dir_bad7bfe630921db9011a6665048e44f0.html">core</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,73 +71,70 @@ $(function() {
 <div class="contents">
 <a href="_result_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_n_e_t_s_d_l2.html">NETSDL2</a></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;{</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    <span class="keyword">namespace </span><a class="code" href="namespace_n_e_t_s_d_l2_1_1_video.html#ae08e768c20f3ea08d681f0c73680ccfca83168e6cb289d732cc78427b51f93153">Core</a></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keyword">generic</span>&lt;<span class="keyword">class</span> Success, <span class="keyword">class</span> Failure&gt;</div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">   13</a></span>&#160;        <span class="keyword">public value class</span> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ababef58bcff84f5e9365e9bbf6d31ed8">   19</a></span>&#160;            <span class="keyword">enum class</span> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ababef58bcff84f5e9365e9bbf6d31ed8">Type</a></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ababef58bcff84f5e9365e9bbf6d31ed8a66d02c2f8a582446f8dd8752366002b5">Succeeded</a>, <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ababef58bcff84f5e9365e9bbf6d31ed8ad7c8c85bf79bbe1b7188497c32c3b0ca">Failed</a></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            };</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            Success result;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            Failure error;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ababef58bcff84f5e9365e9bbf6d31ed8">Type</a> resultType;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ac7c4e2ebb0c7cf4b4b52a9bc16afd9fd">   34</a></span>&#160;            <span class="keyword">static</span> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ac7c4e2ebb0c7cf4b4b52a9bc16afd9fd">MakeResult</a>(Success result);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#aef00094ff6d98061cb4452a10244d802">   41</a></span>&#160;            <span class="keyword">static</span> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a9e934b651b6b818253bb15a1a4c2dcb3">MakeFailure</a>(Failure error);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keyword">property</span> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ababef58bcff84f5e9365e9bbf6d31ed8">Type</a> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a1bcc3a4615ade74f0bc66ba13e54e5dd">ResultType</a></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ababef58bcff84f5e9365e9bbf6d31ed8">Type</a> get();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keyword">property</span> <span class="keywordtype">bool</span> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ae814d1f70b97c612bd65feed2e072953">IsSuccess</a></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <span class="keywordtype">bool</span> get();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keyword">property</span> <span class="keywordtype">bool</span> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a90453d72050329a03f2a568d674e9118">IsFailure</a></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="keywordtype">bool</span> get();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keyword">property</span> Success <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#aef00094ff6d98061cb4452a10244d802">ResultValue</a></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                Success get();</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keyword">property</span> Failure <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a38275c00b4a439168b75a614976edce9">ErrorValue</a></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                Failure get();</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a2e2c2c4c9d6845f0e27ac8bda386a563">   89</a></span>&#160;            <span class="keyword">virtual</span> System::String^ <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a2e2c2c4c9d6845f0e27ac8bda386a563">ToString</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a9cc418079be459fe7f12cbb8db078b5f">   91</a></span>&#160;            <span class="keyword">static</span> <span class="keyword">operator</span> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>(Success result);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        };</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">using namespace </span>System::Runtime::InteropServices;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">using namespace </span>System::Runtime::CompilerServices;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_n_e_t_s_d_l2.html">NETSDL2</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">namespace </span><a class="code" href="namespace_n_e_t_s_d_l2_1_1_video.html#ae08e768c20f3ea08d681f0c73680ccfca83168e6cb289d732cc78427b51f93153">Core</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">generic</span>&lt;<span class="keyword">class</span> Success, <span class="keyword">class</span> Failure&gt;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">   16</a></span>&#160;        <span class="keyword">public value class</span> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ababef58bcff84f5e9365e9bbf6d31ed8">   22</a></span>&#160;            <span class="keyword">enum class</span> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ababef58bcff84f5e9365e9bbf6d31ed8">Type</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                Succeeded, Failed</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            };</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            Success result;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            Failure error;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            Type resultType;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ac7c4e2ebb0c7cf4b4b52a9bc16afd9fd">   37</a></span>&#160;            <span class="keyword">static</span> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ac7c4e2ebb0c7cf4b4b52a9bc16afd9fd">MakeResult</a>(Success result);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#aef00094ff6d98061cb4452a10244d802">   46</a></span>&#160;            <span class="keyword">static</span> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a> MakeFailure(Failure error);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keyword">property</span> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ababef58bcff84f5e9365e9bbf6d31ed8">Type</a> ResultType</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ababef58bcff84f5e9365e9bbf6d31ed8">Type</a> get();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keyword">property</span> <span class="keywordtype">bool</span> IsSuccess</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                <span class="keywordtype">bool</span> get();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keyword">property</span> <span class="keywordtype">bool</span> IsFailure</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <span class="keywordtype">bool</span> get();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keyword">property</span> Success ResultValue</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                Success get();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keyword">property</span> Failure ErrorValue</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                Failure get();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a2e2c2c4c9d6845f0e27ac8bda386a563">   94</a></span>&#160;            <span class="keyword">virtual</span> System::String^ <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a2e2c2c4c9d6845f0e27ac8bda386a563">ToString</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a9cc418079be459fe7f12cbb8db078b5f">   96</a></span>&#160;            <span class="keyword">static</span> <span class="keyword">operator</span> <a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result</a>(Success result);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a0f088cbf4cfab016f8c71167897958ac">   98</a></span>&#160;            <span class="keyword">static</span> <span class="keyword">operator</span> Success([In][IsReadOnly]<a class="code" href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">Result&lt;Success, Failure&gt;</a>% result);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        };</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anamespace_n_e_t_s_d_l2_html"><div class="ttname"><a href="namespace_n_e_t_s_d_l2.html">NETSDL2</a></div><div class="ttdef"><b>Definition:</b> Error.h:6</div></div>
-<div class="ttc" id="aclass_n_e_t_s_d_l2_1_1_core_1_1_result_html_a1bcc3a4615ade74f0bc66ba13e54e5dd"><div class="ttname"><a href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a1bcc3a4615ade74f0bc66ba13e54e5dd">NETSDL2::Core::Result::ResultType</a></div><div class="ttdeci">Type ResultType</div><div class="ttdoc">Gets the type of the result.</div><div class="ttdef"><b>Definition:</b> Result.h:46</div></div>
 <div class="ttc" id="anamespace_n_e_t_s_d_l2_1_1_video_html_ae08e768c20f3ea08d681f0c73680ccfca83168e6cb289d732cc78427b51f93153"><div class="ttname"><a href="namespace_n_e_t_s_d_l2_1_1_video.html#ae08e768c20f3ea08d681f0c73680ccfca83168e6cb289d732cc78427b51f93153">NETSDL2::Video::GLProfile::Core</a></div><div class="ttdeci">@ Core</div><div class="ttdoc">OpenGL core profile - deprecated functions are disabled.</div></div>
-<div class="ttc" id="aclass_n_e_t_s_d_l2_1_1_core_1_1_result_html"><div class="ttname"><a href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">NETSDL2::Core::Result</a></div><div class="ttdoc">Object that represents succeeded result or error.</div><div class="ttdef"><b>Definition:</b> Result.h:14</div></div>
-<div class="ttc" id="aclass_n_e_t_s_d_l2_1_1_core_1_1_result_html_ae814d1f70b97c612bd65feed2e072953"><div class="ttname"><a href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ae814d1f70b97c612bd65feed2e072953">NETSDL2::Core::Result::IsSuccess</a></div><div class="ttdeci">bool IsSuccess</div><div class="ttdoc">Gets true if the result is success.</div><div class="ttdef"><b>Definition:</b> Result.h:54</div></div>
-<div class="ttc" id="aclass_n_e_t_s_d_l2_1_1_core_1_1_result_html_a90453d72050329a03f2a568d674e9118"><div class="ttname"><a href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a90453d72050329a03f2a568d674e9118">NETSDL2::Core::Result::IsFailure</a></div><div class="ttdeci">bool IsFailure</div><div class="ttdoc">Gets true if the result is failure.</div><div class="ttdef"><b>Definition:</b> Result.h:62</div></div>
-<div class="ttc" id="aclass_n_e_t_s_d_l2_1_1_core_1_1_result_html_ababef58bcff84f5e9365e9bbf6d31ed8a66d02c2f8a582446f8dd8752366002b5"><div class="ttname"><a href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ababef58bcff84f5e9365e9bbf6d31ed8a66d02c2f8a582446f8dd8752366002b5">NETSDL2::Core::Result::Type::Succeeded</a></div><div class="ttdeci">@ Succeeded</div></div>
-<div class="ttc" id="aclass_n_e_t_s_d_l2_1_1_core_1_1_result_html_aef00094ff6d98061cb4452a10244d802"><div class="ttname"><a href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#aef00094ff6d98061cb4452a10244d802">NETSDL2::Core::Result::ResultValue</a></div><div class="ttdeci">Success ResultValue</div><div class="ttdoc">Gets the succeeded value of the result.</div><div class="ttdef"><b>Definition:</b> Result.h:73</div></div>
-<div class="ttc" id="aclass_n_e_t_s_d_l2_1_1_core_1_1_result_html_a38275c00b4a439168b75a614976edce9"><div class="ttname"><a href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a38275c00b4a439168b75a614976edce9">NETSDL2::Core::Result::ErrorValue</a></div><div class="ttdeci">Failure ErrorValue</div><div class="ttdoc">Gets the error value of the result.</div><div class="ttdef"><b>Definition:</b> Result.h:84</div></div>
-<div class="ttc" id="aclass_n_e_t_s_d_l2_1_1_core_1_1_result_html_ababef58bcff84f5e9365e9bbf6d31ed8ad7c8c85bf79bbe1b7188497c32c3b0ca"><div class="ttname"><a href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ababef58bcff84f5e9365e9bbf6d31ed8ad7c8c85bf79bbe1b7188497c32c3b0ca">NETSDL2::Core::Result::Type::Failed</a></div><div class="ttdeci">@ Failed</div></div>
-<div class="ttc" id="aclass_n_e_t_s_d_l2_1_1_core_1_1_result_html_a9e934b651b6b818253bb15a1a4c2dcb3"><div class="ttname"><a href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a9e934b651b6b818253bb15a1a4c2dcb3">NETSDL2::Core::Result::MakeFailure</a></div><div class="ttdeci">static Result MakeFailure(Failure error)</div><div class="ttdoc">Make error.</div></div>
+<div class="ttc" id="aclass_n_e_t_s_d_l2_1_1_core_1_1_result_html"><div class="ttname"><a href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html">NETSDL2::Core::Result</a></div><div class="ttdoc">Object that represents succeeded result or error.</div><div class="ttdef"><b>Definition:</b> Result.h:17</div></div>
 <div class="ttc" id="aclass_n_e_t_s_d_l2_1_1_core_1_1_result_html_ac7c4e2ebb0c7cf4b4b52a9bc16afd9fd"><div class="ttname"><a href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ac7c4e2ebb0c7cf4b4b52a9bc16afd9fd">NETSDL2::Core::Result::MakeResult</a></div><div class="ttdeci">static Result MakeResult(Success result)</div><div class="ttdoc">Make succeeded result.</div></div>
-<div class="ttc" id="aclass_n_e_t_s_d_l2_1_1_core_1_1_result_html_ababef58bcff84f5e9365e9bbf6d31ed8"><div class="ttname"><a href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ababef58bcff84f5e9365e9bbf6d31ed8">NETSDL2::Core::Result::Type</a></div><div class="ttdeci">Type</div><div class="ttdoc">Type of the result.</div><div class="ttdef"><b>Definition:</b> Result.h:20</div></div>
+<div class="ttc" id="aclass_n_e_t_s_d_l2_1_1_core_1_1_result_html_ababef58bcff84f5e9365e9bbf6d31ed8"><div class="ttname"><a href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#ababef58bcff84f5e9365e9bbf6d31ed8">NETSDL2::Core::Result::Type</a></div><div class="ttdeci">Type</div><div class="ttdoc">Type of the result.</div><div class="ttdef"><b>Definition:</b> Result.h:23</div></div>
 <div class="ttc" id="aclass_n_e_t_s_d_l2_1_1_core_1_1_result_html_a2e2c2c4c9d6845f0e27ac8bda386a563"><div class="ttname"><a href="class_n_e_t_s_d_l2_1_1_core_1_1_result.html#a2e2c2c4c9d6845f0e27ac8bda386a563">NETSDL2::Core::Result::ToString</a></div><div class="ttdeci">virtual System::String ^ ToString() override</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
