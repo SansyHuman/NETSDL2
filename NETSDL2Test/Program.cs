@@ -2,6 +2,7 @@
 using NETSDL2.Video;
 using NETSDL2.Events;
 using NETSDL2.IO;
+using NETSDL2.Audio;
 
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -18,7 +19,7 @@ Console.WriteLine("{0}", Hint.GetHint(SDLHint.H_RENDER_SCALE_QUALITY));
 Console.WriteLine("{0}", Hint.SetHintWithPriority(SDLHint.H_RENDER_SCALE_QUALITY, "best", HintPriority.Override));
 Console.WriteLine("{0}", Hint.GetHint(SDLHint.H_RENDER_SCALE_QUALITY));
 
-var result = SDL.Init(SubSystems.Video);
+var result = SDL.Init(SubSystems.Video | SubSystems.Audio);
 if(result.ResultType == Result<None, int>.Type.Failed)
 {
     Console.WriteLine("Failed to initialize SDL.");
@@ -169,6 +170,46 @@ var revision = NETSDL2.Core.Version.Revision;
 var version = NETSDL2.Core.Version.LibraryVersion;
 
 Logging.LogInfo(LogCategory.Application, "SDL version: {0}", version);
+
+int numAudioDriver = Audio.GetNumAudioDrivers();
+for(int i = 0; i < numAudioDriver; i++)
+{
+    Logging.LogInfo(LogCategory.Application, "Audio driver: {0}", Audio.GetAudioDriver(i));
+}
+Logging.LogInfo(LogCategory.Application, "Current audio driver: {0}", Audio.GetCurrentAudioDriver());
+
+int numAudioOutput = Audio.GetNumAudioDevices(false);
+int numAudioInput = Audio.GetNumAudioDevices(true);
+
+for (int i = 0; i < numAudioOutput; i++)
+{
+    Logging.LogInfo(LogCategory.Application, "Audio output: {0}", Audio.GetAudioDeviceName(i, false));
+}
+
+for (int i = 0; i < numAudioInput; i++)
+{
+    Logging.LogInfo(LogCategory.Application, "Audio input: {0}", Audio.GetAudioDeviceName(i, true));
+}
+
+Audio.BuildAudioCVT(out AudioCVT cvt, AudioFormat.U16, 2, 44000, AudioFormat.F32, 2, 48000);
+
+Logging.LogInfo(LogCategory.Application, "Default input: {0}", Audio.GetDefaultAudioInfo(out string audioName, out AudioSpec audioSpec, true));
+Logging.LogInfo(LogCategory.Application, "Default input: {0} {1}", audioName, audioSpec);
+
+Logging.LogInfo(LogCategory.Application, "Default output: {0}", Audio.GetDefaultAudioInfo(out audioName, out audioSpec, false));
+Logging.LogInfo(LogCategory.Application, "Default output: {0} {1}", audioName, audioSpec);
+
+for (int i = 0; i < numAudioInput; i++)
+{
+    Logging.LogInfo(LogCategory.Application, "Audio input: {0}", Audio.GetAudioDeviceSpec(i, true, out audioSpec));
+    Logging.LogInfo(LogCategory.Application, "Audio input: {0}", audioSpec);
+}
+
+for (int i = 0; i < numAudioOutput; i++)
+{
+    Logging.LogInfo(LogCategory.Application, "Audio output: {0}", Audio.GetAudioDeviceSpec(i, false, out audioSpec));
+    Logging.LogInfo(LogCategory.Application, "Audio output: {0}", audioSpec);
+}
 
 Logging.LogInfo(LogCategory.Application, "GL load: {0}", GL.LoadLibrary(null));
 

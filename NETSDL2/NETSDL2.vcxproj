@@ -90,6 +90,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\audio\Audio.h" />
+    <ClInclude Include="include\audio\AudioCVT.h" />
+    <ClInclude Include="include\audio\AudioFormat.h" />
+    <ClInclude Include="include\audio\AudioSpec.h" />
+    <ClInclude Include="include\audio\AudioStatus.h" />
+    <ClInclude Include="include\audio\AudioStream.h" />
     <ClInclude Include="include\core\Error.h" />
     <ClInclude Include="include\core\FunctionPointer.h" />
     <ClInclude Include="include\core\Hint.h" />
@@ -146,6 +152,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="src\audio\Audio.cpp" />
+    <ClCompile Include="src\audio\AudioCVT.cpp" />
+    <ClCompile Include="src\audio\AudioFormat.cpp" />
+    <ClCompile Include="src\audio\AudioSpec.cpp" />
+    <ClCompile Include="src\audio\AudioStatus.cpp" />
+    <ClCompile Include="src\audio\AudioStream.cpp" />
     <ClCompile Include="src\core\Error.cpp" />
     <ClCompile Include="src\core\FunctionPointer.cpp" />
     <ClCompile Include="src\core\Hint.cpp" />

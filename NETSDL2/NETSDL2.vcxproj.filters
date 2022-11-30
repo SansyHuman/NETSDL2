@@ -163,6 +163,24 @@
     <ClCompile Include="src\events\Cursor.cpp">
       <Filter>소스 파일\events</Filter>
     </ClCompile>
+    <ClCompile Include="src\audio\AudioCVT.cpp">
+      <Filter>소스 파일\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="src\audio\AudioFormat.cpp">
+      <Filter>소스 파일\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="src\audio\Audio.cpp">
+      <Filter>소스 파일\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="src\audio\AudioSpec.cpp">
+      <Filter>소스 파일\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="src\audio\AudioStatus.cpp">
+      <Filter>소스 파일\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="src\audio\AudioStream.cpp">
+      <Filter>소스 파일\audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\video\Blend.h">
@@ -324,6 +342,24 @@
     <ClInclude Include="include\events\Cursor.h">
       <Filter>헤더 파일\events</Filter>
     </ClInclude>
+    <ClInclude Include="include\audio\AudioCVT.h">
+      <Filter>헤더 파일\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\audio\AudioFormat.h">
+      <Filter>헤더 파일\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\audio\Audio.h">
+      <Filter>헤더 파일\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\audio\AudioSpec.h">
+      <Filter>헤더 파일\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\audio\AudioStatus.h">
+      <Filter>헤더 파일\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="include\audio\AudioStream.h">
+      <Filter>헤더 파일\audio</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="헤더 파일">
@@ -367,6 +403,12 @@
     </Filter>
     <Filter Include="헤더 파일\internal">
       <UniqueIdentifier>{b289108d-b1f8-4082-b5b2-d61a2533b317}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\audio">
+      <UniqueIdentifier>{13d71acb-8337-4a54-8f16-d54b39757eea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\audio">
+      <UniqueIdentifier>{c64a1312-9b93-4061-a006-8805bd49e815}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
