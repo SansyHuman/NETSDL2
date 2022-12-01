@@ -181,6 +181,24 @@
     <ClCompile Include="src\audio\AudioStream.cpp">
       <Filter>소스 파일\audio</Filter>
     </ClCompile>
+    <ClCompile Include="src\concurrent\Thread.cpp">
+      <Filter>소스 파일\concurrent</Filter>
+    </ClCompile>
+    <ClCompile Include="src\concurrent\Cond.cpp">
+      <Filter>소스 파일\concurrent</Filter>
+    </ClCompile>
+    <ClCompile Include="src\concurrent\Mutex.cpp">
+      <Filter>소스 파일\concurrent</Filter>
+    </ClCompile>
+    <ClCompile Include="src\concurrent\Semaphore.cpp">
+      <Filter>소스 파일\concurrent</Filter>
+    </ClCompile>
+    <ClCompile Include="src\concurrent\Atomic.cpp">
+      <Filter>소스 파일\concurrent</Filter>
+    </ClCompile>
+    <ClCompile Include="src\concurrent\SpinLock.cpp">
+      <Filter>소스 파일\concurrent</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\video\Blend.h">
@@ -360,6 +378,24 @@
     <ClInclude Include="include\audio\AudioStream.h">
       <Filter>헤더 파일\audio</Filter>
     </ClInclude>
+    <ClInclude Include="include\concurrent\Thread.h">
+      <Filter>헤더 파일\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\concurrent\Cond.h">
+      <Filter>헤더 파일\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\concurrent\Mutex.h">
+      <Filter>헤더 파일\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\concurrent\Semaphore.h">
+      <Filter>헤더 파일\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\concurrent\Atomic.h">
+      <Filter>헤더 파일\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\concurrent\SpinLock.h">
+      <Filter>헤더 파일\concurrent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="헤더 파일">
@@ -409,6 +445,12 @@
     </Filter>
     <Filter Include="소스 파일\audio">
       <UniqueIdentifier>{c64a1312-9b93-4061-a006-8805bd49e815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\concurrent">
+      <UniqueIdentifier>{39272929-f9e8-4e49-904f-77d6ea49d3b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\concurrent">
+      <UniqueIdentifier>{010763ec-7689-4e9b-bf27-f9a6df92508c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

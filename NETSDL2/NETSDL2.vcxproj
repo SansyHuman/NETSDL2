@@ -96,6 +96,12 @@
     <ClInclude Include="include\audio\AudioSpec.h" />
     <ClInclude Include="include\audio\AudioStatus.h" />
     <ClInclude Include="include\audio\AudioStream.h" />
+    <ClInclude Include="include\concurrent\Atomic.h" />
+    <ClInclude Include="include\concurrent\Cond.h" />
+    <ClInclude Include="include\concurrent\Mutex.h" />
+    <ClInclude Include="include\concurrent\Semaphore.h" />
+    <ClInclude Include="include\concurrent\SpinLock.h" />
+    <ClInclude Include="include\concurrent\Thread.h" />
     <ClInclude Include="include\core\Error.h" />
     <ClInclude Include="include\core\FunctionPointer.h" />
     <ClInclude Include="include\core\Hint.h" />
@@ -158,6 +164,12 @@
     <ClCompile Include="src\audio\AudioSpec.cpp" />
     <ClCompile Include="src\audio\AudioStatus.cpp" />
     <ClCompile Include="src\audio\AudioStream.cpp" />
+    <ClCompile Include="src\concurrent\Atomic.cpp" />
+    <ClCompile Include="src\concurrent\Cond.cpp" />
+    <ClCompile Include="src\concurrent\Mutex.cpp" />
+    <ClCompile Include="src\concurrent\Semaphore.cpp" />
+    <ClCompile Include="src\concurrent\SpinLock.cpp" />
+    <ClCompile Include="src\concurrent\Thread.cpp" />
     <ClCompile Include="src\core\Error.cpp" />
     <ClCompile Include="src\core\FunctionPointer.cpp" />
     <ClCompile Include="src\core\Hint.cpp" />

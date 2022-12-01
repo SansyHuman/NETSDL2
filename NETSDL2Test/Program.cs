@@ -211,6 +211,20 @@ for (int i = 0; i < numAudioOutput; i++)
     Logging.LogInfo(LogCategory.Application, "Audio output: {0}", audioSpec);
 }
 
+NETSDL2.Concurrent.Thread thread = new NETSDL2.Concurrent.Thread((data) =>
+{
+    unsafe
+    {
+        int count = data.ToInt32();
+        for (int i = 0; i < count; i++)
+            Logging.LogInfo(LogCategory.Application, "Thread id {0} running {1}", NETSDL2.Concurrent.Thread.CurrentThreadID, i);
+
+        return count;
+    }
+}, "Testing thread", new IntPtr(10));
+int threadReturn = thread.Wait();
+uint mainThreadID = NETSDL2.Concurrent.Thread.CurrentThreadID;
+
 Logging.LogInfo(LogCategory.Application, "GL load: {0}", GL.LoadLibrary(null));
 
 Logging.LogInfo(LogCategory.Application, "MajorVersion: {0}", GL.GetAttribute(GLAttr.ContextMajorVersion));
