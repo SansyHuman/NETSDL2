@@ -182,6 +182,36 @@ Logging.LogInfo(LogCategory.Application, "SDL version: {0}", version);
 
 Logging.LogInfo(LogCategory.Application, "OS: {0}", Platform.GetPlatform());
 
+Logging.LogInfo(LogCategory.Application, "Cores: {0}", CPUInfo.CPUCount);
+Logging.LogInfo(LogCategory.Application, "Cache line: {0}", CPUInfo.CPUCacheLineSize);
+Logging.LogInfo(LogCategory.Application, "System RAM: {0}", CPUInfo.SystemRAM);
+Logging.LogInfo(LogCategory.Application, "SIMD alignment: {0}", CPUInfo.SIMDAlignment);
+
+Logging.LogInfo(LogCategory.Application, "HasSSE42: {0}", CPUInfo.HasSSE42);
+Logging.LogInfo(LogCategory.Application, "HasSSE41: {0}", CPUInfo.HasSSE41);
+Logging.LogInfo(LogCategory.Application, "HasSSE3: {0}", CPUInfo.HasSSE3);
+Logging.LogInfo(LogCategory.Application, "HasSSE2: {0}", CPUInfo.HasSSE2);
+Logging.LogInfo(LogCategory.Application, "HasSSE: {0}", CPUInfo.HasSSE);
+Logging.LogInfo(LogCategory.Application, "HasRDTSC: {0}", CPUInfo.HasRDTSC);
+Logging.LogInfo(LogCategory.Application, "HasMMX: {0}", CPUInfo.HasMMX);
+Logging.LogInfo(LogCategory.Application, "HasLASX: {0}", CPUInfo.HasLASX);
+Logging.LogInfo(LogCategory.Application, "HasLSX: {0}", CPUInfo.HasLSX);
+Logging.LogInfo(LogCategory.Application, "HasNEON: {0}", CPUInfo.HasNEON);
+Logging.LogInfo(LogCategory.Application, "HasARMSIMD: {0}", CPUInfo.HasARMSIMD);
+Logging.LogInfo(LogCategory.Application, "HasAVX512F: {0}", CPUInfo.HasAVX512F);
+Logging.LogInfo(LogCategory.Application, "HasAVX2: {0}", CPUInfo.HasAVX2);
+Logging.LogInfo(LogCategory.Application, "HasAVX: {0}", CPUInfo.HasAVX);
+Logging.LogInfo(LogCategory.Application, "HasAltiVec: {0}", CPUInfo.HasAltiVec);
+Logging.LogInfo(LogCategory.Application, "Has3DNow: {0}", CPUInfo.Has3DNow);
+
+IntPtr simdMem = CPUInfo.SIMDAlloc(128);
+simdMem = CPUInfo.SIMDRealloc(simdMem, 256);
+CPUInfo.SIMDFree(simdMem);
+
+float ave = Endian.SwapFloat(1.51f);
+int ainer = Bits.MostSignificantBitIndex32(545123);
+bool exrerh = Bits.HasExactlyOneBitSet32(5);
+
 int numAudioDriver = Audio.GetNumAudioDrivers();
 for(int i = 0; i < numAudioDriver; i++)
 {

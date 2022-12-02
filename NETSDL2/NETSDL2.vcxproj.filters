@@ -208,6 +208,15 @@
     <ClCompile Include="src\system\Platform.cpp">
       <Filter>소스 파일\system</Filter>
     </ClCompile>
+    <ClCompile Include="src\system\CPUInfo.cpp">
+      <Filter>소스 파일\system</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\Endian.cpp">
+      <Filter>소스 파일\system</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\Bits.cpp">
+      <Filter>소스 파일\system</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\video\Blend.h">
@@ -412,6 +421,15 @@
       <Filter>헤더 파일\system</Filter>
     </ClInclude>
     <ClInclude Include="include\system\Platform.h">
+      <Filter>헤더 파일\system</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\CPUInfo.h">
+      <Filter>헤더 파일\system</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\Endian.h">
+      <Filter>헤더 파일\system</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\Bits.h">
       <Filter>헤더 파일\system</Filter>
     </ClInclude>
   </ItemGroup>
