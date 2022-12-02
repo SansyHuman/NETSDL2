@@ -129,7 +129,10 @@
     <ClInclude Include="include\internal\StringMarshal.h" />
     <ClInclude Include="include\io\Filesystem.h" />
     <ClInclude Include="include\io\RWops.h" />
+    <ClInclude Include="include\system\Platform.h" />
+    <ClInclude Include="include\system\SharedObject.h" />
     <ClInclude Include="include\system\Stdinc.h" />
+    <ClInclude Include="include\system\Timer.h" />
     <ClInclude Include="include\video\Blend.h" />
     <ClInclude Include="include\video\Clipboard.h" />
     <ClInclude Include="include\video\ICCProfile.h" />
@@ -197,7 +200,10 @@
     <ClCompile Include="src\internal\StringMarshal.cpp" />
     <ClCompile Include="src\io\Filesystem.cpp" />
     <ClCompile Include="src\io\RWops.cpp" />
+    <ClCompile Include="src\system\Platform.cpp" />
+    <ClCompile Include="src\system\SharedObject.cpp" />
     <ClCompile Include="src\system\Stdinc.cpp" />
+    <ClCompile Include="src\system\Timer.cpp" />
     <ClCompile Include="src\video\Blend.cpp" />
     <ClCompile Include="src\video\Clipboard.cpp" />
     <ClCompile Include="src\video\Display.cpp" />

@@ -199,6 +199,15 @@
     <ClCompile Include="src\concurrent\SpinLock.cpp">
       <Filter>소스 파일\concurrent</Filter>
     </ClCompile>
+    <ClCompile Include="src\system\SharedObject.cpp">
+      <Filter>소스 파일\system</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\Timer.cpp">
+      <Filter>소스 파일\system</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\Platform.cpp">
+      <Filter>소스 파일\system</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\video\Blend.h">
@@ -395,6 +404,15 @@
     </ClInclude>
     <ClInclude Include="include\concurrent\SpinLock.h">
       <Filter>헤더 파일\concurrent</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\SharedObject.h">
+      <Filter>헤더 파일\system</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\Timer.h">
+      <Filter>헤더 파일\system</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\Platform.h">
+      <Filter>헤더 파일\system</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -19,11 +19,20 @@ Console.WriteLine("{0}", Hint.GetHint(SDLHint.H_RENDER_SCALE_QUALITY));
 Console.WriteLine("{0}", Hint.SetHintWithPriority(SDLHint.H_RENDER_SCALE_QUALITY, "best", HintPriority.Override));
 Console.WriteLine("{0}", Hint.GetHint(SDLHint.H_RENDER_SCALE_QUALITY));
 
-var result = SDL.Init(SubSystems.Video | SubSystems.Audio);
+var result = SDL.Init(SubSystems.Video | SubSystems.Audio | SubSystems.Timer);
 if(result.ResultType == Result<None, int>.Type.Failed)
 {
     Console.WriteLine("Failed to initialize SDL.");
     return;
+}
+
+SharedObject user32 = new SharedObject("user32.dll");
+IntPtr getcursor = user32.LoadFunction("GetCursor");
+
+unsafe
+{
+    delegate* unmanaged[Stdcall]<void*> GetCursor = (delegate* unmanaged[Stdcall]<void*>)getcursor.ToPointer();
+    void* cursorHandle = GetCursor();
 }
 
 IntPtr allocMem = Stdinc.Calloc(128 + 2, 4);
@@ -171,6 +180,8 @@ var version = NETSDL2.Core.Version.LibraryVersion;
 
 Logging.LogInfo(LogCategory.Application, "SDL version: {0}", version);
 
+Logging.LogInfo(LogCategory.Application, "OS: {0}", Platform.GetPlatform());
+
 int numAudioDriver = Audio.GetNumAudioDrivers();
 for(int i = 0; i < numAudioDriver; i++)
 {
@@ -222,8 +233,28 @@ NETSDL2.Concurrent.Thread thread = new NETSDL2.Concurrent.Thread((data) =>
         return count;
     }
 }, "Testing thread", new IntPtr(10));
-int threadReturn = thread.Wait();
+thread.Detach();
+thread = new NETSDL2.Concurrent.Thread((data) =>
+{
+    unsafe
+    {
+        int count = data.ToInt32();
+        for (int i = 0; i < count; i++)
+            Logging.LogInfo(LogCategory.Application, "Thread id {0} running {1}", NETSDL2.Concurrent.Thread.CurrentThreadID, i);
+
+        return count;
+    }
+}, "Testing thread", new IntPtr(10));
+thread.Detach();
 uint mainThreadID = NETSDL2.Concurrent.Thread.CurrentThreadID;
+
+NETSDL2.Systems.Timer timer = new NETSDL2.Systems.Timer(
+    1000,
+    (interval, data) =>
+    {
+        Logging.LogInfo(LogCategory.Application, "Timer: {0}", data.ToInt64());
+        return interval;
+    }, new IntPtr(1234));
 
 Logging.LogInfo(LogCategory.Application, "GL load: {0}", GL.LoadLibrary(null));
 
