@@ -217,6 +217,9 @@
     <ClCompile Include="src\system\Bits.cpp">
       <Filter>소스 파일\system</Filter>
     </ClCompile>
+    <ClCompile Include="src\system\Power.cpp">
+      <Filter>소스 파일\system</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\video\Blend.h">
@@ -430,6 +433,9 @@
       <Filter>헤더 파일\system</Filter>
     </ClInclude>
     <ClInclude Include="include\system\Bits.h">
+      <Filter>헤더 파일\system</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\Power.h">
       <Filter>헤더 파일\system</Filter>
     </ClInclude>
   </ItemGroup>

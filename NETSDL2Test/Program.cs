@@ -212,6 +212,10 @@ float ave = Endian.SwapFloat(1.51f);
 int ainer = Bits.MostSignificantBitIndex32(545123);
 bool exrerh = Bits.HasExactlyOneBitSet32(5);
 
+Platform.GetDXGIOutputInfo(0, out int adapter, out int output);
+
+PowerState powerState = Power.GetPowerInfo(out int secs, out int percetns);
+
 int numAudioDriver = Audio.GetNumAudioDrivers();
 for(int i = 0; i < numAudioDriver; i++)
 {

@@ -708,3 +708,18 @@ SDL_Texture* NETSDL2::Video::Renderer::CreateTextureFromSurface(Surface^ surface
 {
 	return SDL_CreateTextureFromSurface(renderer, surface->NativeSurface);
 }
+
+IDirect3DDevice9* NETSDL2::Video::Renderer::GetD3D9Device()
+{
+	return SDL_RenderGetD3D9Device(renderer);
+}
+
+ID3D11Device* NETSDL2::Video::Renderer::GetD3D11Device()
+{
+	return SDL_RenderGetD3D11Device(renderer);
+}
+
+ID3D12Device* NETSDL2::Video::Renderer::GetD3D12Device()
+{
+	return SDL_RenderGetD3D12Device(renderer);
+}

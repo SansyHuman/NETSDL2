@@ -589,6 +589,15 @@ namespace NETSDL2
 
 			[MethodImpl(MethodImplOptions::AggressiveInlining)]
 			SDL_Texture* CreateTextureFromSurface(Surface^ surface);
+
+			[MethodImpl(MethodImplOptions::AggressiveInlining)]
+			IDirect3DDevice9* GetD3D9Device();
+
+			[MethodImpl(MethodImplOptions::AggressiveInlining)]
+			ID3D11Device* GetD3D11Device();
+
+			[MethodImpl(MethodImplOptions::AggressiveInlining)]
+			ID3D12Device* GetD3D12Device();
 		};
 	}
 }

@@ -133,6 +133,7 @@
     <ClInclude Include="include\system\CPUInfo.h" />
     <ClInclude Include="include\system\Endian.h" />
     <ClInclude Include="include\system\Platform.h" />
+    <ClInclude Include="include\system\Power.h" />
     <ClInclude Include="include\system\SharedObject.h" />
     <ClInclude Include="include\system\Stdinc.h" />
     <ClInclude Include="include\system\Timer.h" />
@@ -207,6 +208,7 @@
     <ClCompile Include="src\system\CPUInfo.cpp" />
     <ClCompile Include="src\system\Endian.cpp" />
     <ClCompile Include="src\system\Platform.cpp" />
+    <ClCompile Include="src\system\Power.cpp" />
     <ClCompile Include="src\system\SharedObject.cpp" />
     <ClCompile Include="src\system\Stdinc.cpp" />
     <ClCompile Include="src\system\Timer.cpp" />
