@@ -108,22 +108,5 @@ namespace NETSDL2
 			/// </summary>
 			Flipped = SDL_MOUSEWHEEL_FLIPPED,
 		};
-
-		/// <summary>
-		/// Joystick hat positions.
-		/// </summary>
-		[System::Flags]
-		public enum class HatPosition : Uint8
-		{
-			Centered = SDL_HAT_CENTERED,
-			Up = SDL_HAT_UP,
-			Right = SDL_HAT_RIGHT,
-			Down = SDL_HAT_DOWN,
-			Left = SDL_HAT_LEFT,
-			RightUp = SDL_HAT_RIGHTUP,
-			RightDown = SDL_HAT_RIGHTDOWN,
-			LeftUp = SDL_HAT_LEFTUP,
-			LeftDown = SDL_HAT_LEFTDOWN,
-		};
 	}
 }

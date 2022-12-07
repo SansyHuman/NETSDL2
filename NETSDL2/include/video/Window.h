@@ -599,6 +599,8 @@ namespace NETSDL2
 			/// <param name="data">A pointer to driver-dependent window
 			/// creation data, typically your native window cast to a void*.
 			/// </param>
+			/// <exception cref="System::Exception">Thrown when failed creation.
+			/// </exception>
 			Window(void* data);
 			~Window();
 			!Window();

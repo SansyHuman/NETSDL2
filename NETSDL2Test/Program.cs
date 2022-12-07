@@ -19,7 +19,7 @@ Console.WriteLine("{0}", Hint.GetHint(SDLHint.H_RENDER_SCALE_QUALITY));
 Console.WriteLine("{0}", Hint.SetHintWithPriority(SDLHint.H_RENDER_SCALE_QUALITY, "best", HintPriority.Override));
 Console.WriteLine("{0}", Hint.GetHint(SDLHint.H_RENDER_SCALE_QUALITY));
 
-var result = SDL.Init(SubSystems.Video | SubSystems.Audio | SubSystems.Timer);
+var result = SDL.Init(SubSystems.Video | SubSystems.Audio | SubSystems.Timer | SubSystems.Joystick);
 if(result.ResultType == Result<None, int>.Type.Failed)
 {
     Console.WriteLine("Failed to initialize SDL.");
@@ -213,6 +213,14 @@ int ainer = Bits.MostSignificantBitIndex32(545123);
 bool exrerh = Bits.HasExactlyOneBitSet32(5);
 
 Platform.GetDXGIOutputInfo(0, out int adapter, out int output);
+
+int num = Joystick.NumJoysticks();
+Joystick xboxController = new Joystick(0);
+Joystick.Update();
+xboxController.Rumble(0xffff, 0xffff / 2, 1000);
+string Erea = Error.GetError();
+
+xboxController.Dispose();
 
 PowerState powerState = Power.GetPowerInfo(out int secs, out int percetns);
 

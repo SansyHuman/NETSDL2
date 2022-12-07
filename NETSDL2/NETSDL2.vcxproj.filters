@@ -220,6 +220,12 @@
     <ClCompile Include="src\system\Power.cpp">
       <Filter>소스 파일\system</Filter>
     </ClCompile>
+    <ClCompile Include="src\events\Joystick.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\GUID.cpp">
+      <Filter>소스 파일\core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\video\Blend.h">
@@ -437,6 +443,12 @@
     </ClInclude>
     <ClInclude Include="include\system\Power.h">
       <Filter>헤더 파일\system</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Joystick.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\core\GUID.h">
+      <Filter>헤더 파일\core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
