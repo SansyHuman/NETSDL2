@@ -46,7 +46,7 @@ namespace NETSDL2
 			/// <summary>
 			/// Open a game controller for use.
 			/// </summary>
-			/// <param name="deviceIndex">The index of a device, up to
+			/// <param name="joystickIndex">The index of a device, up to
 			/// <see cref="Joystick::NumJoysticks"/>.</param>
 			/// <exception cref="System::Exception">Thrown when failed creation.
 			/// </exception>
@@ -249,8 +249,10 @@ namespace NETSDL2
 			/// </summary>
 			/// <param name="type">The type of sensor to query.</param>
 			/// <param name="data">An array filled with the current sensor state.</param>
+			/// <param name="offset">Offset from the start of the array.</param>
+			/// <param name="numValues">The number of values to write to data.</param>
 			/// <returns>Success or Failure if an error occured.</returns>
-			Result<None^, None^> GetSensorData(SensorType type, array<float>^ data);
+			Result<None^, None^> GetSensorData(SensorType type, array<float>^ data, int offset, int numValues);
 
 			/// <summary>
 			/// Start a rumble effect on a game controller.

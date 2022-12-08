@@ -127,6 +127,7 @@
     <ClInclude Include="include\events\Keysym.h" />
     <ClInclude Include="include\events\Mouse.h" />
     <ClInclude Include="include\events\Scancode.h" />
+    <ClInclude Include="include\events\Sensor.h" />
     <ClInclude Include="include\events\Sensors.h" />
     <ClInclude Include="include\events\Touch.h" />
     <ClInclude Include="include\internal\StringMarshal.h" />
@@ -205,6 +206,7 @@
     <ClCompile Include="src\events\Keysym.cpp" />
     <ClCompile Include="src\events\Mouse.cpp" />
     <ClCompile Include="src\events\Scancode.cpp" />
+    <ClCompile Include="src\events\Sensor.cpp" />
     <ClCompile Include="src\events\Sensors.cpp" />
     <ClCompile Include="src\events\Touch.cpp" />
     <ClCompile Include="src\internal\StringMarshal.cpp" />

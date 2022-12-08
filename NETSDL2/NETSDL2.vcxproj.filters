@@ -229,6 +229,9 @@
     <ClCompile Include="src\events\GameController.cpp">
       <Filter>소스 파일\video</Filter>
     </ClCompile>
+    <ClCompile Include="src\events\Sensor.cpp">
+      <Filter>소스 파일\events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\video\Blend.h">
@@ -454,6 +457,9 @@
       <Filter>헤더 파일\core</Filter>
     </ClInclude>
     <ClInclude Include="include\events\GameController.h">
+      <Filter>헤더 파일\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\events\Sensor.h">
       <Filter>헤더 파일\events</Filter>
     </ClInclude>
   </ItemGroup>

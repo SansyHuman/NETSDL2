@@ -19,7 +19,7 @@ Console.WriteLine("{0}", Hint.GetHint(SDLHint.H_RENDER_SCALE_QUALITY));
 Console.WriteLine("{0}", Hint.SetHintWithPriority(SDLHint.H_RENDER_SCALE_QUALITY, "best", HintPriority.Override));
 Console.WriteLine("{0}", Hint.GetHint(SDLHint.H_RENDER_SCALE_QUALITY));
 
-var result = SDL.Init(SubSystems.Video | SubSystems.Audio | SubSystems.Timer | SubSystems.Joystick);
+var result = SDL.Init(SubSystems.Everything);
 if(result.ResultType == Result<None, int>.Type.Failed)
 {
     Console.WriteLine("Failed to initialize SDL.");
@@ -222,9 +222,16 @@ Joystick xboxJoystick = xboxController.GetJoystick();
 string mappingCon = xboxController.Mapping();
 GameController.Update();
 xboxController.GetAxis(GameControllerAxis.LeftX);
+string conName = xboxController.Name();
+ushort vendor = xboxController.GetVendor();
+ushort product = xboxController.GetProduct();
+
+GameController.GameControllerFromInstanceID(xboxJoystick.InstanceID());
 
 xboxJoystick.Dispose();
 xboxController.Dispose();
+
+int numSensors = Sensor.NumSensors;
 
 PowerState powerState = Power.GetPowerInfo(out int secs, out int percetns);
 

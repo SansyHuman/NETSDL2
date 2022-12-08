@@ -244,15 +244,33 @@ Result<None^, None^> NETSDL2::Events::GameController::GetSensorData(SensorType t
 	return None::Value;
 }
 
-Result<None^, None^> NETSDL2::Events::GameController::GetSensorData(SensorType type, array<float>^ data)
+Result<None^, None^> NETSDL2::Events::GameController::GetSensorData(SensorType type, array<float>^ data, int offset, int numValues)
 {
-	if(data->Length == 0)
+	if(numValues == 0)
 	{
 		return None::Value;
 	}
 
-	pin_ptr<float> pData = &data[0];
-	int result = SDL_GameControllerGetSensorData(controller, (SDL_SensorType)type, (float*)pData, data->Length);
+	if(numValues < 0)
+	{
+		SDL_InvalidParamError(numValues);
+		return Result<None^, None^>::MakeFailure(None::Value);
+	}
+
+	if(offset < 0)
+	{
+		SDL_InvalidParamError(offset);
+		return Result<None^, None^>::MakeFailure(None::Value);
+	}
+
+	if(data->Length < offset + numValues)
+	{
+		SDL_InvalidParamError(data);
+		return Result<None^, None^>::MakeFailure(None::Value);
+	}
+
+	pin_ptr<float> pData = &data[offset];
+	int result = SDL_GameControllerGetSensorData(controller, (SDL_SensorType)type, (float*)pData, numValues);
 	pData = nullptr;
 	if(result < 0)
 	{
