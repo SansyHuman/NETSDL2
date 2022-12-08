@@ -215,11 +215,15 @@ bool exrerh = Bits.HasExactlyOneBitSet32(5);
 Platform.GetDXGIOutputInfo(0, out int adapter, out int output);
 
 int num = Joystick.NumJoysticks();
-Joystick xboxController = new Joystick(0);
-Joystick.Update();
-xboxController.Rumble(0xffff, 0xffff / 2, 1000);
-string Erea = Error.GetError();
 
+GameController xboxController = new GameController(0);
+Joystick xboxJoystick = xboxController.GetJoystick();
+
+string mappingCon = xboxController.Mapping();
+GameController.Update();
+xboxController.GetAxis(GameControllerAxis.LeftX);
+
+xboxJoystick.Dispose();
 xboxController.Dispose();
 
 PowerState powerState = Power.GetPowerInfo(out int secs, out int percetns);

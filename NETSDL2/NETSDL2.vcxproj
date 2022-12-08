@@ -118,6 +118,7 @@
     <ClInclude Include="include\events\Event.h" />
     <ClInclude Include="include\events\Events.h" />
     <ClInclude Include="include\events\Finger.h" />
+    <ClInclude Include="include\events\GameController.h" />
     <ClInclude Include="include\events\Gesture.h" />
     <ClInclude Include="include\events\Joystick.h" />
     <ClInclude Include="include\events\Joysticks.h" />
@@ -195,6 +196,7 @@
     <ClCompile Include="src\events\Event.cpp" />
     <ClCompile Include="src\events\Events.cpp" />
     <ClCompile Include="src\events\Finger.cpp" />
+    <ClCompile Include="src\events\GameController.cpp" />
     <ClCompile Include="src\events\Gesture.cpp" />
     <ClCompile Include="src\events\Joystick.cpp" />
     <ClCompile Include="src\events\Joysticks.cpp" />

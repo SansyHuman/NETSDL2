@@ -12,7 +12,26 @@ void NETSDL2::Events::Joystick::InitJoystick(SDL_Joystick* joystick)
 	nativeJoystickConnections[System::IntPtr(joystick)] = this;
 }
 
+NETSDL2::Events::Joystick::Joystick(SDL_Joystick* joystick, bool closeOnDestroy)
+	: closeOnDestroy(closeOnDestroy)
+{
+	InitJoystick(joystick);
+}
+
+Joystick^ NETSDL2::Events::Joystick::GetJoystickFromNative(SDL_Joystick* joystick)
+{
+	Joystick^ stick = nullptr;
+	bool found = nativeJoystickConnections->TryGetValue(System::IntPtr(joystick), stick);
+	if(!found)
+	{
+		return nullptr;
+	}
+
+	return stick;
+}
+
 NETSDL2::Events::Joystick::Joystick(int deviceIndex)
+	: closeOnDestroy(true)
 {
 	SDL_Joystick* joystick = SDL_JoystickOpen(deviceIndex);
 	if(joystick == __nullptr)
@@ -32,7 +51,9 @@ NETSDL2::Events::Joystick::~Joystick()
 
 NETSDL2::Events::Joystick::!Joystick()
 {
-	SDL_JoystickClose(joystick);
+	if(closeOnDestroy)
+		SDL_JoystickClose(joystick);
+
 	joystick = __nullptr;
 }
 
@@ -169,15 +190,9 @@ bool Joystick::Attached::get()
 	return SDL_JoystickGetAttached(joystick) == SDL_TRUE;
 }
 
-Result<Sint16, None^> NETSDL2::Events::Joystick::GetAxis(int axis)
+Sint16 NETSDL2::Events::Joystick::GetAxis(int axis)
 {
-	Sint16 result = SDL_JoystickGetAxis(joystick, axis);
-	if(result == 0)
-	{
-		return Result<Sint16, None^>::MakeFailure(None::Value);
-	}
-
-	return result;
+	return SDL_JoystickGetAxis(joystick, axis);
 }
 
 Result<Sint16, None^> NETSDL2::Events::Joystick::GetAxisInitialState(int axis)

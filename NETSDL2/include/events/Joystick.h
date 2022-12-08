@@ -17,10 +17,14 @@ namespace NETSDL2
 	{
 		using namespace NETSDL2::Core;
 
+		/// <summary>
+		/// Joystick class.
+		/// </summary>
 		public ref class Joystick
 		{
 		private:
 			SDL_Joystick* joystick;
+			bool closeOnDestroy;
 			static System::Collections::Concurrent::ConcurrentDictionary<System::IntPtr, Joystick^>^ nativeJoystickConnections;
 
 			static Joystick()
@@ -29,6 +33,12 @@ namespace NETSDL2
 			}
 
 			void InitJoystick(SDL_Joystick* joystick);
+
+		internal:
+			// Used by game controller.
+			Joystick(SDL_Joystick* joystick, bool closeOnDestroy);
+			
+			static Joystick^ GetJoystickFromNative(SDL_Joystick* joystick);
 
 		public:
 			/// <summary>
@@ -68,7 +78,7 @@ namespace NETSDL2
 			/// </param>
 			/// <returns>true if enabled, false if disabled, or a negative error code on
 			/// failure.</returns>
-			Result<bool, int> EventState(NETSDL2::Events::EventState state);
+			static Result<bool, int> EventState(NETSDL2::Events::EventState state);
 
 			/// <summary>
 			/// Get the joystick associated with an instance id.
@@ -153,8 +163,8 @@ namespace NETSDL2
 			/// <param name="axis">The axis to query; the axis indices start at index 0.
 			/// </param>
 			/// <returns>A 16-bit signed integer representing the current position of the
-			/// axis or None on failure.</returns>
-			Result<Sint16, None^> GetAxis(int axis);
+			/// axis.</returns>
+			Sint16 GetAxis(int axis);
 
 			/// <summary>
 			/// Get the initial state of an axis control on a joystick.
