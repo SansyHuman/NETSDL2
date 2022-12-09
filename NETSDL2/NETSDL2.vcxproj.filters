@@ -542,5 +542,13 @@
     <Filter Include="소스 파일\haptic">
       <UniqueIdentifier>{ad11ac30-ec91-43fd-81ec-0a6b29653fff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{dc338bcf-25b4-4bfb-a135-ad9564807dd6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="E:\VulkanSDK\Bin\SDL2.dll">
+      <Filter>리소스 파일</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

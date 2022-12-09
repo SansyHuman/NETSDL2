@@ -4,6 +4,7 @@ using NETSDL2.Events;
 using NETSDL2.IO;
 using NETSDL2.Audio;
 using NETSDL2.Haptic;
+using NETSDL2.Image;
 
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -26,6 +27,8 @@ if(result.ResultType == Result<None, int>.Type.Failed)
     Console.WriteLine("Failed to initialize SDL.");
     return;
 }
+
+InitFlags imageFlags = Image.Init(InitFlags.Jpg | InitFlags.Png | InitFlags.Webp);
 
 SharedObject user32 = new SharedObject("user32.dll");
 IntPtr getcursor = user32.LoadFunction("GetCursor");
@@ -144,6 +147,8 @@ int[] intns = new int[8];
 memRW.Read(intns, 1, 6);
 
 memRW.Close();
+
+bool isBmp = Image.IsBMP(new RWops("./테스트.bmp", NETSDL2.IO.FileMode.Read));
 
 unsafe
 {

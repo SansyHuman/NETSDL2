@@ -252,6 +252,13 @@
     <ClCompile Include="src\video\Vulkan.cpp" />
     <ClCompile Include="src\video\Window.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="E:\VulkanSDK\Bin\SDL2.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir);D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Release\net6.0;%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir);D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Debug\net6.0;%(DestinationFolders)</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
