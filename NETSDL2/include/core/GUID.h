@@ -22,6 +22,12 @@ namespace NETSDL2
 			value struct e__FixedBuffer
 			{
 				Uint8 FixedElementField;
+
+				property Uint8 default[int]
+				{
+					Uint8 get(int index);
+					void set(int index, Uint8 value);
+				}
 			};
 
 		public:

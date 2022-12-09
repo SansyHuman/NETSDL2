@@ -130,6 +130,9 @@
     <ClInclude Include="include\events\Sensor.h" />
     <ClInclude Include="include\events\Sensors.h" />
     <ClInclude Include="include\events\Touch.h" />
+    <ClInclude Include="include\haptic\Haptic.h" />
+    <ClInclude Include="include\haptic\HapticEffect.h" />
+    <ClInclude Include="include\haptic\HapticFeatures.h" />
     <ClInclude Include="include\internal\StringMarshal.h" />
     <ClInclude Include="include\io\Filesystem.h" />
     <ClInclude Include="include\io\RWops.h" />
@@ -209,6 +212,9 @@
     <ClCompile Include="src\events\Sensor.cpp" />
     <ClCompile Include="src\events\Sensors.cpp" />
     <ClCompile Include="src\events\Touch.cpp" />
+    <ClCompile Include="src\haptic\Haptic.cpp" />
+    <ClCompile Include="src\haptic\HapticEffect.cpp" />
+    <ClCompile Include="src\haptic\HapticFeatures.cpp" />
     <ClCompile Include="src\internal\StringMarshal.cpp" />
     <ClCompile Include="src\io\Filesystem.cpp" />
     <ClCompile Include="src\io\RWops.cpp" />

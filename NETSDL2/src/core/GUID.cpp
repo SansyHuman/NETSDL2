@@ -4,6 +4,22 @@
 using namespace NETSDL2::Core;
 using namespace NETSDL2::Internal;
 
+Uint8 NETSDL2::Core::GUID::e__FixedBuffer::default::get(int index)
+{
+	if(index < 0 || index >= 16)
+		throw gcnew System::IndexOutOfRangeException();
+
+	return System::Runtime::CompilerServices::Unsafe::Add(FixedElementField, index);
+}
+
+void NETSDL2::Core::GUID::e__FixedBuffer::default::set(int index, Uint8 value)
+{
+	if(index < 0 || index >= 16)
+		throw gcnew System::IndexOutOfRangeException();
+
+	System::Runtime::CompilerServices::Unsafe::Add(FixedElementField, index) = value;
+}
+
 NETSDL2::Core::GUID::GUID(System::String^ guid)
 {
 	StringMarshal context;

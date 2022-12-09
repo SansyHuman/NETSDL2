@@ -3,6 +3,7 @@ using NETSDL2.Video;
 using NETSDL2.Events;
 using NETSDL2.IO;
 using NETSDL2.Audio;
+using NETSDL2.Haptic;
 
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -220,6 +221,8 @@ GameController xboxController = new GameController(0);
 Joystick xboxJoystick = xboxController.GetJoystick();
 
 string mappingCon = xboxController.Mapping();
+GameControllerButtonBind xBind = xboxController.GetBindForButton(GameControllerButton.X);
+GameControllerButtonBind rtBind = xboxController.GetBindForAxis(GameControllerAxis.TriggerRight);
 GameController.Update();
 xboxController.GetAxis(GameControllerAxis.LeftX);
 string conName = xboxController.Name();
@@ -228,10 +231,48 @@ ushort product = xboxController.GetProduct();
 
 GameController.GameControllerFromInstanceID(xboxJoystick.InstanceID());
 
+HapticCondition constEffect = new HapticCondition();
+constEffect.Type = HapticConditionType.Spring;
+constEffect.Direction = new HapticDirection()
+{
+    Type = HapticType.Cartesian,
+    Dir1 = 1,
+    Dir2 = 0,
+    Dir3 = 1
+};
+constEffect.Length = 500;
+constEffect.Delay = 300;
+constEffect.Button = 1;
+constEffect.Interval = 50;
+constEffect.RightSat1 = 3;
+constEffect.RightSat2 = 5;
+constEffect.RightSat3 = 7;
+constEffect.LeftSat1 = 2;
+constEffect.LeftSat2 = 4;
+constEffect.LeftSat3 = 6;
+constEffect.RightCoeff1 = 10;
+constEffect.RightCoeff2 = 11;
+constEffect.RightCoeff3 = 12;
+constEffect.LeftCoeff1 = 13;
+constEffect.LeftCoeff2 = 14;
+constEffect.LeftCoeff3 = 15;
+constEffect.Deadband1 = 16;
+constEffect.Deadband2 = 17;
+constEffect.Deadband3 = 18;
+constEffect.Center1 = 19;
+constEffect.Center2 = 20;
+constEffect.Center3 = 21;
+
+int numHaptics = Haptic.NumHaptics();
+bool mouseHaptic = Mouse.IsHaptic;
+
+bool joystickHaptic = xboxJoystick.IsHaptic();
+
 xboxJoystick.Dispose();
 xboxController.Dispose();
 
 int numSensors = Sensor.NumSensors;
+
 
 PowerState powerState = Power.GetPowerInfo(out int secs, out int percetns);
 

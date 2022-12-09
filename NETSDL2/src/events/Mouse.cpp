@@ -138,3 +138,8 @@ void NETSDL2::Events::Mouse::WarpMouseInWindow(Window^ window, int x, int y)
 	else
 		window->WarpMouseInWindow(x, y);
 }
+
+bool Mouse::IsHaptic::get()
+{
+	return SDL_MouseIsHaptic() == SDL_TRUE;
+}

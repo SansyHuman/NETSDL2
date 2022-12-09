@@ -232,6 +232,15 @@
     <ClCompile Include="src\events\Sensor.cpp">
       <Filter>소스 파일\events</Filter>
     </ClCompile>
+    <ClCompile Include="src\haptic\Haptic.cpp">
+      <Filter>소스 파일\haptic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\haptic\HapticEffect.cpp">
+      <Filter>소스 파일\haptic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\haptic\HapticFeatures.cpp">
+      <Filter>소스 파일\haptic</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\video\Blend.h">
@@ -462,6 +471,15 @@
     <ClInclude Include="include\events\Sensor.h">
       <Filter>헤더 파일\events</Filter>
     </ClInclude>
+    <ClInclude Include="include\haptic\Haptic.h">
+      <Filter>헤더 파일\haptic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\haptic\HapticEffect.h">
+      <Filter>헤더 파일\haptic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\haptic\HapticFeatures.h">
+      <Filter>헤더 파일\haptic</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="헤더 파일">
@@ -517,6 +535,12 @@
     </Filter>
     <Filter Include="소스 파일\concurrent">
       <UniqueIdentifier>{010763ec-7689-4e9b-bf27-f9a6df92508c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\haptic">
+      <UniqueIdentifier>{49dd9f8d-5663-4c77-a72e-e4a6af44aae5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\haptic">
+      <UniqueIdentifier>{ad11ac30-ec91-43fd-81ec-0a6b29653fff}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

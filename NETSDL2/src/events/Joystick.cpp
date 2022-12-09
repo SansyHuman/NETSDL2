@@ -30,6 +30,11 @@ Joystick^ NETSDL2::Events::Joystick::GetJoystickFromNative(SDL_Joystick* joystic
 	return stick;
 }
 
+SDL_Joystick* Joystick::NativeJoystick::get()
+{
+	return joystick;
+}
+
 NETSDL2::Events::Joystick::Joystick(int deviceIndex)
 	: closeOnDestroy(true)
 {
@@ -551,4 +556,15 @@ Result<int, int> NETSDL2::Events::Joystick::NumJoysticks()
 	}
 
 	return result;
+}
+
+Result<bool, int> NETSDL2::Events::Joystick::IsHaptic()
+{
+	int result = SDL_JoystickIsHaptic(joystick);
+	if(result < 0)
+	{
+		return Result<bool, int>::MakeFailure(result);
+	}
+
+	return result == SDL_TRUE;
 }

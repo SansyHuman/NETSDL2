@@ -39,6 +39,10 @@ namespace NETSDL2
 			Joystick(SDL_Joystick* joystick, bool closeOnDestroy);
 			
 			static Joystick^ GetJoystickFromNative(SDL_Joystick* joystick);
+			property SDL_Joystick* NativeJoystick
+			{
+				SDL_Joystick* get();
+			}
 
 		public:
 			/// <summary>
@@ -454,6 +458,13 @@ namespace NETSDL2
 			/// <returns>The number of attached joysticks on success or a negative
 			/// error code on failure.</returns>
 			static Result<int, int> NumJoysticks();
+
+			/// <summary>
+			/// Query if a joystick has haptic features.
+			/// </summary>
+			/// <returns>true if the joystick is haptic, false if it isn't, or a
+			/// negative error code on failure.</returns>
+			Result<bool, int> IsHaptic();
 		};
 	}
 }

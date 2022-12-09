@@ -153,6 +153,14 @@ namespace NETSDL2
 			/// <param name="x">The x coordinate within the window.</param>
 			/// <param name="y">The y coordinate within the window.</param>
 			static void WarpMouseInWindow(Window^ window, int x, int y);
+
+			/// <summary>
+			/// Query whether or not the current mouse has haptic capabilities.
+			/// </summary>
+			static property bool IsHaptic
+			{
+				bool get();
+			}
 		};
 	}
 }
