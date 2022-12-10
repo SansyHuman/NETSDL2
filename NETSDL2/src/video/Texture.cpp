@@ -13,6 +13,12 @@ NETSDL2::Video::Texture::Texture(SDL_Texture* texture, bool releaseOnDestroy)
 	InitTexture(texture);
 }
 
+NETSDL2::Video::Texture::Texture(void* texture, bool releaseOnDestroy)
+	: releaseOnDestroy(releaseOnDestroy)
+{
+	InitTexture((SDL_Texture*)texture);
+}
+
 Texture^ NETSDL2::Video::Texture::GetTextureFromNative(SDL_Texture* texture)
 {
 	Texture^ tex = nullptr;

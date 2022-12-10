@@ -29,7 +29,11 @@ char* NETSDL2::Internal::StringMarshal::ManagedToUTF8Native(System::String^ str)
 	if(str == nullptr)
 		return __nullptr;
 
-	auto bytes = System::Text::Encoding::UTF8->GetBytes(str);
+	int len = System::Text::Encoding::UTF8->GetByteCount(str);
+	array<unsigned char>^ bytes = gcnew array<unsigned char>(len + 1);
+	bytes[len] = 0;
+
+	System::Text::Encoding::UTF8->GetBytes(str, 0, str->Length, bytes, 0);
 	GCHandle handle = GCHandle::Alloc(bytes, GCHandleType::Pinned);
 	clearList->Add(handle);
 
@@ -49,7 +53,11 @@ char* NETSDL2::Internal::StringMarshal::ManagedToASCIINative(System::String^ str
 	if(str == nullptr)
 		return __nullptr;
 
-	auto bytes = System::Text::Encoding::ASCII->GetBytes(str);
+	int len = System::Text::Encoding::ASCII->GetByteCount(str);
+	array<unsigned char>^ bytes = gcnew array<unsigned char>(len + 1);
+	bytes[len] = 0;
+
+	System::Text::Encoding::ASCII->GetBytes(str, 0, str->Length, bytes, 0);
 	GCHandle handle = GCHandle::Alloc(bytes, GCHandleType::Pinned);
 	clearList->Add(handle);
 

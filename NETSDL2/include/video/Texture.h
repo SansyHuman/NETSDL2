@@ -38,6 +38,7 @@ namespace NETSDL2
 
 		internal:
 			Texture(SDL_Texture* texture, bool releaseOnDestroy);
+			Texture(void* texture, bool releaseOnDestroy);
 
 			// Gets texture from native surface, or null if not exists.
 			static Texture^ GetTextureFromNative(SDL_Texture* texture);

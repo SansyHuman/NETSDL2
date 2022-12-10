@@ -24,17 +24,18 @@
     <ClCompile Include="src\InitFlags.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\SDL2_image-2.6.2\lib\x64\SDL2_image.dll">
-      <Filter>리소스 파일</Filter>
-    </None>
-    <None Include="..\..\SDL2_image-2.6.2\lib\x64\optional\libwebp-7.dll">
-      <Filter>리소스 파일</Filter>
-    </None>
+    <ClCompile Include="src\Animation.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\..\SDL2_image-2.6.2\lib\x64\optional\libtiff-5.dll">
+      <Filter>리소스 파일</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\SDL2_image-2.6.2\lib\x64\SDL2_image.dll">
+      <Filter>리소스 파일</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\SDL2_image-2.6.2\lib\x64\optional\libwebp-7.dll">
       <Filter>리소스 파일</Filter>
     </CopyFileToFolders>
   </ItemGroup>
@@ -43,6 +44,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="include\InitFlags.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Animation.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

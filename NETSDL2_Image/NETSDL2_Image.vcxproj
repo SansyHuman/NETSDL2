@@ -138,6 +138,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="src\Animation.cpp" />
     <ClCompile Include="src\Image.cpp" />
     <ClCompile Include="src\InitFlags.cpp" />
   </ItemGroup>
@@ -159,6 +160,7 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Animation.h" />
     <ClInclude Include="include\Image.h" />
     <ClInclude Include="include\InitFlags.h" />
   </ItemGroup>

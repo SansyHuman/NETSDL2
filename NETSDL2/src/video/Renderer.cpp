@@ -25,6 +25,11 @@ Renderer^ NETSDL2::Video::Renderer::GetRendererFromNative(SDL_Renderer* renderer
 		return nullptr;
 }
 
+SDL_Renderer* Renderer::NativeRenderer::get()
+{
+	return renderer;
+}
+
 void NETSDL2::Video::Renderer::InitRenderer(SDL_Renderer* renderer)
 {
 	this->renderer = renderer;

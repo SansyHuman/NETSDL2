@@ -29,6 +29,7 @@ if(result.ResultType == Result<None, int>.Type.Failed)
 }
 
 InitFlags imageFlags = Image.Init(InitFlags.Jpg | InitFlags.Png | InitFlags.Webp);
+SDLVersion imageVersion = Image.LinkedVersion();
 
 SharedObject user32 = new SharedObject("user32.dll");
 IntPtr getcursor = user32.LoadFunction("GetCursor");
@@ -148,7 +149,56 @@ memRW.Read(intns, 1, 6);
 
 memRW.Close();
 
-bool isBmp = Image.IsBMP(new RWops("./테스트.bmp", NETSDL2.IO.FileMode.Read));
+RWops bmpFile = new RWops("./테스트.bmp", NETSDL2.IO.FileMode.Read);
+bool isBmp = bmpFile.IsBMP();
+isBmp = bmpFile.IsAVIF();
+isBmp = bmpFile.IsCUR();
+isBmp = bmpFile.IsGIF();
+isBmp = bmpFile.IsICO();
+isBmp = bmpFile.IsJPG();
+isBmp = bmpFile.IsJXL();
+isBmp = bmpFile.IsLBM();
+isBmp = bmpFile.IsPCX();
+isBmp = bmpFile.IsPNG();
+isBmp = bmpFile.IsPNM();
+isBmp = bmpFile.IsQOI();
+isBmp = bmpFile.IsSVG();
+isBmp = bmpFile.IsTIF();
+isBmp = bmpFile.IsWEBP();
+isBmp = bmpFile.IsXCF();
+isBmp = bmpFile.IsXPM();
+isBmp = bmpFile.IsXV();
+
+Surface bmpSurface = Image.Load("./테스트.bmp");
+bmpSurface.Dispose();
+
+bmpSurface = Image.Load(bmpFile, false);
+bmpSurface.Dispose();
+bmpFile.Seek(0, SeekFrom.Set);
+bmpSurface = Image.Load(bmpFile, true);
+
+bmpSurface.SaveJPG("./테스트10.jpg", 10);
+bmpSurface.SaveJPG("./테스트50.jpg", 50);
+bmpSurface.SaveJPG("./테스트100.jpg", 100);
+bmpSurface.SavePNG("./테스트.png");
+
+bmpSurface.Dispose();
+
+string[] xpmData =
+{
+    "48 4 2 1",
+    "a c #ffffff",
+    "b c #000000",
+    "abaabaababaaabaabababaabaabaababaabaaababaabaaab",
+    "abaabaababaaabaabababaabaabaababaabaaababaabaaab",
+    "abaabaababaaabaabababaabaabaababaabaaababaabaaab",
+    "abaabaababaaabaabababaabaabaababaabaaababaabaaab"
+};
+
+Surface xpmSurface = Image.ReadXPMFromArrayToRGB888(xpmData);
+
+xpmSurface.SaveJPG("./XPMTest.jpg", 50);
+xpmSurface.SavePNG("./XPMTest.png");
 
 unsafe
 {
@@ -224,6 +274,9 @@ int num = Joystick.NumJoysticks();
 
 GameController xboxController = new GameController(0);
 Joystick xboxJoystick = xboxController.GetJoystick();
+
+GUID areare = new GUID("1afafdaf5ef1e2a3fea");
+GUID joystickGUID = xboxJoystick.Guid;
 
 string mappingCon = xboxController.Mapping();
 GameControllerButtonBind xBind = xboxController.GetBindForButton(GameControllerButton.X);
@@ -655,6 +708,8 @@ winWithRenderer.SetWindowAlwaysOnTop(true);
 Surface windowSurface = winWithRenderer.GetWindowSurface().ResultValue;
 windowSurface = winWithRenderer.GetWindowSurface().ResultValue;
 PixelFormat windowSurfaceFormat = windowSurface.Format;
+
+Texture bmpTexture = renderer.LoadTexture("테스트.bmp");
 
 Texture texture = new Texture(renderer, PixelFormatEnum.RGBA8888, TextureAccess.Target, 200, 200);
 Texture texture2 = new Texture(renderer, windowSurface);

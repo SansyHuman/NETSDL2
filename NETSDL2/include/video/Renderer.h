@@ -47,6 +47,11 @@ namespace NETSDL2
 			// Gets renderer from native surface, or null if not exists.
 			static Renderer^ GetRendererFromNative(SDL_Renderer* renderer);
 
+			property SDL_Renderer* NativeRenderer
+			{
+				SDL_Renderer* get();
+			}
+
 		private:
 			void InitRenderer(SDL_Renderer* renderer);
 
