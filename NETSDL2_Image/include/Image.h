@@ -29,7 +29,7 @@ namespace NETSDL2
 			/// </summary>
 			/// <param name="flags">Initialization flags, OR'd together.</param>
 			/// <returns>All currently initialized flags.</returns>
-			static InitFlags Init(InitFlags flags);
+			static ImageInitFlags Init(ImageInitFlags flags);
 
 			/// <summary>
 			/// Detect AVIF image data on a readable/seekable RWops.

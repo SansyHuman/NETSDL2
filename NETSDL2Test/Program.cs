@@ -28,8 +28,16 @@ if(result.ResultType == Result<None, int>.Type.Failed)
     return;
 }
 
-InitFlags imageFlags = Image.Init(InitFlags.Jpg | InitFlags.Png | InitFlags.Webp);
+ImageInitFlags imageFlags = Image.Init(ImageInitFlags.Jpg | ImageInitFlags.Png | ImageInitFlags.Webp);
 SDLVersion imageVersion = Image.LinkedVersion();
+
+MixerInitFlags mixerFlags = Mixer.Init(
+    MixerInitFlags.Flac | MixerInitFlags.Mod | MixerInitFlags.Mp3 |
+    MixerInitFlags.Ogg | MixerInitFlags.Mid | MixerInitFlags.Opus
+    );
+
+int channels = Mixer.AllocateChannels(-1);
+channels = Mixer.AllocateChannels(channels == 0 ? 8 : channels * 2);
 
 SharedObject user32 = new SharedObject("user32.dll");
 IntPtr getcursor = user32.LoadFunction("GetCursor");

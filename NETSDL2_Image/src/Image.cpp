@@ -4,9 +4,9 @@ using namespace NETSDL2::Image;
 using namespace NETSDL2::Core;
 using namespace NETSDL2::Internal;
 
-InitFlags NETSDL2::Image::Image::Init(InitFlags flags)
+ImageInitFlags NETSDL2::Image::Image::Init(ImageInitFlags flags)
 {
-	return (InitFlags)IMG_Init((int)flags);
+	return (ImageInitFlags)IMG_Init((int)flags);
 }
 
 bool NETSDL2::Image::Image::IsAVIF(RWops^ src)

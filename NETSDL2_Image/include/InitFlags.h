@@ -10,7 +10,7 @@ namespace NETSDL2
 		/// Initialization flags
 		/// </summary>
 		[System::Flags]
-		public enum class InitFlags : int
+		public enum class ImageInitFlags : int
 		{
 			None = 0,
 			Jpg = IMG_INIT_JPG,
