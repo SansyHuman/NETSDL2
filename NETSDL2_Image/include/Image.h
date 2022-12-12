@@ -197,8 +197,19 @@ namespace NETSDL2
 			/// This function gets the version of the dynamically linked SDL_image
 			/// library.
 			/// </summary>
-			/// <returns>SDL_image version.</returns>
-			static SDLVersion LinkedVersion();
+			static property SDLVersion LinkedVersion
+			{
+				SDLVersion get();
+			}
+
+			/// <summary>
+			/// This function gets the version of the compiled SDL_image
+			/// library.
+			/// </summary>
+			static property SDLVersion Version
+			{
+				SDLVersion get();
+			}
 
 			/// <summary>
 			/// Load an image from a filesystem path into a software surface.

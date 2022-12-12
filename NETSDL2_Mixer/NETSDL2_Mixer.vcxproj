@@ -140,8 +140,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="src\Chunk.cpp" />
+    <ClCompile Include="src\Fading.cpp" />
     <ClCompile Include="src\InitFlags.cpp" />
     <ClCompile Include="src\Mixer.cpp" />
+    <ClCompile Include="src\Music.cpp" />
+    <ClCompile Include="src\MusicType.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\..\SDL2_mixer-2.6.2\lib\x64\optional\libmodplug-1.dll">
@@ -171,8 +175,12 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Chunk.h" />
+    <ClInclude Include="include\Fading.h" />
     <ClInclude Include="include\InitFlags.h" />
     <ClInclude Include="include\Mixer.h" />
+    <ClInclude Include="include\Music.h" />
+    <ClInclude Include="include\MusicType.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

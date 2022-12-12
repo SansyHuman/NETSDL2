@@ -25,6 +25,7 @@ namespace NETSDL2
 		/// the callback.</param>
 		/// <returns>1 to permit event to be added to the
 		/// queue, and 0 to disallow.</returns>
+		[UnmanagedFunctionPointer(CallingConvention::Cdecl)]
 		public delegate int EventFilter(System::IntPtr userdata, Event% event);
 
 		/// <summary>

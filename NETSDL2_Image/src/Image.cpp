@@ -117,9 +117,16 @@ bool NETSDL2::Image::Image::IsXV(RWops^ src)
 	return result != 0;
 }
 
-SDLVersion NETSDL2::Image::Image::LinkedVersion()
+SDLVersion NETSDL2::Image::Image::LinkedVersion::get()
 {
 	return *((SDLVersion*)IMG_Linked_Version());
+}
+
+SDLVersion NETSDL2::Image::Image::Version::get()
+{
+	SDL_version version = {};
+	SDL_IMAGE_VERSION(&version);
+	return *((SDLVersion*)&version);
 }
 
 Result<Surface^, None^> NETSDL2::Image::Image::Load(System::String^ file)

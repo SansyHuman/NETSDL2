@@ -29,7 +29,8 @@ if(result.ResultType == Result<None, int>.Type.Failed)
 }
 
 ImageInitFlags imageFlags = Image.Init(ImageInitFlags.Jpg | ImageInitFlags.Png | ImageInitFlags.Webp);
-SDLVersion imageVersion = Image.LinkedVersion();
+SDLVersion imageLinkedVersion = Image.LinkedVersion;
+SDLVersion imageVersion = Image.Version;
 
 MixerInitFlags mixerFlags = Mixer.Init(
     MixerInitFlags.Flac | MixerInitFlags.Mod | MixerInitFlags.Mp3 |
