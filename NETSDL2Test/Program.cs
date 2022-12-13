@@ -49,6 +49,13 @@ unsafe
     void* cursorHandle = GetCursor();
 }
 
+FunctionPointer<WindowsMessageHook> messageHook = new FunctionPointer<WindowsMessageHook>(
+    (userdata, hwnd, msg, wparam, lparam) =>
+    {
+        Logging.LogInfo(LogCategory.Application, "Message hook {0} {1} {2} {3} {4}", userdata, hwnd, msg, wparam, lparam);
+    });
+Platform.SetWindowsMessageHook(messageHook, new IntPtr(5421));
+
 IntPtr allocMem = Stdinc.Calloc(128 + 2, 4);
 unsafe
 {

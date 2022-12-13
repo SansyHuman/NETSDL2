@@ -21,6 +21,55 @@ namespace NETSDL2
 		ref class Music;
 
 		/// <summary>
+		/// Callback that runs when a channel has finished playing.
+		/// </summary>
+		/// <param name="channel">The channel index.</param>
+		[UnmanagedFunctionPointer(CallingConvention::Cdecl)]
+		public delegate void MixChannelFinished(int channel);
+
+		/// <summary>
+		/// Callback that runs when a channel has finished playing.
+		/// </summary>
+		/// <param name="path">Path of the sound font.</param>
+		/// <param name="data">A pointer passed to the callback for its own personal use.</param>
+		/// <returns>Non-zero to stop iterating, 0 to continue iterating.</returns>
+		[UnmanagedFunctionPointer(CallingConvention::Cdecl)]
+		public delegate int MixSoundFontIteration(char* path, System::IntPtr data);
+
+		/// <summary>
+		/// Callback of additional mixer function.
+		/// </summary>
+		/// <param name="udata">Additional data.</param>
+		/// <param name="stream">Byte stream of sound data.</param>
+		/// <param name="len">Byte length of the stream.</param>
+		[UnmanagedFunctionPointer(CallingConvention::Cdecl)]
+		public delegate void MixerFunction(System::IntPtr udata, Uint8* stream, int len);
+
+		/// <summary>
+		/// Callback that runs when a music object has stopped playing.
+		/// </summary>
+		[UnmanagedFunctionPointer(CallingConvention::Cdecl)]
+		public delegate void MixMusicFinished();
+
+		/// <summary>
+		/// A special effect callback.
+		/// </summary>
+		/// <param name="chan">The channel number that your effect is affecting.</param>
+		/// <param name="stream">The buffer of data to work upon.</param>
+		/// <param name="len">The size of stream.</param>
+		/// <param name="udata">A user-defined bit of data.</param>
+		[UnmanagedFunctionPointer(CallingConvention::Cdecl)]
+		public delegate void MixEffectFunc(int chan, System::IntPtr stream, int len, System::IntPtr udata);
+
+		/// <summary>
+		/// A callback that signifies that a channel has finished all its loopsand has completed playback.
+		/// </summary>
+		/// <param name="chan">The channel number that your effect is affecting.</param>
+		/// <param name="udata">A user-defined bit of data.</param>
+		[UnmanagedFunctionPointer(CallingConvention::Cdecl)]
+		public delegate void MixEffectDone(int chan, System::IntPtr udata);
+
+		/// <summary>
 		/// NETSDL2_Mmage global functions.
 		/// </summary>
 		public ref struct Mixer abstract sealed
@@ -53,7 +102,7 @@ namespace NETSDL2
 			/// </summary>
 			/// <param name="channelFinished">The callback function to become the new
 			/// notification mechanism.</param>
-			static void ChannelFinished(void (SDLCALL* channelFinished)(int channel));
+			static void ChannelFinished(FunctionPointer<MixChannelFinished^>^ channelFinished);
 
 			/// <summary>
 			/// Close the mixer, halting all playing audio.
@@ -69,7 +118,7 @@ namespace NETSDL2
 			/// use.</param>
 			/// <returns>Non-zero if callback ever returned non-zero, None on error or
 			/// the callback never returned non-zero.</returns>
-			static Result<int, None^> EachSoundFont(int (SDLCALL* function)(const char*, void*), System::IntPtr data);
+			static Result<int, None^> EachSoundFont(FunctionPointer<MixSoundFontIteration^>^ function, System::IntPtr data);
 
 			/// <summary>
 			/// Change the expiration delay for a particular channel.
@@ -410,14 +459,14 @@ namespace NETSDL2
 			/// callback.</param>
 			/// <param name="arg">A pointer that is passed, untouched, to the callback.
 			/// </param>
-			static void HookMusic(void (SDLCALL* mixFunc)(void* udata, Uint8* stream, int len), System::IntPtr arg);
+			static void HookMusic(FunctionPointer<MixerFunction^>^ mixFunc, System::IntPtr arg);
 
 			/// <summary>
 			/// Set a callback that runs when a music object has stopped playing.
 			/// </summary>
 			/// <param name="musicFinished">The callback function to become the new
 			/// notification mechanism.</param>
-			static void HookMusicFinished(void (SDLCALL* musicFinished)(void));
+			static void HookMusicFinished(FunctionPointer<MixMusicFinished^>^ musicFinished);
 
 			/// <summary>
 			/// Query the version of SDL_mixer that the program is linked against.
@@ -495,6 +544,11 @@ namespace NETSDL2
 			/// <returns>1 if channel paused, 0 otherwise. If channel is -1, returns
 			/// the number of paused channels.</returns>
 			static int Paused(int channel);
+
+			/// <summary>
+			/// Pause the music stream.
+			/// </summary>
+			static void PauseMusic();
 
 			/// <summary>
 			/// Query whether the music stream is paused.
@@ -584,7 +638,7 @@ namespace NETSDL2
 			/// <param name="d">Effect done callback.</param>
 			/// <param name="arg">Argument.</param>
 			/// <returns>Success if added or Failure if error.</returns>
-			static Result<None^, None^> RegisterEffect(int chan, Mix_EffectFunc_t f, Mix_EffectDone_t d, System::IntPtr arg);
+			static Result<None^, None^> RegisterEffect(int chan, FunctionPointer<MixEffectFunc^>^ f, FunctionPointer<MixEffectDone^>^ d, System::IntPtr arg);
 
 			/// <summary>
 			/// Reserve the first channels for the application.
@@ -667,7 +721,7 @@ namespace NETSDL2
 			/// callback.</param>
 			/// <param name="arg">A pointer that is passed, untouched, to the callback.
 			/// </param>
-			static void SetPostMix(void (SDLCALL* mixFunc)(void* udata, Uint8* stream, int len), System::IntPtr arg);
+			static void SetPostMix(FunctionPointer<MixerFunction^>^ mixFunc, System::IntPtr arg);
 
 			/// <summary>
 			/// Cause a channel to reverse its stereo.
@@ -711,7 +765,7 @@ namespace NETSDL2
 			/// <param name="f">Effect the callback stop calling in future mixing
 			/// iterations.</param>
 			/// <returns>Success if removed or Failure if error.</returns>
-			static Result<None^, None^> UnregisterEffect(int channel, Mix_EffectFunc_t f);
+			static Result<None^, None^> UnregisterEffect(int channel, FunctionPointer<MixEffectFunc^>^ f);
 
 			/// <summary>
 			/// Set the volume for a specific channel.

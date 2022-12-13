@@ -15,9 +15,15 @@ int NETSDL2::Audio::Mixer::AllocateChannels(int numchans)
 	return Mix_AllocateChannels(numchans);
 }
 
-void NETSDL2::Audio::Mixer::ChannelFinished(void (SDLCALL* channelFinished)(int channel))
+void NETSDL2::Audio::Mixer::ChannelFinished(FunctionPointer<MixChannelFinished^>^ channelFinished)
 {
-	Mix_ChannelFinished(channelFinished);
+	if(channelFinished == nullptr)
+	{
+		Mix_ChannelFinished(__nullptr);
+		return;
+	}
+
+	Mix_ChannelFinished((void (SDLCALL*)(int))channelFinished->Pointer.ToPointer());
 }
 
 void NETSDL2::Audio::Mixer::CloseAudio()
@@ -25,9 +31,9 @@ void NETSDL2::Audio::Mixer::CloseAudio()
 	Mix_CloseAudio();
 }
 
-Result<int, None^> NETSDL2::Audio::Mixer::EachSoundFont(int (SDLCALL* function)(const char*, void*), System::IntPtr data)
+Result<int, None^> NETSDL2::Audio::Mixer::EachSoundFont(FunctionPointer<MixSoundFontIteration^>^ function, System::IntPtr data)
 {
-	int result = Mix_EachSoundFont(function, data.ToPointer());
+	int result = Mix_EachSoundFont((int (SDLCALL*)(const char*, void*))function->Pointer.ToPointer(), data.ToPointer());
 	if(result == 0)
 	{
 		return Result<int, None^>::MakeFailure(None::Value);
@@ -370,14 +376,22 @@ bool NETSDL2::Audio::Mixer::HasMusicDecoder(System::String^ name)
 	return Mix_HasMusicDecoder(context.ManagedToUTF8Native(name)) == SDL_TRUE;
 }
 
-void NETSDL2::Audio::Mixer::HookMusic(void (SDLCALL* mixFunc)(void* udata, Uint8* stream, int len), System::IntPtr arg)
+void NETSDL2::Audio::Mixer::HookMusic(FunctionPointer<MixerFunction^>^ mixFunc, System::IntPtr arg)
 {
-	Mix_HookMusic(mixFunc, arg.ToPointer());
+	if(mixFunc == nullptr)
+	{
+		Mix_HookMusic(__nullptr, arg.ToPointer());
+	}
+	Mix_HookMusic((void (SDLCALL*)(void*, Uint8*, int))mixFunc->Pointer.ToPointer(), arg.ToPointer());
 }
 
-void NETSDL2::Audio::Mixer::HookMusicFinished(void (SDLCALL* musicFinished)(void))
+void NETSDL2::Audio::Mixer::HookMusicFinished(FunctionPointer<MixMusicFinished^>^ musicFinished)
 {
-	Mix_HookMusicFinished(musicFinished);
+	if(musicFinished == nullptr)
+	{
+		Mix_HookMusicFinished(__nullptr);
+	}
+	Mix_HookMusicFinished((void (SDLCALL*)(void))musicFinished->Pointer.ToPointer());
 }
 
 SDLVersion Mixer::LinkedVersion::get()
@@ -439,6 +453,11 @@ void NETSDL2::Audio::Mixer::Pause(int channel)
 int NETSDL2::Audio::Mixer::Paused(int channel)
 {
 	return Mix_Paused(channel);
+}
+
+void NETSDL2::Audio::Mixer::PauseMusic()
+{
+	Mix_PauseMusic();
 }
 
 bool Mixer::PausedMusic::get()
@@ -512,9 +531,9 @@ void NETSDL2::Audio::Mixer::Quit()
 	Mix_Quit();
 }
 
-Result<None^, None^> NETSDL2::Audio::Mixer::RegisterEffect(int chan, Mix_EffectFunc_t f, Mix_EffectDone_t d, System::IntPtr arg)
+Result<None^, None^> NETSDL2::Audio::Mixer::RegisterEffect(int chan, FunctionPointer<MixEffectFunc^>^ f, FunctionPointer<MixEffectDone^>^ d, System::IntPtr arg)
 {
-	int result = Mix_RegisterEffect(chan, f, d, arg.ToPointer());
+	int result = Mix_RegisterEffect(chan, (Mix_EffectFunc_t)f->Pointer.ToPointer(), (Mix_EffectDone_t)d->Pointer.ToPointer(), arg.ToPointer());
 	if(result == 0)
 	{
 		return Result<None^, None^>::MakeFailure(None::Value);
@@ -599,9 +618,13 @@ Result<None^, None^> NETSDL2::Audio::Mixer::SetPosition(int channel, Sint16 angl
 	return None::Value;
 }
 
-void NETSDL2::Audio::Mixer::SetPostMix(void (SDLCALL* mixFunc)(void* udata, Uint8* stream, int len), System::IntPtr arg)
+void NETSDL2::Audio::Mixer::SetPostMix(FunctionPointer<MixerFunction^>^ mixFunc, System::IntPtr arg)
 {
-	Mix_SetPostMix(mixFunc, arg.ToPointer());
+	if(mixFunc == nullptr)
+	{
+		Mix_SetPostMix(__nullptr, arg.ToPointer());
+	}
+	Mix_SetPostMix((void (SDLCALL*)(void*, Uint8*, int))mixFunc->Pointer.ToPointer(), arg.ToPointer());
 }
 
 Result<None^, None^> NETSDL2::Audio::Mixer::SetReverseStereo(int channel, bool flip)
@@ -650,9 +673,9 @@ Result<None^, None^> NETSDL2::Audio::Mixer::UnregisterAllEffects(int channel)
 	return None::Value;
 }
 
-Result<None^, None^> NETSDL2::Audio::Mixer::UnregisterEffect(int channel, Mix_EffectFunc_t f)
+Result<None^, None^> NETSDL2::Audio::Mixer::UnregisterEffect(int channel, FunctionPointer<MixEffectFunc^>^ f)
 {
-	int result = Mix_UnregisterEffect(channel, f);
+	int result = Mix_UnregisterEffect(channel, (Mix_EffectFunc_t)f->Pointer.ToPointer());
 	if(result == 0)
 	{
 		return Result<None^, None^>::MakeFailure(None::Value);

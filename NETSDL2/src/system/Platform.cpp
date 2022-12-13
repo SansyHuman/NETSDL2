@@ -13,9 +13,9 @@ System::String^ NETSDL2::Systems::Platform::GetPlatform()
 	return StringMarshal::UTF8NativeToManaged(SDL_GetPlatform());
 }
 
-void NETSDL2::Systems::Platform::SetWindowsMessageHook(SDL_WindowsMessageHook callback, System::IntPtr userdata)
+void NETSDL2::Systems::Platform::SetWindowsMessageHook(FunctionPointer<WindowsMessageHook^>^ callback, System::IntPtr userdata)
 {
-	SDL_SetWindowsMessageHook(callback, userdata.ToPointer());
+	SDL_SetWindowsMessageHook((SDL_WindowsMessageHook)callback->Pointer.ToPointer(), userdata.ToPointer());
 }
 
 Result<int, int> NETSDL2::Systems::Platform::Direct3D9GetAdapterIndex(int displayIndex)

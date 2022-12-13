@@ -4,6 +4,7 @@
 
 #include "../core/Result.h"
 #include "../core/None.h"
+#include "../core/FunctionPointer.h"
 
 using namespace System::Runtime::InteropServices;
 using namespace System::Runtime::CompilerServices;
@@ -19,6 +20,17 @@ namespace NETSDL2
 	{
 		using namespace NETSDL2::Core;
 		using namespace NETSDL2::Video;
+
+		/// <summary>
+		/// Callback for a window message.
+		/// </summary>
+		/// <param name="userdata">User data passed.</param>
+		/// <param name="hwnd">A handle to the window.</param>
+		/// <param name="message">Window message.</param>
+		/// <param name="wParam">WPARAM.</param>
+		/// <param name="wParam">LPARAM.</param>
+		[UnmanagedFunctionPointer(CallingConvention::Cdecl)]
+		public delegate void WindowsMessageHook(System::IntPtr userdata, System::IntPtr hwnd, unsigned int message, Uint64 wParam, Sint64 lParam);
 
 		/// <summary>
 		/// Functions for handling information about the current platform and advanced, platform-specific
@@ -41,7 +53,7 @@ namespace NETSDL2
 			/// </summary>
 			/// <param name="callback">Callback function to call.</param>
 			/// <param name="userdata">A pointer to pass to every iteration of callback.</param>
-			static void SetWindowsMessageHook(SDL_WindowsMessageHook callback, System::IntPtr userdata);
+			static void SetWindowsMessageHook(FunctionPointer<WindowsMessageHook^>^ callback, System::IntPtr userdata);
 
 			/// <summary>
 			/// Get the D3D9 adapter index that matches the specified display index.
