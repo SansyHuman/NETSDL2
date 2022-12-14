@@ -13,9 +13,22 @@
     <ProjectReference Include="..\NETSDL2\NETSDL2.vcxproj" />
     <ProjectReference Include="..\NETSDL2_Image\NETSDL2_Image.vcxproj" />
     <ProjectReference Include="..\NETSDL2_mixer\NETSDL2_mixer.vcxproj" />
+    <ProjectReference Include="..\NETSDL2_Ttf\NETSDL2_Ttf.vcxproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="img.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="nyancat.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Vulphere_WebP_OTAGROOVE_demonstration_2.webp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="webpim.webp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="테스트.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

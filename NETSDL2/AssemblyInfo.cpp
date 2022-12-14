@@ -17,5 +17,6 @@ using namespace System::Security::Permissions;
 
 [assembly:InternalsVisibleTo("NETSDL2_Image")]
 [assembly:InternalsVisibleTo("NETSDL2_Mixer")]
+[assembly:InternalsVisibleTo("NETSDL2_Ttf")]
 
 [assembly:ComVisible(false)];

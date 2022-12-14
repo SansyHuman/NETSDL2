@@ -550,5 +550,8 @@
     <CopyFileToFolders Include="E:\VulkanSDK\Bin\SDL2.dll">
       <Filter>리소스 파일</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="..\LICENSE.txt">
+      <Filter>리소스 파일</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

@@ -75,12 +75,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <CopyLocalProjectReference>true</CopyLocalProjectReference>
-    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
+    <CopyLocalProjectReference>false</CopyLocalProjectReference>
+    <CopyCppRuntimeToOutputDir>false</CopyCppRuntimeToOutputDir>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\NETSDL2_Mixer</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <CopyLocalProjectReference>true</CopyLocalProjectReference>
-    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
+    <CopyLocalProjectReference>false</CopyLocalProjectReference>
+    <CopyCppRuntimeToOutputDir>false</CopyCppRuntimeToOutputDir>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\NETSDL2_Mixer</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -91,7 +93,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>E:\VulkanSDK\Include\SDL2;D:\VS Project\SDL2_mixer-2.6.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalUsingDirectories>D:\VS Project\NETSDL2\x64\Debug;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(SolutionDir)$(Platform)\$(Configuration)\NETSDL2;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -130,7 +132,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalIncludeDirectories>E:\VulkanSDK\Include\SDL2;D:\VS Project\SDL2_mixer-2.6.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalUsingDirectories>D:\VS Project\NETSDL2\x64\Debug;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(SolutionDir)$(Platform)\$(Configuration)\NETSDL2;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
@@ -150,28 +152,28 @@
   <ItemGroup>
     <CopyFileToFolders Include="..\..\SDL2_mixer-2.6.2\lib\x64\optional\libmodplug-1.dll">
       <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir);D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Debug\net6.0;%(DestinationFolders)</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir);D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Release\net6.0;%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="..\..\SDL2_mixer-2.6.2\lib\x64\optional\libogg-0.dll">
       <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir);D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Debug\net6.0;%(DestinationFolders)</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir);D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Release\net6.0;%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="..\..\SDL2_mixer-2.6.2\lib\x64\optional\libopus-0.dll">
       <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir);D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Debug\net6.0;%(DestinationFolders)</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir);D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Release\net6.0;%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="..\..\SDL2_mixer-2.6.2\lib\x64\optional\libopusfile-0.dll">
       <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir);D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Debug\net6.0;%(DestinationFolders)</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir);D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Release\net6.0;%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="..\..\SDL2_mixer-2.6.2\lib\x64\SDL2_mixer.dll">
       <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir);D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Debug\net6.0;%(DestinationFolders)</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir);D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Release\net6.0;%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +183,12 @@
     <ClInclude Include="include\Mixer.h" />
     <ClInclude Include="include\Music.h" />
     <ClInclude Include="include\MusicType.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="..\..\SDL2_mixer-2.6.2\lib\x64\optional\LICENSE.modplug.txt" />
+    <CopyFileToFolders Include="..\..\SDL2_mixer-2.6.2\lib\x64\optional\LICENSE.ogg-vorbis.txt" />
+    <CopyFileToFolders Include="..\..\SDL2_mixer-2.6.2\lib\x64\optional\LICENSE.opus.txt" />
+    <CopyFileToFolders Include="..\..\SDL2_mixer-2.6.2\lib\x64\optional\LICENSE.opusfile.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

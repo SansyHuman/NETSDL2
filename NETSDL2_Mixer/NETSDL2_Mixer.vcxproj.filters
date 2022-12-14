@@ -53,6 +53,18 @@
     <CopyFileToFolders Include="..\..\SDL2_mixer-2.6.2\lib\x64\SDL2_mixer.dll">
       <Filter>리소스 파일</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\SDL2_mixer-2.6.2\lib\x64\optional\LICENSE.modplug.txt">
+      <Filter>리소스 파일</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\SDL2_mixer-2.6.2\lib\x64\optional\LICENSE.ogg-vorbis.txt">
+      <Filter>리소스 파일</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\SDL2_mixer-2.6.2\lib\x64\optional\LICENSE.opus.txt">
+      <Filter>리소스 파일</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\SDL2_mixer-2.6.2\lib\x64\optional\LICENSE.opusfile.txt">
+      <Filter>리소스 파일</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Mixer.h">

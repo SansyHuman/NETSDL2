@@ -38,6 +38,12 @@
     <CopyFileToFolders Include="..\..\SDL2_image-2.6.2\lib\x64\optional\libwebp-7.dll">
       <Filter>리소스 파일</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\SDL2_image-2.6.2\lib\x64\optional\LICENSE.tiff.txt">
+      <Filter>리소스 파일</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="..\..\SDL2_image-2.6.2\lib\x64\optional\LICENSE.webp.txt">
+      <Filter>리소스 파일</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Image.h">

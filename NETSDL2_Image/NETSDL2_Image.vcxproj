@@ -74,12 +74,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <CopyLocalProjectReference>true</CopyLocalProjectReference>
-    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
+    <CopyLocalProjectReference>false</CopyLocalProjectReference>
+    <CopyCppRuntimeToOutputDir>false</CopyCppRuntimeToOutputDir>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\NETSDL2_Image</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <CopyLocalProjectReference>true</CopyLocalProjectReference>
-    <CopyCppRuntimeToOutputDir>true</CopyCppRuntimeToOutputDir>
+    <CopyLocalProjectReference>false</CopyLocalProjectReference>
+    <CopyCppRuntimeToOutputDir>false</CopyCppRuntimeToOutputDir>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\NETSDL2_Image</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -91,7 +93,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>D:\VS Project\SDL2_image-2.6.2\include;E:\VulkanSDK\Include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <AdditionalUsingDirectories>D:\VS Project\NETSDL2\x64\Debug;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>$(SolutionDir)$(Platform)\$(Configuration)\NETSDL2;%(AdditionalUsingDirectories);%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -130,6 +132,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>D:\VS Project\SDL2_image-2.6.2\include;E:\VulkanSDK\Include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>$(SolutionDir)$(Platform)\$(Configuration)\NETSDL2;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -145,24 +148,28 @@
   <ItemGroup>
     <CopyFileToFolders Include="..\..\SDL2_image-2.6.2\lib\x64\optional\libtiff-5.dll">
       <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Debug\net6.0;$(OutDir);%(DestinationFolders)</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Release\net6.0;$(OutDir);%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="..\..\SDL2_image-2.6.2\lib\x64\optional\libwebp-7.dll">
       <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Debug\net6.0;$(OutDir);%(DestinationFolders)</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Release\net6.0;$(OutDir);%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="..\..\SDL2_image-2.6.2\lib\x64\SDL2_image.dll">
       <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Debug\net6.0;$(OutDir);%(DestinationFolders)</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\VS Project\NETSDL2\NETSDL2Test\bin\x64\Release\net6.0;$(OutDir);%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Animation.h" />
     <ClInclude Include="include\Image.h" />
     <ClInclude Include="include\InitFlags.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="..\..\SDL2_image-2.6.2\lib\x64\optional\LICENSE.tiff.txt" />
+    <CopyFileToFolders Include="..\..\SDL2_image-2.6.2\lib\x64\optional\LICENSE.webp.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

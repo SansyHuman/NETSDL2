@@ -37,9 +37,6 @@ MixerInitFlags mixerFlags = Mixer.Init(
     MixerInitFlags.Ogg | MixerInitFlags.Mid | MixerInitFlags.Opus
     );
 
-int channels = Mixer.AllocateChannels(-1);
-channels = Mixer.AllocateChannels(channels == 0 ? 8 : channels * 2);
-
 SharedObject user32 = new SharedObject("user32.dll");
 IntPtr getcursor = user32.LoadFunction("GetCursor");
 
@@ -286,67 +283,7 @@ bool exrerh = Bits.HasExactlyOneBitSet32(5);
 
 Platform.GetDXGIOutputInfo(0, out int adapter, out int output);
 
-int num = Joystick.NumJoysticks();
-
-GameController xboxController = new GameController(0);
-Joystick xboxJoystick = xboxController.GetJoystick();
-
-GUID areare = new GUID("1afafdaf5ef1e2a3fea");
-GUID joystickGUID = xboxJoystick.Guid;
-
-string mappingCon = xboxController.Mapping();
-GameControllerButtonBind xBind = xboxController.GetBindForButton(GameControllerButton.X);
-GameControllerButtonBind rtBind = xboxController.GetBindForAxis(GameControllerAxis.TriggerRight);
-GameController.Update();
-xboxController.GetAxis(GameControllerAxis.LeftX);
-string conName = xboxController.Name();
-ushort vendor = xboxController.GetVendor();
-ushort product = xboxController.GetProduct();
-
-GameController.GameControllerFromInstanceID(xboxJoystick.InstanceID());
-
-HapticCondition constEffect = new HapticCondition();
-constEffect.Type = HapticConditionType.Spring;
-constEffect.Direction = new HapticDirection()
-{
-    Type = HapticType.Cartesian,
-    Dir1 = 1,
-    Dir2 = 0,
-    Dir3 = 1
-};
-constEffect.Length = 500;
-constEffect.Delay = 300;
-constEffect.Button = 1;
-constEffect.Interval = 50;
-constEffect.RightSat1 = 3;
-constEffect.RightSat2 = 5;
-constEffect.RightSat3 = 7;
-constEffect.LeftSat1 = 2;
-constEffect.LeftSat2 = 4;
-constEffect.LeftSat3 = 6;
-constEffect.RightCoeff1 = 10;
-constEffect.RightCoeff2 = 11;
-constEffect.RightCoeff3 = 12;
-constEffect.LeftCoeff1 = 13;
-constEffect.LeftCoeff2 = 14;
-constEffect.LeftCoeff3 = 15;
-constEffect.Deadband1 = 16;
-constEffect.Deadband2 = 17;
-constEffect.Deadband3 = 18;
-constEffect.Center1 = 19;
-constEffect.Center2 = 20;
-constEffect.Center3 = 21;
-
-int numHaptics = Haptic.NumHaptics();
-bool mouseHaptic = Mouse.IsHaptic;
-
-bool joystickHaptic = xboxJoystick.IsHaptic();
-
-xboxJoystick.Dispose();
-xboxController.Dispose();
-
 int numSensors = Sensor.NumSensors;
-
 
 PowerState powerState = Power.GetPowerInfo(out int secs, out int percetns);
 
@@ -834,6 +771,34 @@ renderer.RenderGeometry(null, new Vertex[]
 }, new int[] { 0, 1, 2, 0, 2, 3 });
 renderer.Present();
 
+Surface webpSurf = Image.Load("webpim.webp");
+Texture webpTex = new Texture(renderer, webpSurf);
+renderer.RenderGeometry(webpTex, new Vertex[]
+{
+    new Vertex(new FPoint(100, 100), new Color(255, 255, 255, 255), new FPoint(0, 0)),
+    new Vertex(new FPoint(100, 500), new Color(255, 255, 255, 255), new FPoint(0, 1)),
+    new Vertex(new FPoint(500, 500), new Color(255, 255, 255, 255), new FPoint(1, 1)),
+    new Vertex(new FPoint(500, 100), new Color(255, 255, 255, 255), new FPoint(1, 0))
+}, new int[] { 0, 1, 2, 0, 2, 3 });
+renderer.Present();
+
+Animation gifAnim = new Animation("img.gif");
+for(int i = 0; i < gifAnim.Count; i++)
+{
+    Logging.LogInfo(LogCategory.Application, "GIF {0} frame delay: {1}", i, gifAnim.GetDelay(i));
+    Texture gifTex = new Texture(renderer, gifAnim[i]);
+    renderer.RenderGeometry(gifTex, new Vertex[]
+    {
+        new Vertex(new FPoint(100, 100), new Color(255, 255, 255, 255), new FPoint(0, 0)),
+        new Vertex(new FPoint(100, 500), new Color(255, 255, 255, 255), new FPoint(0, 1)),
+        new Vertex(new FPoint(500, 500), new Color(255, 255, 255, 255), new FPoint(1, 1)),
+        new Vertex(new FPoint(500, 100), new Color(255, 255, 255, 255), new FPoint(1, 0))
+    }, new int[] { 0, 1, 2, 0, 2, 3 });
+    renderer.Present();
+
+    NETSDL2.Systems.Timer.Delay((uint)gifAnim.GetDelay(i));
+}
+
 Logging.LogInfo(LogCategory.Application, "Render driver num: {0}", Render.GetNumRenderDrivers());
 
 RendererInfo[] renderers = Render.GetRenderDriverInfos();
@@ -863,6 +828,14 @@ FunctionPointer<EventFilter> watch = new FunctionPointer<EventFilter>(
     );
 Events.AddEventWatch(watch, IntPtr.Zero);
 
+int channels = Mixer.AllocateChannels(-1);
+channels = Mixer.AllocateChannels(channels == 0 ? 8 : channels * 2);
+
+_ = Mixer.OpenAudio(44000, AudioFormat.F32, 2, 4096).ResultValue;
+Chunk nyanCatMusic = new Chunk("nyancat.mp3");
+nyanCatMusic.Volume(64);
+_ = Mixer.FadeInChannel(0, nyanCatMusic, -1, 1000);
+
 Event @event = new Event();
 while (mainLoop)
 {
@@ -871,6 +844,8 @@ while (mainLoop)
         if (@event.Type == EventType.Quit)
         {
             mainLoop = false;
+            Mixer.FadeOutChannel(0, 1000);
+            NETSDL2.Systems.Timer.Delay(1000);
             break;
         }
     }
@@ -1029,6 +1004,9 @@ unsafe
 
     Vulkan.UnloadLibrary();
 }
+
+Image.Quit();
+Mixer.Quit();
 
 Video.Quit();
 SDL.Quit();
