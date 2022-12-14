@@ -241,6 +241,15 @@
     <ClCompile Include="src\haptic\HapticFeatures.cpp">
       <Filter>소스 파일\haptic</Filter>
     </ClCompile>
+    <ClCompile Include="src\system\Locale.cpp">
+      <Filter>소스 파일\system</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\Misc.cpp">
+      <Filter>소스 파일\system</Filter>
+    </ClCompile>
+    <ClCompile Include="src\video\WindowShape.cpp">
+      <Filter>소스 파일\video</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\video\Blend.h">
@@ -479,6 +488,15 @@
     </ClInclude>
     <ClInclude Include="include\haptic\HapticFeatures.h">
       <Filter>헤더 파일\haptic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\Locale.h">
+      <Filter>헤더 파일\system</Filter>
+    </ClInclude>
+    <ClInclude Include="include\system\Misc.h">
+      <Filter>헤더 파일\system</Filter>
+    </ClInclude>
+    <ClInclude Include="include\video\WindowShape.h">
+      <Filter>헤더 파일\video</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

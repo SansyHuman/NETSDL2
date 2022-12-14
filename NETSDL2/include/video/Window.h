@@ -7,6 +7,7 @@
 #include "../../include/video/Rect.h"
 #include "../../include/video/MessageBoxData.h"
 #include "../../include/events/Keysym.h"
+#include "WindowShape.h"
 #include "ICCProfile.h"
 
 using namespace System::Runtime::InteropServices;
@@ -581,6 +582,27 @@ namespace NETSDL2
 			/// <exception cref="System::Exception">Thrown when failed creation.
 			/// </exception>
 			Window(System::String^ title, int x, int y, int w, int h, WindowFlags flags);
+
+			/// <summary>
+			/// Create a window that can be shaped with the specified position, dimensions, and flags.
+			/// </summary>
+			/// <param name="title">The title of the window.</param>
+			/// <param name="">Placeholder.</param>
+			/// <param name="x">The x position of the window,
+			/// <see cref="Window::WINDOWPOS_CENTERED"/> or
+			/// <see cref="Window::WINDOWPOS_UNDEFINED"/>.</param>
+			/// <param name="y">The y position of the window,
+			/// <see cref="Window::WINDOWPOS_CENTERED"/> or
+			/// <see cref="Window::WINDOWPOS_UNDEFINED"/>.</param>
+			/// <param name="w">The width of the window, in screen coordinates.
+			/// </param>
+			/// <param name="h">The height of the window, in screen coordinates.
+			/// </param>
+			/// <param name="flags"><see cref="WindowFlags::None"/>, or one or
+			/// more <see cref="WindowFlags"/> OR'd together</param>
+			/// <exception cref="System::Exception">Thrown when failed creation.
+			/// </exception>
+			Window(System::String^ title, CreateShapedWindow, unsigned int x, unsigned int y, unsigned int w, unsigned int h, WindowFlags flags);
 			
 			/// <summary>
 			/// Create a window and default renderer.
@@ -606,6 +628,33 @@ namespace NETSDL2
 			!Window();
 
 			virtual System::String^ ToString() override;
+
+			/// <summary>
+			/// Return whether the given window is a shaped window.
+			/// </summary>
+			property bool IsShapedWindow
+			{
+				bool get();
+			}
+
+			/// <summary>
+			/// Set the shape and parameters of a shaped window.
+			/// </summary>
+			/// <param name="shape">A surface encoding the desired shape for the window.</param>
+			/// <param name="shapeMode">The parameters to set for the shaped window.</param>
+			/// <returns>None on success, <see cref="ShapedWindowError::InvalidShapeArgument"/> on an
+			/// invalid shape argument, or <see cref="ShapedWindowError::NonshapeableWindow"/> if the
+			/// window does not reference a valid shaped window.</returns>
+			Result<None^, ShapedWindowError> SetWindowShape(Surface^ shape, [In][IsReadOnly]SDLWindowShapeMode% shapeMode);
+
+			/// <summary>
+			/// Get the shape parameters of a shaped window.
+			/// </summary>
+			/// <param name="shapeMode">An empty shape-mode structure to fill.</param>
+			/// <returns>0 if the window has a shape, <see cref="ShapedWindowError::NonshapeableWindow"/> if
+			/// the window is not a shaped window, or <see cref="ShapedWindowError::WindowLacksShape"/> if
+			/// the window is a shapeable window currently lacking a shape.</returns>
+			Result<None^, ShapedWindowError> GetShapedWindowMode([Out]SDLWindowShapeMode% shapeMode);
 
 			/// <summary>
 			/// Request a window to demand attention from the user.

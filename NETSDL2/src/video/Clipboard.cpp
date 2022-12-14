@@ -8,11 +8,22 @@ using namespace NETSDL2::Video;
 
 System::String^ NETSDL2::Video::Clipboard::GetClipboardText()
 {
-	char* text = SDL_GetClipboardText();
-	System::String^ result = StringMarshal::UTF8NativeToManaged(text);
-	SDL_free(text);
+	char* text = __nullptr;
 
-	return result;
+	try
+	{
+		text = SDL_GetClipboardText();
+		System::String^ result = StringMarshal::UTF8NativeToManaged(text);
+
+		return result;
+	}
+	finally
+	{
+		if(text != __nullptr)
+		{
+			SDL_free(text);
+		}
+	}
 }
 
 bool Clipboard::HasClipboardText::get()

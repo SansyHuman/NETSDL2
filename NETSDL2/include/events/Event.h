@@ -1573,7 +1573,7 @@ namespace NETSDL2
 		/// <summary>
 		/// A union that contains structures for the different event types.
 		/// </summary>
-		[StructLayout(LayoutKind::Explicit, Size = 56)]
+		[StructLayout(LayoutKind::Explicit, Size = sizeof(SDL_Event))]
 		public value struct Event
 		{
 			/// <summary>

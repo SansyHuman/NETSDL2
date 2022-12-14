@@ -220,6 +220,8 @@ unsafe
 
 None resultVarer = result;
 
+string controllerMap = GameController.MappingForIndex(0);
+
 result = Video.Init(null);
 Console.WriteLine("Video init: {0}", result);
 
@@ -251,6 +253,12 @@ Logging.LogInfo(LogCategory.Application, "SDL version: {0}", version);
 
 Logging.LogInfo(LogCategory.Application, "OS: {0}", Platform.GetPlatform());
 
+Locale[] locales = Locale.GetPreferredLocales();
+foreach(var locale in locales)
+{
+    Logging.LogInfo(LogCategory.Application, "Locale: {0}", locale);
+}
+
 Logging.LogInfo(LogCategory.Application, "Cores: {0}", CPUInfo.CPUCount);
 Logging.LogInfo(LogCategory.Application, "Cache line: {0}", CPUInfo.CPUCacheLineSize);
 Logging.LogInfo(LogCategory.Application, "System RAM: {0}", CPUInfo.SystemRAM);
@@ -272,6 +280,8 @@ Logging.LogInfo(LogCategory.Application, "HasAVX2: {0}", CPUInfo.HasAVX2);
 Logging.LogInfo(LogCategory.Application, "HasAVX: {0}", CPUInfo.HasAVX);
 Logging.LogInfo(LogCategory.Application, "HasAltiVec: {0}", CPUInfo.HasAltiVec);
 Logging.LogInfo(LogCategory.Application, "Has3DNow: {0}", CPUInfo.Has3DNow);
+
+Misc.OpenURL("https://www.youtube.com/");
 
 IntPtr simdMem = CPUInfo.SIMDAlloc(128);
 simdMem = CPUInfo.SIMDRealloc(simdMem, 256);
@@ -374,6 +384,8 @@ Logging.LogInfo(LogCategory.Application, "SetAttribute: {0}", GL.SetAttribute(GL
 Logging.LogInfo(LogCategory.Application, "SetAttribute: {0}", GL.SetAttribute(GLAttr.ContextFlags, (int)GLContextFlags.Debug));
 
 var window = new Window("Hello", Window.WINDOWPOS_UNDEFINED, Window.WINDOWPOS_UNDEFINED, 800, 600, WindowFlags.AllowHighDPI | WindowFlags.OpenGL | WindowFlags.Resizable);
+bool isShaped = window.IsShapedWindow;
+
 window.OnHidden += (Window window, uint timestamp) =>
 {
     Logging.LogInfo(LogCategory.Application, "Window hidden on {0}", timestamp);

@@ -113,7 +113,7 @@ namespace NETSDL2
 		/// A structure that contains info on how a logical GameController button or axis
 		/// is mapped to the underlying Joystick's button/axis/hat.
 		/// </summary>
-		[StructLayout(LayoutKind::Explicit, Size = 12)]
+		[StructLayout(LayoutKind::Explicit, Size = sizeof(SDL_GameControllerButtonBind))]
 		public value struct GameControllerButtonBind
 		{
 			/// <summary>

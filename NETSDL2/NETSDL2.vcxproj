@@ -141,6 +141,8 @@
     <ClInclude Include="include\system\Bits.h" />
     <ClInclude Include="include\system\CPUInfo.h" />
     <ClInclude Include="include\system\Endian.h" />
+    <ClInclude Include="include\system\Locale.h" />
+    <ClInclude Include="include\system\Misc.h" />
     <ClInclude Include="include\system\Platform.h" />
     <ClInclude Include="include\system\Power.h" />
     <ClInclude Include="include\system\SharedObject.h" />
@@ -171,6 +173,7 @@
     <ClInclude Include="include\video\Video.h" />
     <ClInclude Include="include\video\Vulkan.h" />
     <ClInclude Include="include\video\Window.h" />
+    <ClInclude Include="include\video\WindowShape.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -223,6 +226,8 @@
     <ClCompile Include="src\system\Bits.cpp" />
     <ClCompile Include="src\system\CPUInfo.cpp" />
     <ClCompile Include="src\system\Endian.cpp" />
+    <ClCompile Include="src\system\Locale.cpp" />
+    <ClCompile Include="src\system\Misc.cpp" />
     <ClCompile Include="src\system\Platform.cpp" />
     <ClCompile Include="src\system\Power.cpp" />
     <ClCompile Include="src\system\SharedObject.cpp" />
@@ -253,6 +258,7 @@
     <ClCompile Include="src\video\Video.cpp" />
     <ClCompile Include="src\video\Vulkan.cpp" />
     <ClCompile Include="src\video\Window.cpp" />
+    <ClCompile Include="src\video\WindowShape.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="E:\VulkanSDK\Bin\SDL2.dll">

@@ -58,15 +58,27 @@ int GameController::NumMappings::get()
 
 Result<System::String^, None^> NETSDL2::Events::GameController::MappingForIndex(int mappingIndex)
 {
-	char* str = SDL_GameControllerMappingForIndex(mappingIndex);
-	if(str == __nullptr)
-	{
-		return Result<System::String^, None^>::MakeFailure(None::Value);
-	}
+	char* str = __nullptr;
 
-	System::String^ mapping = StringMarshal::UTF8NativeToManaged(str);
-	SDL_free(str);
-	return mapping;
+	try
+	{
+		str = SDL_GameControllerMappingForIndex(mappingIndex);
+		if(str == __nullptr)
+		{
+			return Result<System::String^, None^>::MakeFailure(None::Value);
+		}
+
+		System::String^ mapping = StringMarshal::UTF8NativeToManaged(str);
+		
+		return mapping;
+	}
+	finally
+	{
+		if(str != __nullptr)
+		{
+			SDL_free(str);
+		}
+	}
 }
 
 Result<int, None^> NETSDL2::Events::GameController::AddMappingsFromFile(System::String^ filename)
@@ -387,28 +399,52 @@ Result<System::String^, None^> NETSDL2::Events::GameController::GetStringForButt
 
 Result<System::String^, None^> NETSDL2::Events::GameController::Mapping()
 {
-	char* str = SDL_GameControllerMapping(controller);
-	if(str == __nullptr)
-	{
-		return Result<System::String^, None^>::MakeFailure(None::Value);
-	}
+	char* str = __nullptr;
 
-	System::String^ mapping = StringMarshal::UTF8NativeToManaged(str);
-	SDL_free(str);
-	return mapping;
+	try
+	{
+		str = SDL_GameControllerMapping(controller);
+		if(str == __nullptr)
+		{
+			return Result<System::String^, None^>::MakeFailure(None::Value);
+		}
+
+		System::String^ mapping = StringMarshal::UTF8NativeToManaged(str);
+		
+		return mapping;
+	}
+	finally
+	{
+		if(str != __nullptr)
+		{
+			SDL_free(str);
+		}
+	}
 }
 
 Result<System::String^, None^> NETSDL2::Events::GameController::MappingForGUID(NETSDL2::Core::GUID guid)
 {
-	char* str = SDL_GameControllerMappingForGUID(*((SDL_JoystickGUID*)&guid));
-	if(str == __nullptr)
-	{
-		return Result<System::String^, None^>::MakeFailure(None::Value);
-	}
+	char* str = __nullptr;
 
-	System::String^ mapping = StringMarshal::UTF8NativeToManaged(str);
-	SDL_free(str);
-	return mapping;
+	try
+	{
+		str = SDL_GameControllerMappingForGUID(*((SDL_JoystickGUID*)&guid));
+		if(str == __nullptr)
+		{
+			return Result<System::String^, None^>::MakeFailure(None::Value);
+		}
+
+		System::String^ mapping = StringMarshal::UTF8NativeToManaged(str);
+		
+		return mapping;
+	}
+	finally
+	{
+		if(str != __nullptr)
+		{
+			SDL_free(str);
+		}
+	}
 }
 
 Result<System::String^, None^> NETSDL2::Events::GameController::Name()
@@ -538,15 +574,27 @@ GameControllerType NETSDL2::Events::GameController::TypeForIndex(int joystickInd
 
 Result<System::String^, None^> NETSDL2::Events::GameController::MappingForDeviceIndex(int joystickIndex)
 {
-	char* str = SDL_GameControllerMappingForDeviceIndex(joystickIndex);
-	if(str == __nullptr)
-	{
-		return Result<System::String^, None^>::MakeFailure(None::Value);
-	}
+	char* str = __nullptr;
 
-	System::String^ mapping = StringMarshal::UTF8NativeToManaged(str);
-	SDL_free(str);
-	return mapping;
+	try
+	{
+		str = SDL_GameControllerMappingForDeviceIndex(joystickIndex);
+		if(str == __nullptr)
+		{
+			return Result<System::String^, None^>::MakeFailure(None::Value);
+		}
+
+		System::String^ mapping = StringMarshal::UTF8NativeToManaged(str);
+		
+		return mapping;
+	}
+	finally
+	{
+		if(str != __nullptr)
+		{
+			SDL_free(str);
+		}
+	}
 }
 
 void NETSDL2::Events::GameController::Update()

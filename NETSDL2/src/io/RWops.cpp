@@ -377,26 +377,36 @@ Result<System::IntPtr, None^> NETSDL2::IO::RWops::LoadFile(RWops^ src, size_t% d
 Result<array<Uint8>^, None^> NETSDL2::IO::RWops::LoadFile(RWops^ src, bool freesrc)
 {
 	size_t size = 0;
-	void* result = SDL_LoadFile_RW(src->ops, &size, freesrc ? 1 : 0);
-	if(freesrc)
-		delete src;
+	void* result = __nullptr;
 
-	if(result == __nullptr)
+	try
 	{
-		return Result<array<Uint8>^, None^>::MakeFailure(None::Value);
-	}
+		result = SDL_LoadFile_RW(src->ops, &size, freesrc ? 1 : 0);
+		if(freesrc)
+			delete src;
 
-	array<Uint8>^ data = gcnew array<Uint8>(size);
-	if(size == 0)
+		if(result == __nullptr)
+		{
+			return Result<array<Uint8>^, None^>::MakeFailure(None::Value);
+		}
+
+		array<Uint8>^ data = gcnew array<Uint8>(size);
+		if(size == 0)
+			return data;
+
+		pin_ptr<Uint8> pData = &data[0];
+		System::Buffer::MemoryCopy(result, (void*)pData, size, size);
+		pData = nullptr;
+
 		return data;
-
-	pin_ptr<Uint8> pData = &data[0];
-	System::Buffer::MemoryCopy(result, (void*)pData, size, size);
-	pData = nullptr;
-
-	SDL_free(result);
-
-	return data;
+	}
+	finally
+	{
+		if(result != __nullptr)
+		{
+			SDL_free(result);
+		}
+	}
 }
 
 Result<System::IntPtr, None^> NETSDL2::IO::RWops::LoadFile(System::String^ file, size_t% datasize)
@@ -420,24 +430,33 @@ Result<array<Uint8>^, None^> NETSDL2::IO::RWops::LoadFile(System::String^ file)
 	StringMarshal context;
 
 	size_t size = 0;
-	void* result = SDL_LoadFile(context.ManagedToUTF8Native(file), &size);
+	void* result = __nullptr;
 
-	if(result == __nullptr)
+	try
 	{
-		return Result<array<Uint8>^, None^>::MakeFailure(None::Value);
-	}
+		result = SDL_LoadFile(context.ManagedToUTF8Native(file), &size);
+		if(result == __nullptr)
+		{
+			return Result<array<Uint8>^, None^>::MakeFailure(None::Value);
+		}
 
-	array<Uint8>^ data = gcnew array<Uint8>(size);
-	if(size == 0)
+		array<Uint8>^ data = gcnew array<Uint8>(size);
+		if(size == 0)
+			return data;
+
+		pin_ptr<Uint8> pData = &data[0];
+		System::Buffer::MemoryCopy(result, (void*)pData, size, size);
+		pData = nullptr;
+
 		return data;
-
-	pin_ptr<Uint8> pData = &data[0];
-	System::Buffer::MemoryCopy(result, (void*)pData, size, size);
-	pData = nullptr;
-
-	SDL_free(result);
-
-	return data;
+	}
+	finally
+	{
+		if(result != __nullptr)
+		{
+			SDL_free(result);
+		}
+	}
 }
 
 size_t NETSDL2::IO::RWops::WriteU8(Uint8 value)

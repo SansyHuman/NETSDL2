@@ -215,6 +215,17 @@ NETSDL2::Video::Window::Window(System::String^ title, int x, int y, int w, int h
 	InitWindow(window);
 }
 
+NETSDL2::Video::Window::Window(System::String^ title, CreateShapedWindow, unsigned int x, unsigned int y, unsigned int w, unsigned int h, WindowFlags flags)
+{
+	StringMarshal context;
+	SDL_Window* window = SDL_CreateShapedWindow(context.ManagedToUTF8Native(title), x, y, w, h, (Uint32)flags);
+
+	if(window == __nullptr)
+		throw gcnew System::Exception(Error::GetError());
+
+	InitWindow(window);
+}
+
 NETSDL2::Video::Window::Window(int width, int height, WindowFlags flags, Renderer^% renderer)
 {
 	SDL_Window* win = __nullptr;
@@ -257,6 +268,37 @@ NETSDL2::Video::Window::!Window()
 System::String^ NETSDL2::Video::Window::ToString()
 {
 	return System::String::Format("Window \"{0}\" [ID: {1}]", Title, ID);
+}
+
+bool Window::IsShapedWindow::get()
+{
+	return SDL_IsShapedWindow(window) == SDL_TRUE;
+}
+
+Result<None^, ShapedWindowError> NETSDL2::Video::Window::SetWindowShape(Surface^ shape, SDLWindowShapeMode% shapeMode)
+{
+	pin_ptr<SDLWindowShapeMode> pMode = &shapeMode;
+	int result = SDL_SetWindowShape(window, shape->NativeSurface, (SDL_WindowShapeMode*)pMode);
+	pMode = nullptr;
+	if(result < 0)
+	{
+		return Result<None^, ShapedWindowError>::MakeFailure((ShapedWindowError)result);
+	}
+
+	return None::Value;
+}
+
+Result<None^, ShapedWindowError> NETSDL2::Video::Window::GetShapedWindowMode(SDLWindowShapeMode% shapeMode)
+{
+	pin_ptr<SDLWindowShapeMode> pMode = &shapeMode;
+	int result = SDL_GetShapedWindowMode(window, (SDL_WindowShapeMode*)pMode);
+	pMode = nullptr;
+	if(result < 0)
+	{
+		return Result<None^, ShapedWindowError>::MakeFailure((ShapedWindowError)result);
+	}
+
+	return None::Value;
 }
 
 Result<None^, int> NETSDL2::Video::Window::FlashWindow(FlashOperation operation)

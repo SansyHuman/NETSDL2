@@ -87,7 +87,7 @@ namespace NETSDL2
 		/// <summary>
 		/// A structure that contains system-dependent information about a window.
 		/// </summary>
-        [StructLayout(LayoutKind::Explicit, Size = sizeof(SDL_SysWMmsg))]
+        [StructLayout(LayoutKind::Explicit, Size = sizeof(SDL_SysWMinfo))]
 		public value struct SysWMInfo
 		{
             [FieldOffset(0)]

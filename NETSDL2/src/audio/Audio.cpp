@@ -104,19 +104,29 @@ Result<None^, int> NETSDL2::Audio::Audio::GetAudioDeviceSpec(int index, bool isc
 Result<None^, int> NETSDL2::Audio::Audio::GetDefaultAudioInfo(System::String^% name, AudioSpec% spec, bool iscapture)
 {
 	char* pName = __nullptr;
-	pin_ptr<AudioSpec> pSpec = &spec;
-	int result = SDL_GetDefaultAudioInfo(&pName, (SDL_AudioSpec*)pSpec, iscapture ? 1 : 0);
-	pSpec = nullptr;
 
-	if(result != 0)
+	try
 	{
-		return Result<None^, int>::MakeFailure(result);
+		pin_ptr<AudioSpec> pSpec = &spec;
+		int result = SDL_GetDefaultAudioInfo(&pName, (SDL_AudioSpec*)pSpec, iscapture ? 1 : 0);
+		pSpec = nullptr;
+
+		if(result != 0)
+		{
+			return Result<None^, int>::MakeFailure(result);
+		}
+
+		name = StringMarshal::UTF8NativeToManaged(pName);
+
+		return None::Value;
 	}
-
-	name = StringMarshal::UTF8NativeToManaged(pName);
-	SDL_free(pName);
-
-	return None::Value;
+	finally
+	{
+		if(pName != __nullptr)
+		{
+			SDL_free(pName);
+		}
+	}
 }
 
 AudioStatus NETSDL2::Audio::Audio::GetAudioDeviceStatus(SDL_AudioDeviceID dev)
