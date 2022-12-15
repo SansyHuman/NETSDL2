@@ -5,7 +5,7 @@
 using namespace NETSDL2::IO;
 using namespace NETSDL2::Internal;
 
-Result<None^, None^> NETSDL2::IO::HID::Init()
+Result<None^, None^> NETSDL2::IO::HIDAPI::Init()
 {
 	int result = SDL_hid_init();
 	if(result < 0)
@@ -16,7 +16,7 @@ Result<None^, None^> NETSDL2::IO::HID::Init()
 	return None::Value;
 }
 
-Result<None^, None^> NETSDL2::IO::HID::Exit()
+Result<None^, None^> NETSDL2::IO::HIDAPI::Exit()
 {
 	int result = SDL_hid_exit();
 	if(result < 0)
@@ -27,7 +27,7 @@ Result<None^, None^> NETSDL2::IO::HID::Exit()
 	return None::Value;
 }
 
-Result<array<HIDDeviceInfo>^, None^> NETSDL2::IO::HID::Enumerate(unsigned short vendorID, unsigned short productID)
+Result<array<HIDDeviceInfo>^, None^> NETSDL2::IO::HIDAPI::Enumerate(unsigned short vendorID, unsigned short productID)
 {
 	SDL_hid_device_info* info = __nullptr;
 	try
@@ -60,7 +60,12 @@ Result<array<HIDDeviceInfo>^, None^> NETSDL2::IO::HID::Enumerate(unsigned short 
 	}
 }
 
-Uint32 HID::DeviceChangeCount::get()
+Uint32 HIDAPI::DeviceChangeCount::get()
 {
 	return SDL_hid_device_change_count();
+}
+
+void NETSDL2::IO::HIDAPI::BLEScan(bool active)
+{
+	SDL_hid_ble_scan(active ? SDL_TRUE : SDL_FALSE);
 }

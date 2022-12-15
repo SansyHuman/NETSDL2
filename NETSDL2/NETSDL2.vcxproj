@@ -64,13 +64,13 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalUsingDirectories>E:\VulkanSDK\Include\SDL2;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalOptions>/Zc:twoPhase- %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>E:\VulkanSDK\Include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\VS Project\SDL2-2.24.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:\VulkanSDK\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\VS Project\SDL2-2.24.2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -82,13 +82,13 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalUsingDirectories>E:\VulkanSDK\Include\SDL2;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories>%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <AdditionalOptions>/Zc:twoPhase- %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>E:\VulkanSDK\Include\SDL2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\VS Project\SDL2-2.24.2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:\VulkanSDK\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\VS Project\SDL2-2.24.2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -138,6 +138,7 @@
     <ClInclude Include="include\internal\StringMarshal.h" />
     <ClInclude Include="include\io\Filesystem.h" />
     <ClInclude Include="include\io\HID.h" />
+    <ClInclude Include="include\io\HIDDevice.h" />
     <ClInclude Include="include\io\HIDDeviceInfo.h" />
     <ClInclude Include="include\io\RWops.h" />
     <ClInclude Include="include\system\Bits.h" />
@@ -176,7 +177,6 @@
     <ClInclude Include="include\video\Vulkan.h" />
     <ClInclude Include="include\video\Window.h" />
     <ClInclude Include="include\video\WindowShape.h" />
-    <ClInclude Include="src\io\HID.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -225,6 +225,8 @@
     <ClCompile Include="src\haptic\HapticFeatures.cpp" />
     <ClCompile Include="src\internal\StringMarshal.cpp" />
     <ClCompile Include="src\io\Filesystem.cpp" />
+    <ClCompile Include="src\io\HID.cpp" />
+    <ClCompile Include="src\io\HIDDevice.cpp" />
     <ClCompile Include="src\io\HIDDeviceInfo.cpp" />
     <ClCompile Include="src\io\RWops.cpp" />
     <ClCompile Include="src\system\Bits.cpp" />
@@ -265,16 +267,16 @@
     <ClCompile Include="src\video\WindowShape.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="E:\VulkanSDK\Bin\SDL2.dll">
-      <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir);$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
     <CopyFileToFolders Include="..\LICENSE.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)$(Platform)\$(Configuration)\</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)$(Platform)\$(Configuration)\</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="..\..\SDL2-2.24.2\lib\x64\SDL2.dll">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)NETSDL2Test\bin\$(Platform)\$(Configuration)\net6.0;%(DestinationFolders)</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

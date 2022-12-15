@@ -253,6 +253,12 @@
     <ClCompile Include="src\io\HIDDeviceInfo.cpp">
       <Filter>소스 파일\io</Filter>
     </ClCompile>
+    <ClCompile Include="src\io\HIDDevice.cpp">
+      <Filter>소스 파일\io</Filter>
+    </ClCompile>
+    <ClCompile Include="src\io\HID.cpp">
+      <Filter>소스 파일\io</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\video\Blend.h">
@@ -504,11 +510,11 @@
     <ClInclude Include="include\io\HIDDeviceInfo.h">
       <Filter>헤더 파일\io</Filter>
     </ClInclude>
-    <ClInclude Include="include\io\HID.h">
+    <ClInclude Include="include\io\HIDDevice.h">
       <Filter>헤더 파일\io</Filter>
     </ClInclude>
-    <ClInclude Include="src\io\HID.cpp">
-      <Filter>소스 파일\io</Filter>
+    <ClInclude Include="include\io\HID.h">
+      <Filter>헤더 파일\io</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -577,10 +583,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="E:\VulkanSDK\Bin\SDL2.dll">
+    <CopyFileToFolders Include="..\LICENSE.txt">
       <Filter>리소스 파일</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="..\LICENSE.txt">
+    <CopyFileToFolders Include="..\..\SDL2-2.24.2\lib\x64\SDL2.dll">
       <Filter>리소스 파일</Filter>
     </CopyFileToFolders>
   </ItemGroup>

@@ -275,7 +275,7 @@ Result<None^, None^> NETSDL2::Events::GameController::GetSensorData(SensorType t
 		return Result<None^, None^>::MakeFailure(None::Value);
 	}
 
-	if(data->Length < offset + numValues)
+	if(data->Length <= offset || data->Length < offset + numValues)
 	{
 		SDL_InvalidParamError(data);
 		return Result<None^, None^>::MakeFailure(None::Value);

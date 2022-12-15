@@ -18,7 +18,7 @@ namespace NETSDL2
 		/// <summary>
 		/// HIDAPI functions.
 		/// </summary>
-		public ref struct HID abstract sealed
+		public ref class HIDAPI abstract sealed
 		{
 		public:
 			/// <summary>
@@ -48,7 +48,13 @@ namespace NETSDL2
 			/// <param name="productID">The Product ID (PID) of the types of device to open.</param>
 			/// <returns>A list of type information about the HID devices attached to the system, or None in
 			/// the case of failure.</returns>
-			Result<array<HIDDeviceInfo>^, None^> Enumerate(unsigned short vendorID, unsigned short productID);
+			static Result<array<HIDDeviceInfo>^, None^> Enumerate(unsigned short vendorID, unsigned short productID);
+
+			/// <summary>
+			/// Start or stop a BLE scan on iOS and tvOS to pair Steam Controllers.
+			/// </summary>
+			/// <param name="active">true to start the scan, false to stop the scan.</param>
+			static void BLEScan(bool active);
 		};
 	}
 }

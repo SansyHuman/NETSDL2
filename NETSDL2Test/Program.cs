@@ -28,6 +28,10 @@ if(result.ResultType == Result<None, int>.Type.Failed)
     return;
 }
 
+_ = HIDAPI.Init().ResultValue;
+var usbDevices = HIDAPI.Enumerate(0, 0);
+string earea = Error.GetError();
+
 ImageInitFlags imageFlags = Image.Init(ImageInitFlags.Jpg | ImageInitFlags.Png | ImageInitFlags.Webp);
 SDLVersion imageLinkedVersion = Image.LinkedVersion;
 SDLVersion imageVersion = Image.Version;

@@ -91,7 +91,7 @@
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>E:\VulkanSDK\Include\SDL2;D:\VS Project\SDL2_ttf-2.20.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\VS Project\SDL2-2.24.2\include;D:\VS Project\SDL2_ttf-2.20.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalUsingDirectories>$(SolutionDir)$(Platform)\$(Configuration)\NETSDL2;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -130,7 +130,7 @@
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>E:\VulkanSDK\Include\SDL2;D:\VS Project\SDL2_ttf-2.20.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\VS Project\SDL2-2.24.2\include;D:\VS Project\SDL2_ttf-2.20.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalUsingDirectories>$(SolutionDir)$(Platform)\$(Configuration)\NETSDL2;%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -141,6 +141,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="src\Font.cpp" />
+    <ClCompile Include="src\TTF.cpp" />
+    <ClCompile Include="src\TTFHinting.cpp" />
+    <ClCompile Include="src\TTFStyle.cpp" />
+    <ClCompile Include="src\TTFWrapped.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\..\SDL2_ttf-2.20.1\lib\x64\SDL2_ttf.dll">
@@ -153,6 +158,13 @@
     <CopyFileToFolders Include="..\..\SDL2_ttf-2.20.1\lib\x64\LICENSE.freetype.txt" />
     <CopyFileToFolders Include="..\..\SDL2_ttf-2.20.1\lib\x64\LICENSE.harfbuzz.txt" />
     <CopyFileToFolders Include="..\..\SDL2_ttf-2.20.1\lib\x64\LICENSE.zlib.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Font.h" />
+    <ClInclude Include="include\TTF.h" />
+    <ClInclude Include="include\TTFHinting.h" />
+    <ClInclude Include="include\TTFStyle.h" />
+    <ClInclude Include="include\TTFWrapped.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
