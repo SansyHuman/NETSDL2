@@ -137,6 +137,8 @@
     <ClInclude Include="include\haptic\HapticFeatures.h" />
     <ClInclude Include="include\internal\StringMarshal.h" />
     <ClInclude Include="include\io\Filesystem.h" />
+    <ClInclude Include="include\io\HID.h" />
+    <ClInclude Include="include\io\HIDDeviceInfo.h" />
     <ClInclude Include="include\io\RWops.h" />
     <ClInclude Include="include\system\Bits.h" />
     <ClInclude Include="include\system\CPUInfo.h" />
@@ -174,6 +176,7 @@
     <ClInclude Include="include\video\Vulkan.h" />
     <ClInclude Include="include\video\Window.h" />
     <ClInclude Include="include\video\WindowShape.h" />
+    <ClInclude Include="src\io\HID.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -222,6 +225,7 @@
     <ClCompile Include="src\haptic\HapticFeatures.cpp" />
     <ClCompile Include="src\internal\StringMarshal.cpp" />
     <ClCompile Include="src\io\Filesystem.cpp" />
+    <ClCompile Include="src\io\HIDDeviceInfo.cpp" />
     <ClCompile Include="src\io\RWops.cpp" />
     <ClCompile Include="src\system\Bits.cpp" />
     <ClCompile Include="src\system\CPUInfo.cpp" />

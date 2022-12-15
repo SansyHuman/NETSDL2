@@ -250,6 +250,9 @@
     <ClCompile Include="src\video\WindowShape.cpp">
       <Filter>소스 파일\video</Filter>
     </ClCompile>
+    <ClCompile Include="src\io\HIDDeviceInfo.cpp">
+      <Filter>소스 파일\io</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\video\Blend.h">
@@ -497,6 +500,15 @@
     </ClInclude>
     <ClInclude Include="include\video\WindowShape.h">
       <Filter>헤더 파일\video</Filter>
+    </ClInclude>
+    <ClInclude Include="include\io\HIDDeviceInfo.h">
+      <Filter>헤더 파일\io</Filter>
+    </ClInclude>
+    <ClInclude Include="include\io\HID.h">
+      <Filter>헤더 파일\io</Filter>
+    </ClInclude>
+    <ClInclude Include="src\io\HID.cpp">
+      <Filter>소스 파일\io</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

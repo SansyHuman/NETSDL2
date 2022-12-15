@@ -291,6 +291,31 @@ float ave = Endian.SwapFloat(1.51f);
 int ainer = Bits.MostSignificantBitIndex32(545123);
 bool exrerh = Bits.HasExactlyOneBitSet32(5);
 
+Surface aliceSurf = Image.LoadPNG(new RWops("Alice.png", NETSDL2.IO.FileMode.Read));
+Window aliceWindow = new Window(
+    "Alice", new CreateShapedWindow(),
+    Window.WINDOWPOS_CENTERED, Window.WINDOWPOS_CENTERED, (uint)aliceSurf.Width, (uint)aliceSurf.Height,
+    WindowFlags.AllowHighDPI | WindowFlags.Shown);
+Renderer aliceRenderer = new Renderer(aliceWindow, -1, RendererFlags.Accelerated);
+Texture aliceTex = new Texture(aliceRenderer, aliceSurf);
+
+SDLWindowShapeMode shapeMode = new SDLWindowShapeMode();
+shapeMode.Mode = ShapeMode.BinarizeAlpha;
+shapeMode.Parameters.BinarizationCutoff = 255;
+aliceWindow.SetWindowShape(aliceSurf, shapeMode);
+
+Rect dstRect = new Rect();
+dstRect.X = dstRect.Y = 0;
+dstRect.W = aliceSurf.Width;
+dstRect.H = aliceSurf.Height;
+
+_ = aliceRenderer.SetLogicalSize(aliceSurf.Width, aliceSurf.Height).ResultValue;
+aliceRenderer.GetLogicalSize(out int aliceW, out int aliceH);
+
+aliceRenderer.Clear();
+aliceRenderer.Copy(aliceTex, null, dstRect);
+aliceRenderer.Present();
+
 Platform.GetDXGIOutputInfo(0, out int adapter, out int output);
 
 int numSensors = Sensor.NumSensors;
@@ -840,6 +865,13 @@ FunctionPointer<EventFilter> watch = new FunctionPointer<EventFilter>(
     );
 Events.AddEventWatch(watch, IntPtr.Zero);
 
+window.OnClose += (Window window, uint timestamp) =>
+{
+    Event quitEvent = new Event();
+    quitEvent.Type = EventType.Quit;
+    _ = Events.PushEvent(quitEvent).ResultValue;
+};
+
 int channels = Mixer.AllocateChannels(-1);
 channels = Mixer.AllocateChannels(channels == 0 ? 8 : channels * 2);
 
@@ -864,6 +896,7 @@ while (mainLoop)
 }
 
 window.Dispose();
+aliceWindow.Dispose();
 
 DisplayMode desired = new DisplayMode()
 {

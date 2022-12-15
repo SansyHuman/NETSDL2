@@ -17,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Alice.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="img.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
