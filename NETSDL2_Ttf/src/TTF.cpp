@@ -47,3 +47,17 @@ SDLVersion TTF::Version::get()
 	SDL_TTF_VERSION(&version);
 	return *((SDLVersion*)&version);
 }
+
+void NETSDL2::Text::TTF::Quit()
+{
+	TTF_Quit();
+}
+
+Result<None^, None^> NETSDL2::Text::TTF::SetDirection(TTFDirection direction)
+{
+	int result = TTF_SetDirection((int)direction);
+	if(result < 0)
+	{
+		return Result<None^, None^>::MakeFailure(None::Value);
+	}
+}

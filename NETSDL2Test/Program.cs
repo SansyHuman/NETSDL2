@@ -5,6 +5,7 @@ using NETSDL2.IO;
 using NETSDL2.Audio;
 using NETSDL2.Haptic;
 using NETSDL2.Image;
+using NETSDL2.Text;
 
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -40,6 +41,10 @@ MixerInitFlags mixerFlags = Mixer.Init(
     MixerInitFlags.Flac | MixerInitFlags.Mod | MixerInitFlags.Mp3 |
     MixerInitFlags.Ogg | MixerInitFlags.Mid | MixerInitFlags.Opus
     );
+
+_ = TTF.Init().ResultValue;
+
+Font abaloneSmile = new Font("Abalone Smile.ttf", 15);
 
 SharedObject user32 = new SharedObject("user32.dll");
 IntPtr getcursor = user32.LoadFunction("GetCursor");

@@ -2,6 +2,8 @@
 
 #include <SDL_ttf.h>
 
+#include "TTFDirection.h"
+
 #using "NETSDL2.dll" as_friend
 
 using namespace System::Runtime::InteropServices;
@@ -63,6 +65,19 @@ namespace NETSDL2
 			{
 				SDLVersion get();
 			}
+
+			/// <summary>
+			/// Deinitialize SDL_ttf.
+			/// </summary>
+			static void Quit();
+
+			/// <summary>
+			/// Set a global direction to be used for text shaping.
+			/// </summary>
+			/// <param name="direction">A direction value.</param>
+			/// <returns>Success or Failure if SDL_ttf is not compiled with HarfBuzz
+			/// support.</returns>
+			static Result<None^, None^> SetDirection(TTFDirection direction);
 		};
 	}
 }

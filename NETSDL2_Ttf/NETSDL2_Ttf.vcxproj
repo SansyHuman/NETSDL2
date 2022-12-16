@@ -143,6 +143,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="src\Font.cpp" />
     <ClCompile Include="src\TTF.cpp" />
+    <ClCompile Include="src\TTFDirection.cpp" />
     <ClCompile Include="src\TTFHinting.cpp" />
     <ClCompile Include="src\TTFStyle.cpp" />
     <ClCompile Include="src\TTFWrapped.cpp" />
@@ -162,6 +163,7 @@
   <ItemGroup>
     <ClInclude Include="include\Font.h" />
     <ClInclude Include="include\TTF.h" />
+    <ClInclude Include="include\TTFDirection.h" />
     <ClInclude Include="include\TTFHinting.h" />
     <ClInclude Include="include\TTFStyle.h" />
     <ClInclude Include="include\TTFWrapped.h" />

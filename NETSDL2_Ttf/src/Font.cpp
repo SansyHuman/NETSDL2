@@ -14,6 +14,73 @@ NETSDL2::Text::Font::Font(System::String^ file, int ptsize)
 	}
 }
 
+NETSDL2::Text::Font::Font(System::String^ file, int ptsize, unsigned int hdpi, unsigned int vdpi)
+{
+	StringMarshal context;
+
+	font = TTF_OpenFontDPI(context.ManagedToUTF8Native(file), ptsize, hdpi, vdpi);
+	if(font == __nullptr)
+	{
+		throw gcnew System::Exception(Error::GetError());
+	}
+}
+
+NETSDL2::Text::Font::Font(RWops^ src, bool freesrc, int ptsize, unsigned int hdpi, unsigned int vdpi)
+{
+	font = TTF_OpenFontDPIRW(src->NativeOps, freesrc ? 1 : 0, ptsize, hdpi, vdpi);
+	if(freesrc)
+	{
+		delete src;
+	}
+
+	if(font == __nullptr)
+	{
+		throw gcnew System::Exception(Error::GetError());
+	}
+}
+
+NETSDL2::Text::Font::Font(RWops^ src, bool freesrc, int ptsize, long index, unsigned int hdpi, unsigned int vdpi)
+{
+	font = TTF_OpenFontIndexDPIRW(src->NativeOps, freesrc ? 1 : 0, ptsize, index, hdpi, vdpi);
+	if(freesrc)
+	{
+		delete src;
+	}
+
+	if(font == __nullptr)
+	{
+		throw gcnew System::Exception(Error::GetError());
+	}
+}
+
+NETSDL2::Text::Font::Font(RWops^ src, bool freesrc, int ptsize, long index)
+{
+	font = TTF_OpenFontIndexRW(src->NativeOps, freesrc ? 1 : 0, ptsize, index);
+	if(freesrc)
+	{
+		delete src;
+	}
+
+	if(font == __nullptr)
+	{
+		throw gcnew System::Exception(Error::GetError());
+	}
+}
+
+NETSDL2::Text::Font::Font(RWops^ src, bool freesrc, int ptsize)
+{
+	font = TTF_OpenFontRW(src->NativeOps, freesrc ? 1 : 0, ptsize);
+	if(freesrc)
+	{
+		delete src;
+	}
+
+	if(font == __nullptr)
+	{
+		throw gcnew System::Exception(Error::GetError());
+	}
+}
+
 NETSDL2::Text::Font::~Font()
 {
 	this->!Font();
@@ -137,4 +204,196 @@ Result<None^, None^> NETSDL2::Text::Font::Measure(System::String^ text, int meas
 	extent = ex;
 	count = cnt;
 	return None::Value;
+}
+
+Result<Surface^, None^> NETSDL2::Text::Font::RenderGlyph32Blended(Uint32 ch, NETSDL2::Video::Color fg)
+{
+	SDL_Surface* surface = TTF_RenderGlyph32_Blended(font, ch, *((SDL_Color*)&fg));
+	if(surface == __nullptr)
+	{
+		return Result<Surface^, None^>::MakeFailure(None::Value);
+	}
+
+	return gcnew Surface(surface, true);
+}
+
+Result<Surface^, None^> NETSDL2::Text::Font::RenderGlyph32LCD(Uint32 ch, NETSDL2::Video::Color fg, NETSDL2::Video::Color bg)
+{
+	SDL_Surface* surface = TTF_RenderGlyph32_LCD(font, ch, *((SDL_Color*)&fg), *((SDL_Color*)&bg));
+	if(surface == __nullptr)
+	{
+		return Result<Surface^, None^>::MakeFailure(None::Value);
+	}
+
+	return gcnew Surface(surface, true);
+}
+
+Result<Surface^, None^> NETSDL2::Text::Font::RenderGlyph32Shaded(Uint32 ch, NETSDL2::Video::Color fg, NETSDL2::Video::Color bg)
+{
+	SDL_Surface* surface = TTF_RenderGlyph32_Shaded(font, ch, *((SDL_Color*)&fg), *((SDL_Color*)&bg));
+	if(surface == __nullptr)
+	{
+		return Result<Surface^, None^>::MakeFailure(None::Value);
+	}
+
+	return gcnew Surface(surface, true);
+}
+
+Result<Surface^, None^> NETSDL2::Text::Font::RenderGlyph32Solid(Uint32 ch, NETSDL2::Video::Color fg)
+{
+	SDL_Surface* surface = TTF_RenderGlyph32_Solid(font, ch, *((SDL_Color*)&fg));
+	if(surface == __nullptr)
+	{
+		return Result<Surface^, None^>::MakeFailure(None::Value);
+	}
+
+	return gcnew Surface(surface, true);
+}
+
+Result<Surface^, None^> NETSDL2::Text::Font::RenderGlyphBlended(Uint16 ch, NETSDL2::Video::Color fg)
+{
+	SDL_Surface* surface = TTF_RenderGlyph_Blended(font, ch, *((SDL_Color*)&fg));
+	if(surface == __nullptr)
+	{
+		return Result<Surface^, None^>::MakeFailure(None::Value);
+	}
+
+	return gcnew Surface(surface, true);
+}
+
+Result<Surface^, None^> NETSDL2::Text::Font::RenderGlyphLCD(Uint16 ch, NETSDL2::Video::Color fg, NETSDL2::Video::Color bg)
+{
+	SDL_Surface* surface = TTF_RenderGlyph_LCD(font, ch, *((SDL_Color*)&fg), *((SDL_Color*)&bg));
+	if(surface == __nullptr)
+	{
+		return Result<Surface^, None^>::MakeFailure(None::Value);
+	}
+
+	return gcnew Surface(surface, true);
+}
+
+Result<Surface^, None^> NETSDL2::Text::Font::RenderGlyphShaded(Uint16 ch, NETSDL2::Video::Color fg, NETSDL2::Video::Color bg)
+{
+	SDL_Surface* surface = TTF_RenderGlyph_Shaded(font, ch, *((SDL_Color*)&fg), *((SDL_Color*)&bg));
+	if(surface == __nullptr)
+	{
+		return Result<Surface^, None^>::MakeFailure(None::Value);
+	}
+
+	return gcnew Surface(surface, true);
+}
+
+Result<Surface^, None^> NETSDL2::Text::Font::RenderGlyphSolid(Uint16 ch, NETSDL2::Video::Color fg)
+{
+	SDL_Surface* surface = TTF_RenderGlyph_Solid(font, ch, *((SDL_Color*)&fg));
+	if(surface == __nullptr)
+	{
+		return Result<Surface^, None^>::MakeFailure(None::Value);
+	}
+
+	return gcnew Surface(surface, true);
+}
+
+Result<Surface^, None^> NETSDL2::Text::Font::RenderTextBlended(System::String^ text, NETSDL2::Video::Color fg)
+{
+	StringMarshal context;
+
+	SDL_Surface* surface = TTF_RenderUTF8_Blended(font, context.ManagedToUTF8Native(text), *((SDL_Color*)&fg));
+	if(surface == __nullptr)
+	{
+		return Result<Surface^, None^>::MakeFailure(None::Value);
+	}
+
+	return gcnew Surface(surface, true);
+}
+
+Result<Surface^, None^> NETSDL2::Text::Font::RenderTextBlendedWrapped(System::String^ text, NETSDL2::Video::Color fg, Uint32 wrapLength)
+{
+	StringMarshal context;
+
+	SDL_Surface* surface = TTF_RenderUTF8_Blended_Wrapped(font, context.ManagedToUTF8Native(text), *((SDL_Color*)&fg), wrapLength);
+	if(surface == __nullptr)
+	{
+		return Result<Surface^, None^>::MakeFailure(None::Value);
+	}
+
+	return gcnew Surface(surface, true);
+}
+
+Result<Surface^, None^> NETSDL2::Text::Font::RenderTextLCD(System::String^ text, NETSDL2::Video::Color fg, NETSDL2::Video::Color bg)
+{
+	StringMarshal context;
+
+	SDL_Surface* surface = TTF_RenderUTF8_LCD(font, context.ManagedToUTF8Native(text), *((SDL_Color*)&fg), *((SDL_Color*)&bg));
+	if(surface == __nullptr)
+	{
+		return Result<Surface^, None^>::MakeFailure(None::Value);
+	}
+
+	return gcnew Surface(surface, true);
+}
+
+Result<Surface^, None^> NETSDL2::Text::Font::RenderTextLCDWrapped(System::String^ text, NETSDL2::Video::Color fg, NETSDL2::Video::Color bg, Uint32 wrapLength)
+{
+	StringMarshal context;
+
+	SDL_Surface* surface = TTF_RenderUTF8_LCD_Wrapped(font, context.ManagedToUTF8Native(text), *((SDL_Color*)&fg), *((SDL_Color*)&bg), wrapLength);
+	if(surface == __nullptr)
+	{
+		return Result<Surface^, None^>::MakeFailure(None::Value);
+	}
+
+	return gcnew Surface(surface, true);
+}
+
+Result<Surface^, None^> NETSDL2::Text::Font::RenderTextShaded(System::String^ text, NETSDL2::Video::Color fg, NETSDL2::Video::Color bg)
+{
+	StringMarshal context;
+
+	SDL_Surface* surface = TTF_RenderUTF8_Shaded(font, context.ManagedToUTF8Native(text), *((SDL_Color*)&fg), *((SDL_Color*)&bg));
+	if(surface == __nullptr)
+	{
+		return Result<Surface^, None^>::MakeFailure(None::Value);
+	}
+
+	return gcnew Surface(surface, true);
+}
+
+Result<Surface^, None^> NETSDL2::Text::Font::RenderTextShadedWrapped(System::String^ text, NETSDL2::Video::Color fg, NETSDL2::Video::Color bg, Uint32 wrapLength)
+{
+	StringMarshal context;
+
+	SDL_Surface* surface = TTF_RenderUTF8_Shaded_Wrapped(font, context.ManagedToUTF8Native(text), *((SDL_Color*)&fg), *((SDL_Color*)&bg), wrapLength);
+	if(surface == __nullptr)
+	{
+		return Result<Surface^, None^>::MakeFailure(None::Value);
+	}
+
+	return gcnew Surface(surface, true);
+}
+
+Result<Surface^, None^> NETSDL2::Text::Font::RenderTextSolid(System::String^ text, NETSDL2::Video::Color fg)
+{
+	StringMarshal context;
+
+	SDL_Surface* surface = TTF_RenderUTF8_Solid(font, context.ManagedToUTF8Native(text), *((SDL_Color*)&fg));
+	if(surface == __nullptr)
+	{
+		return Result<Surface^, None^>::MakeFailure(None::Value);
+	}
+
+	return gcnew Surface(surface, true);
+}
+
+Result<Surface^, None^> NETSDL2::Text::Font::RenderTextSolidWrapped(System::String^ text, NETSDL2::Video::Color fg, Uint32 wrapLength)
+{
+	StringMarshal context;
+
+	SDL_Surface* surface = TTF_RenderUTF8_Solid_Wrapped(font, context.ManagedToUTF8Native(text), *((SDL_Color*)&fg), wrapLength);
+	if(surface == __nullptr)
+	{
+		return Result<Surface^, None^>::MakeFailure(None::Value);
+	}
+
+	return gcnew Surface(surface, true);
 }

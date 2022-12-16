@@ -17,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Abalone Smile.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Alice.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

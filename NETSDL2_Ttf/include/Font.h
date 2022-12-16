@@ -16,6 +16,8 @@ namespace NETSDL2
 	namespace Text
 	{
 		using namespace NETSDL2::Core;
+		using namespace NETSDL2::IO;
+		using namespace NETSDL2::Video;
 
 		/// <summary>
 		/// TTF font information
@@ -35,6 +37,72 @@ namespace NETSDL2
 			/// <exception cref="System::Exception">Thrown when failed creation.
 			/// </exception>
 			Font(System::String^ file, int ptsize);
+
+			/// <summary>
+			/// Create a font from a file, using target resolutions (in DPI).
+			/// </summary>
+			/// <param name="file">Path to font file.</param>
+			/// <param name="ptsize">Point size to use for the newly-opened font.
+			/// </param>
+			/// <param name="hdpi">The target horizontal DPI.</param>
+			/// <param name="vdpi">The target vertical DPI.</param>
+			/// <exception cref="System::Exception">Thrown when failed creation.
+			/// </exception>
+			Font(System::String^ file, int ptsize, unsigned int hdpi, unsigned int vdpi);
+
+			/// <summary>
+			/// Opens a font from an RWops with target resolutions (in DPI).
+			/// </summary>
+			/// <param name="src">A RWops to provide a font file's data.</param>
+			/// <param name="freesrc">true to close the RWops before returning, false to
+			/// leave it open.</param>
+			/// <param name="ptsize">Point size to use for the newly-opened font.
+			/// </param>
+			/// <param name="hdpi">The target horizontal DPI.</param>
+			/// <param name="vdpi">The target vertical DPI.</param>
+			/// <exception cref="System::Exception">Thrown when failed creation.
+			/// </exception>
+			Font(RWops^ src, bool freesrc, int ptsize, unsigned int hdpi, unsigned int vdpi);
+
+			/// <summary>
+			/// Opens a font from an RWops with target resolutions (in DPI).
+			/// </summary>
+			/// <param name="src">A RWops to provide a font file's data.</param>
+			/// <param name="freesrc">true to close the RWops before returning, false to
+			/// leave it open.</param>
+			/// <param name="ptsize">Point size to use for the newly-opened font.
+			/// </param>
+			/// <param name="index">Index of the face in the font file.</param>
+			/// <param name="hdpi">The target horizontal DPI.</param>
+			/// <param name="vdpi">The target vertical DPI.</param>
+			/// <exception cref="System::Exception">Thrown when failed creation.
+			/// </exception>
+			Font(RWops^ src, bool freesrc, int ptsize, long index, unsigned int hdpi, unsigned int vdpi);
+
+			/// <summary>
+			/// Create a font from an RWops, using a specified face index.
+			/// </summary>
+			/// <param name="src">A RWops to provide a font file's data.</param>
+			/// <param name="freesrc">true to close the RWops before returning, false to
+			/// leave it open.</param>
+			/// <param name="ptsize">Point size to use for the newly-opened font.
+			/// </param>
+			/// <param name="index">Index of the face in the font file.</param>
+			/// <exception cref="System::Exception">Thrown when failed creation.
+			/// </exception>
+			Font(RWops^ src, bool freesrc, int ptsize, long index);
+
+			/// <summary>
+			/// Create a font from an RWops, using a specified point size.
+			/// </summary>
+			/// <param name="src">A RWops to provide a font file's data.</param>
+			/// <param name="freesrc">true to close the RWops before returning, false to
+			/// leave it open.</param>
+			/// <param name="ptsize">Point size to use for the newly-opened font.
+			/// </param>
+			/// <exception cref="System::Exception">Thrown when failed creation.
+			/// </exception>
+			Font(RWops^ src, bool freesrc, int ptsize);
 
 			~Font();
 			!Font();
@@ -193,6 +261,162 @@ namespace NETSDL2
 			/// can be rendered.</param>
 			/// <returns>Success or Failure on error.</returns>
 			Result<None^, None^> Measure(System::String^ text, int measureWidth, [Out]int% extent, [Out]int% count);
+
+			/// <summary>
+			/// Render a single 32-bit glyph at high quality to a new ARGB surface.
+			/// </summary>
+			/// <param name="ch">The character to render.</param>
+			/// <param name="fg">The foreground color for the text.</param>
+			/// <returns>A new 32-bit, ARGB surface, or None if there was an error.
+			/// </returns>
+			Result<Surface^, None^> RenderGlyph32Blended(Uint32 ch, NETSDL2::Video::Color fg);
+
+			/// <summary>
+			/// Render a single 32-bit glyph at LCD subpixel quality to a new ARGB
+			/// surface.
+			/// </summary>
+			/// <param name="ch">The character to render.</param>
+			/// <param name="fg">The foreground color for the text.</param>
+			/// <param name="bg">The background color for the text.</param>
+			/// <returns>A new 32-bit, ARGB surface, or None if there was an error.
+			/// </returns>
+			Result<Surface^, None^> RenderGlyph32LCD(Uint32 ch, NETSDL2::Video::Color fg, NETSDL2::Video::Color bg);
+
+			/// <summary>
+			/// Render a single 32-bit glyph at high quality to a new 8-bit surface.
+			/// </summary>
+			/// <param name="ch">The character to render.</param>
+			/// <param name="fg">The foreground color for the text.</param>
+			/// <param name="bg">The background color for the text.</param>
+			/// <returns>A new 8-bit, palettized surface, or None if there was an
+			/// error.</returns>
+			Result<Surface^, None^> RenderGlyph32Shaded(Uint32 ch, NETSDL2::Video::Color fg, NETSDL2::Video::Color bg);
+
+			/// <summary>
+			/// Render a single 32-bit glyph at fast quality to a new 8-bit surface.
+			/// <param name="ch">The character to render.</param>
+			/// <param name="fg">The foreground color for the text.</param>
+			/// <returns>A new 8-bit, palettized surface, or None if there was an
+			/// error.</returns>
+			Result<Surface^, None^> RenderGlyph32Solid(Uint32 ch, NETSDL2::Video::Color fg);
+
+			/// <summary>
+			/// Render a single 16-bit glyph at high quality to a new ARGB surface.
+			/// </summary>
+			/// <param name="ch">The character to render.</param>
+			/// <param name="fg">The foreground color for the text.</param>
+			/// <returns>A new 32-bit, ARGB surface, or None if there was an error.
+			/// </returns>
+			Result<Surface^, None^> RenderGlyphBlended(Uint16 ch, NETSDL2::Video::Color fg);
+
+			/// <summary>
+			/// Render a single 16-bit glyph at LCD subpixel quality to a new ARGB
+			/// surface.
+			/// </summary>
+			/// <param name="ch">The character to render.</param>
+			/// <param name="fg">The foreground color for the text.</param>
+			/// <param name="bg">The background color for the text.</param>
+			/// <returns>A new 32-bit, ARGB surface, or None if there was an error.
+			/// </returns>
+			Result<Surface^, None^> RenderGlyphLCD(Uint16 ch, NETSDL2::Video::Color fg, NETSDL2::Video::Color bg);
+
+			/// <summary>
+			/// Render a single 16-bit glyph at high quality to a new 8-bit surface.
+			/// </summary>
+			/// <param name="ch">The character to render.</param>
+			/// <param name="fg">The foreground color for the text.</param>
+			/// <param name="bg">The background color for the text.</param>
+			/// <returns>A new 8-bit, palettized surface, or None if there was an
+			/// error.</returns>
+			Result<Surface^, None^> RenderGlyphShaded(Uint16 ch, NETSDL2::Video::Color fg, NETSDL2::Video::Color bg);
+
+			/// <summary>
+			/// Render a single 16-bit glyph at fast quality to a new 8-bit surface.
+			/// <param name="ch">The character to render.</param>
+			/// <param name="fg">The foreground color for the text.</param>
+			/// <returns>A new 8-bit, palettized surface, or None if there was an
+			/// error.</returns>
+			Result<Surface^, None^> RenderGlyphSolid(Uint16 ch, NETSDL2::Video::Color fg);
+
+			/// <summary>
+			/// Render a text at high quality to a new ARGB surface.
+			/// </summary>
+			/// <param name="text">Text to render.</param>
+			/// <param name="fg">The foreground color for the text.</param>
+			/// <returns>A new 32-bit, ARGB surface, or None if there was an error.
+			/// </returns>
+			Result<Surface^, None^> RenderTextBlended(System::String^ text, NETSDL2::Video::Color fg);
+
+			/// <summary>
+			/// Render word-wrapped text at high quality to a new ARGB surface.
+			/// </summary>
+			/// <param name="text">Text to render.</param>
+			/// <param name="fg">The foreground color for the text.</param>
+			/// <param name="wrapLength">Maximum length of one line in pixels.</param>
+			/// <returns>A new 32-bit, ARGB surface, or None if there was an error.
+			/// </returns>
+			Result<Surface^, None^> RenderTextBlendedWrapped(System::String^ text, NETSDL2::Video::Color fg, Uint32 wrapLength);
+
+			/// <summary>
+			/// Render a text at LCD subpixel quality to a new ARGB
+			/// surface.
+			/// </summary>
+			/// <param name="text">Text to render.</param>
+			/// <param name="fg">The foreground color for the text.</param>
+			/// <param name="bg">The background color for the text.</param>
+			/// <returns>A new 32-bit, ARGB surface, or None if there was an error.
+			/// </returns>
+			Result<Surface^, None^> RenderTextLCD(System::String^ text, NETSDL2::Video::Color fg, NETSDL2::Video::Color bg);
+
+			/// <summary>
+			/// Render word-wrapped text at LCD subpixel quality to a new ARGB
+			/// surface.
+			/// </summary>
+			/// <param name="text">Text to render.</param>
+			/// <param name="fg">The foreground color for the text.</param>
+			/// <param name="bg">The background color for the text.</param>
+			/// <param name="wrapLength">Maximum length of one line in pixels.</param>
+			/// <returns>A new 32-bit, ARGB surface, or None if there was an error.
+			/// </returns>
+			Result<Surface^, None^> RenderTextLCDWrapped(System::String^ text, NETSDL2::Video::Color fg, NETSDL2::Video::Color bg, Uint32 wrapLength);
+
+			/// <summary>
+			/// Render a text at high quality to a new 8-bit surface.
+			/// </summary>
+			/// <param name="text">Text to render.</param>
+			/// <param name="fg">The foreground color for the text.</param>
+			/// <param name="bg">The background color for the text.</param>
+			/// <returns>A new 8-bit, palettized surface, or None if there was an
+			/// error.</returns>
+			Result<Surface^, None^> RenderTextShaded(System::String^ text, NETSDL2::Video::Color fg, NETSDL2::Video::Color bg);
+
+			/// <summary>
+			/// Render word-wrapped text at high quality to a new 8-bit surface.
+			/// </summary>
+			/// <param name="text">Text to render.</param>
+			/// <param name="fg">The foreground color for the text.</param>
+			/// <param name="bg">The background color for the text.</param>
+			/// <param name="wrapLength">Maximum length of one line in pixels.</param>
+			/// <returns>A new 8-bit, palettized surface, or None if there was an
+			/// error.</returns>
+			Result<Surface^, None^> RenderTextShadedWrapped(System::String^ text, NETSDL2::Video::Color fg, NETSDL2::Video::Color bg, Uint32 wrapLength);
+
+			/// <summary>
+			/// Render a text at fast quality to a new 8-bit surface.
+			/// <param name="text">Text to render.</param>
+			/// <param name="fg">The foreground color for the text.</param>
+			/// <returns>A new 8-bit, palettized surface, or None if there was an
+			/// error.</returns>
+			Result<Surface^, None^> RenderTextSolid(System::String^ text, NETSDL2::Video::Color fg);
+
+			/// <summary>
+			/// Render word-wrapped text at fast quality to a new 8-bit surface.
+			/// <param name="text">Text to render.</param>
+			/// <param name="fg">The foreground color for the text.</param>
+			/// <param name="wrapLength">Maximum length of one line in pixels.</param>
+			/// <returns>A new 8-bit, palettized surface, or None if there was an
+			/// error.</returns>
+			Result<Surface^, None^> RenderTextSolidWrapped(System::String^ text, NETSDL2::Video::Color fg, Uint32 wrapLength);
 		};
 	}
 }
