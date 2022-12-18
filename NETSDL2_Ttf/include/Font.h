@@ -5,6 +5,7 @@
 #include "TTFHinting.h"
 #include "TTFStyle.h"
 #include "TTFWrapped.h"
+#include "TTFDirection.h"
 
 #using "NETSDL2.dll" as_friend
 
@@ -93,6 +94,30 @@ namespace NETSDL2
 			Font(RWops^ src, bool freesrc, int ptsize, long index);
 
 			/// <summary>
+			/// Create a font from a file, using a specified face index.
+			/// </summary>
+			/// <param name="file">File path to font file.</param>
+			/// <param name="ptsize">Point size to use for the newly-opened font.
+			/// </param>
+			/// <param name="index">Index of the face in the font file.</param>
+			/// <exception cref="System::Exception">Thrown when failed creation.
+			/// </exception>
+			Font(System::String^ file, int ptsize, long index);
+
+			/// <summary>
+			/// Create a font from a file, using target resolutions (in DPI).
+			/// </summary>
+			/// <param name="file">File path to font file.</param>
+			/// <param name="ptsize">Point size to use for the newly-opened font.
+			/// </param>
+			/// <param name="index">Index of the face in the font file.</param>
+			/// <param name="hdpi">The target horizontal DPI.</param>
+			/// <param name="vdpi">The target vertical DPI.</param>
+			/// <exception cref="System::Exception">Thrown when failed creation.
+			/// </exception>
+			Font(System::String^ file, int ptsize, long index, unsigned int hdpi, unsigned int vdpi);
+
+			/// <summary>
 			/// Create a font from an RWops, using a specified point size.
 			/// </summary>
 			/// <param name="src">A RWops to provide a font file's data.</param>
@@ -172,43 +197,66 @@ namespace NETSDL2
 			}
 
 			/// <summary>
-			/// Query a font's current FreeType hinter setting.
+			/// Get or set a font's current FreeType hinter setting.
 			/// </summary>
 			property TTFHinting Hinting
 			{
 				TTFHinting get();
+				void set(TTFHinting value);
 			}
 
 			/// <summary>
-			/// Query whether or not kerning is allowed for a font.
+			/// Get or set whether or not kerning is allowed for a font.
 			/// </summary>
 			property bool Kerning
 			{
 				bool get();
+				void set(bool value);
 			}
 
 			/// <summary>
-			/// Query a font's current outline.
+			/// Query the kerning size of two 16-bit glyphs.
+			/// </summary>
+			/// <param name="previousCh">The previous character's code, 16 bits.</param>
+			/// <param name="ch">The current character's code, 16 bits.</param>
+			/// <returns>The kerning size between the two specified characters, in pixels, or None on
+			/// error.</returns>
+			Result<int, None^> GetFontKerningSizeGlyphs(Uint16 previousCh, Uint16 ch);
+
+			/// <summary>
+			/// Query the kerning size of two 32-bit glyphs.
+			/// </summary>
+			/// <param name="previousCh">The previous character's code, 32 bits.</param>
+			/// <param name="ch">The current character's code, 32 bits.</param>
+			/// <returns>The kerning size between the two specified characters, in pixels, or None on
+			/// error.</returns>
+			Result<int, None^> GetFontKerningSizeGlyphs32(Uint32 previousCh, Uint32 ch);
+
+			/// <summary>
+			/// Get or set a font's current outline.
 			/// </summary>
 			property int Outline
 			{
 				int get();
+				void set(int value);
 			}
 
 			/// <summary>
-			/// Query a font's current style.
+			/// Get or set a font's current style.
 			/// </summary>
 			property TTFStyle Style
 			{
 				TTFStyle get();
+				void set(TTFStyle value);
 			}
 
 			/// <summary>
-			/// Query a font's current wrap alignment option.
+			/// Get or set a font's current wrap alignment option.
 			/// </summary>
 			property TTFWrapped WrappedAlign
 			{
 				TTFWrapped get();
+				void set(TTFWrapped value);
 			}
 
 			/// <summary>
@@ -417,6 +465,58 @@ namespace NETSDL2
 			/// <returns>A new 8-bit, palettized surface, or None if there was an
 			/// error.</returns>
 			Result<Surface^, None^> RenderTextSolidWrapped(System::String^ text, NETSDL2::Video::Color fg, Uint32 wrapLength);
+
+			/// <summary>
+			/// Set direction to be used for text shaping by a font.
+			/// </summary>
+			/// <param name="direction">Direction the new direction for text to flow.</param>
+			/// <returns>Success or Failure on error.</returns>
+			Result<None^, None^> SetFontDirection(TTFDirection direction);
+
+			/// <summary>
+			/// Set script to be used for text shaping by a font.
+			/// </summary>
+			/// <param name="script">String of exactly 4 characters.</param>
+			/// <returns>Success or Failure on error.</returns>
+			Result<None^, None^> SetFontScriptName(System::String^ script);
+
+			/// <summary>
+			/// Query whether Signed Distance Field rendering is enabled for a font.
+			/// </summary>
+			/// <returns>true if enabled, false otherwise.</returns>
+			bool GetFontSDF();
+
+			/// <summary>
+			/// Enable Signed Distance Field rendering for a font.
+			/// </summary>
+			/// <param name="onOff">true to enable SDF, false to disable.</param>
+			/// <returns>Success or Failure on error.</returns>
+			Result<None^, None^> SetFontSDF(bool onOff);
+
+			/// <summary>
+			/// Set a font's size dynamically.
+			/// </summary>
+			/// <param name="ptsize">The new point size.</param>
+			/// <returns>Success or Failure on error.</returns>
+			Result<None^, None^> SetFontSize(int ptsize);
+
+			/// <summary>
+			/// Set font size dynamically with target resolutions (in DPI).
+			/// </summary>
+			/// <param name="ptsize">The new point size.</param>
+			/// <param name="hdpi">The target horizontal DPI.</param>
+			/// <param name="vdpi">The target vertical DPI.</param>
+			/// <returns>Success or Failure on error.</returns>
+			Result<None^, None^> SetFontSizeDPI(int ptsize, unsigned int hdpi, unsigned int vdpi);
+
+			/// <summary>
+			/// Calculate the dimensions of a rendered text.
+			/// </summary>
+			/// <param name="text">Text to calculate.</param>
+			/// <param name="w">Will be filled with width, in pixels, on return.</param>
+			/// <param name="h">Will be filled with height, in pixels, on return.</param>
+			/// <returns>Success or Failure on error.</returns>
+			Result<None^, None^> Size(System::String^ text, [Out]int% w, [Out]int% h);
 		};
 	}
 }

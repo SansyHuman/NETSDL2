@@ -78,6 +78,22 @@ namespace NETSDL2
 			/// <returns>Success or Failure if SDL_ttf is not compiled with HarfBuzz
 			/// support.</returns>
 			static Result<None^, None^> SetDirection(TTFDirection direction);
+
+			/// <summary>
+			/// Set a global script to be used for text shaping.
+			/// </summary>
+			/// <param name="script"></param>
+			/// <returns>Success or Failure if SDL_ttf is not compiled with HarfBuzz
+			/// support.</returns>
+			static Result<None^, None^> SetScript(int script);
+
+			/// <summary>
+			/// Get the current number of initialization calls
+			/// </summary>
+			static property int WasInit
+			{
+				int get();
+			}
 		};
 	}
 }

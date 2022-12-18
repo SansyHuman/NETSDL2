@@ -60,4 +60,22 @@ Result<None^, None^> NETSDL2::Text::TTF::SetDirection(TTFDirection direction)
 	{
 		return Result<None^, None^>::MakeFailure(None::Value);
 	}
+
+	return None::Value;
+}
+
+Result<None^, None^> NETSDL2::Text::TTF::SetScript(int script)
+{
+	int result = TTF_SetScript(script);
+	if(result < 0)
+	{
+		return Result<None^, None^>::MakeFailure(None::Value);
+	}
+
+	return None::Value;
+}
+
+int NETSDL2::Text::TTF::WasInit::get()
+{
+	return TTF_WasInit();
 }

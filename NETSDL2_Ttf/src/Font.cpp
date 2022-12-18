@@ -67,6 +67,28 @@ NETSDL2::Text::Font::Font(RWops^ src, bool freesrc, int ptsize, long index)
 	}
 }
 
+NETSDL2::Text::Font::Font(System::String^ file, int ptsize, long index)
+{
+	StringMarshal context;
+
+	font = TTF_OpenFontIndex(context.ManagedToUTF8Native(file), ptsize, index);
+	if(font == __nullptr)
+	{
+		throw gcnew System::Exception(Error::GetError());
+	}
+}
+
+NETSDL2::Text::Font::Font(System::String^ file, int ptsize, long index, unsigned int hdpi, unsigned int vdpi)
+{
+	StringMarshal context;
+
+	font = TTF_OpenFontIndexDPI(context.ManagedToUTF8Native(file), ptsize, index, hdpi, vdpi);
+	if(font == __nullptr)
+	{
+		throw gcnew System::Exception(Error::GetError());
+	}
+}
+
 NETSDL2::Text::Font::Font(RWops^ src, bool freesrc, int ptsize)
 {
 	font = TTF_OpenFontRW(src->NativeOps, freesrc ? 1 : 0, ptsize);
@@ -137,9 +159,19 @@ TTFHinting Font::Hinting::get()
 	return (TTFHinting)TTF_GetFontHinting(font);
 }
 
+void Font::Hinting::set(TTFHinting value)
+{
+	TTF_SetFontHinting(font, (int)value);
+}
+
 bool Font::Kerning::get()
 {
 	return TTF_GetFontKerning(font) != 0;
+}
+
+void Font::Kerning::set(bool value)
+{
+	TTF_SetFontKerning(font, value ? 1 : 0);
 }
 
 int Font::Outline::get()
@@ -147,14 +179,51 @@ int Font::Outline::get()
 	return TTF_GetFontOutline(font);
 }
 
+void Font::Outline::set(int value)
+{
+	TTF_SetFontOutline(font, value);
+}
+
 TTFStyle Font::Style::get()
 {
 	return (TTFStyle)TTF_GetFontStyle(font);
 }
 
+void Font::Style::set(TTFStyle value)
+{
+	TTF_SetFontStyle(font, (int)value);
+}
+
 TTFWrapped Font::WrappedAlign::get()
 {
 	return (TTFWrapped)TTF_GetFontWrappedAlign(font);
+}
+
+void Font::WrappedAlign::set(TTFWrapped value)
+{
+	TTF_SetFontWrappedAlign(font, (int)value);
+}
+
+Result<int, None^> NETSDL2::Text::Font::GetFontKerningSizeGlyphs(Uint16 previousCh, Uint16 ch)
+{
+	int result = TTF_GetFontKerningSizeGlyphs(font, previousCh, ch);
+	if(result < 0)
+	{
+		return Result<int, None^>::MakeFailure(None::Value);
+	}
+
+	return result;
+}
+
+Result<int, None^> NETSDL2::Text::Font::GetFontKerningSizeGlyphs32(Uint32 previousCh, Uint32 ch)
+{
+	int result = TTF_GetFontKerningSizeGlyphs32(font, previousCh, ch);
+	if(result < 0)
+	{
+		return Result<int, None^>::MakeFailure(None::Value);
+	}
+
+	return result;
 }
 
 bool NETSDL2::Text::Font::GlyphIsProvided(Uint16 ch)
@@ -396,4 +465,81 @@ Result<Surface^, None^> NETSDL2::Text::Font::RenderTextSolidWrapped(System::Stri
 	}
 
 	return gcnew Surface(surface, true);
+}
+
+Result<None^, None^> NETSDL2::Text::Font::SetFontDirection(TTFDirection direction)
+{
+	int result = TTF_SetFontDirection(font, (TTF_Direction)direction);
+	if(result < 0)
+	{
+		return Result<None^, None^>::MakeFailure(None::Value);
+	}
+
+	return None::Value;
+}
+
+Result<None^, None^> NETSDL2::Text::Font::SetFontScriptName(System::String^ script)
+{
+	StringMarshal context;
+	int result = TTF_SetFontScriptName(font, context.ManagedToUTF8Native(script));
+	if(result < 0)
+	{
+		return Result<None^, None^>::MakeFailure(None::Value);
+	}
+
+	return None::Value;
+}
+
+bool NETSDL2::Text::Font::GetFontSDF()
+{
+	return TTF_GetFontSDF(font) == SDL_TRUE;
+}
+
+Result<None^, None^> NETSDL2::Text::Font::SetFontSDF(bool onOff)
+{
+	int result = TTF_SetFontSDF(font, onOff ? SDL_TRUE : SDL_FALSE);
+	if(result < 0)
+	{
+		return Result<None^, None^>::MakeFailure(None::Value);
+	}
+
+	return None::Value;
+}
+
+Result<None^, None^> NETSDL2::Text::Font::SetFontSize(int ptsize)
+{
+	int result = TTF_SetFontSize(font, ptsize);
+	if(result < 0)
+	{
+		return Result<None^, None^>::MakeFailure(None::Value);
+	}
+
+	return None::Value;
+}
+
+Result<None^, None^> NETSDL2::Text::Font::SetFontSizeDPI(int ptsize, unsigned int hdpi, unsigned int vdpi)
+{
+	int result = TTF_SetFontSizeDPI(font, ptsize, hdpi, vdpi);
+	if(result < 0)
+	{
+		return Result<None^, None^>::MakeFailure(None::Value);
+	}
+
+	return None::Value;
+}
+
+Result<None^, None^> NETSDL2::Text::Font::Size(System::String^ text, int% w, int% h)
+{
+	StringMarshal context;
+
+	int width = 0, height = 0;
+	int result = TTF_SizeUTF8(font, context.ManagedToUTF8Native(text), &width, &height);
+	if(result < 0)
+	{
+		return Result<None^, None^>::MakeFailure(None::Value);
+	}
+
+	w = width;
+	h = height;
+	return None::Value;
 }

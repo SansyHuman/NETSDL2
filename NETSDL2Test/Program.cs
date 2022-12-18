@@ -43,7 +43,8 @@ MixerInitFlags mixerFlags = Mixer.Init(
     );
 
 _ = TTF.Init().ResultValue;
-
+TTF.GetFreeTypeVersion(out int fmajor, out int fminor, out int fpatch);
+TTF.GetHarfBuzzVersion(out int hmajor, out int hminor, out int hpatch);
 Font abaloneSmile = new Font("Abalone Smile.ttf", 15);
 
 SharedObject user32 = new SharedObject("user32.dll");
