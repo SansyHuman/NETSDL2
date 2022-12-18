@@ -6,6 +6,7 @@ using NETSDL2.Audio;
 using NETSDL2.Haptic;
 using NETSDL2.Image;
 using NETSDL2.Text;
+using NETSDL2.Net;
 
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -46,6 +47,14 @@ _ = TTF.Init().ResultValue;
 TTF.GetFreeTypeVersion(out int fmajor, out int fminor, out int fpatch);
 TTF.GetHarfBuzzVersion(out int hmajor, out int hminor, out int hpatch);
 Font abaloneSmile = new Font("Abalone Smile.ttf", 15);
+
+IPAddress address = new IPAddress()
+{
+    Host = 0xFFA20001,
+    Port = 1990
+};
+address = new IPAddress(IPAddress.None, 1);
+address = new IPAddress(128, 120, 3, 42, 2555);
 
 SharedObject user32 = new SharedObject("user32.dll");
 IntPtr getcursor = user32.LoadFunction("GetCursor");
