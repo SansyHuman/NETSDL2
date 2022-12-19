@@ -48,13 +48,20 @@ TTF.GetFreeTypeVersion(out int fmajor, out int fminor, out int fpatch);
 TTF.GetHarfBuzzVersion(out int hmajor, out int hminor, out int hpatch);
 Font abaloneSmile = new Font("Abalone Smile.ttf", 15);
 
+_ = SDLNet.Init();
+
 IPAddress address = new IPAddress()
 {
     Host = 0xFFA20001,
     Port = 1990
 };
-address = new IPAddress(IPAddress.None, 1);
+address = new IPAddress(IPAddress.Loopback, 8080);
 address = new IPAddress(128, 120, 3, 42, 2555);
+address = new IPAddress("www.naver.com", 443);
+string naverIP = address.ToString();
+string addrDomain = address.ResolveIP();
+IPAddress[] addresses = new IPAddress[10];
+int addrCnt = IPAddress.GetLocalAddresses(addresses, 4);
 
 SharedObject user32 = new SharedObject("user32.dll");
 IntPtr getcursor = user32.LoadFunction("GetCursor");

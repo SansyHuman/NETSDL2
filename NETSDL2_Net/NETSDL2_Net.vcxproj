@@ -137,7 +137,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="src\IGenericSocket.cpp" />
     <ClCompile Include="src\IPAddress.cpp" />
+    <ClCompile Include="src\SDLNet.cpp" />
+    <ClCompile Include="src\SocketSet.cpp" />
+    <ClCompile Include="src\TCPSocket.cpp" />
+    <ClCompile Include="src\UDPPacket.cpp" />
+    <ClCompile Include="src\UDPSocket.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\..\SDL2_net-2.2.0\lib\x64\SDL2_net.dll">
@@ -147,9 +153,13 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\IGenericSocket.h" />
     <ClInclude Include="include\IPAddress.h" />
     <ClInclude Include="include\SDLNet.h" />
-    <ClInclude Include="src\SDLNet.cpp" />
+    <ClInclude Include="include\SocketSet.h" />
+    <ClInclude Include="include\TCPSocket.h" />
+    <ClInclude Include="include\UDPPacket.h" />
+    <ClInclude Include="include\UDPSocket.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

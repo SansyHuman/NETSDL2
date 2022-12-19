@@ -21,6 +21,24 @@
     <ClCompile Include="src\IPAddress.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="src\SDLNet.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TCPSocket.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UDPPacket.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UDPSocket.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IGenericSocket.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SocketSet.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="..\..\SDL2_net-2.2.0\lib\x64\SDL2_net.dll">
@@ -28,13 +46,25 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\IPAddress.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="include\SDLNet.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="src\SDLNet.cpp">
-      <Filter>소스 파일</Filter>
+    <ClInclude Include="include\TCPSocket.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\IPAddress.h">
+    <ClInclude Include="include\UDPPacket.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UDPSocket.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IGenericSocket.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SocketSet.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

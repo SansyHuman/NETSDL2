@@ -67,6 +67,14 @@ namespace NETSDL2
 			/// </summary>
 			/// <returns>The hostname or None if the IP could not be resolved.</returns>
 			Result<System::String^, NETSDL2::Core::None^> ResolveIP();
+
+			/// <summary>
+			/// Get the addresses of network interfaces on this system.
+			/// </summary>
+			/// <param name="addresses">Where to store the returned information.</param>
+			/// <param name="offset">Offset of the array to store the addresses.</param>
+			/// <returns>The number of addresses saved in `addresses`.</returns>
+			static int GetLocalAddresses(array<IPAddress>^ addresses, int offset);
 		};
 
 	}
