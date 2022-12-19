@@ -12,12 +12,30 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using NETSDL2.Systems;
 using System.Runtime.CompilerServices;
+using System.Text;
 
 Hint.ClearHints();
 
+FunctionPointer<HintCallback> renderScaleWatcher;
+unsafe
+{
+    renderScaleWatcher = new FunctionPointer<HintCallback>((userdata, name, prev, curr) =>
+    {
+        string Name = Marshal.PtrToStringUTF8(new IntPtr(name));
+        string Prev = Marshal.PtrToStringUTF8(new IntPtr(prev));
+        string Curr = Marshal.PtrToStringUTF8(new IntPtr(curr));
+
+        Console.WriteLine("{0}({1}): {2} -> {3}", Name, userdata.ToInt64(), Prev, Curr);
+    });
+}
+
+Hint.AddHintCallback(SDLHint.H_RENDER_SCALE_QUALITY, renderScaleWatcher, new IntPtr(5752));
 Console.WriteLine("{0}", Hint.GetHint(SDLHint.H_RENDER_SCALE_QUALITY));
 Console.WriteLine("{0}", Hint.SetHint(SDLHint.H_RENDER_SCALE_QUALITY, "linear"));
 Console.WriteLine("{0}", Hint.GetHint(SDLHint.H_RENDER_SCALE_QUALITY));
+Console.WriteLine("{0}", Hint.SetHint(SDLHint.H_RENDER_SCALE_QUALITY, "nearest"));
+Hint.DelHintCallback(SDLHint.H_RENDER_SCALE_QUALITY, renderScaleWatcher, new IntPtr(5752));
+Console.WriteLine("{0}", Hint.SetHint(SDLHint.H_RENDER_SCALE_QUALITY, "linear"));
 Console.WriteLine("{0}", Hint.SetHintWithPriority(SDLHint.H_RENDER_SCALE_QUALITY, "best", HintPriority.Default));
 Console.WriteLine("{0}", Hint.GetHint(SDLHint.H_RENDER_SCALE_QUALITY));
 Console.WriteLine("{0}", Hint.SetHintWithPriority(SDLHint.H_RENDER_SCALE_QUALITY, "best", HintPriority.Override));

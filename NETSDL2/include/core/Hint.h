@@ -4,6 +4,7 @@
 
 #include "../../include/core/None.h"
 #include "../../include/core/Result.h"
+#include "../../include/core/FunctionPointer.h"
 
 namespace NETSDL2
 {
@@ -21,7 +22,7 @@ namespace NETSDL2
 		internal:
 			System::String^ name;
 
-		private:
+		public:
 			SDLHint(System::String^ name);
 
 		public:
@@ -2304,6 +2305,16 @@ namespace NETSDL2
 		};
 
 		/// <summary>
+		/// The hint callback function.
+		/// </summary>
+		/// <param name="userdata">What was passed as `userdata`.</param>
+		/// <param name="name">What was passed as `name`.</param>
+		/// <param name="oldValue">The previous hint value.</param>
+		/// <param name="newValue">The new value hint is to be set to.</param>
+		[UnmanagedFunctionPointer(CallingConvention::Cdecl)]
+		public delegate void HintCallback(System::IntPtr userdata, char* name, char* oldValue, char* newValue);
+
+		/// <summary>
 		/// Functions to set and get configuration hints.
 		/// </summary>
 		public ref struct Hint abstract sealed
@@ -2332,6 +2343,24 @@ namespace NETSDL2
 			/// <returns>The boolean value of a hint or the provided default
 			/// value if the hint does not exist.</returns>
 			static bool GetHintBoolean(SDLHint name, bool defaultValue);
+
+			/// <summary>
+			/// Add a function to watch a particular hint.
+			/// </summary>
+			/// <param name="name">The hint to watch</param>
+			/// <param name="callback">Callback function that will be called when the hint value changes.
+			/// </param>
+			/// <param name="userdata">A pointer to pass to the callback function.</param>
+			static void AddHintCallback(SDLHint name, FunctionPointer<HintCallback^>^ callback, System::IntPtr userdata);
+
+			/// <summary>
+			/// Remove a function watching a particular hint.
+			/// </summary>
+			/// <param name="name">The hint being watched.</param>
+			/// <param name="callback">Callback function that will be called when the hint value changes.
+			/// </param>
+			/// <param name="userdata">A pointer being passed to the callback function.</param>
+			static void DelHintCallback(SDLHint name, FunctionPointer<HintCallback^>^ callback, System::IntPtr userdata);
 
 			/// <summary>
 			/// Reset a hint to the default value.

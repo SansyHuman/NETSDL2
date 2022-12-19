@@ -40,6 +40,20 @@ bool NETSDL2::Core::Hint::GetHintBoolean(SDLHint name, bool defaultValue)
 	return SDL_GetHintBoolean(context.ManagedToUTF8Native(name.name), defaultValue ? SDL_TRUE : SDL_FALSE) == SDL_TRUE;
 }
 
+void NETSDL2::Core::Hint::AddHintCallback(SDLHint name, FunctionPointer<HintCallback^>^ callback, System::IntPtr userdata)
+{
+	StringMarshal context;
+
+	SDL_AddHintCallback(context.ManagedToUTF8Native(name.name), (SDL_HintCallback)callback->Pointer.ToPointer(), userdata.ToPointer());
+}
+
+void NETSDL2::Core::Hint::DelHintCallback(SDLHint name, FunctionPointer<HintCallback^>^ callback, System::IntPtr userdata)
+{
+	StringMarshal context;
+
+	SDL_DelHintCallback(context.ManagedToUTF8Native(name.name), (SDL_HintCallback)callback->Pointer.ToPointer(), userdata.ToPointer());
+}
+
 bool NETSDL2::Core::Hint::ResetHint(SDLHint name)
 {
 	StringMarshal context;
