@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NETSDL2\NETSDL2.vcxproj" />
+    <ProjectReference Include="..\NETSDL2_Image\NETSDL2_Image.vcxproj" />
+    <ProjectReference Include="..\NETSDL2_mixer\NETSDL2_mixer.vcxproj" />
+    <ProjectReference Include="..\NETSDL2_Net\NETSDL2_Net.vcxproj" />
+    <ProjectReference Include="..\NETSDL2_Ttf\NETSDL2_Ttf.vcxproj" />
+  </ItemGroup>
+
+</Project>

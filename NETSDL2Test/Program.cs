@@ -81,6 +81,16 @@ string addrDomain = address.ResolveIP();
 IPAddress[] addresses = new IPAddress[10];
 int addrCnt = IPAddress.GetLocalAddresses(addresses, 4);
 
+NETSDL2.Systems.Buffer unalignedBuff = new NETSDL2.Systems.Buffer(54);
+NETSDL2.Systems.Buffer alignedBuff = new NETSDL2.Systems.Buffer(13, 8, true);
+unalignedBuff.ResizeBuffer(35);
+alignedBuff.ResizeBuffer(78);
+
+BufferView<int> bufferView = unalignedBuff.CreateBufferView<int>();
+FloatBufferView floatView = bufferView;
+BufferView<float> floatView2 = floatView;
+BufferView<ulong> ulongView = floatView2.Transform<ulong>();
+
 SharedObject user32 = new SharedObject("user32.dll");
 IntPtr getcursor = user32.LoadFunction("GetCursor");
 
