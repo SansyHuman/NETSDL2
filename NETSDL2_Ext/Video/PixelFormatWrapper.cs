@@ -59,7 +59,7 @@ namespace NETSDL2.Video
             GC.SuppressFinalize(this);
         }
 
-        public static implicit operator PixelFormat*(PixelFormatWrapper wrapper)
+        public static explicit operator PixelFormat*(PixelFormatWrapper wrapper)
         {
             return wrapper.format;
         }

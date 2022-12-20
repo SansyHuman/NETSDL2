@@ -59,7 +59,7 @@ namespace NETSDL2.Video
             GC.SuppressFinalize(this);
         }
 
-        public static implicit operator Palette*(PaletteWrapper wrapper)
+        public static explicit operator Palette*(PaletteWrapper wrapper)
         {
             return wrapper.palette;
         }

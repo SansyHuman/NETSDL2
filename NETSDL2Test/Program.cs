@@ -1013,18 +1013,18 @@ unsafe
         {
             Logging.LogInfo(LogCategory.Application, "Calc gamma: {0}", Pixels.CalculateGammaRamp(0.3f, redGamma));
 
-            uint rgb = Pixels.MapRGB(format, 250, 120, 128);
-            uint rgba = Pixels.MapRGBA(format, 102, 25, 59, 128);
-            Pixels.GetRGB(rgb, format, out r, out g, out b);
-            Pixels.GetRGBA(rgba, format, out r, out g, out b, out a);
+            uint rgb = PixelsExt.MapRGB(format, 250, 120, 128);
+            uint rgba = PixelsExt.MapRGBA(format, 102, 25, 59, 128);
+            PixelsExt.GetRGB(rgb, format, out r, out g, out b);
+            PixelsExt.GetRGBA(rgba, format, out r, out g, out b, out a);
 
             bool converted = Pixels.PixelFormatEnumToMasks(PixelFormatEnum.BGRA5551, out int bpp, out uint rmask, out uint gmask, out uint bmask, out uint amask);
             PixelFormatEnum formatEnum = Pixels.MasksToPixelFormatEnum(bpp, rmask, gmask, bmask, amask);
 
-            Logging.LogInfo(LogCategory.Application, "Set palete color: {0}", Pixels.SetPaletteColors(palette, 1, new Color(100, 20, 20, 50)));
+            Logging.LogInfo(LogCategory.Application, "Set palete color: {0}", PixelsExt.SetPaletteColors(palette, 1, new Color(100, 20, 20, 50)));
             Logging.LogInfo(LogCategory.Application, "{0}", (*palette.Palette)[1]);
 
-            Logging.LogInfo(LogCategory.Application, "Set pixel palette: {0}", Pixels.SetPixelFormatPalette(format, palette));
+            Logging.LogInfo(LogCategory.Application, "Set pixel palette: {0}", PixelsExt.SetPixelFormatPalette(format, palette));
             Logging.LogInfo(LogCategory.Application, "{0}", Error.GetError());
 
             Surface blitSurf = new Surface(16, 16, 32, PixelFormatEnum.BGRA8888);
