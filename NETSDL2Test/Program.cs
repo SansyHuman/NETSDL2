@@ -14,6 +14,15 @@ using NETSDL2.Systems;
 using System.Runtime.CompilerServices;
 using System.Text;
 
+string helloWorld = "Hello world!";
+
+ManagedObjectPointer<string> strPtr = new ManagedObjectPointer<string>(helloWorld);
+IntPtr ptr = strPtr.GetPointer().GetResultOr(IntPtr.Zero);
+string helloWorld2 = ManagedObjectPointer<string>.GetObject(ptr).GetResultOr(string.Empty);
+strPtr.Dispose();
+IntPtr ptr2 = strPtr.GetPointer().GetResultOr(IntPtr.Zero);
+helloWorld2 = ManagedObjectPointer<string>.GetObject(ptr).GetResultOr(string.Empty);
+
 Hint.ClearHints();
 
 FunctionPointer<HintCallback> renderScaleWatcher;
@@ -41,12 +50,14 @@ Console.WriteLine("{0}", Hint.GetHint(SDLHint.H_RENDER_SCALE_QUALITY));
 Console.WriteLine("{0}", Hint.SetHintWithPriority(SDLHint.H_RENDER_SCALE_QUALITY, "best", HintPriority.Override));
 Console.WriteLine("{0}", Hint.GetHint(SDLHint.H_RENDER_SCALE_QUALITY));
 
-var result = SDL.Init(SubSystems.Everything);
-if(result.ResultType == Result<None, int>.Type.Failed)
+var result = SDL.Init(SubSystems.Everything).MapErr(f => None.Value);
+if(result.IsFailure)
 {
     Console.WriteLine("Failed to initialize SDL.");
     return;
 }
+
+Size size = new Size(5, 4);
 
 _ = HIDAPI.Init().ResultValue;
 var usbDevices = HIDAPI.Enumerate(0, 0);
@@ -276,7 +287,7 @@ None resultVarer = result;
 
 string controllerMap = GameController.MappingForIndex(0);
 
-result = Video.Init(null);
+result = Video.Init(null).MapErr(f => None.Value);
 Console.WriteLine("Video init: {0}", result);
 
 Console.WriteLine("Base path: {0}", Filesystem.GetBasePath());
@@ -457,7 +468,7 @@ Logging.LogInfo(LogCategory.Application, "MajorVersion: {0}", GL.GetAttribute(GL
 Logging.LogInfo(LogCategory.Application, "Profile: {0}", GL.GetAttribute(GLAttr.ContextProfileMask));
 Logging.LogInfo(LogCategory.Application, "SetAttribute: {0}", GL.SetAttribute(GLAttr.ContextProfileMask, (int)GLProfile.Compatibility));
 Logging.LogInfo(LogCategory.Application, "Profile: {0}", GL.GetAttribute(GLAttr.ContextProfileMask));
-Logging.LogInfo(LogCategory.Application, "Multisample: {0}", GL.GetAttribute(GLAttr.MultisampleBuffers));
+Logging.LogInfo(LogCategory.Application, "Multisample: {0}", GL.GetAttribute(GLAttr.MultisampleBuffers).MapErr(f => None.Value));
 Logging.LogInfo(LogCategory.Application, "SetAttribute: {0}", GL.SetAttribute(GLAttr.MultisampleBuffers, 1));
 Logging.LogInfo(LogCategory.Application, "SetAttribute: {0}", GL.SetAttribute(GLAttr.MultisampleSamples, 4));
 Logging.LogInfo(LogCategory.Application, "SetAttribute: {0}", GL.SetAttribute(GLAttr.ContextFlags, (int)GLContextFlags.Debug));
@@ -761,17 +772,15 @@ Texture texture3 = new Texture(renderer, Pixels.MasksToPixelFormatEnum(16, 0x0f0
 
 Logging.LogInfo(LogCategory.Application, "Texture alpha: {0}", texture.GetTextureAlphaMod());
 Logging.LogInfo(LogCategory.Application, "Texture blend: {0}", texture.GetTextureBlendMode());
-Logging.LogInfo(LogCategory.Application, "Texture color: {0}", texture.GetTextureColorMod(out byte r, out byte g, out byte b));
-Logging.LogInfo(LogCategory.Application, "Texture color: {0}, {1}, {2}", r, g, b);
+Logging.LogInfo(LogCategory.Application, "Texture color: {0}", texture.GetTextureColorMod());
 
 Logging.LogInfo(LogCategory.Application, "Make current: {0}", GL.MakeCurrent(window, context.ResultValue));
 Logging.LogInfo(LogCategory.Application, "Bind: {0}, {1}", GL.BindTexture(texture2, out float texw, out float texh), Error.GetError());
 Logging.LogInfo(LogCategory.Application, "Unbind: {0}, {1}", GL.UnbindTexture(texture2), Error.GetError());
 
-Logging.LogInfo(LogCategory.Application, "Lock texture: {0}", texture3.LockTexture(null, out IntPtr px, out int pt));
-Logging.LogInfo(LogCategory.Application, "Lock texture: {0}, {1}", px, pt);
-Logging.LogInfo(LogCategory.Application, "Lock texture: {0}", texture3.LockTexture(new Rect(100, 100, 50, 50), out px, out pt));
-Logging.LogInfo(LogCategory.Application, "Lock texture: {0}, {1}", px, pt);
+Logging.LogInfo(LogCategory.Application, "Lock texture: {0}", texture3.LockTexture(null));
+Logging.LogInfo(LogCategory.Application, "Lock texture: {0}", texture3.LockTexture(new Rect(100, 100, 50, 50)));
+
 texture3.UnlockTexture();
 Logging.LogInfo(LogCategory.Application, "Query texture: {0}", texture2.QueryTexture(out PixelFormatEnum pixelFormat, out TextureAccess texAccess, out w, out h));
 Logging.LogInfo(LogCategory.Application, "Query texture: {0}, {1}, {2}, {3}", pixelFormat, texAccess, w, h);
@@ -780,11 +789,9 @@ Logging.LogInfo(LogCategory.Application, "Renderer blend: {0}", renderer.GetDraw
 Logging.LogInfo(LogCategory.Application, "Set renderer blend: {0}", renderer.SetDrawBlendMode(BlendMode.Blend));
 Logging.LogInfo(LogCategory.Application, "Renderer blend: {0}", renderer.GetDrawBlendMode());
 
-Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}", renderer.GetDrawColor(out r, out g, out b, out byte a));
-Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}, {1}, {2}, {3}", r, g, b, a);
+Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}", renderer.GetDrawColor());
 Logging.LogInfo(LogCategory.Application, "Set renderer draw color: {0}", renderer.SetDrawColor(255, 0, 0, 128));
-Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}", renderer.GetDrawColor(out r, out g, out b, out a));
-Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}, {1}, {2}, {3}", r, g, b, a);
+Logging.LogInfo(LogCategory.Application, "Renderer draw color: {0}", renderer.GetDrawColor());
 
 Logging.LogInfo(LogCategory.Application, "Renderer info: {0}", renderer.GetRendererInfo());
 
@@ -814,7 +821,7 @@ texture3.SetTextureScaleMode(ScaleMode.Nearest);
 
 renderer.SetRenderTarget(texture);
 renderer.SetDrawColor(255, 0, 0, 128);
-renderer.DrawLine(0, 0, 200, 100);
+renderer.DrawLine(new Point(0, 0), new Point(200, 100));
 renderer.Present();
 
 renderer.SetRenderTarget(null);
@@ -1015,8 +1022,8 @@ unsafe
 
             uint rgb = PixelsExt.MapRGB(format, 250, 120, 128);
             uint rgba = PixelsExt.MapRGBA(format, 102, 25, 59, 128);
-            PixelsExt.GetRGB(rgb, format, out r, out g, out b);
-            PixelsExt.GetRGBA(rgba, format, out r, out g, out b, out a);
+            PixelsExt.GetRGB(rgb, format, out byte r, out byte g, out byte b);
+            PixelsExt.GetRGBA(rgba, format, out r, out g, out b, out byte a);
 
             bool converted = Pixels.PixelFormatEnumToMasks(PixelFormatEnum.BGRA5551, out int bpp, out uint rmask, out uint gmask, out uint bmask, out uint amask);
             PixelFormatEnum formatEnum = Pixels.MasksToPixelFormatEnum(bpp, rmask, gmask, bmask, amask);
