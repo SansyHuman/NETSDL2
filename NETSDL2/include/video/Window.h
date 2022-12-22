@@ -879,7 +879,7 @@ namespace NETSDL2
 			/// with window information. The caller must initialize the info
 			/// structure's version.</param>
 			/// <returns>true if the function is implemented and the version
-			/// member of the info struct is valid, or SDL_FALSE if the
+			/// member of the info struct is valid, or false if the
 			/// information could not be retrieved.</returns>
 			bool GetWindowWMInfo(SysWMInfo% info);
 
