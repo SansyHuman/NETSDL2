@@ -382,7 +382,7 @@ namespace NETSDL2
 			/// </param>
 			/// <returns>The number of objects read, or 0 at error or end of
 			/// file.</returns>
-			size_t Read(System::IntPtr* ptr, size_t size, size_t maxnum);
+			size_t Read(System::IntPtr ptr, size_t size, size_t maxnum);
 
 			/// <summary>
 			/// Read from a data source.
@@ -432,7 +432,7 @@ namespace NETSDL2
 			/// <param name="num">The number of objects to write.</param>
 			/// <returns>The number of objects written, which will be less than num
 			/// on error.</returns>
-			size_t Write(System::IntPtr* ptr, size_t size, size_t num);
+			size_t Write(System::IntPtr ptr, size_t size, size_t num);
 
 			/// <summary>
 			/// Write to an RWops data stream.

@@ -274,9 +274,9 @@ Result<None^, int> NETSDL2::IO::RWops::Close()
 	return None::Value;
 }
 
-size_t NETSDL2::IO::RWops::Read(System::IntPtr* ptr, size_t size, size_t maxnum)
+size_t NETSDL2::IO::RWops::Read(System::IntPtr ptr, size_t size, size_t maxnum)
 {
-	return SDL_RWread(ops, ptr->ToPointer(), size, maxnum);
+	return SDL_RWread(ops, ptr.ToPointer(), size, maxnum);
 }
 
 generic<class T> where T : value class
@@ -319,9 +319,9 @@ Sint64 RWops::Tell::get()
 	return SDL_RWtell(ops);
 }
 
-size_t NETSDL2::IO::RWops::Write(System::IntPtr* ptr, size_t size, size_t num)
+size_t NETSDL2::IO::RWops::Write(System::IntPtr ptr, size_t size, size_t num)
 {
-	return SDL_RWwrite(ops, ptr->ToPointer(), size, num);
+	return SDL_RWwrite(ops, ptr.ToPointer(), size, num);
 }
 
 generic<class T> where T : value class

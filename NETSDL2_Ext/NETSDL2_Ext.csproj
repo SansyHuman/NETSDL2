@@ -6,6 +6,9 @@
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <Platforms>AnyCPU;x64</Platforms>
+    <Version>$(VersionPrefix)</Version>
+	<AssemblyVersion>0.0.*</AssemblyVersion>
+    <Deterministic>false</Deterministic><BaseOutputPath>$(SolutionDir)$(Platform)\$(Configuration)\NETSDL2_Ext</BaseOutputPath><GenerateDocumentationFile>False</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
